@@ -305,5 +305,16 @@ Selection Selection::createStructuringElement(vector<string> tokens)
 		newSelection.toRectangle("0", "0", s, s);
 		return newSelection;
 	}
+	if (tokens[0] == "ellipse")
+	{
+		ExpressionParser parser[2];
+		parser[0].setString(tokens[1]);
+		parser[1].setString(tokens[2]);
+		double a = parser[0].evaluate();
+		double b = parser[1].evaluate();
+		Selection newSelection(2 * a, 2 * b);
+		newSelection.toEllipse("0", "0", to_string(2 * a), to_string(2 * b));
+		return newSelection;
+	}
 	return Selection(0, 0);
 }
