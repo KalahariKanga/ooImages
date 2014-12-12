@@ -28,6 +28,8 @@ public:
 	Selection combine(string op, Selection* other);
 	Selection dilate(Selection* kernel, int originx, int originy);
 	Selection erode(Selection* kernel, int originx, int originy);
+	Selection dilate(Selection* kernel);//assume centre origin
+	Selection erode(Selection* kernel);
 	static Selection create(vector<string> tokens, ImageObject* image);
 	static Selection create(vector<string> tokens, int width, int height);
 	//TODO:make this a constructor you damned silly

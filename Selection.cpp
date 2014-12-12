@@ -229,6 +229,16 @@ Selection Selection::erode(Selection* kernel, int originx, int originy)
 	return newSelection;
 }
 
+Selection Selection::dilate(Selection* kernel)
+{
+	return dilate(kernel, kernel->width / 2, kernel->height / 2);
+}
+
+Selection Selection::erode(Selection* kernel)
+{
+	return erode(kernel, kernel->width / 2, kernel->height / 2);
+}
+
 Selection Selection::create(vector<string> tokens, ImageObject* image)
 {
 	Selection newSelection(image->getWidth(), image->getHeight());
@@ -275,5 +285,25 @@ Selection Selection::create(vector<string> tokens, int width, int height)
 
 Selection Selection::createStructuringElement(vector<string> tokens)
 {
-	
+	if (tokens[0] == "circle")
+	{
+		ExpressionParser parser;
+		parser.setString(tokens[1]);
+		double r = parser.evaluate();
+		Selection newSelection(2 * r, 2 * r);
+		string s = to_string(r);
+		newSelection.toCircle(s, s, s);
+		return newSelection;
+	}
+	if (tokens[0] == "rectangle")
+	{
+		ExpressionParser parser;
+		parser.setString(tokens[1]);
+		double l = parser.evaluate();
+		Selection newSelection(l, l);
+		string s = to_string(l);
+		newSelection.toRectangle("0", "0", s, s);
+		return newSelection;
+	}
+	return Selection(0, 0);
 }

@@ -58,9 +58,9 @@ void Interpreter::interpret(std::string command)
 		std::string op = tokens.front();
 		tokens.erase(tokens.begin());
 		if (op == "dilate")
-			*selection = selection->dilate(&Selection::create(tokens, 20, 20), 10, 10);
+			*selection = selection->dilate(&Selection::createStructuringElement(tokens));
 		else if (op == "erode")
-			*selection = selection->erode(&(Selection::create(tokens, 20, 20)), 10, 10);
+			*selection = selection->erode(&Selection::createStructuringElement(tokens));
 		else
 			*selection = selection->combine(op, &Selection::create(tokens, store->image));
 	}
