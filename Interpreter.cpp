@@ -4,6 +4,7 @@
 #include "RgbTransform.h"
 #include "HsvTransform.h"
 #include "Convolve.h"
+#include "Transform.h"
 Interpreter::Interpreter()
 {
 }
@@ -89,5 +90,12 @@ void Interpreter::interpret(std::string command)
 		for (int c = 0; c < 9; c++)
 			convolve.expr[c] = tokens[c];
 		convolve.modify();
+	}
+	if (function == "transform")
+	{
+		Transform transform(store->image, selection);
+		for (int c = 0; c < 2; c++)
+			transform.expr[c] = tokens[c];
+		transform.modify();
 	}
 }
