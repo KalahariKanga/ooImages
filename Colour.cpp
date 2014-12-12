@@ -80,15 +80,15 @@ void Colour::b(int b)
 }
 void Colour::h(int h)
 {
-	//
+	hsv(h, s(), v());
 }
 void Colour::s(int s)
 {
-	//
+	hsv(h(), s, v());
 }
 void Colour::v(int v)
 {
-	//
+	hsv(h(), s(), v);
 }
 void Colour::hsv(int H, int S, int V)
 {

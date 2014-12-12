@@ -31,6 +31,8 @@ public:
 	static Selection create(vector<string> tokens, ImageObject* image);
 	static Selection create(vector<string> tokens, int width, int height);
 	//TODO:make this a constructor you damned silly
+
+	static Selection createStructuringElement(vector<string>);
 };
 
 

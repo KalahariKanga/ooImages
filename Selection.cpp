@@ -272,3 +272,8 @@ Selection Selection::create(vector<string> tokens, int width, int height)
 	}
 	return newSelection;
 }
+
+Selection Selection::createStructuringElement(vector<string> tokens)
+{
+	
+}

@@ -33,7 +33,7 @@ void Interpreter::interpret(std::string command)
 	tokens = tokenizeString(command);
 	std::string function = tokens.front();
 	tokens.erase(tokens.begin());
-	
+
 	if (function == "var")
 	{
 		//TODO: dont assume the correct number of tokens
