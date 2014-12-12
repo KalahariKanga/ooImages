@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\mu">
+      <UniqueIdentifier>{b66ac8da-2dda-4b81-b681-2fc93cde8979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mu">
+      <UniqueIdentifier>{2ee4e82f-becb-42d2-859a-962455a44ff2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Colour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpressionParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="muParser.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserBase.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserBytecode.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserCallback.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserDef.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserDLL.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserError.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserFixes.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserInt.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserStack.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserTemplateMagic.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserTest.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserToken.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="muParserTokenReader.h">
+      <Filter>Header Files\mu</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpreter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Selection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageModifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Invert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageStore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RgbTransform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Convolve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HsvTransform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ooImages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Colour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpressionParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="muParser.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserBase.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserBytecode.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserCallback.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserDLL.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserError.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserInt.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserTest.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="muParserTokenReader.cpp">
+      <Filter>Source Files\mu</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpreter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Selection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageModifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Invert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageStore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RgbTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Convolve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HsvTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

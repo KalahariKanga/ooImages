@@ -1,0 +1,29 @@
+#include "ImageModifier.h"
+
+ImageModifier::ImageModifier()
+{
+}
+ImageModifier::ImageModifier(ImageObject* image, Selection* selection)
+{
+	buffer = new ImageObject(image->getWidth(), image->getHeight());
+	this->image = image;
+	this->selection = selection;
+}
+
+
+ImageModifier::~ImageModifier()
+{
+}
+
+void ImageModifier::modify()
+{
+	apply();
+	for (int x = 0; x < image->getWidth(); x++)
+		for (int y = 0; y < image->getHeight(); y++)
+			image->setPixel(x, y, buffer->getPixel(x, y));
+}
+
+void ImageModifier::apply()
+{
+	//virtual
+}
