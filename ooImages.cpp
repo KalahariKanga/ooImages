@@ -11,17 +11,27 @@
 
 int main(int argc, _TCHAR* argv[])
 {
-	sf::RenderWindow window;
-	window.create(sf::VideoMode(800, 600), "Window");
-	sf::Texture texture;
-	sf::Sprite sprite;
 
 	ImageStore store;
-	store.loadImage("C:\\Users\\David\\Pictures\\test.bmp");
+	std::string filename;
+	if (argc > 1)
+		filename = argv[1];
+	else
+	{
+		std::cout << ">>";
+		std::getline(std::cin, filename);
+	}
+	store.loadImage(filename);
+
 	Selection selection(store.image->getWidth(), store.image->getHeight());
 	Interpreter interpreter;
 	interpreter.selection = &selection; 
 	interpreter.store = &store;
+
+	sf::RenderWindow window;
+	window.create(sf::VideoMode(800, 800 * ((float)store.image->getHeight() / store.image->getWidth())), "Image");
+	sf::Texture texture;
+	sf::Sprite sprite;
 
 	std::string input;
 	while (1)
