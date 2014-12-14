@@ -40,7 +40,7 @@ int main(int argc, _TCHAR* argv[])
 		sprite.setTexture(texture);
 		window.draw(sprite);
 		window.display();
-		std::cout << ">>";
+		std::cout << ">";
 		std::getline(std::cin,input);
 		interpreter.interpret(input);
 	}

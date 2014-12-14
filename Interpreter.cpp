@@ -62,13 +62,25 @@ void Interpreter::interpret(std::string command)
 			*selection = selection->dilate(&Selection::createStructuringElement(tokens));
 		else if (op == "erode")
 			*selection = selection->erode(&Selection::createStructuringElement(tokens));
+		else if (op == "invert")
+			selection->invert();
 		else
 			*selection = selection->combine(op, &Selection::create(tokens, store->image));
 	}
+	if (function == "undo")
+	{
+		store->undo();
+	}
+	if (function == "redo")
+	{
+		store->redo();
+	}
+
 	if (function == "invert")
 	{
 		Invert invert(store->image, selection);
 		invert.modify();
+		store->addUndoPoint();
 	}
 	if (function == "rgb")
 	{
@@ -76,6 +88,7 @@ void Interpreter::interpret(std::string command)
 		for (int c = 0; c < 3; c++)
 			rgb.expr[c] = tokens[c];
 		rgb.modify();
+		store->addUndoPoint();
 	}
 	if (function == "hsv")
 	{
@@ -83,6 +96,7 @@ void Interpreter::interpret(std::string command)
 		for (int c = 0; c < 3; c++)
 			hsv.expr[c] = tokens[c];
 		hsv.modify();
+		store->addUndoPoint();
 	}
 	if (function == "convolve")
 	{
@@ -90,6 +104,7 @@ void Interpreter::interpret(std::string command)
 		for (int c = 0; c < 9; c++)
 			convolve.expr[c] = tokens[c];
 		convolve.modify();
+		store->addUndoPoint();
 	}
 	if (function == "transform")
 	{
@@ -97,5 +112,6 @@ void Interpreter::interpret(std::string command)
 		for (int c = 0; c < 2; c++)
 			transform.expr[c] = tokens[c];
 		transform.modify();
+		store->addUndoPoint();
 	}
 }
