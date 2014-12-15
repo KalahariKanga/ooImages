@@ -14,6 +14,5 @@ public:
 	void addUndoPoint();
 	void undo();
 	void redo();
-	void dbg_showhistory();
 };
 

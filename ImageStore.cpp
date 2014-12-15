@@ -50,12 +50,3 @@ void ImageStore::redo()
 		image = new ImageObject(history[histPos]);
 	}
 }
-
-void ImageStore::dbg_showhistory()
-{
-	for (int c = 0; c < history.size(); c++)
-	{
-		std::cout << c << ": " << history[c].getPixel(0, 0).r() << " " << history[c].getPixel(0, 0).g() << " " << history[c].getPixel(0, 0).b() << std::endl;
-	}
-	std::cout << std::endl;
-}
