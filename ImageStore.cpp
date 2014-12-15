@@ -25,13 +25,12 @@ void saveImage(std::string fname)
 
 void ImageStore::addUndoPoint()
 {	
-	
-	if (histPos < history.size()-1)
+	if (histPos < history.size())
 	{	
 		history.resize(histPos+1);
 	}
-	history.push_back((*image));
 	histPos++;
+	history.push_back(*image);
 }
 
 void ImageStore::undo()
@@ -39,9 +38,8 @@ void ImageStore::undo()
 	if (histPos > 0)
 	{
 		histPos--;
-		image = &(history[histPos]);
+		image = new ImageObject(history[histPos]);
 	}
-	std::cout << "HistPos " << histPos << " history size " << history.size() << std::endl;
 }
 
 void ImageStore::redo()
@@ -49,7 +47,15 @@ void ImageStore::redo()
 	if (histPos < history.size()-1)
 	{
 		histPos++;
-		image = &(history[histPos]);
+		image = new ImageObject(history[histPos]);
 	}
-	std::cout << "HistPos " << histPos << " history size " << history.size() << std::endl;
+}
+
+void ImageStore::dbg_showhistory()
+{
+	for (int c = 0; c < history.size(); c++)
+	{
+		std::cout << c << ": " << history[c].getPixel(0, 0).r() << " " << history[c].getPixel(0, 0).g() << " " << history[c].getPixel(0, 0).b() << std::endl;
+	}
+	std::cout << std::endl;
 }
