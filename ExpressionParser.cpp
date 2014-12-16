@@ -41,10 +41,37 @@ void ExpressionParser::setString(std::string str)
 {
 	//replace expression names with expressions
 	//TODO:for layered expressions, loop the following while the string contains expression names
+	
 	for (auto it = expressions.begin(); it != expressions.end(); it++)
 	{
-		while (str.find(it->first) != std::string::npos)
-			str.replace(str.find(it->first), (it->first).length(), it->second);
+		for (int p = 0; p < str.size(); p++)
+		{
+			int sp = 0;
+
+			while (sp < it->first.size())
+			{
+				if (str[p + sp] == it->first[sp])
+					sp++;
+				else break;
+			}
+
+			char next, prev;
+			if (p>0)
+				prev = str[p - 1];
+			else
+				prev = '\0';
+			if (p + it->first.size() < str.length() - 1)
+				next = str[p + it->first.size()];
+			else next = '\0';
+
+			if (sp == it->first.size() && !isalnum(next) && !isalnum(prev))
+			{
+				str.replace(p, it->first.size(), it->second);
+				p = p + it->second.size() - 1;
+			}
+		}
+
+
 	}
 
 	parser.SetExpr(str);
