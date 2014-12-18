@@ -17,6 +17,7 @@ PixelModifier::~PixelModifier()
 
 void PixelModifier::apply()
 {
+	setup();
 	for (int x = 0; x < image->getWidth(); x++)
 		for (int y = 0; y < image->getHeight(); y++)
 			if (selection->getValue(x, y))
@@ -29,6 +30,11 @@ void PixelModifier::apply()
 				Colour c = image->getPixel(x, y);
 				buffer->setPixel(x, y, c);
 			}
+}
+
+void PixelModifier::setup()
+{
+
 }
 
 Colour PixelModifier::modifyPixel(int x, int y)

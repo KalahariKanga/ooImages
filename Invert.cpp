@@ -15,6 +15,11 @@ Invert::~Invert()
 {
 }
 
+void Invert::setup()
+{
+
+}
+
 Colour Invert::modifyPixel(int x, int y)
 {
 	Colour c = image->getPixel(x, y);

@@ -5,6 +5,7 @@ class PixelModifier :
 {
 	virtual void apply();
 	virtual Colour modifyPixel(int x, int y);
+	virtual void setup();
 public:
 	PixelModifier();
 	PixelModifier(ImageObject* image, Selection* selection);

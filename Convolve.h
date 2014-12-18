@@ -1,13 +1,19 @@
 #pragma once
-#include "ImageModifier.h"
+#include "PixelModifier.h"
 class Convolve :
-	public ImageModifier
+	public PixelModifier
 {
-	virtual void apply();
+	virtual Colour modifyPixel(int x, int y);
+	virtual void setup();
 public:
 	Convolve();
 	Convolve(ImageObject* image, Selection* selection);
 	~Convolve();
+
+
 	std::string expr[9];
+	ExpressionParser parser[3][3];
+	Colour source[3][3];
+	double x, y, r, g, b, h, s, v;
 };
 

@@ -5,7 +5,7 @@ HsvTransform::HsvTransform()
 {
 }
 HsvTransform::HsvTransform(ImageObject* image, Selection* selection)
-	:ImageModifier(image, selection)
+	:PixelModifier(image, selection)
 {
 }
 
@@ -13,10 +13,8 @@ HsvTransform::~HsvTransform()
 {
 }
 
-void HsvTransform::apply()
+void HsvTransform::setup()
 {
-	double x, y, r, g, b, h, s, v;
-	ExpressionParser parser[3];
 	for (int c = 0; c < 3; c++)
 	{
 		parser[c].setString(expr[c]);
@@ -29,22 +27,19 @@ void HsvTransform::apply()
 		parser[c].addLocalVariable("s", &s);
 		parser[c].addLocalVariable("v", &v);
 	}
-	for (x = 0; x < image->getWidth(); x += 1)
-		for (y = 0; y < image->getHeight(); y += 1)
-		{
-			if (selection->getValue(x, y))
-			{
-				Colour p = image->getPixel((int)x, (int)y);
-				r = p.r();
-				g = p.g();
-				b = p.b();
-				h = p.h();
-				s = p.s();
-				v = p.v();
-				p.hsv(parser[0].evaluate(), parser[1].evaluate(), parser[2].evaluate());
-				buffer->setPixel(x, y, p);
-			}
-			else
-				buffer->setPixel(x, y, image->getPixel((int)x, (int)y));
-		}
+}
+
+Colour HsvTransform::modifyPixel(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+	Colour p = image->getPixel(x, y);
+	r = p.r();
+	g = p.g();
+	b = p.b();
+	h = p.h();
+	s = p.s();
+	v = p.v();
+	p.hsv(parser[0].evaluate(), parser[1].evaluate(), parser[2].evaluate());
+	return p;	
 }
