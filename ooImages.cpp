@@ -21,6 +21,8 @@ int main(int argc, _TCHAR* argv[])
 		std::cout << ">>";
 		std::getline(std::cin, filename);
 	}
+
+	
 	store.loadImage(filename);
 
 	Selection selection(store.image->getWidth(), store.image->getHeight());
@@ -32,6 +34,30 @@ int main(int argc, _TCHAR* argv[])
 	window.create(sf::VideoMode(800, 800 * ((float)store.image->getHeight() / store.image->getWidth())), "Image");
 	sf::Texture texture;
 	sf::Sprite sprite;
+
+	if (argc > 2)
+	{
+		std::ifstream file(argv[2]);
+		std::string line;
+		while (std::getline(file, line))
+		{
+			texture.loadFromImage(*(store.image->getImage()));
+			sprite.setTexture(texture);
+			window.draw(sprite);
+			window.display();
+			std::cout << ">";
+			interpreter.interpret(line);
+
+			std::cout << line << std::endl;
+		}
+		file.close();
+		
+	}
+
+
+
+
+
 
 	std::string input;
 	while (1)

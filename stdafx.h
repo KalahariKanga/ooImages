@@ -20,4 +20,5 @@
 #include <algorithm>
 #include <map>
 #include <cmath>
+#include <fstream>
 #include "SFML/graphics.hpp"

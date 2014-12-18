@@ -32,6 +32,8 @@ void Interpreter::interpret(std::string command)
 {
 	std::vector<std::string> tokens;
 	tokens = tokenizeString(command);
+	if (tokens.size() == 0)
+		return;
 	std::string function = tokens.front();
 	tokens.erase(tokens.begin());
 
@@ -149,7 +151,7 @@ void Interpreter::interpret(std::string command)
 	}
 	if (function == "transform")
 	{
-		if (tokens.size() == 1 || tokens.size == 2)
+		if (tokens.size() > 0 && tokens.size() <= 2)
 		{
 			Transform transform(store->image, selection);
 			transform.expr[0] = "x";
@@ -162,3 +164,4 @@ void Interpreter::interpret(std::string command)
 	}
 	
 }
+

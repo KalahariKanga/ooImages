@@ -11,6 +11,7 @@ public:
 	Interpreter();
 	~Interpreter();
 	void interpret(std::string command);
+	
 	Selection* selection;
 	ImageStore* store;
 };
