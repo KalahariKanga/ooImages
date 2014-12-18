@@ -1,9 +1,9 @@
 #pragma once
-#include "ImageModifier.h"
+#include "PixelModifier.h"
 class Invert :
-	public ImageModifier
+	public PixelModifier
 {
-	virtual void apply();
+	virtual Colour modifyPixel(int x, int y);
 public:
 	Invert();
 	Invert(ImageObject* image, Selection* selection);
