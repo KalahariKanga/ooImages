@@ -18,9 +18,9 @@ void ImageStore::loadImage(std::string fname)
 	addUndoPoint();
 }
 
-void saveImage(std::string fname)
+void ImageStore::saveImage(std::string fname)
 {
-	//TODO:this function
+	image->getImage()->saveToFile(fname);
 }
 
 void ImageStore::addUndoPoint()

@@ -75,6 +75,10 @@ void Interpreter::interpret(std::string command)
 	{
 		store->redo();
 	}
+	if (function == "save")
+	{
+		store->saveImage(tokens.front());
+	}
 
 	if (function == "invert")
 	{
@@ -114,4 +118,5 @@ void Interpreter::interpret(std::string command)
 		transform.modify();
 		store->addUndoPoint();
 	}
+	
 }
