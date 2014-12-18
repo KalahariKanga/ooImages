@@ -37,23 +37,38 @@ void Interpreter::interpret(std::string command)
 
 	if (function == "var")
 	{
-		//TODO: dont assume the correct number of tokens
-		ExpressionParser::updateVariable(tokens.front(), tokens.back());
+		//DONE: dont assume the correct number of tokens
+		if (tokens.size() == 2)
+			ExpressionParser::updateVariable(tokens.front(), tokens.back());
+		else
+			std::cout << "Incorrect number of arguments, 2 expected\n";
 	}
+
 	if (function == "expr")
 	{
-		ExpressionParser::updateExpression(tokens.front(), tokens.back());
+		if (tokens.size() == 2)
+			ExpressionParser::updateExpression(tokens.front(), tokens.back());
+		else
+			std::cout << "Incorrect number of arguments, 2 expected\n";
 	}
+
 	if (function == "eval")
 	{
-		ExpressionParser parser;
-		parser.setString(tokens.front());
-		std::cout << tokens.front() << ": " << parser.evaluate() << std::endl;
+		if (tokens.size() == 1)
+		{
+			ExpressionParser parser;
+			parser.setString(tokens.front());
+			std::cout << tokens.front() << ": " << parser.evaluate() << std::endl;
+		}
+		else
+			std::cout << "Incorrect number of arguments, 1, expected\n";
 	}
+
 	if (function == "select")
 	{
 		*selection = Selection::create(tokens, store->image);
 	}
+
 	if (function == "selection")
 	{
 		std::string op = tokens.front();
@@ -67,6 +82,7 @@ void Interpreter::interpret(std::string command)
 		else
 			*selection = selection->combine(op, &Selection::create(tokens, store->image));
 	}
+
 	if (function == "undo")
 	{
 		store->undo();
@@ -88,35 +104,61 @@ void Interpreter::interpret(std::string command)
 	}
 	if (function == "rgb")
 	{
-		RgbTransform rgb(store->image, selection);
-		for (int c = 0; c < 3; c++)
-			rgb.expr[c] = tokens[c];
-		rgb.modify();
-		store->addUndoPoint();
+		if (tokens.size() <= 3 && tokens.size() > 0)
+		{
+			RgbTransform rgb(store->image, selection);
+			rgb.expr[0] = "r";
+			rgb.expr[1] = "g";
+			rgb.expr[2] = "b";
+			
+			for (int c = 0; c < tokens.size(); c++)
+				rgb.expr[c] = tokens[c];
+
+			rgb.modify();
+			store->addUndoPoint();
+		}
 	}
 	if (function == "hsv")
 	{
-		HsvTransform hsv(store->image, selection);
-		for (int c = 0; c < 3; c++)
-			hsv.expr[c] = tokens[c];
-		hsv.modify();
-		store->addUndoPoint();
+		if (tokens.size() <= 3 && tokens.size() > 0)
+		{
+			HsvTransform hsv(store->image, selection);
+			hsv.expr[0] = "r";
+			hsv.expr[1] = "g";
+			hsv.expr[2] = "b";
+
+			for (int c = 0; c < tokens.size(); c++)
+				hsv.expr[c] = tokens[c];
+
+			hsv.modify();
+			store->addUndoPoint();
+		}
 	}
 	if (function == "convolve")
 	{
-		Convolve convolve(store->image, selection);
-		for (int c = 0; c < 9; c++)
-			convolve.expr[c] = tokens[c];
-		convolve.modify();
-		store->addUndoPoint();
+		if (tokens.size() <= 9 && tokens.size() > 0)
+		{
+			Convolve convolve(store->image, selection);
+			for (int c = 0; c < 9; c++)
+				convolve.expr[c] = "0";
+			for (int c = 0; c < tokens.size(); c++)
+				convolve.expr[c] = tokens[c];
+			convolve.modify();
+			store->addUndoPoint();
+		}
 	}
 	if (function == "transform")
 	{
-		Transform transform(store->image, selection);
-		for (int c = 0; c < 2; c++)
-			transform.expr[c] = tokens[c];
-		transform.modify();
-		store->addUndoPoint();
+		if (tokens.size() == 1 || tokens.size == 2)
+		{
+			Transform transform(store->image, selection);
+			transform.expr[0] = "x";
+			transform.expr[1] = "y";
+			for (int c = 0; c < tokens.size(); c++)
+				transform.expr[c] = tokens[c];
+			transform.modify();
+			store->addUndoPoint();
+		}
 	}
 	
 }
