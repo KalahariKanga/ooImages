@@ -11,5 +11,6 @@ public:
 	ScriptBlock script;
 	void runBlock(ScriptBlock* block);
 	Interpreter interpreter;
+	void interpret(ScriptBlock* block, std::string line, int position);
 };
 

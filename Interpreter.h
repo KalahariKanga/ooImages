@@ -6,8 +6,9 @@
 class Interpreter
 {
 	std::vector<std::string> commands;
-	std::vector<std::string> tokenizeString(std::string);
+	
 public:
+	std::vector<std::string> tokenizeString(std::string);
 	Interpreter();
 	~Interpreter();
 	void interpret(std::string command);
