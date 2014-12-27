@@ -8,6 +8,7 @@
 #include "Interpreter.h"
 #include "Invert.h"
 #include "ImageStore.h"
+#include "ScriptManager.h"
 
 int main(int argc, _TCHAR* argv[])
 {
@@ -38,19 +39,9 @@ int main(int argc, _TCHAR* argv[])
 	if (argc > 2)
 	{
 		std::ifstream file(argv[2]);
-		std::string line;
-		while (std::getline(file, line))
-		{
-			texture.loadFromImage(*(store.image->getImage()));
-			sprite.setTexture(texture);
-			window.draw(sprite);
-			window.display();
-			std::cout << ">";
-			interpreter.interpret(line);
-
-			std::cout << line << std::endl;
-		}
-		file.close();
+		ScriptManager scriptmanager;
+		scriptmanager.interpreter = &interpreter;
+		scriptmanager.loadScript(&file);
 		
 	}
 
