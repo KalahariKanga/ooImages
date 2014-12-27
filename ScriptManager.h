@@ -1,5 +1,6 @@
 #pragma once
 #include "ScriptLine.h"
+#include "Interpreter.h"
 
 class ScriptManager
 {
@@ -8,5 +9,7 @@ public:
 	ScriptManager();
 	~ScriptManager();
 	ScriptBlock script;
+	void runBlock(ScriptBlock* block);
+	Interpreter interpreter;
 };
 

@@ -7,6 +7,5 @@ public:
 	ScriptLine();
 	ScriptLine(std::string string);
 	~ScriptLine();
-	virtual void run();
 };
 

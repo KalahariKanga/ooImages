@@ -15,7 +15,3 @@ ScriptLine::~ScriptLine()
 {
 }
 
-void ScriptLine::run()
-{
-	std::cout << line << std::endl;
-}

@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+
 class ScriptBlock
 {	
 public:
@@ -7,6 +8,6 @@ public:
 	ScriptBlock();
 	~ScriptBlock();
 	std::vector<ScriptBlock*> contents; //maybe accesors
-	virtual void run();
+
 };
 

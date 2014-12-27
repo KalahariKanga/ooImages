@@ -13,9 +13,6 @@ ScriptManager::~ScriptManager()
 void ScriptManager::loadScript(std::ifstream *file)
 {
 	std::string line;
-	
-	//ScriptBlock *currentBlock, *previousBlock;
-	//currentBlock = &script;
 
 	std::vector<ScriptBlock*> blockHistory;
 	blockHistory.push_back(&script);
@@ -42,6 +39,16 @@ void ScriptManager::loadScript(std::ifstream *file)
 
 	}
 
+	runBlock(&script);
+}
 
-	script.run();
+
+
+void ScriptManager::runBlock(ScriptBlock* block)
+{
+	for (auto i = block->contents.begin(); i != block->contents.end(); i++)
+		if ((*i)->contents.size() > 0)
+			runBlock(*i);
+		else
+			interpreter.interpret((*i)->line);
 }
