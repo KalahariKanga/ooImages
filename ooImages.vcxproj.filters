@@ -114,6 +114,15 @@
     <ClInclude Include="PixelModifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ScriptBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -189,6 +198,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PixelModifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
