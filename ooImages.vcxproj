@@ -119,6 +119,9 @@
     <ClInclude Include="muParserTokenReader.h" />
     <ClInclude Include="PixelModifier.h" />
     <ClInclude Include="RgbTransform.h" />
+    <ClInclude Include="ScriptBlock.h" />
+    <ClInclude Include="ScriptLine.h" />
+    <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="Selection.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -147,6 +150,9 @@
     <ClCompile Include="ooImages.cpp" />
     <ClCompile Include="PixelModifier.cpp" />
     <ClCompile Include="RgbTransform.cpp" />
+    <ClCompile Include="ScriptBlock.cpp" />
+    <ClCompile Include="ScriptLine.cpp" />
+    <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="Selection.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Transform.cpp" />
