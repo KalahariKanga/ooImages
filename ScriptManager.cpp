@@ -42,28 +42,28 @@ void ScriptManager::loadScript(std::ifstream *file)
 	runBlock(&script);
 }
 
-
-
 void ScriptManager::runBlock(ScriptBlock* block)
 {
 	int pos = 0;
 	for (int c = 0; c < block->contents.size(); c++)
 	{
 		if (block->contents[c]->contents.size() > 0)
+		{
 			runBlock(block->contents[c]);
+		}
 		else
-			interpret(block, block->contents[c]->line, c);
+			c = interpret(block, block->contents[c]->line, c);
 
-		pos++;
+		
 	}
 }
 
-void ScriptManager::interpret(ScriptBlock* block, std::string line, int position)
+int ScriptManager::interpret(ScriptBlock* block, std::string line, int position)
 {
 	std::vector<std::string> tokens;
-	tokens = interpreter.tokenizeString(line);
+	tokens = interpreter->tokenizeString(line);
 	if (tokens.size() == 0)
-		return;
+		return position;
 	std::string function = tokens.front();
 	tokens.erase(tokens.begin());
 
@@ -74,12 +74,36 @@ void ScriptManager::interpret(ScriptBlock* block, std::string line, int position
 		int n = parser.evaluate();
 		if (position + 1 < block->contents.size() && n > 0)
 		{
-			std::string next = block->contents[position + 1]->line;
-			auto it = block->contents.begin() + position + 1;
-			block->contents.insert(it, n - 1, new ScriptBlock(next));
+			ScriptBlock* next = block->contents[position + 1];
+			for (int c = 0; c < n; c++)
+				runBlock(next);
 		}
+		return position+1;
+	}
+	else if (function == "if")
+	{
+		ExpressionParser parser;
+		parser.setString(tokens.front());
+		if (parser.evaluate())
+		{
+			ScriptBlock* next = block->contents[position + 1];
+			runBlock(next);
+		}
+		return position+1;
+	}
+	else if (function == "while")
+	{
+		ExpressionParser parser;
+		parser.setString(tokens.front());
+		while (parser.evaluate())
+		{
+			ScriptBlock* next = block->contents[position + 1];
+			runBlock(next);
+		}
+		return position + 1;
 	}
 	else
-		interpreter.interpret(line);
+		interpreter->interpret(line);
 	
+	return position;
 }
