@@ -5,12 +5,12 @@ class ImageModifier
 {
 	
 protected:
-	Selection* selection;
+	Mask* mask;
 	ImageObject* image;
 	ImageObject* buffer;
 public:
 	ImageModifier();
-	ImageModifier(ImageObject* image, Selection* selection);
+	ImageModifier(ImageObject* image, Mask* mask);
 	~ImageModifier();
 	void modify();
 	virtual void apply();

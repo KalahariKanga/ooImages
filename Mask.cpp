@@ -1,5 +1,8 @@
 #include "Mask.h"
+Mask::Mask()
+{
 
+}
 Mask::Mask(int width, int height)
 {
 	this->width = width;
@@ -9,7 +12,23 @@ Mask::Mask(int width, int height)
 		data[c] = new float[height];
 	//toRectangle("0", "0", to_string(width), to_string(height));
 }
-
+Mask::Mask(vector<string> tokens, ImageObject* image)
+{
+	this->width = image->getWidth();
+	this->height = image->getHeight();
+	data = new float*[width];
+	for (int c = 0; c < width; c++)
+		data[c] = new float[height];
+	
+	if (tokens.front() == "circle")
+	{
+		toCircle(tokens[1], tokens[2], tokens[3], tokens[4]);
+	}
+	if (tokens.front() == "line")
+	{
+		toLine(tokens[1], tokens[2], tokens[3], tokens[4]);
+	}
+}
 
 Mask::~Mask()
 {

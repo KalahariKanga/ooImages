@@ -4,8 +4,8 @@
 HsvTransform::HsvTransform()
 {
 }
-HsvTransform::HsvTransform(ImageObject* image, Selection* selection)
-	:PixelModifier(image, selection)
+HsvTransform::HsvTransform(ImageObject* image, Mask* mask)
+	:PixelModifier(image, mask)
 {
 }
 

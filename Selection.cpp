@@ -11,6 +11,31 @@ Selection::Selection(int width, int height)
 	toRectangle("0", "0", to_string(width), to_string(height));
 }
 
+Selection::Selection(vector<string> tokens, ImageObject* image)
+{
+	this->width = image->getWidth();
+	this->height = image->getHeight();
+	data = new bool*[width];
+	for (int c = 0; c < width; c++)
+		data[c] = new bool[height];
+
+	if (tokens.front() == "circle")
+	{
+		toCircle(tokens[1], tokens[2], tokens[3]);
+	}
+	if (tokens.front() == "rectangle")
+	{
+		toRectangle(tokens[1], tokens[2], tokens[3], tokens[4]);
+	}
+	if (tokens.front() == "ellipse")
+	{
+		toEllipse(tokens[1], tokens[2], tokens[3], tokens[4]);
+	}
+	if (tokens.front() == "region")
+	{
+		toRegion(image, tokens[1]);
+	}
+}
 
 Selection::~Selection()
 {

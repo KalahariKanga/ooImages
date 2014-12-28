@@ -65,10 +65,13 @@ void Interpreter::interpret(std::string command)
 		else
 			std::cout << "Incorrect number of arguments, 1, expected\n";
 	}
-
+	if (function == "mask")
+	{
+		mask = new Mask(tokens, store->image);
+	}
 	if (function == "select")
 	{
-		*selection = Selection::create(tokens, store->image);
+		*mask = Selection::create(tokens, store->image);
 	}
 
 	if (function == "selection")
@@ -76,13 +79,13 @@ void Interpreter::interpret(std::string command)
 		std::string op = tokens.front();
 		tokens.erase(tokens.begin());
 		if (op == "dilate")
-			*selection = selection->dilate(&Selection::createStructuringElement(tokens));
+			*mask = ((Selection*)mask)->dilate(&Selection::createStructuringElement(tokens));
 		else if (op == "erode")
-			*selection = selection->erode(&Selection::createStructuringElement(tokens));
+			*mask = ((Selection*)mask)->erode(&Selection::createStructuringElement(tokens));
 		else if (op == "invert")
-			selection->invert();
+			mask->invert();
 		else
-			*selection = selection->combine(op, &Selection::create(tokens, store->image));
+			*mask = ((Selection*)mask)->combine(op, &Selection::create(tokens, store->image));
 	}
 
 	if (function == "undo")
@@ -100,7 +103,7 @@ void Interpreter::interpret(std::string command)
 
 	if (function == "invert")
 	{
-		Invert invert(store->image, selection);
+		Invert invert(store->image, mask);
 		invert.modify();
 		store->addUndoPoint();
 	}
@@ -108,7 +111,7 @@ void Interpreter::interpret(std::string command)
 	{
 		if (tokens.size() <= 3 && tokens.size() > 0)
 		{
-			RgbTransform rgb(store->image, selection);
+			RgbTransform rgb(store->image, mask);
 			rgb.expr[0] = "r";
 			rgb.expr[1] = "g";
 			rgb.expr[2] = "b";
@@ -124,7 +127,7 @@ void Interpreter::interpret(std::string command)
 	{
 		if (tokens.size() <= 3 && tokens.size() > 0)
 		{
-			HsvTransform hsv(store->image, selection);
+			HsvTransform hsv(store->image, mask);
 			hsv.expr[0] = "r";
 			hsv.expr[1] = "g";
 			hsv.expr[2] = "b";
@@ -140,7 +143,7 @@ void Interpreter::interpret(std::string command)
 	{
 		if (tokens.size() <= 9 && tokens.size() > 0)
 		{
-			Convolve convolve(store->image, selection);
+			Convolve convolve(store->image, mask);
 			for (int c = 0; c < 9; c++)
 				convolve.expr[c] = "0";
 			for (int c = 0; c < tokens.size(); c++)
@@ -153,7 +156,7 @@ void Interpreter::interpret(std::string command)
 	{
 		if (tokens.size() > 0 && tokens.size() <= 2)
 		{
-			Transform transform(store->image, selection);
+			Transform transform(store->image, mask);
 			transform.expr[0] = "x";
 			transform.expr[1] = "y";
 			for (int c = 0; c < tokens.size(); c++)

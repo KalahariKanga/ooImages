@@ -7,7 +7,7 @@ class HsvTransform :
 	virtual void setup();
 public:
 	HsvTransform();
-	HsvTransform(ImageObject* image, Selection* selection);
+	HsvTransform(ImageObject* image, Mask* mask);
 	~HsvTransform();
 
 

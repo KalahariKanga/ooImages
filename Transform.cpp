@@ -4,8 +4,8 @@
 Transform::Transform()
 {
 }
-Transform::Transform(ImageObject* image, Selection* selection)
-	:ImageModifier(image, selection)
+Transform::Transform(ImageObject* image, Mask* mask)
+	:ImageModifier(image, mask)
 {
 
 }
@@ -33,7 +33,7 @@ void Transform::apply()
 	for (x = 0; x < image->getWidth(); x += 1)
 		for (y = 0; y < image->getHeight(); y += 1)
 		{
-			if (selection->getValue(x, y))
+			if (mask->getValue(x, y))
 			{
 				Colour p = image->getPixel((int)x, (int)y);
 				r = p.r();

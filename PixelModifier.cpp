@@ -5,8 +5,8 @@ PixelModifier::PixelModifier()
 {
 }
 
-PixelModifier::PixelModifier(ImageObject* image, Selection* selection)
-	:ImageModifier(image, selection)
+PixelModifier::PixelModifier(ImageObject* image, Mask* mask)
+	:ImageModifier(image, mask)
 {
 
 }
@@ -20,16 +20,12 @@ void PixelModifier::apply()
 	setup();
 	for (int x = 0; x < image->getWidth(); x++)
 		for (int y = 0; y < image->getHeight(); y++)
-			if (selection->getValue(x, y))
-			{
-				Colour c = modifyPixel(x, y);
-				buffer->setPixel(x, y, c);
-			}
-			else
-			{
-				Colour c = image->getPixel(x, y);
-				buffer->setPixel(x, y, c);
-			}
+		{
+			float v = mask->getValue(x, y);
+			Colour old = image->getPixel(x, y);
+			Colour n = modifyPixel(x, y);
+			buffer->setPixel(x, y, Colour::interpolate(old, n, v));
+		}
 }
 
 void PixelModifier::setup()

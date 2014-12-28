@@ -4,8 +4,8 @@
 Convolve::Convolve()
 {
 }
-Convolve::Convolve(ImageObject* image, Selection* selection)
-	:PixelModifier(image, selection)
+Convolve::Convolve(ImageObject* image, Mask* mask)
+	:PixelModifier(image, mask)
 {
 
 }

@@ -13,7 +13,7 @@ public:
 	~Interpreter();
 	void interpret(std::string command);
 	
-	Selection* selection;
+	Mask* mask;
 	ImageStore* store;
 };
 

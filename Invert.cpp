@@ -3,8 +3,8 @@
 Invert::Invert()
 {
 }
-Invert::Invert(ImageObject* image, Selection* selection)
-	:PixelModifier(image,selection)
+Invert::Invert(ImageObject* image, Mask* mask)
+	:PixelModifier(image,mask)
 {
 	/*this->image = image;
 	this->selection = selection;*/

@@ -3,11 +3,11 @@
 ImageModifier::ImageModifier()
 {
 }
-ImageModifier::ImageModifier(ImageObject* image, Selection* selection)
+ImageModifier::ImageModifier(ImageObject* image, Mask* mask)
 {
 	buffer = new ImageObject(image->getWidth(), image->getHeight());
 	this->image = image;
-	this->selection = selection;
+	this->mask = mask;
 }
 
 

@@ -116,3 +116,13 @@ void Colour::hsv(int H, int S, int V)
 	col.g = g * 255;
 	col.b = b * 255;
 }
+
+Colour Colour::interpolate(Colour from, Colour to, float amount)
+{
+	clamp<float>(amount, 0, 1);
+	Colour newColour;
+	newColour.r(from.r() + amount*(to.r() - from.r()));
+	newColour.g(from.g() + amount*(to.g() - from.g()));
+	newColour.b(from.b() + amount*(to.b() - from.b()));
+	return newColour;
+}

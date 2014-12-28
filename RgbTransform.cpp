@@ -4,8 +4,8 @@
 RgbTransform::RgbTransform()
 {
 }
-RgbTransform::RgbTransform(ImageObject* image, Selection* selection)
-	:PixelModifier(image, selection)
+RgbTransform::RgbTransform(ImageObject* image, Mask* mask)
+	:PixelModifier(image, mask)
 {
 	
 }

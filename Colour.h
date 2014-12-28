@@ -13,5 +13,6 @@ public:
 	Colour(void);
 	Colour(int r, int g, int b);
 	~Colour(void);
+	static Colour interpolate(Colour from, Colour to, float amount);
 };
 

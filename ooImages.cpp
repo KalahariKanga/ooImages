@@ -26,9 +26,9 @@ int main(int argc, _TCHAR* argv[])
 	
 	store.loadImage(filename);
 
-	Selection selection(store.image->getWidth(), store.image->getHeight());
+	Mask mask(store.image->getWidth(), store.image->getHeight());
 	Interpreter interpreter;
-	interpreter.selection = &selection; 
+	interpreter.mask = &mask;
 	interpreter.store = &store;
 
 	sf::RenderWindow window;

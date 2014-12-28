@@ -7,7 +7,7 @@ class RgbTransform :
 	virtual void setup();
 public:
 	RgbTransform();
-	RgbTransform(ImageObject* image, Selection* selection);
+	RgbTransform(ImageObject* image, Mask* mask);
 	~RgbTransform();
 	std::string expr[3]; 
 	double x, y, r, g, b, h, s, v;

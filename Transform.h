@@ -6,7 +6,7 @@ class Transform :
 	virtual void apply();
 public:
 	Transform();
-	Transform(ImageObject* image, Selection* selection);
+	Transform(ImageObject* image, Mask* mask);
 	~Transform();
 	std::string expr[2];
 };

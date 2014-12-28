@@ -7,7 +7,7 @@ class Convolve :
 	virtual void setup();
 public:
 	Convolve();
-	Convolve(ImageObject* image, Selection* selection);
+	Convolve(ImageObject* image, Mask* mask);
 	~Convolve();
 
 

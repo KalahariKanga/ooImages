@@ -16,6 +16,7 @@ class Selection : public Mask
 
 public:
 	Selection(int width, int height);
+	Selection(vector<string> tokens, ImageObject* image);
 	~Selection();
 	bool getValue(int x, int y);
 	void setValue(int x, int y, bool v);
