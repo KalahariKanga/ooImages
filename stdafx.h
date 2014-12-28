@@ -22,3 +22,4 @@
 #include <cmath>
 #include <fstream>
 #include "SFML/graphics.hpp"
+#include "core.h"

@@ -103,6 +103,7 @@
     <ClInclude Include="ImageStore.h" />
     <ClInclude Include="Interpreter.h" />
     <ClInclude Include="Invert.h" />
+    <ClInclude Include="Mask.h" />
     <ClInclude Include="muParser.h" />
     <ClInclude Include="muParserBase.h" />
     <ClInclude Include="muParserBytecode.h" />
@@ -138,6 +139,7 @@
     <ClCompile Include="ImageStore.cpp" />
     <ClCompile Include="Interpreter.cpp" />
     <ClCompile Include="Invert.cpp" />
+    <ClCompile Include="Mask.cpp" />
     <ClCompile Include="muParser.cpp" />
     <ClCompile Include="muParserBase.cpp" />
     <ClCompile Include="muParserBytecode.cpp" />

@@ -1,12 +1,11 @@
 #pragma once
 #include "stdafx.h"
-#include "ExpressionParser.h"
-#include "ImageObject.h"
-#include "Colour.h"
+
+#include "Mask.h"
 
 using namespace std;
 
-class Selection
+class Selection : public Mask
 {
 	bool** data;
 	int width, height;
@@ -14,6 +13,7 @@ class Selection
 	bool isInRectangle(int x, int y, int x1, int y1, int x2, int y2);
 	bool isInEllipse(int x, int y, int x1, int y1, int x2, int y2);
 	bool isInRegion(ImageObject *i, int x, int y, std::string expr);
+
 public:
 	Selection(int width, int height);
 	~Selection();
