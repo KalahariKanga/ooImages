@@ -28,6 +28,10 @@ Mask::Mask(vector<string> tokens, ImageObject* image)
 	{
 		toLine(tokens[1], tokens[2], tokens[3], tokens[4]);
 	}
+	if (tokens.front() == "region")
+	{
+		toRegion(image, tokens[1]);
+	}
 }
 
 Mask::~Mask()
@@ -52,7 +56,47 @@ float Mask::valueInLine(int x, int y, int x1, int y1, int x2, int y2)
 
 	return clamp<float>(p,0,1);
 }
+float Mask::valueInRegion(ImageObject* i, int x, int y, std::string expr)
+{
+	double tx, ty, r, g, b, h, s, v;
 
+	static std::string current = " ";
+	static float** newselection;
+
+
+	if (current != expr)
+	{
+		newselection = new float*[i->getWidth()];
+		for (int c = 0; c < i->getWidth(); ++c)
+			newselection[c] = new float[i->getHeight()];
+
+		current = expr;
+		ExpressionParser parser;
+		parser.setString(expr);
+		parser.addLocalVariable("x", &tx);
+		parser.addLocalVariable("y", &ty);
+		parser.addLocalVariable("r", &r);
+		parser.addLocalVariable("g", &g);
+		parser.addLocalVariable("b", &b);
+		parser.addLocalVariable("h", &h);
+		parser.addLocalVariable("s", &s);
+		parser.addLocalVariable("v", &v);
+		Colour p;
+		for (tx = 0; tx < i->getWidth(); tx += 1)
+			for (ty = 0; ty < i->getHeight(); ty += 1)
+			{
+				p = i->getPixel((int)tx, (int)ty);
+				r = p.r();
+				g = p.g();
+				b = p.b();
+				h = p.h();
+				s = p.s();
+				v = p.v();
+				newselection[(int)tx][(int)ty] = clamp<float>(parser.evaluate(), 0, 1);
+			}
+	}
+	return newselection[x][y];
+}
 float Mask::getValue(int x, int y)
 {
 	while (x < 0)
@@ -102,6 +146,12 @@ void Mask::toLine(string x1, string y1, string x2, string y2)
 	for (int x = 0; x < width; x++)
 		for (int y = 0; y < height; y++)
 			setValue(x, y, valueInLine(x, y, parser[0].evaluate(), parser[1].evaluate(), parser[2].evaluate(), parser[3].evaluate()));
+}
+void Mask::toRegion(ImageObject* i, std::string expr)
+{
+	for (int x = 0; x < width; x++)
+		for (int y = 0; y < height; y++)
+			setValue(x, y, valueInRegion(i, x, y, expr));
 }
 void Mask::invert()
 {
