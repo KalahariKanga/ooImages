@@ -71,7 +71,7 @@ void Interpreter::interpret(std::string command)
 	}
 	if (function == "select")
 	{
-		*mask = Selection::create(tokens, store->image);
+		mask = new Selection(tokens, store->image);
 	}
 
 	if (function == "selection")
@@ -79,13 +79,13 @@ void Interpreter::interpret(std::string command)
 		std::string op = tokens.front();
 		tokens.erase(tokens.begin());
 		if (op == "dilate")
-			*mask = ((Selection*)mask)->dilate(&Selection::createStructuringElement(tokens));
+			((Selection*)mask)->dilate(&Selection::createStructuringElement(tokens));
 		else if (op == "erode")
-			*mask = ((Selection*)mask)->erode(&Selection::createStructuringElement(tokens));
+			((Selection*)mask)->erode(&Selection::createStructuringElement(tokens));
 		else if (op == "invert")
-			mask->invert();
+			((Selection*)mask)->invert();
 		else
-			*mask = ((Selection*)mask)->combine(op, &Selection::create(tokens, store->image));
+			((Selection*)mask)->combine(op, &Selection::create(tokens, store->image));
 	}
 
 	if (function == "undo")

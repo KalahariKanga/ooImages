@@ -107,7 +107,7 @@ bool Selection::isInRegion(ImageObject *i, int x, int y, std::string expr)
 	return newselection[x][y];
 }
 
-bool Selection::getValue(int x, int y)
+float Selection::getValue(int x, int y)
 {
 	while (x < 0)
 		x += width;
@@ -180,7 +180,7 @@ void Selection::invert()
 			setValue(x, y, getValue(x, y) ? 0 : 1);
 }
 
-Selection Selection::combine(string op, Selection* other)
+Selection Selection::combination(string op, Selection* other)
 {
 	bool(*func)(bool, bool);
 	if (op == "and")
@@ -210,7 +210,7 @@ Selection Selection::combine(string op, Selection* other)
 	return newSelection;
 }
 
-Selection Selection::dilate(Selection* kernel, int originx, int originy)
+Selection Selection::dilation(Selection* kernel, int originx, int originy)
 {
 	Selection newSelection(width, height);
 	newSelection.invert();
@@ -233,7 +233,7 @@ Selection Selection::dilate(Selection* kernel, int originx, int originy)
 	return newSelection;
 }
 
-Selection Selection::erode(Selection* kernel, int originx, int originy)
+Selection Selection::erosion(Selection* kernel, int originx, int originy)
 {
 	Selection newSelection(width, height);
 	newSelection.invert();//selections are true by default
@@ -254,14 +254,14 @@ Selection Selection::erode(Selection* kernel, int originx, int originy)
 	return newSelection;
 }
 
-Selection Selection::dilate(Selection* kernel)
+Selection Selection::dilation(Selection* kernel)
 {
-	return dilate(kernel, kernel->width / 2, kernel->height / 2);
+	return dilation(kernel, kernel->width / 2, kernel->height / 2);
 }
 
-Selection Selection::erode(Selection* kernel)
+Selection Selection::erosion(Selection* kernel)
 {
-	return erode(kernel, kernel->width / 2, kernel->height / 2);
+	return erosion(kernel, kernel->width / 2, kernel->height / 2);
 }
 
 Selection Selection::create(vector<string> tokens, ImageObject* image)
@@ -342,4 +342,84 @@ Selection Selection::createStructuringElement(vector<string> tokens)
 		return newSelection;
 	}
 	return Selection(0, 0);
+}
+
+void Selection::dilate(Selection* kernel)
+{
+	int originx = kernel->width / 2;
+	int originy = kernel->height / 2;
+	Selection newSelection(width, height);
+	newSelection.invert();
+	for (int x = 0; x < width; x++)
+		for (int y = 0; y < height; y++)
+		{
+
+			if (getValue(x, y))
+			{
+				newSelection.setValue(x, y, 1);
+				for (int kx = 0; kx < kernel->width; kx++)
+					for (int ky = 0; ky < kernel->height; ky++)
+					{
+						if (kernel->getValue(kx, ky))
+							newSelection.setValue(x + kx - originx, y + ky - originy, 1);
+					}
+			}
+		}
+	for (int x = 0; x < width; x++)
+		for (int y = 0; y < height; y++)
+			setValue(x, y, newSelection.getValue(x, y));
+	
+}
+
+void Selection::erode(Selection* kernel)
+{
+	int originx = kernel->width / 2;
+	int originy = kernel->height / 2;
+
+	Selection newSelection(width, height);
+	newSelection.invert();//selections are true by default
+	for (int x = 0; x < width - kernel->width; x++)
+		for (int y = 0; y < height - kernel->height; y++)
+		{
+			bool contained = 1;
+			for (int c = 0; c < kernel->width*kernel->height; c++)
+			{
+				bool source = kernel->getValue(c%kernel->width, c / kernel->width);
+				bool target = getValue(x + c%kernel->width, y + c / kernel->width);
+				if (source&&!target)
+					contained = 0;
+			}
+			if (contained)
+				newSelection.setValue(x + originx, y + originy, 1);
+		}
+	for (int x = 0; x < width; x++)
+		for (int y = 0; y < height; y++)
+			setValue(x, y, newSelection.getValue(x, y));
+
+}
+
+void Selection::combine(string op, Selection* other)
+{
+	bool(*func)(bool, bool);
+	if (op == "and")
+		func = &and;
+	if (op == "or")
+		func = &or;
+	if (op == "xor")
+		func = &xor;
+	if (op == "nand")
+		func = &nand;
+
+	if (other->width == width && other->height == height)
+	{
+
+		for (int x = 0; x < width; x++)
+			for (int y = 0; y < height; y++)
+			{
+				bool a = getValue(x, y);
+				bool b = other->getValue(x, y);
+				setValue(x, y, func(a, b));
+			}
+
+	}	
 }

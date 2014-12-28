@@ -12,8 +12,8 @@ class Mask
 protected:
 	int width, height;
 public:
-	float getValue(int x, int y);
-	void setValue(int x, int y, float v);
+	virtual float getValue(int x, int y);
+	virtual void setValue(int x, int y, float v);
 	void toCircle(string cx, string cy, string r1, string r2);
 	void toLine(string x1, string y1, string x2, string y2);
 	void invert();

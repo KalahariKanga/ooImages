@@ -52,6 +52,7 @@ int main(int argc, _TCHAR* argv[])
 	{
 		texture.loadFromImage(*(store.image->getImage()));
 		sprite.setTexture(texture);
+		sprite.setScale((float)800 / store.image->getWidth(), (float)800 / store.image->getWidth());
 		window.draw(sprite);
 		window.display();
 		std::cout << ">";
