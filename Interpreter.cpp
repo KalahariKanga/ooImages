@@ -67,7 +67,16 @@ void Interpreter::interpret(std::string command)
 	}
 	if (function == "mask")
 	{
-		mask = new Mask(tokens, store->image);
+		std::string op = tokens.front();
+		if (op == "invert")
+			mask->invert();
+		if (op == "add" || op == "sub" || op == "max" || op == "min")
+		{
+			tokens.erase(tokens.begin());
+			mask->combine(op, new Mask(tokens, store->image));
+		}
+		else
+			mask = new Mask(tokens, store->image);
 	}
 	if (function == "select")
 	{

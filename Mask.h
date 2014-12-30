@@ -18,6 +18,7 @@ public:
 	void toCircle(string cx, string cy, string r1, string r2);
 	void toLine(string x1, string y1, string x2, string y2);
 	void toRegion(ImageObject* i, std::string expr);
+	void combine(std::string op, Mask* other);
 	void invert();
 	Mask();
 	Mask(int width, int height);

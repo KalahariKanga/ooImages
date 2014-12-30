@@ -157,5 +157,33 @@ void Mask::invert()
 {
 	for (int x = 0; x < width; x++)
 		for (int y = 0; y < height; y++)
-			setValue(x, y, 1-getValue(x, y));
+		{
+			float v = clamp<float>(getValue(x, y),0,1);
+			setValue(x, y, 1 - v);
+		}
+}
+
+void Mask::combine(std::string op, Mask* other)
+{
+	if (other->width == width && other->height == height)
+	{
+
+		for (int x = 0; x < width; x++)
+			for (int y = 0; y < height; y++)
+			{
+				float a = getValue(x, y);
+				float b = other->getValue(x, y);
+				float v = 0;
+				if (op == "add")
+					v = clamp<float>(a + b, 0, 1);
+				if (op == "sub")
+					v = clamp<float>(a - b, 0, 1);
+				if (op == "max")
+					v = clamp<float>(std::max(a, b), 0, 1);
+				if (op == "min")
+					v = clamp<float>(std::min(a, b), 0, 1);
+
+				setValue(x, y, v);
+			}
+	}
 }
