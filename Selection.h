@@ -25,12 +25,8 @@ public:
 	void toRegion(ImageObject *i, std::string expr);
 	void invert();
 
-	Selection combination(string op, Selection* other);//dep
+	
 	void combine(string op, Selection* other);
-	Selection dilation(Selection* kernel, int originx, int originy);//dep
-	Selection erosion(Selection* kernel, int originx, int originy);//dep
-	Selection dilation(Selection* kernel);//dep
-	Selection erosion(Selection* kernel);//dep
 	void dilate(Selection* kernel);
 	void erode(Selection* kernel);
 	static Selection create(vector<string> tokens, ImageObject* image);

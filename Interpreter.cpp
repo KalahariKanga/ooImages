@@ -73,7 +73,7 @@ void Interpreter::interpret(std::string command)
 		if (op == "add" || op == "sub" || op == "max" || op == "min")
 		{
 			tokens.erase(tokens.begin());
-			mask->combine(op, new Mask(tokens, store->image));
+			mask->combine(op, &Mask(tokens, store->image));
 		}
 		else
 			mask = new Mask(tokens, store->image);
