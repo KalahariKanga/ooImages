@@ -38,6 +38,7 @@ void ImageStore::undo()
 	if (histPos > 0)
 	{
 		histPos--;
+		delete image;
 		image = new ImageObject(history[histPos]);
 	}
 }
@@ -47,6 +48,7 @@ void ImageStore::redo()
 	if (histPos < history.size()-1)
 	{
 		histPos++;
+		delete image;
 		image = new ImageObject(history[histPos]);
 	}
 }

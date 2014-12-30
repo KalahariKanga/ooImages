@@ -10,7 +10,9 @@ Mask::Mask(int width, int height)
 	data = new float*[width];
 	for (int c = 0; c < width; c++)
 		data[c] = new float[height];
-	//toRectangle("0", "0", to_string(width), to_string(height));
+	for (int cx = 0; cx < width; cx++)
+		for (int cy = 0; cy < height; cy++)
+			setValue(cx, cy, 1);
 }
 Mask::Mask(vector<string> tokens, ImageObject* image)
 {
