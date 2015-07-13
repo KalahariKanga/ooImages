@@ -10,6 +10,7 @@ public:
 	void r(int), g(int), b(int), h(int), s(int), v(int);
 	void hsv(int, int, int);
 	sf::Color getCol();
+	
 	Colour(void);
 	Colour(int r, int g, int b);
 	~Colour(void);

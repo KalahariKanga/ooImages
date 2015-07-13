@@ -35,6 +35,7 @@ int main(int argc, _TCHAR* argv[])
 	window.create(sf::VideoMode(800, 800 * ((float)store.image->getHeight() / store.image->getWidth())), "Image");
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Image image;
 	ExpressionParser::updateVariable("image_width", std::to_string(store.image->getWidth()));
 	ExpressionParser::updateVariable("image_height", std::to_string(store.image->getHeight()));
 	if (argc > 2)
@@ -50,7 +51,8 @@ int main(int argc, _TCHAR* argv[])
 	std::string input;
 	while (1)
 	{
-		texture.loadFromImage(*(store.image->getImage()));
+		image.create(store.image->getWidth(), store.image->getHeight(), store.image->getData());		
+		texture.loadFromImage(image);
 		sprite.setTexture(texture);
 		sprite.setScale((float)800 / store.image->getWidth(), (float)800 / store.image->getWidth());
 		window.draw(sprite);

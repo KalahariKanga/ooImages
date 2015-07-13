@@ -9,6 +9,7 @@ ImageStore::ImageStore()
 
 ImageStore::~ImageStore()
 {
+	delete image;
 }
 
 void ImageStore::loadImage(std::string fname)
@@ -20,17 +21,22 @@ void ImageStore::loadImage(std::string fname)
 
 void ImageStore::saveImage(std::string fname)
 {
-	image->getImage()->saveToFile(fname);
+	std::cout << "Not implemented";
+	//image->getImage()->saveToFile(fname);
 }
 
 void ImageStore::addUndoPoint()
 {	
-	if (histPos < history.size())
+	//
+	//probably need to use shared pointer
+	//
+	/*if (histPos < history.size())
 	{	
 		history.resize(histPos+1);
 	}
 	histPos++;
-	history.push_back(*image);
+	history.push_back(*image);*/
+	
 }
 
 void ImageStore::undo()

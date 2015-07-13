@@ -3,9 +3,12 @@
 #include "core.h"
 class ImageObject
 {
-	sf::Image image;//TODO: could be a pointer
+	//sf::Image image;//TODO: could be a pointer
 	int width, height;
+	sf::Uint8* data = nullptr;
 public:
+	Colour getDataPoint(int x, int y);
+	void colourToData(int x, int y, Colour c);
 	Colour getPixel(float x, float y, bool wrap = 0);
 	Colour ImageObject::getPixel(int x, int y, bool wrap = 0);
 	void setPixel(int x, int y, Colour colour);
@@ -16,6 +19,7 @@ public:
 	void loadImage(std::string fname);
 	int getHeight();
 	int getWidth();
-	sf::Image* getImage();
+	sf::Uint8* getData();
+
 };
 
