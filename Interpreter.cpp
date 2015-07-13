@@ -76,10 +76,14 @@ void Interpreter::interpret(std::string command)
 			mask->combine(op, &Mask(tokens, store->image));
 		}
 		else
+		{
+			delete mask;
 			mask = new Mask(tokens, store->image);
+		}
 	}
 	if (function == "select")
 	{
+		delete mask;
 		mask = new Selection(tokens, store->image);
 	}
 

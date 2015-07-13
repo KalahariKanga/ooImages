@@ -109,7 +109,8 @@ Colour ImageObject::getDataPoint(int x, int y)
 {
 	if (x < 0 || x >= width || y < 0 || y >= height)
 		return Colour(0, 0, 0); //TODO: wrap or extend or something
-	return Colour(data[4 * (y*width + x)], data[4 * (y*width + x) + 1], data[4 * (y*width + x) + 2]);// , data[4 * (y*width + x) + 3]);
+	int pos = 4 * (y*width + x);
+	return Colour(data[pos], data[pos + 1], data[pos + 2]);// , data[pos + 3]);
 
 }
 

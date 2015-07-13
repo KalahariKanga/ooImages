@@ -26,9 +26,8 @@ int main(int argc, _TCHAR* argv[])
 	
 	store.loadImage(filename);
 
-	Mask mask(store.image->getWidth(), store.image->getHeight());
 	Interpreter interpreter;
-	interpreter.mask = &mask;
+	interpreter.mask = new Mask(store.image->getWidth(), store.image->getHeight());
 	interpreter.store = &store;
 
 	sf::RenderWindow window;
@@ -44,7 +43,7 @@ int main(int argc, _TCHAR* argv[])
 		ScriptManager scriptmanager;
 		scriptmanager.interpreter = &interpreter;
 		scriptmanager.loadScript(&file);
-		
+		scriptmanager.run();
 	}
 
 

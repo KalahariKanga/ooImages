@@ -3,6 +3,7 @@
 #include "Selection.h"
 #include "ImageStore.h"
 
+
 class Interpreter
 {
 	std::vector<std::string> commands;
@@ -13,7 +14,7 @@ public:
 	~Interpreter();
 	void interpret(std::string command);
 	
-	Mask* mask;
+	Mask* mask = nullptr;
 	ImageStore* store;
 };
 

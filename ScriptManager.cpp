@@ -38,8 +38,6 @@ void ScriptManager::loadScript(std::ifstream *file)
 		}
 
 	}
-
-	runBlock(&script);
 }
 
 void ScriptManager::runBlock(ScriptBlock* block)
@@ -106,4 +104,9 @@ int ScriptManager::interpret(ScriptBlock* block, std::string line, int position)
 		interpreter->interpret(line);
 	
 	return position;
+}
+
+void ScriptManager::run()
+{
+	runBlock(&script);
 }

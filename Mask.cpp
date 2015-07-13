@@ -38,6 +38,9 @@ Mask::Mask(vector<string> tokens, ImageObject* image)
 
 Mask::~Mask()
 {
+	/*for (int c = 0; c < width; c++)
+		delete[] data[c];
+	delete[] data;*/
 }
 
 float Mask::valueInCircle(int x, int y, int cx, int cy, int r1, int r2)
@@ -60,6 +63,7 @@ float Mask::valueInLine(int x, int y, int x1, int y1, int x2, int y2)
 }
 float Mask::valueInRegion(ImageObject* i, int x, int y, std::string expr)
 {
+	//TODO: probs memory leak
 	double tx, ty, r, g, b, h, s, v;
 
 	static std::string current = " ";

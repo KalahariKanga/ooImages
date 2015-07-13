@@ -13,6 +13,7 @@ ImageModifier::ImageModifier(ImageObject* image, Mask* mask)
 
 ImageModifier::~ImageModifier()
 {
+	delete buffer;
 }
 
 void ImageModifier::modify()

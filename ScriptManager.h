@@ -12,5 +12,7 @@ public:
 	void runBlock(ScriptBlock* block);
 	Interpreter *interpreter;
 	int interpret(ScriptBlock* block, std::string line, int position);
+
+	void run();
 };
 

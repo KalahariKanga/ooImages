@@ -39,7 +39,9 @@ Selection::Selection(vector<string> tokens, ImageObject* image)
 
 Selection::~Selection()
 {
-	//TODO: maybe delete?
+	for (int c = 0; c < width; c++)
+		delete[] data[c];
+	delete[] data;
 }
 
 bool Selection::isInCircle(int x, int y, int cx, int cy, int cr)
