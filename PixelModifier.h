@@ -8,7 +8,7 @@ class PixelModifier :
 	virtual void setup();
 public:
 	PixelModifier();
-	PixelModifier(ImageObject* image, Mask* mask);
+	PixelModifier(ImageObject* image, AbstractMask* mask);
 	~PixelModifier();
 };
 

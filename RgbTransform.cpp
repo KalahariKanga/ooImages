@@ -4,7 +4,7 @@
 RgbTransform::RgbTransform()
 {
 }
-RgbTransform::RgbTransform(ImageObject* image, Mask* mask)
+RgbTransform::RgbTransform(ImageObject* image, AbstractMask* mask)
 	:PixelModifier(image, mask)
 {
 	

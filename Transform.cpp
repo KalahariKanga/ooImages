@@ -4,7 +4,7 @@
 Transform::Transform()
 {
 }
-Transform::Transform(ImageObject* image, Mask* mask)
+Transform::Transform(ImageObject* image, AbstractMask* mask)
 	:ImageModifier(image, mask)
 {
 

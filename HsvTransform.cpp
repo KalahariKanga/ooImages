@@ -4,7 +4,7 @@
 HsvTransform::HsvTransform()
 {
 }
-HsvTransform::HsvTransform(ImageObject* image, Mask* mask)
+HsvTransform::HsvTransform(ImageObject* image, AbstractMask* mask)
 	:PixelModifier(image, mask)
 {
 }

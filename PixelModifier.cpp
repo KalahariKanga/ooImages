@@ -5,7 +5,7 @@ PixelModifier::PixelModifier()
 {
 }
 
-PixelModifier::PixelModifier(ImageObject* image, Mask* mask)
+PixelModifier::PixelModifier(ImageObject* image, AbstractMask* mask)
 	:ImageModifier(image, mask)
 {
 

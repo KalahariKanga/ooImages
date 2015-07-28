@@ -1,16 +1,17 @@
 #pragma once
 #include "Selection.h"
+#include "Mask.h"
 
 class ImageModifier
 {
 	
 protected:
-	Mask* mask;
+	AbstractMask* mask;
 	ImageObject* image;
 	ImageObject* buffer;
 public:
 	ImageModifier();
-	ImageModifier(ImageObject* image, Mask* mask);
+	ImageModifier(ImageObject* image, AbstractMask* mask);
 	~ImageModifier();
 	void modify();
 	virtual void apply();

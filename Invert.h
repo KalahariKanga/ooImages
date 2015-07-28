@@ -7,7 +7,7 @@ class Invert :
 	virtual void setup();
 public:
 	Invert();
-	Invert(ImageObject* image, Mask* mask);
+	Invert(ImageObject* image, AbstractMask* mask);
 	~Invert();
 	
 };

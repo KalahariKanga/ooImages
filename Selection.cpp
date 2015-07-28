@@ -316,7 +316,7 @@ void Selection::erode(Selection* kernel)
 
 }
 
-void Selection::combine(string op, Selection* other)
+void Selection::combine(string op, AbstractMask* other)
 {
 	bool(*func)(bool, bool);
 	if (op == "and")

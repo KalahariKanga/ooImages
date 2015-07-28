@@ -3,7 +3,7 @@
 ImageModifier::ImageModifier()
 {
 }
-ImageModifier::ImageModifier(ImageObject* image, Mask* mask)
+ImageModifier::ImageModifier(ImageObject* image, AbstractMask* mask)
 {
 	buffer = new ImageObject(image->getWidth(), image->getHeight());
 	this->image = image;

@@ -3,7 +3,7 @@
 Invert::Invert()
 {
 }
-Invert::Invert(ImageObject* image, Mask* mask)
+Invert::Invert(ImageObject* image, AbstractMask* mask)
 	:PixelModifier(image,mask)
 {
 	/*this->image = image;

@@ -38,9 +38,9 @@ Mask::Mask(vector<string> tokens, ImageObject* image)
 
 Mask::~Mask()
 {
-	/*for (int c = 0; c < width; c++)
+	for (int c = 0; c < width; c++)
 		delete[] data[c];
-	delete[] data;*/
+	delete[] data;
 }
 
 float Mask::valueInCircle(int x, int y, int cx, int cy, int r1, int r2)
@@ -169,7 +169,7 @@ void Mask::invert()
 		}
 }
 
-void Mask::combine(std::string op, Mask* other)
+void Mask::combine(std::string op, AbstractMask* other)
 {
 	if (other->width == width && other->height == height)
 	{

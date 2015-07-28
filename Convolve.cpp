@@ -4,7 +4,7 @@
 Convolve::Convolve()
 {
 }
-Convolve::Convolve(ImageObject* image, Mask* mask)
+Convolve::Convolve(ImageObject* image, AbstractMask* mask)
 	:PixelModifier(image, mask)
 {
 

@@ -1,11 +1,11 @@
 #pragma once
 #include "stdafx.h"
 
-#include "Mask.h"
+#include "AbstractMask.h"
 
 using namespace std;
 
-class Selection : public Mask
+class Selection : public AbstractMask
 {
 	bool** data;
 	bool isInCircle(int x, int y, int cx, int cy, int cr);
@@ -17,16 +17,16 @@ public:
 	Selection(int width, int height);
 	Selection(vector<string> tokens, ImageObject* image);
 	~Selection();
-	float getValue(int x, int y);
+	virtual float getValue(int x, int y);
 	void setValue(int x, int y, bool v);
 	void toCircle(string cx, string cy, string cr);
 	void toRectangle(string x1, string y1, string x2, string y2);
 	void toEllipse(string x1, string y1, string x2, string y2);
 	void toRegion(ImageObject *i, std::string expr);
-	void invert();
+	virtual void invert();
 
 	
-	void combine(string op, Selection* other);
+	virtual void combine(string op, AbstractMask* other);
 	void dilate(Selection* kernel);
 	void erode(Selection* kernel);
 	static Selection create(vector<string> tokens, ImageObject* image);

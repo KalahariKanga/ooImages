@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Selection.h"
+#include "Mask.h"
 #include "ImageStore.h"
 
 
@@ -14,7 +15,7 @@ public:
 	~Interpreter();
 	void interpret(std::string command);
 	
-	Mask* mask = nullptr;
+	AbstractMask* mask = nullptr;
 	ImageStore* store;
 };
 
