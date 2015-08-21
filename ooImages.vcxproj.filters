@@ -19,6 +19,18 @@
     <Filter Include="Source Files\mu">
       <UniqueIdentifier>{2ee4e82f-becb-42d2-859a-962455a44ff2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\New Interpreter">
+      <UniqueIdentifier>{6d61de9c-26fa-4753-a15c-43dea19ea074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\New Interpreter">
+      <UniqueIdentifier>{c9e2ad7c-44db-4b55-b794-d71df6e9c68f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Old Interpreter">
+      <UniqueIdentifier>{b5efea0b-685e-44d4-b9eb-67835294409c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Old Interpreter">
+      <UniqueIdentifier>{71fa8f26-ae58-4409-90d7-24ceee408ffb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -84,9 +96,6 @@
     <ClInclude Include="muParserTokenReader.h">
       <Filter>Header Files\mu</Filter>
     </ClInclude>
-    <ClInclude Include="Interpreter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Selection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -114,20 +123,41 @@
     <ClInclude Include="PixelModifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScriptBlock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScriptLine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScriptManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Mask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AbstractMask.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Expression.h">
+      <Filter>Header Files\New Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Header Files\New Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptBlock.h">
+      <Filter>Header Files\Old Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptLine.h">
+      <Filter>Header Files\Old Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptManager.h">
+      <Filter>Header Files\Old Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpreter.h">
+      <Filter>Header Files\Old Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="setPixelsExpression.h">
+      <Filter>Header Files\New Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="rgbExpression.h">
+      <Filter>Header Files\New Interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TerminalExpression.h">
+      <Filter>Header Files\New Interpreter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +206,6 @@
     <ClCompile Include="muParserTokenReader.cpp">
       <Filter>Source Files\mu</Filter>
     </ClCompile>
-    <ClCompile Include="Interpreter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Selection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -206,20 +233,41 @@
     <ClCompile Include="PixelModifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScriptBlock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScriptLine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScriptManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Mask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AbstractMask.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Expression.cpp">
+      <Filter>Source Files\New Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files\New Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpreter.cpp">
+      <Filter>Source Files\Old Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptBlock.cpp">
+      <Filter>Source Files\Old Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptLine.cpp">
+      <Filter>Source Files\Old Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptManager.cpp">
+      <Filter>Source Files\Old Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="Variable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="setPixelsExpression.cpp">
+      <Filter>Source Files\New Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="rgbExpression.cpp">
+      <Filter>Source Files\New Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="TerminalExpression.cpp">
+      <Filter>Source Files\New Interpreter</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

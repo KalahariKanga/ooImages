@@ -10,10 +10,13 @@
 #include "ImageStore.h"
 #include "ScriptManager.h"
 
+#include "Parser.h"
+
 int main(int argc, _TCHAR* argv[])
 {
-
-	ImageStore store;
+	Parser p;
+	Variable var = p.run("rgb 2*5 1 2");
+	/*ImageStore store;
 	std::string filename;
 	if (argc > 1)
 		filename = argv[1];
@@ -59,7 +62,7 @@ int main(int argc, _TCHAR* argv[])
 		std::cout << ">";
 		std::getline(std::cin,input);
 		interpreter.interpret(input);
-	}
+	}*/
 
 	return 0;
 }

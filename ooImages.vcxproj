@@ -97,6 +97,7 @@
     <ClInclude Include="Colour.h" />
     <ClInclude Include="Convolve.h" />
     <ClInclude Include="core.h" />
+    <ClInclude Include="Expression.h" />
     <ClInclude Include="ExpressionParser.h" />
     <ClInclude Include="HsvTransform.h" />
     <ClInclude Include="ImageModifier.h" />
@@ -119,21 +120,27 @@
     <ClInclude Include="muParserTest.h" />
     <ClInclude Include="muParserToken.h" />
     <ClInclude Include="muParserTokenReader.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="PixelModifier.h" />
+    <ClInclude Include="rgbExpression.h" />
     <ClInclude Include="RgbTransform.h" />
     <ClInclude Include="ScriptBlock.h" />
     <ClInclude Include="ScriptLine.h" />
     <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="Selection.h" />
+    <ClInclude Include="setPixelsExpression.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TerminalExpression.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Variable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractMask.cpp" />
     <ClCompile Include="Colour.cpp" />
     <ClCompile Include="Convolve.cpp" />
     <ClCompile Include="core.cpp" />
+    <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionParser.cpp" />
     <ClCompile Include="HsvTransform.cpp" />
     <ClCompile Include="ImageModifier.cpp" />
@@ -152,14 +159,19 @@
     <ClCompile Include="muParserTest.cpp" />
     <ClCompile Include="muParserTokenReader.cpp" />
     <ClCompile Include="ooImages.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="PixelModifier.cpp" />
+    <ClCompile Include="rgbExpression.cpp" />
     <ClCompile Include="RgbTransform.cpp" />
     <ClCompile Include="ScriptBlock.cpp" />
     <ClCompile Include="ScriptLine.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="Selection.cpp" />
+    <ClCompile Include="setPixelsExpression.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="TerminalExpression.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Variable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

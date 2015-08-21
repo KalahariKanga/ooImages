@@ -20,5 +20,6 @@ public:
 	static void updateVariable(std::string name, std::string expr);
 	static void updateExpression(std::string name, std::string expr);
 	void addLocalVariable(std::string name, double* location);
+	
 };
 

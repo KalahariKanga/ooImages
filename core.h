@@ -1,6 +1,8 @@
 #pragma once
 #include <cmath>
 #include <memory>
+#include <vector>
+#include <sstream>
 template <typename T> T clamp(const T& value, const T& low, const T& high)
 {
 	return value < low ? low : (value > high ? high : value);

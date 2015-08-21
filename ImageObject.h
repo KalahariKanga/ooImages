@@ -3,7 +3,6 @@
 #include "core.h"
 class ImageObject
 {
-	//sf::Image image;//TODO: could be a pointer
 	int width, height;
 	sf::Uint8* data = nullptr;
 public:

@@ -76,3 +76,6 @@ $RECYCLE.BIN/
 *.lastbuildstate
 *.idb
 *.pdb
+*.vcxproj
+*.filters
+*.cd
