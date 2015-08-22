@@ -69,7 +69,7 @@ bool Selection::isInEllipse(int x, int y, int x1, int y1, int x2, int y2)
 }
 bool Selection::isInRegion(ImageObject *i, int x, int y, std::string expr)
 {
-	double tx, ty, r, g, b, h, s, v;
+	float tx, ty, r, g, b, h, s, v;
 
 	static std::string current = " ";
 	static bool** newselection;

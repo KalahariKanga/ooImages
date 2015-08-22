@@ -16,7 +16,7 @@ Transform::~Transform()
 
 void Transform::apply()
 {
-	double x, y, r, g, b, h, s, v;
+	float x, y, r, g, b, h, s, v;
 	ExpressionParser parser[2];
 	for (int c = 0; c < 2; c++)
 	{

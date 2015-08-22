@@ -14,6 +14,6 @@ public:
 	std::string expr[9];
 	ExpressionParser parser[3][3];
 	Colour source[3][3];
-	double x, y, r, g, b, h, s, v;
+	float x, y, r, g, b, h, s, v;
 };
 

@@ -12,7 +12,7 @@ public:
 
 
 	std::string expr[3];
-	double x, y, r, g, b, h, s, v;
+	float x, y, r, g, b, h, s, v;
 	ExpressionParser parser[3];
 };
 

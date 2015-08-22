@@ -1,6 +1,6 @@
 #include "ExpressionParser.h"
 
-std::map<std::string, double> ExpressionParser::variables;
+std::map<std::string, float> ExpressionParser::variables;
 std::map<std::string, std::string> ExpressionParser::expressions;
 ExpressionParser::ExpressionParser()
 {
@@ -14,14 +14,14 @@ ExpressionParser::~ExpressionParser()
 
 void ExpressionParser::loadVariables()
 {
-	typedef std::map<std::string, double>::iterator iterator; //or auto
+	typedef std::map<std::string, float>::iterator iterator; //or auto
 	for (iterator it = variables.begin(); it != variables.end(); it++)
 	{
 		parser.DefineVar(it->first, &(it->second));
 	}
 }
 
-double ExpressionParser::evaluate()
+float ExpressionParser::evaluate()
 {
 	
 	double value = -1;
@@ -99,7 +99,7 @@ void ExpressionParser::updateVariable(std::string name, std::string expr)
 		std::cout << "Parser Error\n";
 	}
 
-	if (!variables.insert(std::pair<std::string, double>(name, value)).second)
+	if (!variables.insert(std::pair<std::string, float>(name, value)).second)
 		variables[name] = value;
 	variables.insert(std::pair<std::string, double>(name, value));
 	//loadVariables();
@@ -118,7 +118,7 @@ void ExpressionParser::updateExpression(std::string name, std::string expr)
 	//loadVariables();
 }
 
-void ExpressionParser::addLocalVariable(std::string name, double* location)
+void ExpressionParser::addLocalVariable(std::string name, float* location)
 {
 	parser.DefineVar(name, location);
 }
