@@ -11,6 +11,8 @@ public:
 	TerminalExpression(std::string string);
 	~TerminalExpression();
 	
+	virtual void addLocalVariable(std::string name, float* ptr);
+
 	Variable evaluate();
 	
 };

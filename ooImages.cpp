@@ -14,9 +14,8 @@
 
 int main(int argc, _TCHAR* argv[])
 {
-	Parser p;
-	Variable var = p.run("rgb 2*5 1 2");
-	/*ImageStore store;
+	
+	ImageStore* store = ImageStore::get();
 	std::string filename;
 	if (argc > 1)
 		filename = argv[1];
@@ -27,42 +26,45 @@ int main(int argc, _TCHAR* argv[])
 	}
 
 	
-	store.loadImage(filename);
-
-	Interpreter interpreter;
+	store->loadImage(filename);
+	Parser p;
+	
+	/*Interpreter interpreter;
 	interpreter.mask = new Mask(store.image->getWidth(), store.image->getHeight());
-	interpreter.store = &store;
+	interpreter.store = &store;*/
 
 	sf::RenderWindow window;
-	window.create(sf::VideoMode(800, 800 * ((float)store.image->getHeight() / store.image->getWidth())), "Image");
+	window.create(sf::VideoMode(800, 800 * ((float)store->image->getHeight() / store->image->getWidth())), "Image");
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Image image;
-	ExpressionParser::updateVariable("image_width", std::to_string(store.image->getWidth()));
-	ExpressionParser::updateVariable("image_height", std::to_string(store.image->getHeight()));
-	if (argc > 2)
+	ExpressionParser::updateVariable("image_width", std::to_string(store->image->getWidth()));
+	ExpressionParser::updateVariable("image_height", std::to_string(store->image->getHeight()));
+	
+	
+	/*if (argc > 2)
 	{
 		std::ifstream file(argv[2]);
 		ScriptManager scriptmanager;
 		scriptmanager.interpreter = &interpreter;
 		scriptmanager.loadScript(&file);
 		scriptmanager.run();
-	}
+	}*/
 
 
 	std::string input;
 	while (1)
 	{
-		image.create(store.image->getWidth(), store.image->getHeight(), store.image->getData());		
+		image.create(store->image->getWidth(), store->image->getHeight(), store->image->getData());		
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
-		sprite.setScale((float)800 / store.image->getWidth(), (float)800 / store.image->getWidth());
+		sprite.setScale((float)800 / store->image->getWidth(), (float)800 / store->image->getWidth());
 		window.draw(sprite);
 		window.display();
 		std::cout << ">";
 		std::getline(std::cin,input);
-		interpreter.interpret(input);
-	}*/
+		p.run(input);
+	}
 
 	return 0;
 }

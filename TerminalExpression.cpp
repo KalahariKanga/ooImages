@@ -4,6 +4,7 @@
 TerminalExpression::TerminalExpression(std::string string) : string(string)
 {
 	noArguments = 0;
+	parser.setString(string);
 }
 
 
@@ -11,9 +12,13 @@ TerminalExpression::~TerminalExpression()
 {
 }
 
+void TerminalExpression::addLocalVariable(std::string name, float* ptr)
+{
+	parser.addLocalVariable(name, ptr);
+}
+
 Variable TerminalExpression::evaluate()
 {
-	parser.setString(string);
 	Variable var(Variable::Type::Real);
 	var.real = parser.evaluate();
 	return var;

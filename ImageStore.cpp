@@ -1,5 +1,6 @@
 #include "ImageStore.h"
 
+ImageStore* ImageStore::instance = nullptr;
 
 ImageStore::ImageStore()
 {
@@ -57,4 +58,11 @@ void ImageStore::redo()
 		delete image;
 		image = new ImageObject(history[histPos]);
 	}
+}
+
+ImageStore* ImageStore::get()
+{
+	if (!instance)
+		instance = new ImageStore();
+	return instance;
 }

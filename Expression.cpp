@@ -8,6 +8,16 @@ Expression::Expression()
 
 Expression::~Expression()
 {
+	for (auto a : arguments)
+	{
+		delete a;
+	}
+}
+
+void Expression::addLocalVariable(std::string name, float* ptr)
+{
+	for (auto a : arguments)
+		a->addLocalVariable(name, ptr);
 }
 
 Expression* Expression::acquire(std::vector<Expression*>* tokens)

@@ -8,6 +8,7 @@ Parser::Parser()
 
 Parser::~Parser()
 {
+	delete head;
 }
 
 std::vector<std::string> Parser::tokenizeString(std::string string)
@@ -28,6 +29,8 @@ Expression* Parser::tokenToExpression(std::string token)
 {
 	if (token == "rgb")
 		return new rgbExpression();
+	if (token == "setPixels")
+		return new setPixelsExpression();
 
 
 	return new TerminalExpression(token);
@@ -35,6 +38,7 @@ Expression* Parser::tokenToExpression(std::string token)
 
 Variable Parser::run(std::string input)
 {
+	delete head;
 	auto tokens = tokenizeString(input);
 	std::vector<Expression*> expressions;
 	for (auto t : tokens)
