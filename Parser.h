@@ -4,6 +4,7 @@
 #include "rgbExpression.h"
 #include "TerminalExpression.h"
 #include "setPixelsExpression.h"
+#include "hsvExpression.h"
 
 class Parser
 {

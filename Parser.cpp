@@ -29,6 +29,8 @@ Expression* Parser::tokenToExpression(std::string token)
 {
 	if (token == "rgb")
 		return new rgbExpression();
+	if (token == "hsv")
+		return new hsvExpression();
 	if (token == "setPixels")
 		return new setPixelsExpression();
 
