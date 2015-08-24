@@ -1,5 +1,6 @@
 #pragma once
 #include "core.h"
+#include "Exception.h"
 #include "Colour.h"
 #include "Selection.h"
 #include "Mask.h"

@@ -63,7 +63,15 @@ int main(int argc, _TCHAR* argv[])
 		window.display();
 		std::cout << ">";
 		std::getline(std::cin,input);
-		p.run(input);
+		try
+		{
+			p.run(input);
+		}
+		catch (Exception* e)
+		{
+			std::cout << e->getErrorString();
+			delete e;
+		}
 	}
 
 	return 0;

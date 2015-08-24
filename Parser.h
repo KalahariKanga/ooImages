@@ -1,5 +1,6 @@
 #pragma once
 #include "core.h"
+#include "Exception.h"
 #include "Expression.h"
 #include "rgbExpression.h"
 #include "TerminalExpression.h"

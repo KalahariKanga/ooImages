@@ -27,8 +27,10 @@ Expression* Expression::acquire(std::vector<Expression*>* tokens)
 
 	for (int c = 0; c < noArguments; c++)
 	{
-			arguments.push_back(tokens->front());
-			arguments.back()->acquire(tokens);
+		if (tokens->empty())
+			throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
+		arguments.push_back(tokens->front());
+		arguments.back()->acquire(tokens);
 	}
 	return this;
 }
