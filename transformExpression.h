@@ -1,15 +1,12 @@
 #pragma once
 #include "ImageModifierExpression.h"
 #include "ImageStore.h"
-
-class setPixelsExpression :
+class transformExpression :
 	public ImageModifierExpression
 {
-
 public:
-	setPixelsExpression();
-	~setPixelsExpression();
-
+	transformExpression();
+	~transformExpression();
 	Variable evaluate();
 };
 

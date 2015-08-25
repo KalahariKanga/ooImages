@@ -1,20 +1,19 @@
-#include "setPixelsExpression.h"
+#include "transformExpression.h"
 
 
-setPixelsExpression::setPixelsExpression()
+transformExpression::transformExpression()
 {
-	noArguments = 1;
+	noArguments = 2;
 }
 
 
-setPixelsExpression::~setPixelsExpression()
+transformExpression::~transformExpression()
 {
+	
 }
 
-Variable setPixelsExpression::evaluate()
+Variable transformExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
-	ImageObject* image = store->image;
 	float x, y, r, g, b, h, s, v;
 	addLocalVariable("x", &x);
 	addLocalVariable("y", &y);
@@ -37,7 +36,9 @@ Variable setPixelsExpression::evaluate()
 			h = p.h();
 			s = p.s();
 			v = p.v();
-			buffer->setPixel(cx, cy, *arguments.back()->evaluate().colour);
+			float nx = arguments[0]->evaluate().real;
+			float ny = arguments[1]->evaluate().real;
+			buffer->setPixel(cx, cy, image->getPixel(nx, ny));
 		}
 	commitBuffer();
 	return Variable(Variable::Type::Void);

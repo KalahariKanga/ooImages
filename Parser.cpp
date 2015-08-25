@@ -33,6 +33,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new hsvExpression();
 	if (token == "setPixels")
 		return new setPixelsExpression();
+	if (token == "transform")
+		return new transformExpression();
 
 
 	return new TerminalExpression(token);

@@ -6,6 +6,7 @@
 #include "TerminalExpression.h"
 #include "setPixelsExpression.h"
 #include "hsvExpression.h"
+#include "transformExpression.h"
 
 class Parser
 {
