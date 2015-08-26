@@ -37,7 +37,9 @@ Variable setPixelsExpression::evaluate()
 			h = p.h();
 			s = p.s();
 			v = p.v();
-			buffer->setPixel(cx, cy, *arguments.back()->evaluate().colour);
+			Variable col = arguments.back()->evaluate();
+			buffer->setPixel(cx, cy, *col.colour);
+			delete col.colour;
 		}
 	commitBuffer();
 	return Variable(Variable::Type::Void);
