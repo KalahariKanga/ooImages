@@ -35,6 +35,10 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new setPixelsExpression();
 	if (token == "transform")
 		return new transformExpression();
+	if (token == "select")
+		return new selectExpression();
+	if (token == "rectangle")
+		return new rectangleExpression();
 
 
 	return new TerminalExpression(token);

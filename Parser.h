@@ -7,6 +7,8 @@
 #include "setPixelsExpression.h"
 #include "hsvExpression.h"
 #include "transformExpression.h"
+#include "selectExpression.h"
+#include "rectangleExpression.h"
 
 class Parser
 {

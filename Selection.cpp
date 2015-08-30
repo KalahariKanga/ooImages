@@ -175,6 +175,13 @@ void Selection::toRegion(ImageObject *i, std::string expr)
 			setValue(x, y, isInRegion(i, x, y, expr));
 }
 
+void Selection::toRectangle(int x1, int y1, int x2, int y2)
+{
+	for (int x = 0; x < width; x++)
+		for (int y = 0; y < height; y++)
+			setValue(x, y, isInRectangle(x, y, x1, y1, x2, y2));
+}
+
 void Selection::invert()
 {
 	for (int x = 0; x < width; x++)

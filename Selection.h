@@ -23,6 +23,8 @@ public:
 	void toRectangle(string x1, string y1, string x2, string y2);
 	void toEllipse(string x1, string y1, string x2, string y2);
 	void toRegion(ImageObject *i, std::string expr);
+
+	void toRectangle(int x1, int y1, int x2, int y2);
 	virtual void invert();
 
 	

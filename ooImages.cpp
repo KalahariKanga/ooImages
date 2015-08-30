@@ -27,6 +27,7 @@ int main(int argc, _TCHAR* argv[])
 
 	
 	store->loadImage(filename);
+	store->mask = new Selection(store->image->getWidth(), store->image->getHeight());
 	Parser p;
 	
 	/*Interpreter interpreter;

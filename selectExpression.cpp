@@ -15,5 +15,6 @@ Variable selectExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
 	delete is->mask;
-	is->mask = arguments.back()->evaluate().mask;
+	is->mask = arguments.back()->evaluate().selection;
+	return Variable(Variable::Type::Void);
 }
