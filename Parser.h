@@ -9,6 +9,7 @@
 #include "transformExpression.h"
 #include "selectExpression.h"
 #include "rectangleExpression.h"
+#include "regionExpression.h"
 
 class Parser
 {

@@ -39,7 +39,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new selectExpression();
 	if (token == "rectangle")
 		return new rectangleExpression();
-
+	if (token == "region")
+		return new regionExpression();
 
 	return new TerminalExpression(token);
 }
