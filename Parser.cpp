@@ -41,6 +41,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new rectangleExpression();
 	if (token == "region")
 		return new regionExpression();
+	if (token == "and")
+		return new andExpression();
 
 	return new TerminalExpression(token);
 }
