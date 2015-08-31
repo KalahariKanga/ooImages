@@ -3,6 +3,8 @@
 //IF YOURE GETTING THE MU::STRINGTYPE ERROR, CHANGE TO MULTIBYTE CHARACTER SET
 //ALSO HOWS EVERYTHING GOING?
 
+#include "Exception.h"
+
 class ExpressionParser
 {
 	mu::Parser parser;

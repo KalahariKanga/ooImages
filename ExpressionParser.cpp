@@ -5,6 +5,7 @@ std::map<std::string, std::string> ExpressionParser::expressions;
 ExpressionParser::ExpressionParser()
 {
 	loadVariables();
+	parser.DefineOprt("mod", [](float a, float b){return (float)((int)a % (int)b); }, 6, mu::EOprtAssociativity::oaLEFT, 1);
 }
 
 
@@ -33,6 +34,7 @@ float ExpressionParser::evaluate()
 	{
 		std::cout << "Parser Error! ";
 		std::cout << error.GetMsg() << std::endl;
+		throw new Exception(Exception::ErrorType::PARSER_ERROR);
 	}
 	return value;
 }
