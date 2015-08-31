@@ -24,4 +24,9 @@ public:
 		Selection* selection;
 		Mask* mask;
 	};
+
+	Colour* moveColour();
+	Selection* moveSelection();
+	Mask* moveMask();
+
 };

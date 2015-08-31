@@ -28,18 +28,20 @@ Variable setPixelsExpression::evaluate()
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
 		{
-			Colour p = image->getPixel(cx, cy);
-			x = cx;
-			y = cy;
-			r = p.r();
-			g = p.g();
-			b = p.b();
-			h = p.h();
-			s = p.s();
-			v = p.v();
-			Variable col = arguments.back()->evaluate();
-			buffer->setPixel(cx, cy, *col.colour);
-			delete col.colour;
+			if (store->mask->getValue(cx, cy) > 0)
+			{
+				Colour p = image->getPixel(cx, cy);
+				x = cx;
+				y = cy;
+				r = p.r();
+				g = p.g();
+				b = p.b();
+				h = p.h();
+				s = p.s();
+				v = p.v();
+				Variable col = arguments.back()->evaluate();
+				buffer->setPixel(cx, cy, *col.colour);
+			}
 		}
 	commitBuffer();
 	return Variable(Variable::Type::Void);
