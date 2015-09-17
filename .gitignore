@@ -81,3 +81,5 @@ $RECYCLE.BIN/
 *.cd
 *.idb
 *.vcxproj
+Debug/vc120.idb
+Debug/vc120.idb

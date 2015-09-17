@@ -13,6 +13,7 @@
 #include "andExpression.h"
 #include "kernelExpression.h"
 #include "convolveExpression.h"
+#include "orExpression.h"
 
 class Parser
 {

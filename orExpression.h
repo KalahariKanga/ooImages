@@ -1,12 +1,11 @@
 #pragma once
 #include "SelectionCompositionExpression.h"
-
-class andExpression :
+class orExpression :
 	public SelectionCompositionExpression
 {
 public:
-	andExpression();
-	~andExpression();
-	//virtual Variable evaluate();
+	orExpression();
+	~orExpression();
+	
 };
 
