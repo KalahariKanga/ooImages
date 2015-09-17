@@ -4,13 +4,14 @@
 #include "Colour.h"
 #include "Selection.h"
 #include "Mask.h"
+#include "Kernel.h"
 
 class Variable
 {
 public:
 	static enum class Type
 	{
-		Void, Real, Colour, Selection, Mask
+		Void, Real, Colour, Selection, Mask, Kernel
 	};
 	
 	Variable(Type t);
@@ -23,10 +24,12 @@ public:
 		Colour* colour;
 		Selection* selection;
 		Mask* mask;
+		Kernel* kernel;
 	};
 
 	Colour* moveColour();
 	Selection* moveSelection();
 	Mask* moveMask();
+	Kernel* moveKernel();
 
 };

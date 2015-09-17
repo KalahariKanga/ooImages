@@ -11,6 +11,8 @@
 #include "rectangleExpression.h"
 #include "regionExpression.h"
 #include "andExpression.h"
+#include "kernelExpression.h"
+#include "convolveExpression.h"
 
 class Parser
 {

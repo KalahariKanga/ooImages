@@ -43,6 +43,10 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new regionExpression();
 	if (token == "and")
 		return new andExpression();
+	if (token == "kernel")
+		return new kernelExpression();
+	if (token == "convolve")
+		return new convolveExpression();
 
 	return new TerminalExpression(token);
 }

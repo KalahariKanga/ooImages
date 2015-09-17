@@ -42,3 +42,10 @@ Mask* Variable::moveMask()
 	mask = nullptr;
 	return temp;
 }
+
+Kernel* Variable::moveKernel()
+{
+	Kernel* temp = kernel;
+	mask = nullptr;
+	return temp;
+}
