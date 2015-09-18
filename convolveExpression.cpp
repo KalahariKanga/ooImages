@@ -34,15 +34,16 @@ Variable convolveExpression::evaluate()
 			Colour p = image->getPixel(cx, cy);
 			x = cx;
 			y = cy;
-			r = p.r();
-			g = p.g();
-			b = p.b();
-			h = p.h();
-			s = p.s();
-			v = p.v();
+			
 
 			if (store->mask->getValue(cx, cy) > 0)
 			{
+				r = p.r();
+				g = p.g();
+				b = p.b();
+				h = p.h();
+				s = p.s();
+				v = p.v();
 				int kr, kg, kb;
 				kr = kg = kb = 0;
 				Kernel* k = arguments.back()->evaluate().moveKernel();

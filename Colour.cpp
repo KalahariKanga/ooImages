@@ -119,7 +119,10 @@ void Colour::hsv(int H, int S, int V)
 
 Colour Colour::interpolate(Colour from, Colour to, float amount)
 {
-	clamp<float>(amount, 0, 1);
+	if (amount <= 0)
+		return from;
+	if (amount >= 1)
+		return to;
 	Colour newColour;
 	newColour.r(from.r() + amount*(to.r() - from.r()));
 	newColour.g(from.g() + amount*(to.g() - from.g()));

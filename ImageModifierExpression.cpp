@@ -26,7 +26,6 @@ void ImageModifierExpression::commitBuffer()
 			Colour newC = buffer->getPixel(cx, cy);
 			float v = is->mask->getValue(cx, cy);
 			Colour result = Colour::interpolate(oldC, newC, v);
-			//possibly interpolate
 			//possibly could be faster...?
 			image->setPixel(cx, cy, result);
 			
