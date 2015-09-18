@@ -31,5 +31,6 @@ public:
 	Selection* moveSelection();
 	Mask* moveMask();
 	Kernel* moveKernel();
+	//surely these can be templated?
 
 };

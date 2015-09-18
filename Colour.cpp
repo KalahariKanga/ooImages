@@ -6,9 +6,9 @@ Colour::Colour(void)
 }
 Colour::Colour(int r, int g, int b)
 {
-	this->col.r = r;
-	this->col.g = g;
-	this->col.b = b;
+	col.r = r;
+	col.g = g;
+	col.b = b;
 }
 
 Colour::~Colour(void)

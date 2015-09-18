@@ -4,14 +4,13 @@
 ImageObject::ImageObject(void)
 {
 	width = height = -1;
-}
-ImageObject::ImageObject(int width, int height)
-{
-	this->width = width;
-	this->height = height;
-	data = new sf::Uint8[width * height * 4];
+	data = nullptr;
 }
 
+ImageObject::ImageObject(int width, int height) : width(width), height(height)
+{
+	data = new sf::Uint8[width * height * 4];
+}
 
 ImageObject::~ImageObject(void)
 {
@@ -24,6 +23,7 @@ void ImageObject::colourToData(int x, int y, Colour c)
 	data[4 * (y*width + x) + 1] = c.g();
 	data[4 * (y*width + x) + 2] = c.b();
 	//data[4 * (y*width + x) + 3] = c.a();
+	//TODO: not using alpha channel - could save room removing it?
 }
 
 Colour ImageObject::getPixel(float x, float y, bool wrap)
@@ -51,8 +51,6 @@ Colour ImageObject::getPixel(float x, float y, bool wrap)
 			y = height - 1;
 	}
 
-	x = clamp<float>(x, 0.0f, width - 1);
-	y = clamp<float>(y, 0.0f, height - 1);
 	Colour tl, tr, bl, br;
 	tl = getDataPoint(floor(x), floor(y));
 	tr = getDataPoint(ceil(x), floor(y));
@@ -62,17 +60,9 @@ Colour ImageObject::getPixel(float x, float y, bool wrap)
 	float xf = x - floor(x);
 	float yf = y - floor(y);
 
-	float rt = tl.r() + xf*(tr.r() - tl.r());
-	float rb = bl.r() + xf*(br.r() - bl.r());
-	float r = rt + yf*(rb - rt);
-
-	float gt = tl.g() + xf*(tr.g() - tl.g());
-	float gb = bl.g() + xf*(br.g() - bl.g());
-	float g = gt + yf*(gb - gt);
-
-	float bt = tl.b() + xf*(tr.b() - tl.b());
-	float bb = bl.b() + xf*(br.b() - bl.b());
-	float b = bt + yf*(bb - bt);
+	float r = bilint(tl.r(), tr.r(), bl.r(), br.r(), xf, yf);
+	float g = bilint(tl.g(), tr.g(), bl.g(), br.g(), xf, yf);
+	float b = bilint(tl.b(), tr.b(), bl.b(), br.b(), xf, yf);
 
 	return Colour(r, g, b);
 }
@@ -100,7 +90,6 @@ Colour ImageObject::getPixel(int x, int y, bool wrap)
 		if (y > height - 1)
 			y = height - 1;
 	}
-	//sf::Color c = image.getPixel(x, y);
 	
 	return getDataPoint(x, y);
 }
@@ -119,7 +108,6 @@ void ImageObject::setPixel(int x, int y, Colour c)
 	if (x >= 0 && x < width)
 		if (y >= 0 && y < height)
 			colourToData(x, y, c);
-			//image.setPixel(x, y, c.getCol());
 }
 
 void ImageObject::loadImage(std::string fname)
