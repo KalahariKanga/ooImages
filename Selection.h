@@ -2,6 +2,7 @@
 #include "stdafx.h"
 
 #include "AbstractMask.h"
+#include "Mask.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class Selection : public AbstractMask
 public:
 	Selection(int width, int height);
 	Selection(vector<string> tokens, ImageObject* image);
+	Selection(Mask& mask, float boundary);
 	~Selection();
 	virtual float getValue(int x, int y);
 	void setValue(int x, int y, bool v);

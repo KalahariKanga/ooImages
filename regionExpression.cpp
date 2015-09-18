@@ -16,7 +16,7 @@ Variable regionExpression::evaluate()
 	
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->image;
-	Selection* sel = new Selection(image->getWidth(), image->getHeight());
+	Mask* mask = new Mask(image->getWidth(), image->getHeight());
 
 	float x, y, r, g, b, h, s, v;
 	addLocalVariable("x", &x);
@@ -31,8 +31,6 @@ Variable regionExpression::evaluate()
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
 		{
-			if (store->mask->getValue(cx, cy) > 0)
-			{
 				Colour p = image->getPixel(cx, cy);
 				x = cx;
 				y = cy;
@@ -42,14 +40,12 @@ Variable regionExpression::evaluate()
 				h = p.h();
 				s = p.s();
 				v = p.v();
-				float v = arguments.back()->evaluate().real;
-				if (v > 0)
-					sel->setValue(cx, cy, true);
-				else
-					sel->setValue(cx, cy, false);
-			}
+
+				float val = arguments.back()->evaluate().real;
+				mask->setValue(cx, cy, val);
+				
 		}
-	Variable var(Variable::Type::Selection);
-	var.selection = sel;
+	Variable var(Variable::Type::Mask);
+	var.mask = mask;
 	return var;
 }

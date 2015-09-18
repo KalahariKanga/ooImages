@@ -37,6 +37,24 @@ Selection::Selection(vector<string> tokens, ImageObject* image)
 	}
 }
 
+Selection::Selection(Mask& mask, float boundary = 0)
+{
+	width = mask.width;
+	height = mask.height;
+	data = new bool*[width];
+	for (int c = 0; c < width; c++)
+		data[c] = new bool[height];
+
+	for (int cx = 0; cx < width; cx++)
+		for (int cy = 0; cy < height; cy++)
+		{
+			if (mask.getValue(cx, cy) > boundary)
+				setValue(cx, cy, 1);
+			else
+				setValue(cx, cy, 0);
+		}
+}
+
 Selection::~Selection()
 {
 	for (int c = 0; c < width; c++)
