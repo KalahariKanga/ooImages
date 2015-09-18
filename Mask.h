@@ -1,6 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "AbstractMask.h"
+
+
 using namespace std;
 class Mask : public AbstractMask
 {

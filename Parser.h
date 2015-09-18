@@ -14,6 +14,7 @@
 #include "kernelExpression.h"
 #include "convolveExpression.h"
 #include "orExpression.h"
+#include "maskExpression.h"
 
 class Parser
 {

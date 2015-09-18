@@ -49,6 +49,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new convolveExpression();
 	if (token == "or")
 		return new orExpression();
+	if (token == "mask")
+		return new maskExpression();
 
 	return new TerminalExpression(token);
 }
