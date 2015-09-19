@@ -15,5 +15,6 @@ public:
 	Colour(int r, int g, int b);
 	~Colour(void);
 	static Colour interpolate(Colour from, Colour to, float amount);
+	static float distance(Colour from, Colour to);
 };
 

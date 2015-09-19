@@ -53,7 +53,9 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new maskExpression();
 	if (token == "all")
 		return new allExpression();
-
+	if (token == "getPixel")
+		return new getPixelExpression();
+	
 	return new TerminalExpression(token);
 }
 

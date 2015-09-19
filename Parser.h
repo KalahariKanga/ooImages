@@ -16,6 +16,7 @@
 #include "orExpression.h"
 #include "maskExpression.h"
 #include "allExpression.h"
+#include "getPixelExpression.h"
 
 class Parser
 {

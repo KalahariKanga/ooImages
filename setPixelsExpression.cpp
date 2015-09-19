@@ -40,7 +40,7 @@ Variable setPixelsExpression::evaluate()
 				s = p.s();
 				v = p.v();
 				Variable col = arguments.back()->evaluate();
-				buffer->setPixel(cx, cy, *col.colour);
+				buffer->setPixel(cx, cy, *col.moveColour());
 			}
 		}
 	commitBuffer();

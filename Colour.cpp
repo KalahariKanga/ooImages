@@ -129,3 +129,16 @@ Colour Colour::interpolate(Colour from, Colour to, float amount)
 	newColour.b(from.b() + amount*(to.b() - from.b()));
 	return newColour;
 }
+
+float Colour::distance(Colour from, Colour to)
+{
+	///using 2-norm, could use 1-norm for speed
+
+	int dR = (from.r() - to.r());
+	dR *= dR;
+	int dG = (from.g() - to.g());
+	dG *= dG;
+	int dB = (from.b() - to.b());
+	dB *= dB;
+	return sqrt(dR + dG + dB);
+}
