@@ -51,6 +51,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new orExpression();
 	if (token == "mask")
 		return new maskExpression();
+	if (token == "all")
+		return new allExpression();
 
 	return new TerminalExpression(token);
 }
