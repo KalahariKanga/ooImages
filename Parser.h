@@ -17,6 +17,8 @@
 #include "maskExpression.h"
 #include "allExpression.h"
 #include "getPixelExpression.h"
+#include "pointDistanceExpression.h"
+#include "pointDirectionExpression.h"
 
 class Parser
 {

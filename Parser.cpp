@@ -55,6 +55,10 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new allExpression();
 	if (token == "getPixel")
 		return new getPixelExpression();
+	if (token == "pointDistance")
+		return new pointDistanceExpression();
+	if (token == "pointDirection")
+		return new pointDirectionExpression();
 	
 	return new TerminalExpression(token);
 }
