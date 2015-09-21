@@ -59,6 +59,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new pointDistanceExpression();
 	if (token == "pointDirection")
 		return new pointDirectionExpression();
+	if (token == "fuzzy")
+		return new fuzzyExpression();
 	
 	return new TerminalExpression(token);
 }

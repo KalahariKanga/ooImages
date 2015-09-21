@@ -19,6 +19,7 @@
 #include "getPixelExpression.h"
 #include "pointDistanceExpression.h"
 #include "pointDirectionExpression.h"
+#include "fuzzyExpression.h"
 
 class Parser
 {
