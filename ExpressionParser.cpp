@@ -6,6 +6,16 @@ ExpressionParser::ExpressionParser()
 {
 	loadVariables();
 	parser.DefineOprt("mod", [](float a, float b){return (float)((int)a % (int)b); }, 6, mu::EOprtAssociativity::oaLEFT, 1);
+	parser.DefineFun("pointDistance", [](float x1, float y1, float x2, float y2)
+	{
+		return sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
+	});
+
+	parser.DefineFun("pointDirection", [](float x1, float y1, float x2, float y2)
+	{
+		return (float)(180 * atan2(y2 - y1, x2 - x1) / PI);
+	});
+	
 }
 
 
