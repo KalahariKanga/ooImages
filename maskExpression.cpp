@@ -14,7 +14,6 @@ maskExpression::~maskExpression()
 Variable maskExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
-	delete is->mask;
-	is->mask = arguments.back()->evaluate().moveMask();
+	is->mask = std::static_pointer_cast<AbstractMask>(arguments[0]->evaluate().data);
 	return Variable(Variable::Type::Void);
 }

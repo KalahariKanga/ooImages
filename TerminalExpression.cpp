@@ -20,6 +20,6 @@ void TerminalExpression::addLocalVariable(std::string name, float* ptr)
 Variable TerminalExpression::evaluate()
 {
 	Variable var(Variable::Type::Real);
-	var.real = parser.evaluate();
+	var.set<float>(new float(parser.evaluate()));
 	return var;
 }

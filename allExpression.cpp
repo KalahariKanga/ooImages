@@ -19,7 +19,7 @@ Variable allExpression::evaluate()
 		for (int cy = 0; cy < mask->height; cy++)
 			mask->setValue(cx, cy, 1);
 	Variable var(Variable::Type::Mask);
-	var.mask = mask;
+	var.set<Mask>(mask);
 	return var;
 }
 

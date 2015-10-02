@@ -11,7 +11,7 @@ public:
 	ImageStore();
 	~ImageStore();
 	ImageObject* image;
-	AbstractMask* mask;
+	std::shared_ptr<AbstractMask> mask;
 	void loadImage(std::string fname);
 	void saveImage(std::string fname);
 	void addUndoPoint();

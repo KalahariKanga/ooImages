@@ -16,9 +16,9 @@ Variable fuzzyExpression::evaluate()
 	ImageObject* image = ImageStore::get()->image;
 	Selection* selection = new Selection(image->getWidth(), image->getHeight());
 	selection->invert();
-	int sx = static_cast<int>(arguments[0]->evaluate().real);
-	int sy = static_cast<int>(arguments[1]->evaluate().real);
-	float dist = arguments[2]->evaluate().real;
+	int sx = static_cast<int>(*(arguments[0]->evaluate().get<float>()));
+	int sy = static_cast<int>(*(arguments[1]->evaluate().get<float>()));
+	float dist = *arguments[2]->evaluate().get<float>();
 
 	Colour col = image->getPixel(sx, sy);
 
@@ -51,6 +51,6 @@ Variable fuzzyExpression::evaluate()
 	}
 
 	Variable var(Variable::Type::Selection);
-	var.selection = selection;
+	var.set<Selection>(selection);
 	return var;
 }

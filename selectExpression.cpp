@@ -14,18 +14,17 @@ selectExpression::~selectExpression()
 Variable selectExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
-	delete is->mask;
+	//delete is->mask;
 	Variable v = arguments.back()->evaluate();
 	if (v.type == Variable::Type::Selection)
 	{
-		is->mask = v.moveSelection();
+		is->mask = std::static_pointer_cast<AbstractMask>(v.data);
 	}
 	else if (v.type == Variable::Type::Mask)
 	{
 		//this is really horrible. i need to get the hang of smart pointers...
-		Mask* m = v.moveMask();
-		Selection* s = new Selection(*m, 0);
-		delete m;
+		Mask* m = v.get<Mask>();
+		std::shared_ptr<Selection> s(new Selection(*m, 0));
 		is->mask = s;
 	}
 	else

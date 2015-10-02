@@ -15,22 +15,26 @@ public:
 	};
 	
 	Variable(Type t);
+	Variable(Variable& other);
 	~Variable();
 	
 	Type type;
-	union
-	{
-		float real;
-		Colour* colour;
-		Selection* selection;
-		Mask* mask;
-		Kernel* kernel;
-	};
+	std::shared_ptr<void> data;
 
-	Colour* moveColour();
-	Selection* moveSelection();
-	Mask* moveMask();
-	Kernel* moveKernel();
-	//surely these can be templated?
+	template <class T> T* get();
+	template <class T> void set(T*);
 
 };
+
+template <class T>
+T* Variable::get()
+{
+	//if(type match)
+	return (T*)data.get();
+}
+
+template <class T>
+void Variable::set(T* t)
+{
+	data = make_shared<T>(*t);
+}

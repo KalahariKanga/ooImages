@@ -13,10 +13,9 @@ getPixelExpression::~getPixelExpression()
 
 Variable getPixelExpression::evaluate()
 {
-	float x = arguments[0]->evaluate().real;
-	float y = arguments[1]->evaluate().real;
-	Colour col = ImageStore::get()->image->getPixel(x, y);
+	float x = *arguments[0]->evaluate().get<float>();
+	float y = *arguments[1]->evaluate().get<float>();
 	Variable var(Variable::Type::Colour);
-	var.colour = &col;
+	var.set<Colour>(new Colour(ImageStore::get()->image->getPixel(x, y)));
 	return var;
 }
