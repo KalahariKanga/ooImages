@@ -14,7 +14,7 @@ public:
 		Void, Real, Colour, Selection, Mask, Kernel
 	};
 	
-	Variable(Type t);
+	Variable(Type t = Type::Void);
 	Variable(Variable& other);
 	~Variable();
 	
@@ -24,6 +24,7 @@ public:
 	template <class T> T* get();
 	template <class T> void set(T*);
 
+	Variable duplicate();
 };
 
 template <class T>

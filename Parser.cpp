@@ -61,7 +61,11 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new pointDirectionExpression();
 	if (token == "fuzzy")
 		return new fuzzyExpression();
-	
+	if (token == "set")
+		return new setExpression();
+
+	if (VariableStore::get()->variableExists(token))
+		return new VariableExpression(token);
 	return new TerminalExpression(token);
 }
 

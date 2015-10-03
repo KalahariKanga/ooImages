@@ -1,5 +1,6 @@
 #pragma once
 #include "core.h"
+#include "VariableStore.h"
 #include "Exception.h"
 #include "Expression.h"
 #include "rgbExpression.h"
@@ -20,6 +21,8 @@
 #include "pointDistanceExpression.h"
 #include "pointDirectionExpression.h"
 #include "fuzzyExpression.h"
+#include "setExpression.h"
+#include "VariableExpression.h"
 
 class Parser
 {

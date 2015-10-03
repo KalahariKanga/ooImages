@@ -23,3 +23,8 @@ Variable TerminalExpression::evaluate()
 	var.set<float>(new float(parser.evaluate()));
 	return var;
 }
+
+std::string TerminalExpression::getString()
+{
+	return string;
+}
