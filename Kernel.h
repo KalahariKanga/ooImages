@@ -9,5 +9,6 @@ public:
 
 	int get(int x, int y);
 	void set(int x, int y, int value);
+	int getSize();
 };
 
