@@ -46,7 +46,7 @@ Variable convolveExpression::evaluate()
 				v = p.v();
 				int kr, kg, kb;
 				kr = kg = kb = 0;
-				std::shared_ptr<Kernel> k = std::make_shared<Kernel>(*arguments.back()->evaluate().get<Kernel>());
+				Kernel* k = arguments.back()->evaluate().get<Kernel>();
 				for (int kx = -1; kx <= 1; kx++)
 					for (int ky = -1; ky <= 1; ky++)
 					{

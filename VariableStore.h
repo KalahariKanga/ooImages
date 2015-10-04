@@ -17,6 +17,8 @@ public:
 		return (variableMap.find(name) != variableMap.end());
 	}
 
+	std::vector<std::string> getRealVariableNames();
+
 	static VariableStore* get()
 	{
 		if (instance)

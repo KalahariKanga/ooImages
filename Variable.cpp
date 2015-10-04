@@ -8,7 +8,7 @@ Variable::Variable(Variable::Type t) : type(t)
 Variable::Variable(Variable& other)
 {
 	type = other.type;
-	data = std::move(other.data);
+	data = other.data;
 }
 
 Variable::~Variable()
