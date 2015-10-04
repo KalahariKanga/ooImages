@@ -17,6 +17,6 @@ void VariableStore::setVariable(std::string name, Variable var)
 
 Variable VariableStore::getVariable(std::string name)
 {
-	//TODO:exception
+	//TODO: exception
 	return variableMap[name].duplicate();
 }
