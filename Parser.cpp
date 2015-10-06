@@ -65,6 +65,12 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new fuzzyExpression();
 	if (token == "set")
 		return new setExpression();
+	if (token == "[")
+		return new SequenceExpression();
+	if (token == "]")
+		return new EndSequenceExpression();
+	if (token == "if")
+		return new ifExpression();
 
 	if (VariableStore::get()->variableExists(token))
 		return new VariableExpression(token);

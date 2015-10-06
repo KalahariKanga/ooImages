@@ -68,6 +68,6 @@ Variable Variable::duplicate()
 	}
 	default:
 		std::cout << "Variable::duplicate() incomplete\n";
-		break;
+		return Variable(Variable::Type::Void);
 	}
 }

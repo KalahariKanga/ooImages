@@ -12,6 +12,7 @@
 #include "rectangleExpression.h"
 #include "regionExpression.h"
 #include "andExpression.h"
+#include "minExpression.h"
 #include "kernelExpression.h"
 #include "convolveExpression.h"
 #include "orExpression.h"
@@ -23,6 +24,9 @@
 #include "fuzzyExpression.h"
 #include "setExpression.h"
 #include "VariableExpression.h"
+#include "SequenceExpression.h"
+#include "EndSequenceExpression.h"
+#include "ifExpression.h"
 
 class Parser
 {
