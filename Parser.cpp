@@ -71,6 +71,10 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new EndSequenceExpression();
 	if (token == "if")
 		return new ifExpression();
+	if (token == "repeat")
+		return new repeatExpression();
+	if (token == "while")
+		return new whileExpression();
 
 	if (VariableStore::get()->variableExists(token))
 		return new VariableExpression(token);

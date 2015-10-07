@@ -27,6 +27,8 @@
 #include "SequenceExpression.h"
 #include "EndSequenceExpression.h"
 #include "ifExpression.h"
+#include "repeatExpression.h"
+#include "whileExpression.h"
 
 class Parser
 {
