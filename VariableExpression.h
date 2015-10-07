@@ -9,5 +9,6 @@ public:
 	VariableExpression(std::string string);
 	~VariableExpression();
 	virtual Variable evaluate();
+	std::string getString();
 };
 

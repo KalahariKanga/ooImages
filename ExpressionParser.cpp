@@ -54,20 +54,16 @@ void ExpressionParser::setString(std::string str)
 {
 	//replace expression names with expressions
 	//TODO:for layered expressions, loop the following while the string contains expression names
-	
-	VariableStore* vs = VariableStore::get();
-	std::vector<std::string> list = vs->getRealVariableNames();
-	//for (auto it = expressions.begin(); it != expressions.end(); it++)
-	for (auto it : list)
+
+	for (auto it = expressions.begin(); it != expressions.end(); it++)
 	{
-		std::string newString = std::to_string(*vs->getVariable(it).get<float>());
 		for (int p = 0; p < str.size(); p++)
 		{
 			int sp = 0;
 
-			while (sp < it.size())
+			while (sp < it->first.size())
 			{
-				if (str[p + sp] == it[sp])
+				if (str[p + sp] == it->first[sp])
 					sp++;
 				else break;
 			}
@@ -77,46 +73,29 @@ void ExpressionParser::setString(std::string str)
 				prev = str[p - 1];
 			else
 				prev = '\0';
-			if (p + it.size() < str.length() - 1)
-				next = str[p + it.size()];
+			if (p + it->first.size() < str.length() - 1)
+				next = str[p + it->first.size()];
 			else next = '\0';
 
-			if (sp == it.size() && !isalnum(next) && !isalnum(prev))
+			if (sp == it->first.size() && !isalnum(next) && !isalnum(prev))
 			{
-				str.replace(p, it.size(), newString);
-				p = p + newString.size() - 1;
+				str.replace(p, it->first.size(), it->second);
+				p = p + it->second.size() - 1;
 			}
 		}
-	}
 
 	parser.SetExpr(str);
 }
 
-void ExpressionParser::updateVariable(std::string name, std::string expr)
+void ExpressionParser::updateVariable(std::string name, float value)
 {
-	//could evaluate the expression on the outside
-
 	//check for name conflicts with expressions
 	if (expressions.find(name) != expressions.end())
 	{
 		return; //probably should throw
 	}
-	ExpressionParser localParser;
-	if (expr == "")
-		expr = "0";
-	double value;
-	localParser.setString(expr);
-	try{
-		value = localParser.evaluate();
-	}
-	catch (mu::ParserError)
-	{
-		std::cout << "Parser Error\n";
-	}
 
-	if (!variables.insert(std::pair<std::string, float>(name, value)).second)
-		variables[name] = value;
-	variables.insert(std::pair<std::string, double>(name, value));
+	variables[name] = value;
 	//loadVariables();
 }
 
@@ -130,7 +109,6 @@ void ExpressionParser::updateExpression(std::string name, std::string expr)
 	if (!expressions.insert(std::pair<std::string, std::string>(name, expr)).second)
 		expressions[name] = expr;
 	expressions.insert(std::pair<std::string, std::string>(name, expr));
-	//loadVariables();
 }
 
 void ExpressionParser::addLocalVariable(std::string name, float* location)

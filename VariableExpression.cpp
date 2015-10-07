@@ -15,3 +15,8 @@ Variable VariableExpression::evaluate()
 {
 	return VariableStore::get()->getVariable(string);
 }
+
+std::string VariableExpression::getString()
+{
+	return string;
+}

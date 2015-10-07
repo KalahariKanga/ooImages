@@ -19,7 +19,7 @@ public:
 	float evaluate();
 
 	void setString(std::string);
-	static void updateVariable(std::string name, std::string expr);
+	static void updateVariable(std::string name, float value);
 	static void updateExpression(std::string name, std::string expr);
 	void addLocalVariable(std::string name, float* location);
 	
