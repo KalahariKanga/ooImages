@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "core.h"
-class Colour
+#include "Resource.h"
+
+class Colour : public Resource
 {
 	sf::Color col;
 	int R, G, B, H, S, V;
@@ -16,5 +18,6 @@ public:
 	~Colour(void);
 	static Colour interpolate(Colour from, Colour to, float amount);
 	static float distance(Colour from, Colour to);
+	virtual void about();
 };
 

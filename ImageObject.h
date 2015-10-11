@@ -1,7 +1,9 @@
 #pragma once
 #include "Colour.h"
 #include "core.h"
-class ImageObject
+#include "Resource.h"
+
+class ImageObject : public Resource
 {
 	int width, height;
 	sf::Uint8* data = nullptr;
@@ -19,6 +21,6 @@ public:
 	int getHeight();
 	int getWidth();
 	sf::Uint8* getData();
-
+	virtual void about();
 };
 

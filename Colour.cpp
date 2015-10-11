@@ -142,3 +142,10 @@ float Colour::distance(Colour from, Colour to)
 	dB *= dB;
 	return sqrt(dR + dG + dB);
 }
+
+void Colour::about()
+{
+	std::cout << "About\n";
+	std::cout << "R: " << r() << " G: " << g() << " B: " << b() << "\n";
+
+}
