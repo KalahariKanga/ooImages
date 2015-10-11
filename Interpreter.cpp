@@ -37,14 +37,14 @@ void Interpreter::interpret(std::string command)
 	std::string function = tokens.front();
 	tokens.erase(tokens.begin());
 
-	if (function == "var")
-	{
-		//DONE: dont assume the correct number of tokens
-		if (tokens.size() == 2)
-			ExpressionParser::updateVariable(tokens.front(), tokens.back());
-		else
-			std::cout << "Incorrect number of arguments, 2 expected\n";
-	}
+	//if (function == "var")
+	//{
+	//	//DONE: dont assume the correct number of tokens
+	//	if (tokens.size() == 2)
+	//		ExpressionParser::updateVariable(tokens.front(), tokens.back());
+	//	else
+	//		std::cout << "Incorrect number of arguments, 2 expected\n";
+	//}
 
 	if (function == "expr")
 	{

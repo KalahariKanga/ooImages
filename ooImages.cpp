@@ -39,8 +39,8 @@ int main(int argc, _TCHAR* argv[])
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Image image;
-	ExpressionParser::updateVariable("image_width", std::to_string(store->image->getWidth()));
-	ExpressionParser::updateVariable("image_height", std::to_string(store->image->getHeight()));
+	ExpressionParser::updateVariable("image_width", store->image->getWidth());
+	ExpressionParser::updateVariable("image_height", store->image->getHeight());
 	
 	
 	/*if (argc > 2)

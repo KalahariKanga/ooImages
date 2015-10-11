@@ -83,7 +83,7 @@ void ExpressionParser::setString(std::string str)
 				p = p + it->second.size() - 1;
 			}
 		}
-
+	}
 	parser.SetExpr(str);
 }
 

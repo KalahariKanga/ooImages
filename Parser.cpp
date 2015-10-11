@@ -76,8 +76,8 @@ Expression* Parser::tokenToExpression(std::string token)
 	if (token == "while")
 		return new whileExpression();
 
-	if (VariableStore::get()->variableExists(token))
-		return new VariableExpression(token);
+	/*if (VariableStore::get()->variableExists(token))
+		return new VariableExpression(token);*/
 	return new TerminalExpression(token);
 }
 
