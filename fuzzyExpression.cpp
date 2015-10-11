@@ -13,7 +13,7 @@ fuzzyExpression::~fuzzyExpression()
 
 Variable fuzzyExpression::evaluate()
 {
-	ImageObject* image = ImageStore::get()->image;
+	ImageObject* image = ImageStore::get()->getImage();
 	Selection* selection = new Selection(image->getWidth(), image->getHeight());
 	selection->invert();
 	int sx = static_cast<int>(*(arguments[0]->evaluate().get<float>()));

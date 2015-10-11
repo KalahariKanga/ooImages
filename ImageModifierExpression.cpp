@@ -4,7 +4,7 @@
 ImageModifierExpression::ImageModifierExpression()
 {
 	ImageStore* store = ImageStore::get();
-	image = store->image;
+	image = store->getImage();
 	buffer = new ImageObject(image->getWidth(), image->getHeight());
 }
 

@@ -75,9 +75,11 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new repeatExpression();
 	if (token == "while")
 		return new whileExpression();
+	if (token == "loadImage")
+		return new loadImageExpression();
+	if (token == "using")
+		return new usingExpression();
 
-	/*if (VariableStore::get()->variableExists(token))
-		return new VariableExpression(token);*/
 	return new TerminalExpression(token);
 }
 

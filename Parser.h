@@ -29,6 +29,8 @@
 #include "ifExpression.h"
 #include "repeatExpression.h"
 #include "whileExpression.h"
+#include "loadImageExpression.h"
+#include "usingExpression.h"
 
 class Parser
 {

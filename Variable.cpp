@@ -66,6 +66,17 @@ Variable Variable::duplicate()
 		v.set<Kernel>(s);
 		return v;
 	}
+	case Type::Image:
+	{
+		Variable v(Type::Image);
+		ImageObject* thisImage = get<ImageObject>();
+		ImageObject* s = new ImageObject(thisImage->getWidth(),thisImage->getHeight());
+		for (int cx = 0; cx < s->getWidth(); cx++)
+			for (int cy = 0; cy < s->getHeight(); cy++)
+				s->setPixel(cx, cy, thisImage->getPixel(cx, cy));
+		v.set<ImageObject>(s);
+		return v;
+	}
 	default:
 		std::cout << "Variable::duplicate() incomplete\n";
 		return Variable(Variable::Type::Void);

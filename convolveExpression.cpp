@@ -14,7 +14,7 @@ convolveExpression::~convolveExpression()
 Variable convolveExpression::evaluate()
 {
 	ImageStore* store = ImageStore::get();
-	ImageObject* image = store->image;
+	ImageObject* image = store->getImage();
 	float x, y, r, g, b, h, s, v;
 	addLocalVariable("x", &x);
 	addLocalVariable("y", &y);
@@ -28,14 +28,10 @@ Variable convolveExpression::evaluate()
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
 		{
-			x = cx;
-			y = cy;
-
 			Colour p = image->getPixel(cx, cy);
 			x = cx;
 			y = cy;
 			
-
 			if (store->mask->getValue(cx, cy) > 0)
 			{
 				r = p.r();
@@ -46,7 +42,9 @@ Variable convolveExpression::evaluate()
 				v = p.v();
 				int kr, kg, kb;
 				kr = kg = kb = 0;
-				Kernel* k = arguments.back()->evaluate().get<Kernel>();
+				Variable v = arguments.back()->evaluate();
+				Kernel* k = v.get<Kernel>();
+				k->about();
 				for (int kx = -1; kx <= 1; kx++)
 					for (int ky = -1; ky <= 1; ky++)
 					{

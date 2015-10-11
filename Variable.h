@@ -11,7 +11,7 @@ class Variable
 public:
 	static enum class Type
 	{
-		Void, Real, Colour, Selection, Mask, Kernel
+		Void, Real, Colour, Selection, Mask, Kernel, Image
 	};
 	
 	Variable(Type t = Type::Void);

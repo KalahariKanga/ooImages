@@ -10,13 +10,13 @@ ImageStore::ImageStore()
 
 ImageStore::~ImageStore()
 {
-	delete image;
+	//delete image;
 }
 
 void ImageStore::loadImage(std::string fname)
 {
-	image = new ImageObject();
-	image->loadImage(fname);
+	image = std::make_shared<ImageObject>();
+	image.get()->loadImage(fname);
 	addUndoPoint();
 }
 
@@ -42,22 +42,22 @@ void ImageStore::addUndoPoint()
 
 void ImageStore::undo()
 {
-	if (histPos > 0)
+	/*if (histPos > 0)
 	{
 		histPos--;
 		delete image;
 		image = new ImageObject(history[histPos]);
-	}
+	}*/
 }
 
 void ImageStore::redo()
 {
-	if (histPos < history.size()-1)
+	/*if (histPos < history.size()-1)
 	{
 		histPos++;
 		delete image;
 		image = new ImageObject(history[histPos]);
-	}
+	}*/
 }
 
 ImageStore* ImageStore::get()
@@ -65,4 +65,9 @@ ImageStore* ImageStore::get()
 	if (!instance)
 		instance = new ImageStore();
 	return instance;
+}
+
+ImageObject* ImageStore::getImage()
+{
+	return image.get();
 }

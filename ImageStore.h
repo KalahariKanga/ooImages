@@ -10,8 +10,9 @@ class ImageStore
 public:
 	ImageStore();
 	~ImageStore();
-	ImageObject* image;
+	std::shared_ptr<ImageObject> image;
 	std::shared_ptr<AbstractMask> mask;
+	ImageObject* getImage();
 	void loadImage(std::string fname);
 	void saveImage(std::string fname);
 	void addUndoPoint();

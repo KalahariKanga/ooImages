@@ -21,10 +21,6 @@ Variable setExpression::evaluate()
 	TerminalExpression* term = dynamic_cast<TerminalExpression*>(arguments[0]);
 	if (term)
 		name = term->getString();
-	
-	VariableExpression* v = dynamic_cast<VariableExpression*>(arguments[0]);
-	if (v)
-		name = v->getString();
 
 	Variable var = arguments[1]->evaluate().duplicate();
 	VariableStore::get()->setVariable(name, var);
@@ -33,5 +29,6 @@ Variable setExpression::evaluate()
 	if (var.type == Variable::Type::Real)
 		ExpressionParser::updateVariable(name, *var.get<float>());
 
+	//std::cout << name << " " << *var.get<float>() << "\n";
 	return Variable(Variable::Type::Void);
 }

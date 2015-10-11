@@ -15,7 +15,7 @@ Variable regionExpression::evaluate()
 {
 	
 	ImageStore* store = ImageStore::get();
-	ImageObject* image = store->image;
+	ImageObject* image = store->getImage();
 	Mask* mask = new Mask(image->getWidth(), image->getHeight());
 
 	float x, y, r, g, b, h, s, v;

@@ -14,7 +14,7 @@ setPixelsExpression::~setPixelsExpression()
 Variable setPixelsExpression::evaluate()
 {
 	ImageStore* store = ImageStore::get();
-	ImageObject* image = store->image;
+	ImageObject* image = store->getImage();
 	float x, y, r, g, b, h, s, v;
 	addLocalVariable("x", &x);
 	addLocalVariable("y", &y);
