@@ -44,7 +44,6 @@ Variable convolveExpression::evaluate()
 				kr = kg = kb = 0;
 				Variable v = arguments.back()->evaluate();
 				Kernel* k = v.get<Kernel>();
-				k->about();
 				for (int kx = -1; kx <= 1; kx++)
 					for (int ky = -1; ky <= 1; ky++)
 					{

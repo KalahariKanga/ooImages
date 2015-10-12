@@ -3,7 +3,7 @@
 
 Kernel::Kernel(int size) : size(size)
 {
-	data = new int[size*size];
+	data = new float[size*size];
 }
 
 
@@ -12,13 +12,13 @@ Kernel::~Kernel()
 	delete[] data;
 }
 
-int Kernel::get(int x, int y)
+float Kernel::get(int x, int y)
 {
 	if (x< size && y < size && x >= 0 && y >= 0)
 		return data[size*y + x];
 }
 
-void Kernel::set(int x, int y, int value)
+void Kernel::set(int x, int y, float value)
 {
 	if (x < size && y < size && x >= 0 && y >= 0)
 		data[size*y + x] = value;

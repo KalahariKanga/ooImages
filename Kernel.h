@@ -4,13 +4,13 @@
 class Kernel : public Resource
 {
 	int size;
-	int *data;
+	float *data;
 public:
 	Kernel(int size);
 	~Kernel();
 
-	int get(int x, int y);
-	void set(int x, int y, int value);
+	float get(int x, int y);
+	void set(int x, int y, float value);
 	int getSize();
 	void about();
 };
