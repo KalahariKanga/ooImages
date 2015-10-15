@@ -4,11 +4,12 @@
 Colour::Colour(void)
 {
 }
-Colour::Colour(int r, int g, int b)
+Colour::Colour(int r, int g, int b, int a)
 {
 	col.r = r;
 	col.g = g;
 	col.b = b;
+	col.a = a;
 }
 
 Colour::~Colour(void)
@@ -26,6 +27,10 @@ int Colour::g()
 int Colour::b()
 {
 	return col.b;
+}
+int Colour::a()
+{
+	return col.a;
 }
 int Colour::h()
 {
@@ -78,6 +83,10 @@ void Colour::b(int b)
 {
 	col.b = b;
 }
+void Colour::a(int a)
+{
+	col.a = a;
+}
 void Colour::h(int h)
 {
 	hsv(h, s(), v());
@@ -127,6 +136,7 @@ Colour Colour::interpolate(Colour from, Colour to, float amount)
 	newColour.r(from.r() + amount*(to.r() - from.r()));
 	newColour.g(from.g() + amount*(to.g() - from.g()));
 	newColour.b(from.b() + amount*(to.b() - from.b()));
+	newColour.a(from.a() + amount*(to.a() - from.a()));
 	return newColour;
 }
 

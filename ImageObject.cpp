@@ -22,8 +22,7 @@ void ImageObject::colourToData(int x, int y, Colour c)
 	data[4 * (y*width + x)] = c.r();
 	data[4 * (y*width + x) + 1] = c.g();
 	data[4 * (y*width + x) + 2] = c.b();
-	//data[4 * (y*width + x) + 3] = c.a();
-	//TODO: not using alpha channel - could save room removing it?
+	data[4 * (y*width + x) + 3] = c.a();
 }
 
 Colour ImageObject::getPixel(float x, float y, bool wrap)
@@ -63,8 +62,8 @@ Colour ImageObject::getPixel(float x, float y, bool wrap)
 	float r = bilint(tl.r(), tr.r(), bl.r(), br.r(), xf, yf);
 	float g = bilint(tl.g(), tr.g(), bl.g(), br.g(), xf, yf);
 	float b = bilint(tl.b(), tr.b(), bl.b(), br.b(), xf, yf);
-
-	return Colour(r, g, b);
+	float a = bilint(tl.a(), tr.a(), bl.a(), br.a(), xf, yf);
+	return Colour(r, g, b, a);
 }
 Colour ImageObject::getPixel(int x, int y, bool wrap)
 {
@@ -99,7 +98,7 @@ Colour ImageObject::getDataPoint(int x, int y)
 	if (x < 0 || x >= width || y < 0 || y >= height)
 		return Colour(0, 0, 0); //TODO: wrap or extend or something
 	int pos = 4 * (y*width + x);
-	return Colour(data[pos], data[pos + 1], data[pos + 2]);// , data[pos + 3]);
+	return Colour(data[pos], data[pos + 1], data[pos + 2], data[pos + 3]);
 
 }
 
