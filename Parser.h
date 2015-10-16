@@ -31,6 +31,8 @@
 #include "whileExpression.h"
 #include "loadImageExpression.h"
 #include "usingExpression.h"
+#include "cropExpression.h"
+#include "rgbaExpression.h"
 
 class Parser
 {

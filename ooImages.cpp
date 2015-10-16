@@ -59,7 +59,11 @@ int main(int argc, _TCHAR* argv[])
 		image.create(store->image->getWidth(), store->image->getHeight(), store->image->getData());		
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
-		sprite.setScale((float)800 / store->image->getWidth(), (float)800 / store->image->getWidth());
+		ExpressionParser::updateVariable("image_width", store->image->getWidth());
+		ExpressionParser::updateVariable("image_height", store->image->getHeight());
+		//sprite.setScale((float)800 / store->image->getWidth(), (float)800 / store->image->getWidth());
+		//window.create(sf::VideoMode(800, 800 * ((float)store->image->getHeight() / store->image->getWidth())), "Image");
+		window.clear();
 		window.draw(sprite);
 		window.display();
 		std::cout << ">";

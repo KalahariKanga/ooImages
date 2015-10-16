@@ -13,7 +13,8 @@ usingExpression::~usingExpression()
 
 Variable usingExpression::evaluate()
 {
-	ImageStore::get()->image = std::static_pointer_cast<ImageObject>(arguments[0]->evaluate().data);
+	ImageStore* is = ImageStore::get();
+	is->image = std::static_pointer_cast<ImageObject>(arguments[0]->evaluate().data);
 	return Variable(Variable::Type::Void);
 
 }

@@ -79,6 +79,10 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new loadImageExpression();
 	if (token == "using")
 		return new usingExpression();
+	if (token == "crop")
+		return new cropExpression();
+	if (token == "rgba")
+		return new rgbaExpression();
 
 	return new TerminalExpression(token);
 }
