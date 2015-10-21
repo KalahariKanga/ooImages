@@ -17,7 +17,11 @@ Variable loadImageExpression::evaluate()
 	var.set(new ImageObject());
 	TerminalExpression* t = dynamic_cast<TerminalExpression*>(arguments[0]);
 	if (t)
-		var.get<ImageObject>()->loadImage(t->getString());
+	{
+		ImageObject* im = var.get<ImageObject>();
+		im->loadImage(t->getString());
+		std::cout << std::endl;
+	}
 	else
 		throw new Exception(Exception::ErrorType::TYPE_MISMATCH);
 	return var;

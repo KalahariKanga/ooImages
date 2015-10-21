@@ -33,6 +33,8 @@
 #include "usingExpression.h"
 #include "cropExpression.h"
 #include "rgbaExpression.h"
+#include "blendExpression.h"
+#include "hsvaExpression.h"
 
 class Parser
 {

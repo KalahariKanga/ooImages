@@ -83,6 +83,10 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new cropExpression();
 	if (token == "rgba")
 		return new rgbaExpression();
+	if (token == "blend")
+		return new blendExpression();
+	if (token == "hsva")
+		return new hsvaExpression();
 
 	return new TerminalExpression(token);
 }
