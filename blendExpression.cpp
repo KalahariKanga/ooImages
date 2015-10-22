@@ -15,7 +15,8 @@ Variable blendExpression::evaluate()
 {
 	ImageStore* store = ImageStore::get();
 	ImageObject* bottom = store->getImage();
-	ImageObject* top = arguments[0]->evaluate().get<ImageObject>();
+	Variable topVar = arguments[0]->evaluate();
+	ImageObject* top = topVar.get<ImageObject>();
 	float x, y;
 	float r1, g1, b1, h1, s1, v1;
 	float r2, g2, b2, h2, s2, v2;

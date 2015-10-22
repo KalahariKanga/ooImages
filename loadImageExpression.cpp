@@ -20,7 +20,6 @@ Variable loadImageExpression::evaluate()
 	{
 		ImageObject* im = var.get<ImageObject>();
 		im->loadImage(t->getString());
-		std::cout << std::endl;
 	}
 	else
 		throw new Exception(Exception::ErrorType::TYPE_MISMATCH);
