@@ -31,4 +31,30 @@ Set the active selection to `s`.
 Construct and return the rectangular selection from the point (`x1`, `y1`) to (`x2`, `y2`).
 ### region
 `Mask region(Real value)`  
+*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
 Construct and return the mask with strength `value` at each point.
+### kernel
+`Kernel kernel(Real k1, Real k2, Real k3, Real k4, Real k5, Real k6, Real k7, Real k8, Real k9)`  
+Construct and return the 3x3 convolution kernel with elements `k1` ... `k9`
+### convolve
+`Void convolve(Kernel k)`  
+*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+Convolve the image using the kernel `k`.
+### mask
+`Void mask(Mask m)`  
+Set the active mask the `m`.
+### all
+`Mask all(Void)`  
+Construct and return a mask with value 1 everywhere.
+### getPixel
+`Colour getPixel(Real xPos, Real yPos)`  
+Returns the pixel at position (`xPos`,`yPos`).  
+### fuzzy
+`Selection fuzzy(Real xPos, Real yPos, Real threshold)`  
+Construct and return the selection consisting of the contiguous region based at (`xPos`,`yPos`), with maximum colour distance `threshold`.
+### set
+`Void set(String name, Variable data)`  
+Create the variable `name` with value `data`, or update it if it already exists.
+### if
+`Void if(Real condition, SequenceExpression block)`  
+If `condition` is true, evaluate `block`.
