@@ -41,16 +41,12 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new rectangleExpression();
 	if (token == "region")
 		return new regionExpression();
-	if (token == "and")
-		return new andExpression();
 	if (token == "min")
 		return new minExpression();
 	if (token == "kernel")
 		return new kernelExpression();
 	if (token == "convolve")
 		return new convolveExpression();
-	if (token == "or")
-		return new orExpression();
 	if (token == "mask")
 		return new maskExpression();
 	if (token == "all")
@@ -87,6 +83,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new blendExpression();
 	if (token == "hsva")
 		return new hsvaExpression();
+	if (token == "combine")
+		return new combineExpression();
 
 	return new TerminalExpression(token);
 }

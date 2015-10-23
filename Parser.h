@@ -11,11 +11,9 @@
 #include "selectExpression.h"
 #include "rectangleExpression.h"
 #include "regionExpression.h"
-#include "andExpression.h"
 #include "minExpression.h"
 #include "kernelExpression.h"
 #include "convolveExpression.h"
-#include "orExpression.h"
 #include "maskExpression.h"
 #include "allExpression.h"
 #include "getPixelExpression.h"
@@ -35,6 +33,7 @@
 #include "rgbaExpression.h"
 #include "blendExpression.h"
 #include "hsvaExpression.h"
+#include "combineExpression.h"
 
 class Parser
 {
