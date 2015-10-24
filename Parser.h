@@ -34,6 +34,7 @@
 #include "blendExpression.h"
 #include "hsvaExpression.h"
 #include "combineExpression.h"
+#include "gaussExpression.h"
 
 class Parser
 {

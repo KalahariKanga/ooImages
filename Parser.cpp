@@ -85,6 +85,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new hsvaExpression();
 	if (token == "combine")
 		return new combineExpression();
+	if (token == "gauss")
+		return new gaussExpression();
 
 	return new TerminalExpression(token);
 }

@@ -44,13 +44,14 @@ Variable convolveExpression::evaluate()
 				kr = kg = kb = 0;
 				Variable v = arguments.back()->evaluate();
 				Kernel* k = v.get<Kernel>();
-				for (int kx = -1; kx <= 1; kx++)
-					for (int ky = -1; ky <= 1; ky++)
+				int size = k->getSize();
+				for (int kx = 0; kx < size; kx++)
+					for (int ky = 0; ky < size; ky++)
 					{
-						Colour q = image->getPixel((int)x + kx, (int)y + ky);
-						kr += k->get(kx + 1, ky + 1)*q.r();
-						kg += k->get(kx + 1, ky + 1)*q.g();
-						kb += k->get(kx + 1, ky + 1)*q.b();
+						Colour q = image->getPixel((int)x + kx - size / 2, (int)y + ky - size / 2);
+						kr += k->get(kx, ky)*q.r();
+						kg += k->get(kx, ky)*q.g();
+						kb += k->get(kx, ky)*q.b();
 					}
 				p.r(clamp<int>(kr, 0, 255));
 				p.g(clamp<int>(kg, 0, 255));
