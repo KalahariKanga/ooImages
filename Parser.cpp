@@ -87,6 +87,14 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new combineExpression();
 	if (token == "gauss")
 		return new gaussExpression();
+	if (token == "+")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
+	if (token == "-")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::SUBTRACT);
+	if (token == "*")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::MULTIPLY);
+	if (token == "/")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::DIVIDE);
 
 	return new TerminalExpression(token);
 }
