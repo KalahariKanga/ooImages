@@ -25,10 +25,5 @@ Variable setExpression::evaluate()
 	Variable var = arguments[1]->evaluate().duplicate();
 	VariableStore::get()->setVariable(name, var);
 
-	//keep expressionparser updated...
-	if (var.type == Variable::Type::Real)
-		ExpressionParser::updateVariable(name, *var.get<float>());
-
-	//std::cout << name << " " << *var.get<float>() << "\n";
 	return Variable(Variable::Type::Void);
 }

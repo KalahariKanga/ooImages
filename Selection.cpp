@@ -8,33 +8,10 @@ Selection::Selection(int width, int height)
 	data = new bool*[width];
 	for (int c = 0; c < width; c++)
 		data[c] = new bool[height];
-	toRectangle("0", "0", to_string(width), to_string(height));
-}
 
-Selection::Selection(vector<string> tokens, ImageObject* image)
-{
-	this->width = image->getWidth();
-	this->height = image->getHeight();
-	data = new bool*[width];
-	for (int c = 0; c < width; c++)
-		data[c] = new bool[height];
-
-	if (tokens.front() == "circle")
-	{
-		toCircle(tokens[1], tokens[2], tokens[3]);
-	}
-	if (tokens.front() == "rectangle")
-	{
-		toRectangle(tokens[1], tokens[2], tokens[3], tokens[4]);
-	}
-	if (tokens.front() == "ellipse")
-	{
-		toEllipse(tokens[1], tokens[2], tokens[3], tokens[4]);
-	}
-	if (tokens.front() == "region")
-	{
-		toRegion(image, tokens[1]);
-	}
+	for (int cx = 0; cx < width; cx++)
+		for (int cy = 0; cy < height; cy++)
+			setValue(cx, cy, 1);
 }
 
 Selection::Selection(Mask& mask, float boundary = 0)
@@ -62,71 +39,6 @@ Selection::~Selection()
 	delete[] data;
 }
 
-bool Selection::isInCircle(int x, int y, int cx, int cy, int cr)
-{
-	if ((x - cx)*(x - cx) + (y - cy)*(y - cy) <= cr*cr)
-		return true;
-	return false;
-}
-bool Selection::isInRectangle(int x, int y, int x1, int y1, int x2, int y2)
-{
-	if (x >= x1 && x <= x2 && y >= y1 && y <= y2)
-		return true;
-	return false;
-}
-bool Selection::isInEllipse(int x, int y, int x1, int y1, int x2, int y2)
-{
-	float cx = (x1 + x2) / 2;
-	float cy = (y1 + y2) / 2;
-	float a = (x2 - x1) / 2;
-	float b = (y2 - y1) / 2;
-
-	if ((x - cx)*(x - cx) / (a*a) + (y - cy)*(y - cy) / (b*b) <= 1)
-		return true;
-	return false;
-}
-bool Selection::isInRegion(ImageObject *i, int x, int y, std::string expr)
-{
-	float tx, ty, r, g, b, h, s, v;
-
-	static std::string current = " ";
-	static bool** newselection;
-
-
-	if (current != expr)
-	{
-		newselection = new bool*[i->getWidth()];
-		for (int c = 0; c < i->getWidth(); ++c)
-			newselection[c] = new bool[i->getHeight()];
-
-		current = expr;
-		ExpressionParser parser;
-		parser.setString(expr);
-		parser.addLocalVariable("x", &tx);
-		parser.addLocalVariable("y", &ty);
-		parser.addLocalVariable("r", &r);
-		parser.addLocalVariable("g", &g);
-		parser.addLocalVariable("b", &b);
-		parser.addLocalVariable("h", &h);
-		parser.addLocalVariable("s", &s);
-		parser.addLocalVariable("v", &v);
-		Colour p;
-		for (tx = 0; tx < i->getWidth(); tx += 1)
-			for (ty = 0; ty < i->getHeight(); ty += 1)
-			{
-				p = i->getPixel((int)tx, (int)ty);
-				r = p.r();
-				g = p.g();
-				b = p.b();
-				h = p.h();
-				s = p.s();
-				v = p.v();
-				newselection[(int)tx][(int)ty] = parser.evaluate();
-			}
-	}
-	return newselection[x][y];
-}
-
 float Selection::getValue(int x, int y)
 {
 	while (x < 0)
@@ -152,139 +64,11 @@ void Selection::setValue(int x, int y, bool v)
 	data[x][y] = v;
 }
 
-void Selection::toCircle(string cx, string cy, string cr)
-{
-	ExpressionParser parser[3];
-	parser[0].setString(cx);
-	parser[1].setString(cy);
-	parser[2].setString(cr);
-
-	for (int x = 0; x < width; x++)
-		for (int y = 0; y < height; y++)
-			setValue(x, y, isInCircle(x, y, parser[0].evaluate(), parser[1].evaluate(), parser[2].evaluate()));
-}
-void Selection::toRectangle(string x1, string y1, string x2, string y2)
-{
-	ExpressionParser parser[4];
-	parser[0].setString(x1);
-	parser[1].setString(y1);
-	parser[2].setString(x2);
-	parser[3].setString(y2);
-	for (int x = 0; x < width; x++)
-		for (int y = 0; y < height; y++)
-			setValue(x, y, isInRectangle(x, y, parser[0].evaluate(), parser[1].evaluate(), parser[2].evaluate(), parser[3].evaluate()));
-
-}
-void Selection::toEllipse(string x1, string y1, string x2, string y2)
-{
-	ExpressionParser parser[4];
-	parser[0].setString(x1);
-	parser[1].setString(y1);
-	parser[2].setString(x2);
-	parser[3].setString(y2);
-	for (int x = 0; x < width; x++)
-		for (int y = 0; y < height; y++)
-			setValue(x, y, isInEllipse(x, y, parser[0].evaluate(), parser[1].evaluate(), parser[2].evaluate(), parser[3].evaluate()));
-}
-void Selection::toRegion(ImageObject *i, std::string expr)
-{
-	for (int x = 0; x < width; x++)
-		for (int y = 0; y < height; y++)
-			setValue(x, y, isInRegion(i, x, y, expr));
-}
-
-void Selection::toRectangle(int x1, int y1, int x2, int y2)
-{
-	for (int x = 0; x < width; x++)
-		for (int y = 0; y < height; y++)
-			setValue(x, y, isInRectangle(x, y, x1, y1, x2, y2));
-}
-
 void Selection::invert()
 {
 	for (int x = 0; x < width; x++)
 		for (int y = 0; y < height; y++)
 			setValue(x, y, getValue(x, y) ? 0 : 1);
-}
-
-Selection Selection::create(vector<string> tokens, ImageObject* image)
-{
-	Selection newSelection(image->getWidth(), image->getHeight());
-	if (tokens.front() == "circle")
-	{
-		newSelection.toCircle(tokens[1], tokens[2], tokens[3]);
-	}
-	if (tokens.front() == "rectangle")
-	{
-		newSelection.toRectangle(tokens[1], tokens[2], tokens[3], tokens[4]);
-	}
-	if (tokens.front() == "ellipse")
-	{
-		newSelection.toEllipse(tokens[1], tokens[2], tokens[3], tokens[4]);
-	}
-	if (tokens.front() == "region")
-	{
-		newSelection.toRegion(image, tokens[1]);
-	}
-	return newSelection;
-}
-
-Selection Selection::create(vector<string> tokens, int width, int height)
-{
-	Selection newSelection(width, height);
-	if (tokens.front() == "circle")
-	{
-		newSelection.toCircle(tokens[1], tokens[2], tokens[3]);
-	}
-	if (tokens.front() == "rectangle")
-	{
-		newSelection.toRectangle(tokens[1], tokens[2], tokens[3], tokens[4]);
-	}
-	if (tokens.front() == "ellipse")
-	{
-		newSelection.toEllipse(tokens[1], tokens[2], tokens[3], tokens[4]);
-	}
-	if (tokens.front() == "region")
-	{
-		std::cout << "Can't have regions as structuring elements yet\n";
-	}
-	return newSelection;
-}
-
-Selection Selection::createStructuringElement(vector<string> tokens)
-{
-	if (tokens[0] == "circle")
-	{
-		ExpressionParser parser;
-		parser.setString(tokens[1]);
-		double r = parser.evaluate();
-		Selection newSelection(2 * r, 2 * r);
-		string s = to_string(r);
-		newSelection.toCircle(s, s, s);
-		return newSelection;
-	}
-	if (tokens[0] == "rectangle")
-	{
-		ExpressionParser parser;
-		parser.setString(tokens[1]);
-		double l = parser.evaluate();
-		Selection newSelection(l, l);
-		string s = to_string(l);
-		newSelection.toRectangle("0", "0", s, s);
-		return newSelection;
-	}
-	if (tokens[0] == "ellipse")
-	{
-		ExpressionParser parser[2];
-		parser[0].setString(tokens[1]);
-		parser[1].setString(tokens[2]);
-		double a = parser[0].evaluate();
-		double b = parser[1].evaluate();
-		Selection newSelection(2 * a, 2 * b);
-		newSelection.toEllipse("0", "0", to_string(2 * a), to_string(2 * b));
-		return newSelection;
-	}
-	return Selection(0, 0);
 }
 
 void Selection::dilate(Selection* kernel)
@@ -339,30 +123,4 @@ void Selection::erode(Selection* kernel)
 		for (int y = 0; y < height; y++)
 			setValue(x, y, newSelection.getValue(x, y));
 
-}
-
-void Selection::combine(string op, AbstractMask* other)
-{
-	bool(*func)(bool, bool);
-	if (op == "and")
-		func = &and;
-	if (op == "or")
-		func = &or;
-	if (op == "xor")
-		func = &xor;
-	if (op == "nand")
-		func = &nand;
-
-	if (other->width == width && other->height == height)
-	{
-
-		for (int x = 0; x < width; x++)
-			for (int y = 0; y < height; y++)
-			{
-				bool a = getValue(x, y);
-				bool b = other->getValue(x, y);
-				setValue(x, y, func(a, b));
-			}
-
-	}	
 }

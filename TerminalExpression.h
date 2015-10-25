@@ -1,14 +1,13 @@
 #pragma once
 #include "Expression.h"
-#include "ExpressionParser.h"
 #include "VariableStore.h"
 
 class TerminalExpression :
 	public Expression
 {
-	ExpressionParser parser;
 	std::string string;
 	VariableStore* vs;
+	std::map<std::string, float*> localVariables;
 public:
 	TerminalExpression(std::string string);
 	~TerminalExpression();
