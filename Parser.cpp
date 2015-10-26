@@ -95,6 +95,16 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::MULTIPLY);
 	if (token == "/")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::DIVIDE);
+	if (token == "==")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::EQUAL);
+	if (token == "<=")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::LESS_EQUAL);
+	if (token == ">=")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::GREATER_EQUAL);
+	if (token == "<")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::LESS);
+	if (token == ">")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::GREATER);
 
 	return new TerminalExpression(token);
 }

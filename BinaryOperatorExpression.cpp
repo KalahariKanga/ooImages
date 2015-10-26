@@ -31,6 +31,21 @@ Variable BinaryOperatorExpression::evaluate()
 	case Operator::DIVIDE:
 		v = b == 0 ? std::numeric_limits<float>::infinity() : a / b;
 		break;
+	case Operator::EQUAL:
+		v = (a == b);//delta?
+		break;
+	case Operator::LESS_EQUAL:
+		v = (a <= b);
+		break;
+	case Operator::GREATER_EQUAL:
+		v = (a >= b);
+		break;
+	case Operator::LESS:
+		v = (a < b);
+		break;
+	case Operator::GREATER:
+		v = (a > b);
+		break;
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}

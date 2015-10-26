@@ -6,7 +6,7 @@ class BinaryOperatorExpression :
 public:
 	enum class Operator
 	{
-		ADD, SUBTRACT, MULTIPLY, DIVIDE
+		ADD, SUBTRACT, MULTIPLY, DIVIDE, EQUAL, LESS_EQUAL, GREATER_EQUAL, LESS, GREATER
 	} op;
 	BinaryOperatorExpression(Operator op);
 	~BinaryOperatorExpression();
