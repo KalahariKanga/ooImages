@@ -10,6 +10,8 @@ ImageObject::ImageObject(void)
 ImageObject::ImageObject(int width, int height) : width(width), height(height)
 {
 	data = new sf::Uint8[width * height * 4];
+	setProperty("width", &width);
+	setProperty("height", &height);
 }
 
 ImageObject::~ImageObject(void)

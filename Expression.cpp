@@ -14,6 +14,16 @@ Expression::~Expression()
 	}
 }
 
+bool Expression::isConstant()
+{
+	for (auto a : arguments)
+	{
+		if (!a->isConstant())
+			return 0;
+	}
+	return 1;
+}
+
 void Expression::addLocalVariable(std::string name, float* ptr)
 {
 	for (auto a : arguments)

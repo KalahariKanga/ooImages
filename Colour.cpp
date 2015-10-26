@@ -3,6 +3,9 @@
 
 Colour::Colour(void)
 {
+	setProperty("r", (int*)&(col.r));
+	setProperty("g", (int*)&(col.g));
+	setProperty("b", (int*)&(col.b));
 }
 Colour::Colour(int r, int g, int b, int a)
 {

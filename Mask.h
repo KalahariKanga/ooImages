@@ -12,7 +12,6 @@ public:
 	virtual float getValue(int x, int y);
 	void setValue(int x, int y, float v);
 	virtual void invert();
-	Mask();
 	Mask(int width, int height);
 	~Mask();
 };

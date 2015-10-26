@@ -1,8 +1,5 @@
 #include "Mask.h"
-Mask::Mask()
-{
 
-}
 Mask::Mask(int width, int height)
 {
 	this->width = width;
@@ -13,6 +10,8 @@ Mask::Mask(int width, int height)
 	for (int cx = 0; cx < width; cx++)
 		for (int cy = 0; cy < height; cy++)
 			setValue(cx, cy, 1);
+	setProperty("width", &width);
+	setProperty("height", &height);
 }
 
 Mask::~Mask()

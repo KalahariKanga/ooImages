@@ -4,6 +4,7 @@
 Kernel::Kernel(int size) : size(size)
 {
 	data = new float[size*size];
+	setProperty("size", &size);
 }
 
 
