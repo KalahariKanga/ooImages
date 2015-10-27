@@ -3,9 +3,12 @@
 
 Colour::Colour(void)
 {
-	setProperty("r", (int*)&(col.r));
-	setProperty("g", (int*)&(col.g));
-	setProperty("b", (int*)&(col.b));
+	setProperty("r", [this](){return r(); });
+	setProperty("g", [this](){return g(); });
+	setProperty("b", [this](){return b(); });
+	setProperty("h", [this](){return h(); });
+	setProperty("s", [this](){return s(); });
+	setProperty("v", [this](){return v(); });
 }
 Colour::Colour(int r, int g, int b, int a)
 {
