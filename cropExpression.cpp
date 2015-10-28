@@ -14,11 +14,12 @@ Variable cropExpression::evaluate()
 {
 	ImageObject* image = ImageStore::get()->image.get();
 	AbstractMask* mask = ImageStore::get()->mask.get();
+
 	int minX = image->getWidth();
 	int minY = image->getHeight();
 	int maxX = 0, maxY = 0;
 
-	/*for (int cx = 0; cx < image->getWidth(); cx++)
+	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
 		{
 			if (mask->getValue(cx, cy))
@@ -28,18 +29,23 @@ Variable cropExpression::evaluate()
 				if (cx > maxX){ maxX = cx; }
 				if (cy > maxY){ maxY = cy; }
 			}
-		}*/
-	for (int cx = 0; cx < image->getWidth(); cx++)
-		for (int cy = 0; cy < image->getHeight(); cy++)
-		{
-			if (!mask->getValue(cx, cy))
-			{
-				Colour c = image->getPixel(cx, cy);
-				c.a(0);
-				image->setPixel(cx, cy, c);
-			}
 		}
 
-	//return cropped image
-	return Variable(Variable::Type::Void);
+	ImageObject* result = new ImageObject(maxX - minX, maxY - minY);
+
+	for (int cx = minX; cx <= maxX; cx++)
+		for (int cy = minY; cy <= maxY; cy++)
+		{
+			if (mask->getValue(cx, cy))
+			{
+				Colour c = image->getPixel(cx, cy);
+				result->setPixel(cx - minX, cy - minY, c);
+			}
+			else
+				result->setPixel(cx - minX, cy - minY, Colour(0, 0, 0, 0));
+		}
+
+	Variable var(Variable::Type::Image);
+	var.set<ImageObject>(result);
+	return var;
 }
