@@ -12,6 +12,15 @@ TerminalExpression::~TerminalExpression()
 {
 }
 
+bool TerminalExpression::isConstant()
+{
+	/*if (localVariables.find(string) != localVariables.end())
+		return 0;
+
+	return 1;*/
+	return 0;
+}
+
 void TerminalExpression::addLocalVariable(std::string name, float* ptr)
 {
 	localVariables[name] = ptr;
@@ -19,11 +28,11 @@ void TerminalExpression::addLocalVariable(std::string name, float* ptr)
 
 Variable TerminalExpression::evaluate()
 {
-	
+	//resource variable
 	if (vs->variableExists(string))
 		return VariableStore::get()->getVariable(string);
 
-	
+	//local variable
 	if (localVariables.find(string) != localVariables.end())
 	{
 		Variable var(Variable::Type::Real);
@@ -31,6 +40,7 @@ Variable TerminalExpression::evaluate()
 		return var;
 	}
 	
+	//constant
 	try
 	{
 		Variable var(Variable::Type::Real);
@@ -47,4 +57,10 @@ Variable TerminalExpression::evaluate()
 std::string TerminalExpression::getString()
 {
 	return string;
+}
+
+std::string TerminalExpression::getName()
+{
+	return string;
+	//TODO: check that it is a named variable
 }

@@ -36,6 +36,7 @@
 #include "combineExpression.h"
 #include "gaussExpression.h"
 #include "BinaryOperatorExpression.h"
+#include "ArrayVariableExpression.h"
 
 class Parser
 {

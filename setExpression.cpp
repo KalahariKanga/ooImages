@@ -20,7 +20,7 @@ Variable setExpression::evaluate()
 	//TODO: check for illegal characters
 	TerminalExpression* term = dynamic_cast<TerminalExpression*>(arguments[0]);
 	if (term)
-		name = term->getString();
+		name = term->getName();
 
 	Variable var = arguments[1]->evaluate().duplicate();
 	VariableStore::get()->setVariable(name, var);
