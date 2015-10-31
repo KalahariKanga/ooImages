@@ -21,10 +21,16 @@ Variable setExpression::evaluate()
 	TerminalExpression* term = dynamic_cast<TerminalExpression*>(arguments[0]);
 	if (term)
 		name = term->getName();
+	else
+		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 
-	
-	Variable var = arguments[1]->evaluate().duplicate();
-	VariableStore::get()->setVariable(name, var);
+	if (VariableStore::get()->legalVariableName(name))
+	{
+		Variable var = arguments[1]->evaluate().duplicate();
+		VariableStore::get()->setVariable(name, var);
+	}
+	else
+		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 
 	return Variable(Variable::Type::Void);
 }

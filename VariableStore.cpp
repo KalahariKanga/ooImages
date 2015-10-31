@@ -1,4 +1,5 @@
 #include "VariableStore.h"
+#include <cctype>
 
 VariableStore* VariableStore::instance;
 VariableStore::VariableStore()
@@ -17,17 +18,16 @@ void VariableStore::setVariable(std::string name, Variable var)
 
 Variable VariableStore::getVariable(std::string name)
 {
-	//TODO: exception
-	return variableMap[name].duplicate();
+	auto v = variableMap.find(name);
+	if (v == variableMap.end())
+		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
+	else
+		return v->second.duplicate();
 }
 
-std::vector<std::string> VariableStore::getRealVariableNames()
+bool VariableStore::legalVariableName(std::string name)
 {
-	std::vector<std::string> list;
-	for (auto v : variableMap)
-	{
-		if (v.second.type == Variable::Type::Real)
-			list.push_back(v.first);
-	}
-	return list;
+	
+	//TODO: check substrings for reserved words
+	return 1;
 }

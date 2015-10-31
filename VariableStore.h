@@ -12,12 +12,12 @@ public:
 
 	void setVariable(std::string name, Variable data);
 	Variable getVariable(std::string name);
+	bool legalVariableName(std::string name);
 	bool variableExists(std::string name)
 	{
 		return (variableMap.find(name) != variableMap.end());
 	}
-
-	std::vector<std::string> getRealVariableNames();
+	
 
 	static VariableStore* get()
 	{
