@@ -1,6 +1,5 @@
 #pragma once
 #include "stdafx.h"
-#include "ExpressionParser.h"
 #include "ImageObject.h"
 #include "Colour.h"
 #include "Resource.h"

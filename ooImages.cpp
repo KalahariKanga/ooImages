@@ -3,12 +3,7 @@
 
 #include "stdafx.h"
 #include "ImageObject.h"
-#include "ImageModifier.h"
-#include "Interpreter.h"
-#include "Invert.h"
 #include "ImageStore.h"
-#include "ScriptManager.h"
-
 #include "Parser.h"
 
 int main(int argc, _TCHAR* argv[])

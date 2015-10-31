@@ -22,6 +22,7 @@ Variable setExpression::evaluate()
 	if (term)
 		name = term->getName();
 
+	
 	Variable var = arguments[1]->evaluate().duplicate();
 	VariableStore::get()->setVariable(name, var);
 
