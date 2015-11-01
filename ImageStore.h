@@ -6,7 +6,6 @@ class ImageStore
 {
 	static ImageStore* instance;
 	std::vector<ImageObject> history;
-	int histPos;
 public:
 	ImageStore();
 	~ImageStore();
@@ -15,9 +14,6 @@ public:
 	ImageObject* getImage();
 	void loadImage(std::string fname);
 	void saveImage(std::string fname);
-	void addUndoPoint();
-	void undo();
-	void redo();
 	static ImageStore* get();
 };
 
