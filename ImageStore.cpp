@@ -1,5 +1,5 @@
 #include "ImageStore.h"
-
+#include "Selection.h"
 ImageStore* ImageStore::instance = nullptr;
 
 ImageStore::ImageStore()
@@ -21,6 +21,12 @@ void ImageStore::saveImage(std::string fname)
 {
 	std::cout << "Not implemented";
 	//image->getImage()->saveToFile(fname);
+}
+
+void ImageStore::initialize(std::string fname)
+{
+	loadImage(fname);
+	mask = std::make_shared<Selection>(image->getWidth(), image->getHeight());
 }
 
 ImageStore* ImageStore::get()

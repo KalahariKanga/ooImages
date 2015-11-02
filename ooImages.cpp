@@ -17,8 +17,7 @@ int main(int argc, _TCHAR* argv[])
 	if (argc == 2) //1 argument - image file
 	{
 		filename = argv[1];
-		store->loadImage(filename);
-		store->mask = make_shared<Selection>(store->image->getWidth(), store->image->getHeight());
+		store->initialize(filename);
 	}
 	else if (argc > 2) //2+ arguments - script file and (several) image files
 	{
@@ -32,7 +31,8 @@ int main(int argc, _TCHAR* argv[])
 			image->loadImage(argv[c]);
 			Variable var(Variable::Type::Image);
 			var.set<ImageObject>(image);
-			vs->setVariable(std::to_string(c - 2) + "argv", var);
+			vs->setArrayVariable("argv", c - 2, var);
+
 			if (c == 2)
 				store->image = std::static_pointer_cast<ImageObject>(var.data);
 		}
@@ -54,7 +54,7 @@ int main(int argc, _TCHAR* argv[])
 	{
 		std::cout << ">>";
 		std::getline(std::cin, filename);
-		store->loadImage(filename);
+		store->initialize(filename);
 	}
 
 	sf::RenderWindow window;

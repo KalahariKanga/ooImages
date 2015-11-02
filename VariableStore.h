@@ -11,6 +11,7 @@ public:
 	~VariableStore();
 
 	void setVariable(std::string name, Variable data);
+	void setArrayVariable(std::string name, int index, Variable data);
 	Variable getVariable(std::string name);
 	bool legalVariableName(std::string name);
 	bool variableExists(std::string name)

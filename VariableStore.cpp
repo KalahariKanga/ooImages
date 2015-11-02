@@ -16,6 +16,13 @@ void VariableStore::setVariable(std::string name, Variable var)
 	variableMap[name] = var;
 }
 
+void VariableStore::setArrayVariable(std::string name, int index, Variable var)
+{
+	name.erase(name.end() - 1);
+	std::string newname = std::to_string(index) + name;
+	variableMap[newname] = var;
+}
+
 Variable VariableStore::getVariable(std::string name)
 {
 	auto v = variableMap.find(name);

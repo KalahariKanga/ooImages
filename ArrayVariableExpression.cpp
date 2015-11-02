@@ -24,6 +24,8 @@ Variable ArrayVariableExpression::evaluate()
 
 std::string ArrayVariableExpression::getName()
 {
+	std::string trimmed = string;
+	trimmed.erase(trimmed.end()-1);
 	std::string index = std::to_string((int)round(*arguments[0]->evaluate().get<float>()));
-	return index + string;
+	return index + trimmed;
 }
