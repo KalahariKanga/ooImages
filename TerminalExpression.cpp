@@ -14,11 +14,15 @@ TerminalExpression::~TerminalExpression()
 
 bool TerminalExpression::isConstant()
 {
-	/*if (localVariables.find(string) != localVariables.end())
+	try
+	{
+		float val = stof(string);
+	}
+	catch (std::invalid_argument)
+	{
 		return 0;
-
-	return 1;*/
-	return 0;
+	}
+	return 1;
 }
 
 void TerminalExpression::addLocalVariable(std::string name, float* ptr)

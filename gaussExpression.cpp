@@ -13,8 +13,8 @@ gaussExpression::~gaussExpression()
 
 Variable gaussExpression::evaluate()
 {
-	int size = *arguments[0]->evaluate().get<float>();
-	float sigma = *arguments[1]->evaluate().get<float>();
+	int size = *arguments[0]->getResult().get<float>();
+	float sigma = *arguments[1]->getResult().get<float>();
 	Kernel* k = new Kernel(size);
 	int origin = size / 2;
 	for (int cx = 0; cx < size; cx++)

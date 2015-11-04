@@ -13,7 +13,7 @@ whileExpression::~whileExpression()
 
 Variable whileExpression::evaluate()
 {
-	while((bool)(*arguments[0]->evaluate().get<float>()))
-		arguments[1]->evaluate();
+	while((bool)(*arguments[0]->getResult().get<float>()))
+		arguments[1]->getResult();
 	return Variable(Variable::Type::Void);
 }

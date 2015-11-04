@@ -17,7 +17,7 @@ Variable kernelExpression::evaluate()
 	Kernel* k = new Kernel(3);
 	for (int c = 0; c < 9; c++)
 	{
-		k->set(c / 3, c % 3, *arguments[c]->evaluate().get<float>());
+		k->set(c / 3, c % 3, *arguments[c]->getResult().get<float>());
 	}
 	var.set<Kernel>(k);
 	return var;

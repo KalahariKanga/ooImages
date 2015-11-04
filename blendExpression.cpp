@@ -15,7 +15,7 @@ Variable blendExpression::evaluate()
 {
 	ImageStore* store = ImageStore::get();
 	ImageObject* bottom = store->getImage();
-	Variable topVar = arguments[0]->evaluate();
+	Variable topVar = arguments[0]->getResult();
 	ImageObject* top = topVar.get<ImageObject>();
 	float x, y;
 	float r1, g1, b1, h1, s1, v1;
@@ -58,7 +58,7 @@ Variable blendExpression::evaluate()
 				h2 = t.h();
 				s2 = t.s();
 				v2 = t.v();
-				Variable col = arguments[1]->evaluate();
+				Variable col = arguments[1]->getResult();
 				buffer->setPixel(cx, cy, *col.get<Colour>());
 			}
 

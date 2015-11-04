@@ -14,13 +14,32 @@ Expression::~Expression()
 	}
 }
 
-bool Expression::isConstant()
+Variable Expression::getResult()
+{
+	if (isConstant && optimisable)
+	{
+		if (!hasConstantValue)
+		{
+			hasConstantValue = 1;
+			constantValue = evaluate();
+		}
+		return constantValue;
+	}
+	else
+		return evaluate();
+}
+
+bool Expression::calculateConstancy()
 {
 	for (auto a : arguments)
 	{
-		if (!a->isConstant())
+		if (!a->calculateConstancy())
+		{
+			isConstant = 0;
 			return 0;
+		}
 	}
+	isConstant = 1;
 	return 1;
 }
 

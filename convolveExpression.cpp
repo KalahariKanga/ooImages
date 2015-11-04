@@ -42,7 +42,7 @@ Variable convolveExpression::evaluate()
 				v = p.v();
 				int kr, kg, kb;
 				kr = kg = kb = 0;
-				Variable v = arguments.back()->evaluate();
+				Variable v = arguments.back()->getResult();
 				Kernel* k = v.get<Kernel>();
 				int size = k->getSize();
 				for (int kx = 0; kx < size; kx++)

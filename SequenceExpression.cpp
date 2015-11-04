@@ -30,6 +30,6 @@ Expression* SequenceExpression::acquire(std::vector<Expression*>* tokens)
 Variable SequenceExpression::evaluate()
 {
 	for (int c = 0; c < noArguments; c++)
-		arguments[c]->evaluate();
+		arguments[c]->getResult();
 	return Variable(Variable::Type::Void);
 }
