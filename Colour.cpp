@@ -1,7 +1,10 @@
 #include "Colour.h"
 
 
-Colour::Colour(void)
+Colour::Colour(void) : Colour(0,0,0,255)
+{
+}
+Colour::Colour(int R, int G, int B, int A) : R(R), G(G), B(B), A(A)
 {
 	setProperty("r", [this](){return r(); });
 	setProperty("g", [this](){return g(); });
@@ -10,13 +13,6 @@ Colour::Colour(void)
 	setProperty("s", [this](){return s(); });
 	setProperty("v", [this](){return v(); });
 }
-Colour::Colour(int r, int g, int b, int a)
-{
-	col.r = r;
-	col.g = g;
-	col.b = b;
-	col.a = a;
-}
 
 Colour::~Colour(void)
 {
@@ -24,33 +20,33 @@ Colour::~Colour(void)
 
 int Colour::r()
 {
-	return col.r;
+	return R;
 }
 int Colour::g()
 {
-	return col.g;
+	return G;
 }
 int Colour::b()
 {
-	return col.b;
+	return B;
 }
 int Colour::a()
 {
-	return col.a;
+	return A;
 }
 int Colour::h()
 {
 	float min, max, delta, h;
-	min = std::min(col.r, std::min(col.g, col.b));
-	max = std::max(col.r, std::max(col.g, col.b));
+	min = std::min(R, std::min(G, B));
+	max = std::max(R, std::max(G, B));
 	delta = max - min;
 
-	if (col.r == max)
-		h = (col.g - col.b) / delta;
-	else if (col.g == max)
-		h = 2 + (col.b - col.r) / delta;
+	if (R == max)
+		h = (G - B) / delta;
+	else if (G == max)
+		h = 2 + (B - R) / delta;
 	else
-		h = 4 + (col.r - col.g) / delta;
+		h = 4 + (R - G) / delta;
 	h *= ((float)256 / 6);
 	if (h < 0)
 		h += 256;
@@ -59,8 +55,8 @@ int Colour::h()
 int Colour::s()
 {
 	float min, max, delta;
-	min = std::min(col.r, std::min(col.g, col.b));
-	max = std::max(col.r, std::max(col.g, col.b));
+	min = std::min(R, std::min(G, B));
+	max = std::max(R, std::max(G, B));
 	delta = max - min;
 	if (max != 0)
 		return 255*(delta / max);
@@ -69,29 +65,24 @@ int Colour::s()
 }
 int Colour::v()
 {
-	return std::max(col.r, std::max(col.g, col.b));
-}
-
-sf::Color Colour::getCol()
-{
-	return col;
+	return std::max(R, std::max(G, B));
 }
 
 void Colour::r(int r)
 {
-	col.r = r;
+	R = r;
 }
 void Colour::g(int g)
 {
-	col.g = g;
+	G = g;
 }
 void Colour::b(int b)
 {
-	col.b = b;
+	B = b;
 }
 void Colour::a(int a)
 {
-	col.a = a;
+	A = a;
 }
 void Colour::h(int h)
 {
@@ -127,9 +118,9 @@ void Colour::hsv(int H, int S, int V)
 	case 5: r = v, g = p, b = q; break;
 	}
 
-	col.r = r * 255;
-	col.g = g * 255;
-	col.b = b * 255;
+	R = r * 255;
+	G = g * 255;
+	B = b * 255;
 }
 
 Colour Colour::interpolate(Colour from, Colour to, float amount)

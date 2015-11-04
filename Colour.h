@@ -5,13 +5,11 @@
 
 class Colour : public Resource
 {
-	sf::Color col;
-	int R, G, B, H, S, V, A;
+	int R, G, B, A;
 public:
 	int r(), g(), b(), h(), s(), v(), a();
 	void r(int), g(int), b(int), h(int), s(int), v(int), a(int);
 	void hsv(int, int, int);
-	sf::Color getCol();
 	
 	Colour(void);
 	Colour(int r, int g, int b, int a = 255);
