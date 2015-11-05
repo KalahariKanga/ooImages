@@ -12,7 +12,7 @@ TerminalExpression::~TerminalExpression()
 {
 }
 
-bool TerminalExpression::isConstant()
+bool TerminalExpression::calculateConstancy()
 {
 	try
 	{

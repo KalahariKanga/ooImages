@@ -4,6 +4,7 @@
 SequenceExpression::SequenceExpression()
 {
 	noArguments = 0;
+	optimisable = 0;
 }
 
 

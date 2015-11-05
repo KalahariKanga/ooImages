@@ -18,7 +18,7 @@ public:
 	~TerminalExpression();
 	
 	virtual void addLocalVariable(std::string name, float* ptr);
-	virtual bool isConstant();
+	virtual bool calculateConstancy();
 	Variable evaluate();
 	std::string getString();
 	virtual std::string getName();
