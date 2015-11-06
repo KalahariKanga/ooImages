@@ -15,7 +15,7 @@ Variable selectExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
 	//delete is->mask;
-	Variable v = arguments.back()->evaluate();
+	Variable v = arguments.back()->getResult();
 	if (v.type == Variable::Type::Selection)
 	{
 		is->mask = std::static_pointer_cast<AbstractMask>(v.data);

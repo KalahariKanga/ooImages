@@ -6,6 +6,7 @@ ImageModifierExpression::ImageModifierExpression()
 	ImageStore* store = ImageStore::get();
 	image = store->getImage();
 	buffer = new ImageObject(image->getWidth(), image->getHeight());
+	optimisable = 0;
 }
 
 

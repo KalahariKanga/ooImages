@@ -13,9 +13,10 @@ ifExpression::~ifExpression()
 
 Variable ifExpression::evaluate()
 {
-	if (*arguments[0]->evaluate().get<float>())
+	//TODO: reevaluate even if constant?
+	if (*arguments[0]->getResult().get<float>())
 	{
-		arguments[1]->evaluate();
+		arguments[1]->getResult();
 	}
 	return Variable(Variable::Type::Void);
 }

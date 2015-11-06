@@ -121,5 +121,6 @@ Variable Parser::run(std::string input)
 		expressions.push_back(tokenToExpression(t));
 	}
 	Expression* head = expressions.front()->acquire(&expressions);
-	return head->evaluate();
+	head->calculateConstancy();
+	return head->getResult();
 }

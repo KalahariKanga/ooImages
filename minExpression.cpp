@@ -41,7 +41,7 @@ Variable minExpression::evaluate()
 				h = p.h();
 				s = p.s();
 				v = p.v();
-				Variable var = arguments.back()->evaluate();
+				Variable var = arguments.back()->getResult();
 				if (*var.get<float>() < min)
 					min = *var.get<float>();
 			}

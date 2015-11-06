@@ -26,7 +26,7 @@ Variable setExpression::evaluate()
 
 	if (VariableStore::get()->legalVariableName(name))
 	{
-		Variable var = arguments[1]->evaluate().duplicate();
+		Variable var = arguments[1]->getResult().duplicate();
 		VariableStore::get()->setVariable(name, var);
 	}
 	else

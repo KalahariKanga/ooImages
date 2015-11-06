@@ -39,7 +39,7 @@ Variable setPixelsExpression::evaluate()
 				h = p.h();
 				s = p.s();
 				v = p.v();
-				Variable col = arguments.back()->evaluate();
+				Variable col = arguments.back()->getResult();
 				buffer->setPixel(cx, cy, *col.get<Colour>());
 			}
 		}

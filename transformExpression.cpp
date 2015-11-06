@@ -36,8 +36,8 @@ Variable transformExpression::evaluate()
 			h = p.h();
 			s = p.s();
 			v = p.v();
-			float nx = *arguments[0]->evaluate().get<float>();
-			float ny = *arguments[1]->evaluate().get<float>();
+			float nx = *arguments[0]->getResult().get<float>();
+			float ny = *arguments[1]->getResult().get<float>();
 			buffer->setPixel(cx, cy, image->getPixel(nx, ny));
 		}
 	commitBuffer();
