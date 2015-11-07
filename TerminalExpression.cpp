@@ -20,8 +20,10 @@ bool TerminalExpression::calculateConstancy()
 	}
 	catch (std::invalid_argument)
 	{
+		isConstant = 0;
 		return 0;
 	}
+	isConstant = 1;
 	return 1;
 }
 

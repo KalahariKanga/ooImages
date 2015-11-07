@@ -6,8 +6,9 @@ class Expression
 {
 	Variable constantValue;
 	bool hasConstantValue = 0;
-	bool isConstant;
+	
 protected:
+	bool isConstant = 0;
 	bool optimisable = 1;
 public:
 	Expression();

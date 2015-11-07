@@ -31,16 +31,15 @@ Variable Expression::getResult()
 
 bool Expression::calculateConstancy()
 {
+	isConstant = 1;
 	for (auto a : arguments)
 	{
 		if (!a->calculateConstancy())
 		{
 			isConstant = 0;
-			return 0;
 		}
 	}
-	isConstant = 1;
-	return 1;
+	return isConstant;
 }
 
 void Expression::addLocalVariable(std::string name, float* ptr)
