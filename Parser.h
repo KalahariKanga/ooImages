@@ -37,6 +37,7 @@
 #include "gaussExpression.h"
 #include "BinaryOperatorExpression.h"
 #include "ArrayVariableExpression.h"
+#include "randomExpression.h"
 
 class Parser
 {

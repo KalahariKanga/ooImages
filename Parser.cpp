@@ -87,6 +87,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new combineExpression();
 	if (token == "gauss")
 		return new gaussExpression();
+	if (token == "random")
+		return new randomExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
