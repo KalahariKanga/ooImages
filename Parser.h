@@ -12,6 +12,7 @@
 #include "rectangleExpression.h"
 #include "regionExpression.h"
 #include "minExpression.h"
+#include "maxExpression.h"
 #include "kernelExpression.h"
 #include "convolveExpression.h"
 #include "maskExpression.h"

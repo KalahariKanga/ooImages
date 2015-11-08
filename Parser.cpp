@@ -43,6 +43,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new regionExpression();
 	if (token == "min")
 		return new minExpression();
+	if (token == "max")
+		return new maxExpression();
 	if (token == "kernel")
 		return new kernelExpression();
 	if (token == "convolve")
