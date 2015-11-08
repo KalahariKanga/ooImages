@@ -29,3 +29,8 @@ std::string ArrayVariableExpression::getName()
 	std::string index = std::to_string((int)round(*arguments[0]->getResult().get<float>()));
 	return index + trimmed;
 }
+
+std::string ArrayVariableExpression::getString()
+{
+	return string;
+}

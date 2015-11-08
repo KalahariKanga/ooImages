@@ -20,7 +20,7 @@ public:
 	virtual void addLocalVariable(std::string name, float* ptr);
 	virtual bool calculateConstancy();
 	Variable evaluate();
-	std::string getString();
+	virtual std::string getString();
 	virtual std::string getName();
 };
 

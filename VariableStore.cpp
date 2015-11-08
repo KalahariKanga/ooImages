@@ -34,7 +34,8 @@ Variable VariableStore::getVariable(std::string name)
 
 bool VariableStore::legalVariableName(std::string name)
 {
-	
+	if (!isalpha(name[0]))
+		return 0;
 	//TODO: check substrings for reserved words
 	return 1;
 }

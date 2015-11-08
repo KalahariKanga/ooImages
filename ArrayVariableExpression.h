@@ -10,5 +10,6 @@ public:
 	~ArrayVariableExpression();
 	virtual Variable evaluate();
 	virtual std::string getName();
+	virtual std::string getString();
 };
 
