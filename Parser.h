@@ -39,6 +39,7 @@
 #include "BinaryOperatorExpression.h"
 #include "ArrayVariableExpression.h"
 #include "randomExpression.h"
+#include "printExpression.h"
 
 class Parser
 {
