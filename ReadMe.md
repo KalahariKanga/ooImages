@@ -85,3 +85,17 @@ Construct and return the mask with value at each pixel `newValue`.
 ### gauss
 `Kernel gauss(Real size, Real sigma)`  
 Construct and return the Gaussian kernel with size `size` and sigma `sigma`.
+### min
+`Real min(Real expr)`  
+*Introduces local variables `x`, `y`, `r`, `g`, `b`, `h`, `s`, `v`*  
+Find the minimum value of `expr` in the image.
+### max
+`Real max(Real expr)`  
+*Introduces local variables `x`, `y`, `r`, `g`, `b`, `h`, `s`, `v`*  
+Find the maximum value of `expr` in the image.
+### print
+`Void print(Real value)`  
+Print `value` to the console.
+### random
+`Real random(Real a, Real b)`  
+Return a random number from the uniform distribution [`a`, `b`].
