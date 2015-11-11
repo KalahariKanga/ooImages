@@ -1,5 +1,4 @@
 #include "setExpression.h"
-#include "VariableExpression.h"
 
 setExpression::setExpression()
 {
