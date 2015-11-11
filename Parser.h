@@ -22,7 +22,6 @@
 #include "pointDirectionExpression.h"
 #include "fuzzyExpression.h"
 #include "setExpression.h"
-#include "VariableExpression.h"
 #include "SequenceExpression.h"
 #include "EndSequenceExpression.h"
 #include "ifExpression.h"
