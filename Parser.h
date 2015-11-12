@@ -39,6 +39,7 @@
 #include "ArrayVariableExpression.h"
 #include "randomExpression.h"
 #include "printExpression.h"
+#include "createImageExpression.h"
 
 class Parser
 {
