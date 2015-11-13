@@ -19,7 +19,7 @@ Variable setExpression::evaluate()
 	
 	//check if new variable name
 	//TODO: check for illegal characters
-	TerminalExpression* term = dynamic_cast<TerminalExpression*>(arguments[0]);
+	shared_ptr<TerminalExpression> term = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (term)
 	{
 		rawname = term->getName();

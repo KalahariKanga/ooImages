@@ -8,7 +8,7 @@ Parser::Parser()
 
 Parser::~Parser()
 {
-	delete head;
+	//delete head;
 }
 
 std::vector<std::string> Parser::tokenizeString(std::string string)
@@ -123,12 +123,16 @@ Variable Parser::run(std::string input)
 {
 	delete head;
 	auto tokens = tokenizeString(input);
-	std::vector<Expression*> expressions;
+	std::vector<std::shared_ptr<Expression>> expressions;
+	std::vector<std::shared_ptr<Expression>> expressionStack;
 	for (auto t : tokens)
 	{
-		expressions.push_back(tokenToExpression(t));
+		shared_ptr<Expression> exp;
+		exp.reset(tokenToExpression(t));
+		expressions.push_back(exp);
 	}
-	Expression* head = expressions.front()->acquire(&expressions);
+	expressionStack = expressions;
+	Expression* head = expressions.front()->acquire(&expressionStack);
 	head->calculateConstancy();
 	return head->getResult();
 }

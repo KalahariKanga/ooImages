@@ -12,12 +12,12 @@ SequenceExpression::~SequenceExpression()
 {
 }
 
-Expression* SequenceExpression::acquire(std::vector<Expression*>* tokens)
+Expression* SequenceExpression::acquire(std::vector<shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());
 
-	while (!dynamic_cast<EndSequenceExpression*>(tokens->front()))
+	while (!dynamic_pointer_cast<EndSequenceExpression>(tokens->front()))
 	{
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);

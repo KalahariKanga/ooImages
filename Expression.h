@@ -14,11 +14,11 @@ public:
 	Expression();
 	~Expression();
 
-	virtual Expression* acquire(std::vector<Expression*>* tokens);
+	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
 	Variable getResult();
 	virtual Variable evaluate() = 0;
 	virtual void addLocalVariable(std::string name, float* ptr);
-	std::vector<Expression*> arguments;
+	std::vector<shared_ptr<Expression>> arguments;
 	virtual bool calculateConstancy();
 	int noArguments;
 };

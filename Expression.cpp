@@ -8,10 +8,10 @@ Expression::Expression()
 
 Expression::~Expression()
 {
-	for (auto a : arguments)
+	/*for (auto a : arguments)
 	{
 		delete a;
-	}
+	}*/
 }
 
 Variable Expression::getResult()
@@ -48,7 +48,7 @@ void Expression::addLocalVariable(std::string name, float* ptr)
 		a->addLocalVariable(name, ptr);
 }
 
-Expression* Expression::acquire(std::vector<Expression*>* tokens)
+Expression* Expression::acquire(std::vector<shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());

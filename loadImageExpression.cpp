@@ -15,7 +15,7 @@ Variable loadImageExpression::evaluate()
 {
 	Variable var(Variable::Type::Image);
 	var.set(new ImageObject());
-	TerminalExpression* t = dynamic_cast<TerminalExpression*>(arguments[0]);
+	std::shared_ptr<TerminalExpression> t = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (t)
 	{
 		ImageObject* im = var.get<ImageObject>();
