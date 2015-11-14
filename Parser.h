@@ -40,6 +40,7 @@
 #include "randomExpression.h"
 #include "printExpression.h"
 #include "createImageExpression.h"
+#include "functionExpression.h"
 
 class Parser
 {

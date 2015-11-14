@@ -4,12 +4,13 @@
 class Function :
 	public Resource
 {
-	Expression* head;
+	shared_ptr<Expression> head;
 	std::vector<std::string> argumentNames;
 	int noArguments;
 public:
-	Function();
+	Function(shared_ptr<Expression> head, std::vector<std::string> argumentNames);
 	~Function();
 	Variable call(std::vector<Variable> arguments);
+	virtual void about();
 };
 

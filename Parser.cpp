@@ -95,6 +95,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new printExpression();
 	if (token == "createImage")
 		return new createImageExpression();
+	if (token == "function")
+		return new functionExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
@@ -115,7 +117,7 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::GREATER);
 	if (token.back() == '_')
 		return new ArrayVariableExpression(token);
-
+	
 	return new TerminalExpression(token);
 }
 

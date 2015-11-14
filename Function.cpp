@@ -1,8 +1,9 @@
 #include "Function.h"
 
 
-Function::Function()
+Function::Function(shared_ptr<Expression> head, std::vector<std::string> argumentNames) : head(head), argumentNames(argumentNames)
 {
+	noArguments = argumentNames.size();
 }
 
 
@@ -17,4 +18,9 @@ Variable Function::call(std::vector<Variable> arguments)
 		//head->addLocalVariable(argumentNames[c], arguments[c]);
 	}
 	return head->evaluate();
+}
+
+void Function::about()
+{
+	std::cout << "About Function\n";
 }
