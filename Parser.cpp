@@ -117,6 +117,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::GREATER);
 	if (token.back() == '_')
 		return new ArrayVariableExpression(token);
+	if (token.back() == ':')
+		return new FunctionCallExpression(token);
 	
 	return new TerminalExpression(token);
 }

@@ -6,6 +6,7 @@
 #include "Mask.h"
 #include "Kernel.h"
 
+
 class Variable
 {
 public:
@@ -15,7 +16,7 @@ public:
 	};
 	
 	Variable(Type t = Type::Void);
-	Variable(Variable& other);
+	Variable(const Variable& other);
 	~Variable();
 	
 	Type type;

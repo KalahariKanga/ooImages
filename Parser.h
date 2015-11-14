@@ -41,6 +41,7 @@
 #include "printExpression.h"
 #include "createImageExpression.h"
 #include "functionExpression.h"
+#include "FunctionCallExpression.h"
 
 class Parser
 {

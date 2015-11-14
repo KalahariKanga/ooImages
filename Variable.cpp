@@ -1,11 +1,12 @@
 #include "Variable.h"
+#include "Function.h"
 
 Variable::Variable(Variable::Type t) : type(t)
 {
 
 }
 
-Variable::Variable(Variable& other)
+Variable::Variable(const Variable& other)
 {
 	type = other.type;
 	data = other.data;
@@ -75,6 +76,13 @@ Variable Variable::duplicate()
 			for (int cy = 0; cy < s->getHeight(); cy++)
 				s->setPixel(cx, cy, thisImage->getPixel(cx, cy));
 		v.set<ImageObject>(s);
+		return v;
+	}
+	case Type::Function:
+	{
+		Variable v(Type::Function);
+		Function* fn = new Function(get<Function>()->head, get<Function>()->argumentNames);
+		v.set<Function>(fn);
 		return v;
 	}
 	default:
