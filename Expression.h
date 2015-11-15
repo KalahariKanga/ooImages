@@ -17,7 +17,8 @@ public:
 	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
 	Variable getResult();
 	virtual Variable evaluate() = 0;
-	virtual void addLocalVariable(std::string name, float* ptr);
+	virtual void setLocalVariable(std::string name, Variable var);
+	virtual void setLocalVariable(std::string name, float val);
 	std::vector<shared_ptr<Expression>> arguments;
 	virtual bool calculateConstancy();
 	int noArguments;

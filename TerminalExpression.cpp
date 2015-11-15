@@ -27,9 +27,17 @@ bool TerminalExpression::calculateConstancy()
 	return 1;
 }
 
-void TerminalExpression::addLocalVariable(std::string name, float* ptr)
+void TerminalExpression::setLocalVariable(std::string name, Variable var)
 {
-	localVariables[name] = ptr;
+	localVariables[name] = var;
+}
+
+void TerminalExpression::setLocalVariable(std::string name, float val)
+{
+	//optimisable?
+	Variable var(Variable::Type::Real);
+	var.set<float>(new float(val));
+	localVariables[name] = var;
 }
 
 Variable TerminalExpression::evaluate()
@@ -41,9 +49,10 @@ Variable TerminalExpression::evaluate()
 	//local variable
 	if (localVariables.find(string) != localVariables.end())
 	{
-		Variable var(Variable::Type::Real);
-		var.set<float>(localVariables[string]);
-		return var;
+		if (localVariables.find(string) != localVariables.end())
+			return localVariables[string];
+		else
+			throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 	}
 	
 	//constant

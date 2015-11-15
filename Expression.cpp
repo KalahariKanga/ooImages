@@ -42,10 +42,16 @@ bool Expression::calculateConstancy()
 	return isConstant;
 }
 
-void Expression::addLocalVariable(std::string name, float* ptr)
+void Expression::setLocalVariable(std::string name, Variable var)
 {
 	for (auto a : arguments)
-		a->addLocalVariable(name, ptr);
+		a->setLocalVariable(name, var);
+}
+
+void Expression::setLocalVariable(std::string name, float val)
+{
+	for (auto a : arguments)
+		a->setLocalVariable(name, val);
 }
 
 Expression* Expression::acquire(std::vector<shared_ptr<Expression>>* tokens)

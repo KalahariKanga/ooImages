@@ -20,14 +20,14 @@ Variable combineExpression::evaluate()
 	AbstractMask* m2 = mv2.get<Mask>();
 	Mask* mask = new Mask(std::min(m1->width, m2->width), std::min(m1->height, m2->height));
 	float v1, v2;
-	addLocalVariable("v1", &v1);
-	addLocalVariable("v2", &v2);
 
 	for (int cx = 0; cx < mask->width; cx++)
 		for (int cy = 0; cy < mask->height; cy++)
 		{
 			v1 = m1->getValue(cx, cy);
 			v2 = m2->getValue(cx, cy);
+			setLocalVariable("v1", v1);
+			setLocalVariable("v2", v2);
 			mask->setValue(cx, cy, *arguments[2]->getResult().get<float>());
 		}
 	result.set<Mask>(mask);
