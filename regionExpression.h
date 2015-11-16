@@ -4,6 +4,7 @@
 class regionExpression :
 	public Expression
 {
+	float x, y, r, g, b, h, s, v;
 public:
 	regionExpression();
 	~regionExpression();

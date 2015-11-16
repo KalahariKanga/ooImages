@@ -16,6 +16,15 @@ Variable minExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();	
 
+	setLocalVariable("r", &r);
+	setLocalVariable("g", &g);
+	setLocalVariable("b", &b);
+	setLocalVariable("h", &h);
+	setLocalVariable("s", &s);
+	setLocalVariable("v", &v);
+	setLocalVariable("x", &x);
+	setLocalVariable("y", &y);
+
 	float min = std::numeric_limits<float>::max();
 
 	for (int cx = 0; cx < image->getWidth(); cx++)
@@ -24,14 +33,14 @@ Variable minExpression::evaluate()
 			if (store->mask->getValue(cx, cy) > 0)
 			{
 				Colour p = image->getPixel(cx, cy);
-				setLocalVariable("x", cx);
-				setLocalVariable("y", cy);
-				setLocalVariable("h", p.h());
-				setLocalVariable("s", p.s());
-				setLocalVariable("v", p.v());
-				setLocalVariable("r", p.r());
-				setLocalVariable("g", p.g());
-				setLocalVariable("b", p.b());
+				x = cx;
+				y = cy;
+				r = p.r();
+				g = p.g();
+				b = p.b();
+				h = p.h();
+				s = p.s();
+				v = p.v();
 				Variable var = arguments.back()->getResult();
 				if (*var.get<float>() < min)
 					min = *var.get<float>();

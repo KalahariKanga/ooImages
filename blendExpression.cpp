@@ -18,27 +18,42 @@ Variable blendExpression::evaluate()
 	Variable topVar = arguments[0]->getResult();
 	ImageObject* top = topVar.get<ImageObject>();
 
+	setLocalVariable("x", &x);
+	setLocalVariable("y", &y);
+	setLocalVariable("r1", &r1);
+	setLocalVariable("g1", &g1);
+	setLocalVariable("b1", &b1);
+	setLocalVariable("h1", &h1);
+	setLocalVariable("s1", &s1);
+	setLocalVariable("v1", &v1);
+	setLocalVariable("r2", &r2);
+	setLocalVariable("g2", &g2);
+	setLocalVariable("b2", &b2);
+	setLocalVariable("h2", &h2);
+	setLocalVariable("s2", &s2);
+	setLocalVariable("v2", &v2);
+
 	for (int cx = 0; cx < std::min(top->getWidth(),bottom->getWidth()); cx++)
 		for (int cy = 0; cy < std::min(top->getHeight(), bottom->getHeight()); cy++)
 		{
-			setLocalVariable("x", cx);
-			setLocalVariable("y", cy);
+			x = cx;
+			y = cy;
 			if (store->mask->getValue(cx, cy) > 0)
 			{
 				Colour b = bottom->getPixel(cx, cy);
-				setLocalVariable("r1", b.r() );
-				setLocalVariable("g1", b.g() );
-				setLocalVariable("b1", b.b() );
-				setLocalVariable("h1", b.h() );
-				setLocalVariable("s1", b.s() );
-				setLocalVariable("v1", b.v() );
+				 r1 = b.r();
+				 g1 = b.g();
+				 b1 = b.b();
+				 h1 = b.h();
+				 s1 = b.s();
+				 v1 = b.v();
 				Colour t = top->getPixel(cx, cy);
-				setLocalVariable("r2", t.r());
-				setLocalVariable("g2", t.g());
-				setLocalVariable("b2", t.b());
-				setLocalVariable("h2", t.h());
-				setLocalVariable("s2", t.s());
-				setLocalVariable("v2", t.v());
+				 r2 = t.r();
+				 g2 = t.g();
+				 b2 = t.b();
+				 h2 = t.h();
+				 s2 = t.s();
+				 v2 = t.v();
 				Variable col = arguments[1]->getResult();
 				buffer->setPixel(cx, cy, *col.get<Colour>());
 			}

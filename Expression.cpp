@@ -48,7 +48,7 @@ void Expression::setLocalVariable(std::string name, Variable var)
 		a->setLocalVariable(name, var);
 }
 
-void Expression::setLocalVariable(std::string name, float val)
+void Expression::setLocalVariable(std::string name, float* val)
 {
 	for (auto a : arguments)
 		a->setLocalVariable(name, val);

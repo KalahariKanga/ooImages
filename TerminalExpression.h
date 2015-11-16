@@ -8,6 +8,7 @@ class TerminalExpression :
 	std::string string;
 	VariableStore* vs;
 	std::map<std::string, Variable> localVariables;
+	std::map<std::string, float*> localRealPointers;
 	enum class TerminalType
 	{
 		GLOBAL_VAR, LOCAL_VAR, REAL
@@ -18,7 +19,7 @@ public:
 	~TerminalExpression();
 	
 	virtual void setLocalVariable(std::string name, Variable ptr);
-	virtual void setLocalVariable(std::string name, float val);
+	virtual void setLocalVariable(std::string name, float* val);
 
 	virtual bool calculateConstancy();
 	Variable evaluate();

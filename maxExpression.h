@@ -4,6 +4,7 @@
 class maxExpression :
 	public Expression
 {
+	float x, y, r, g, b, h, s, v;
 public:
 	maxExpression();
 	~maxExpression();
