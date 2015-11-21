@@ -13,6 +13,7 @@ setExpression::~setExpression()
 
 Variable setExpression::evaluate()
 {
+	Variable var;
 	std::string rawname, basename;
 	//for normal variables, rawname == basename
 	//for arrays, rawname = index##basename
@@ -30,11 +31,11 @@ Variable setExpression::evaluate()
 
 	if (VariableStore::get()->legalVariableName(basename))
 	{
-		Variable var = arguments[1]->getResult().duplicate();
+		var = arguments[1]->getResult().duplicate();
 		VariableStore::get()->setVariable(rawname, var);
 	}
 	else
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 
-	return Variable(Variable::Type::Void);
+	return var;
 }
