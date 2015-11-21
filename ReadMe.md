@@ -99,3 +99,9 @@ Print `value` to the console.
 ### random
 `Real random(Real a, Real b)`  
 Return a random number from the uniform distribution [`a`, `b`].
+### createImage  
+`Image createImage(Real w, Real h)`  
+Construct and return a blank image with size `w` by `h`.
+### function
+`Function function(String arg1, String arg2, ..., Sequence body)`  
+Construct the function with arguments named `arg1`, `arg2`, ..., and with body `body`.  
