@@ -30,7 +30,14 @@ Expression* SequenceExpression::acquire(std::vector<shared_ptr<Expression>>* tok
 
 Variable SequenceExpression::evaluate()
 {
-	for (int c = 0; c < noArguments; c++)
-		arguments[c]->getResult();
+	try
+	{
+		for (int c = 0; c < noArguments; c++)
+			arguments[c]->getResult();
+	}
+	catch (Variable v)
+	{
+		return v;
+	}
 	return Variable(Variable::Type::Void);
 }
