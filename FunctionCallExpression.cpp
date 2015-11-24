@@ -6,6 +6,7 @@ FunctionCallExpression::FunctionCallExpression(std::string string) : name(string
 {
 	noArguments = 1;
 	name.erase(name.end() - 1);
+	vs = VariableStore::get();
 }
 
 
@@ -16,8 +17,17 @@ FunctionCallExpression::~FunctionCallExpression()
 Variable FunctionCallExpression::evaluate()
 {
 	std::vector<Variable> fnArguments;
-	Variable v = VariableStore::get()->getVariable(name);
+	Variable v;
+	if (vs->variableExists(name))
+		 v = vs->getVariable(name);
+
+	if (localVariables.find(name) != localVariables.end())
+	{
+		v = localVariables[name];
+	}
+
 	Function *fn = v.get<Function>();
+
 	//check arg[0] is [
 	for (int c = 0; c < fn->noArguments; c++)
 	{

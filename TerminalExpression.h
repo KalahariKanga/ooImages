@@ -5,14 +5,11 @@
 class TerminalExpression :
 	public Expression
 {
+protected:
 	std::string string;
 	VariableStore* vs;
 	std::map<std::string, Variable> localVariables;
 	std::map<std::string, float*> localRealPointers;
-	enum class TerminalType
-	{
-		GLOBAL_VAR, LOCAL_VAR, REAL
-	};
 public:
 	TerminalExpression() = default;
 	TerminalExpression(std::string string);

@@ -1,7 +1,7 @@
 #pragma once
-#include "Expression.h"
+#include "TerminalExpression.h"
 class FunctionCallExpression :
-	public Expression
+	public TerminalExpression
 {
 	std::string name;
 public:
