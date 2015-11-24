@@ -25,6 +25,9 @@ Expression* SequenceExpression::acquire(std::vector<shared_ptr<Expression>>* tok
 		++noArguments;
 		arguments.back()->acquire(tokens);
 	}
+	//the ] is sort of an argument - clear it from the token list anyway
+	arguments.push_back(tokens->front());
+	arguments.back()->acquire(tokens);
 	return this;
 }
 
