@@ -1,6 +1,7 @@
 #include "FunctionCallExpression.h"
 #include "Function.h"
 #include "VariableStore.h"
+#include "SequenceExpression.h"
 
 FunctionCallExpression::FunctionCallExpression(std::string string) : name(string)
 {
@@ -29,9 +30,11 @@ Variable FunctionCallExpression::evaluate()
 	Function *fn = v.get<Function>();
 
 	//check arg[0] is [
+	if (!dynamic_pointer_cast<SequenceExpression>(arguments[0]))
+		throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);//sorta
 	for (int c = 0; c < fn->noArguments; c++)
 	{
-		fnArguments.push_back(arguments[0]->arguments[c]->getResult().duplicate()); //not sure
+		fnArguments.push_back(arguments[0]->arguments[c]->getResult().duplicate());
 		//=> call by value...:/
 	}
 	return fn->call(fnArguments).duplicate();
