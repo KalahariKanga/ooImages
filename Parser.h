@@ -43,6 +43,7 @@
 #include "functionExpression.h"
 #include "FunctionCallExpression.h"
 #include "returnExpression.h"
+#include "saveImageExpression.h"
 
 class Parser
 {

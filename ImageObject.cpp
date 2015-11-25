@@ -1,5 +1,5 @@
 #include "ImageObject.h"
-
+#include "Exception.h"
 
 ImageObject::ImageObject(void)
 {
@@ -122,6 +122,14 @@ void ImageObject::loadImage(std::string fname)
 	const sf::Uint8* pixel = image.getPixelsPtr();
 	for (int c = 0; c < width * height * 4; c++)
 		data[c] = pixel[c];
+}
+
+void ImageObject::saveImage(std::string fname)
+{
+	sf::Image image;
+	image.create(width, height, data);
+	if (!image.saveToFile(fname))
+		throw new Exception(Exception::ErrorType::FILE_SAVE_ERROR);
 }
 
 int ImageObject::getHeight()

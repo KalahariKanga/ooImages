@@ -99,6 +99,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new functionExpression();
 	if (token == "return")
 		return new returnExpression();
+	if (token == "saveImage")
+		return new saveImageExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")

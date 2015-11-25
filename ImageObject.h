@@ -18,6 +18,7 @@ public:
 	~ImageObject(void);
 
 	void loadImage(std::string fname);
+	void saveImage(std::string fname);
 	int getHeight();
 	int getWidth();
 	sf::Uint8* getData();

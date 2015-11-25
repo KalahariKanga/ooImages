@@ -30,6 +30,8 @@ std::string Exception::getErrorString()
 		return std::string("Parser error: unknown property\n");
 	case ErrorType::UNKNOWN_VARIABLE:
 		return std::string("Parser error: unknown variable\n");
+	case ErrorType::FILE_SAVE_ERROR:
+		return std::string("File Save error\n");
 	default:
 		return std::string("Parser error: unknown\n");
 	}
