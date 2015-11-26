@@ -22,7 +22,7 @@ Set all pixels in the image to `c`.
 ### transform
 `Void transform(Real xPos, Real yPos)`  
 *Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
-Set each pixel to the pixel at position (`xPos`, `yPos`).
+Set each pixel to the colour at position (`xPos`, `yPos`).  
 ### select
 `Void select(Selection s)`  
 Set the active selection to `s`.
@@ -39,7 +39,7 @@ Construct and return the 3x3 convolution kernel with elements `k1` ... `k9`
 ### convolve
 `Void convolve(Kernel k)`  
 *Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
-Convolve the image using the kernel `k`.
+Convolve the image using the convolution kernel `k`.
 ### mask
 `Void mask(Mask m)`  
 Set the active mask the `m`.
@@ -48,13 +48,13 @@ Set the active mask the `m`.
 Construct and return a mask with value 1 everywhere.
 ### getPixel
 `Colour getPixel(Real xPos, Real yPos)`  
-Returns the pixel at position (`xPos`,`yPos`).  
+Returns the colour at position (`xPos`,`yPos`).  
 ### fuzzy
 `Selection fuzzy(Real xPos, Real yPos, Real threshold)`  
-Construct and return the selection consisting of the contiguous region based at (`xPos`,`yPos`), with maximum colour distance `threshold`.
+Construct and return the selection consisting of the contiguous region based at (`xPos`,`yPos`), with maximum colour difference `threshold` (using Euclidean distance).
 ### set
-`Void set(String name, Variable data)`  
-Create the variable `name` with value `data`, or update it if it already exists.
+`Variable set(String name, Variable data)`  
+Create the variable `name` with value `data`, or update it if it already exists, and return it's value.  
 ### if
 `Void if(Real condition, Sequence block)`  
 If `condition` is true, evaluate `block`.
@@ -88,11 +88,11 @@ Construct and return the Gaussian kernel with size `size` and sigma `sigma`.
 ### min
 `Real min(Real expr)`  
 *Introduces local variables `x`, `y`, `r`, `g`, `b`, `h`, `s`, `v`*  
-Find the minimum value of `expr` in the image.
+Find and return the minimum value of `expr` in the image.
 ### max
 `Real max(Real expr)`  
 *Introduces local variables `x`, `y`, `r`, `g`, `b`, `h`, `s`, `v`*  
-Find the maximum value of `expr` in the image.
+Find and return the maximum value of `expr` in the image.
 ### print
 `Void print(Real value)`  
 Print `value` to the console.
@@ -105,3 +105,6 @@ Construct and return a blank image with size `w` by `h`.
 ### function
 `Function function(String arg1, String arg2, ..., Sequence body)`  
 Construct the function with arguments named `arg1`, `arg2`, ..., and with body `body`.  
+### saveImage
+`Void saveImage(String filename)`  
+Save the active image to the file `filename`. File format is inferred by the extension.  
