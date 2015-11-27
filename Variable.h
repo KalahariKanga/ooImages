@@ -10,7 +10,7 @@
 class Variable
 {
 public:
-	static enum class Type
+	enum class Type
 	{
 		Void, Real, Colour, Selection, Mask, Kernel, Image, Function
 	};
