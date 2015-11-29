@@ -22,5 +22,10 @@ Variable Function::call(std::vector<Variable> arguments)
 
 void Function::about()
 {
-	std::cout << "About Function\n";
+	std::cout << "About\n";
+	std::cout << "Function\n";
+	std::cout << "Arguments: ";
+	for (auto s : argumentNames)
+		std::cout << s << " ";
+	std::cout << "\n";
 }

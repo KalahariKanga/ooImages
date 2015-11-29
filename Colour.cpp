@@ -153,6 +153,7 @@ float Colour::distance(Colour from, Colour to)
 void Colour::about()
 {
 	std::cout << "About\n";
+	std::cout << "Colour\n";
 	std::cout << "R: " << r() << " G: " << g() << " B: " << b() << "\n";
 
 }

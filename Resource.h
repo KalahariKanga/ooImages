@@ -8,7 +8,7 @@ class Resource
 	std::map<std::string, std::function<float(void)>> properties;
 public:
 	Resource();
-	~Resource();
+	virtual ~Resource();
 	virtual void about() = 0;
 	void setProperty(std::string name, std::function<float(void)>);
 	float getProperty(std::string name);

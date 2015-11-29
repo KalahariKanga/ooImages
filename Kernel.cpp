@@ -33,6 +33,7 @@ int Kernel::getSize()
 void Kernel::about()
 {
 	std::cout << "About\n";
+	std::cout << "Kernel\n";
 	std::cout << "Size: " << getSize() << "\n";
 	std::cout << "Sample: ";
 	for (int cy = 0; cy < std::min(10, size); cy++)
@@ -41,4 +42,5 @@ void Kernel::about()
 		for (int cx = 0; cx < std::min(size, 10); cx++)
 			std::cout << get(cx, cy) << " ";
 	}
+	std::cout << "\n";
 }

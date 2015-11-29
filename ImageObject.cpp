@@ -150,5 +150,6 @@ sf::Uint8* ImageObject::getData()
 void ImageObject::about()
 {
 	std::cout << "About\n";
+	std::cout << "Image\n";
 	std::cout << "Width: " << width << " Height: " << height << "\n";
 }
