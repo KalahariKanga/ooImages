@@ -140,7 +140,11 @@ Variable Parser::run(std::string input)
 		expressions.push_back(exp);
 	}
 	expressionStack = expressions;
-	Expression* head = expressions.front()->acquire(&expressionStack);
-	head->calculateConstancy();
-	return head->getResult();
+	if (!expressions.empty())
+	{
+		Expression* head = expressions.front()->acquire(&expressionStack);
+		head->calculateConstancy();
+		return head->getResult();
+	}
+	return Variable(Variable::Type::Void);
 }

@@ -4,14 +4,6 @@
 transformExpression::transformExpression()
 {
 	noArguments = 2;
-	setLocalVariable("r", &r);
-	setLocalVariable("g", &g);
-	setLocalVariable("b", &b);
-	setLocalVariable("h", &h);
-	setLocalVariable("s", &s);
-	setLocalVariable("v", &v);
-	setLocalVariable("x", &x);
-	setLocalVariable("y", &y);
 }
 
 
@@ -22,6 +14,15 @@ transformExpression::~transformExpression()
 
 Variable transformExpression::evaluate()
 {
+	setLocalVariable("r", &r);
+	setLocalVariable("g", &g);
+	setLocalVariable("b", &b);
+	setLocalVariable("h", &h);
+	setLocalVariable("s", &s);
+	setLocalVariable("v", &v);
+	setLocalVariable("x", &x);
+	setLocalVariable("y", &y);
+
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
 		{
