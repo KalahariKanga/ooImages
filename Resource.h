@@ -1,5 +1,6 @@
 #pragma once
 #include "core.h"
+#include "Exception.h"
 #include <map>
 #include <functional>
 
@@ -9,6 +10,7 @@ public:
 	Resource();
 	virtual ~Resource();
 	virtual void about() = 0;
+	virtual float getProperty(std::string name) = 0;
 	//populate all resource 
 	static void loadProperties();
 };

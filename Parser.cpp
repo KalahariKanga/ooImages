@@ -131,6 +131,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new ArrayVariableExpression(token);
 	if (token.back() == ':')
 		return new FunctionCallExpression(token);
+	if (token.back() == '.')
+		return new PropertyAccessorExpression(token);
 	
 	return new TerminalExpression(token);
 }

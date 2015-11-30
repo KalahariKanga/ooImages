@@ -13,10 +13,10 @@ protected:
 public:
 	ResourcePropertyHelper() = default;
 	~ResourcePropertyHelper() = default;
-	float getProperty(std::string name)
+	virtual float getProperty(std::string name)
 	{
 		if (properties.find(name) != properties.end())
-			return properties[name](this);
+			return properties[name]((Derived*)this);
 		else
 			throw new Exception(Exception::ErrorType::UNKNOWN_PROPERTY);
 	}

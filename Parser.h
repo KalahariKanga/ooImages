@@ -45,6 +45,7 @@
 #include "returnExpression.h"
 #include "saveImageExpression.h"
 #include "aboutExpression.h"
+#include "PropertyAccessorExpression.h"
 
 class Parser
 {

@@ -1,5 +1,6 @@
 #include "Kernel.h"
 
+RESOURCE_DEFINE_STATIC_PROPERTY_MAP(Kernel)
 
 Kernel::Kernel(int size) : size(size)
 {
