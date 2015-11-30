@@ -1,9 +1,9 @@
 #pragma once
 #include "Colour.h"
 #include "core.h"
-#include "Resource.h"
+#include "ResourcePropertyHelper.h"
 
-class ImageObject : public Resource
+class ImageObject : public ResourcePropertyHelper<ImageObject>
 {
 	int width, height;
 	sf::Uint8* data = nullptr;

@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "core.h"
-#include "Resource.h"
+#include "ResourcePropertyHelper.h"
 
-class Colour : public Resource
+class Colour : public ResourcePropertyHelper<Colour>
 {
 	int R, G, B, A;
 public:

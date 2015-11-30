@@ -1,7 +1,7 @@
 #pragma once
-#include "Resource.h"
+#include "ResourcePropertyHelper.h"
 
-class Kernel : public Resource
+class Kernel : public ResourcePropertyHelper<Kernel>
 {
 	int size;
 	float *data;

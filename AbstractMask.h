@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "ImageObject.h"
 #include "Colour.h"
-#include "Resource.h"
+#include "ResourcePropertyHelper.h"
 
-class AbstractMask : public Resource
+class AbstractMask : public ResourcePropertyHelper<AbstractMask>
 {
 public:
 	AbstractMask();

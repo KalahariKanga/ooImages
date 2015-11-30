@@ -1,17 +1,12 @@
 #include "Colour.h"
 
+RESOURCE_DEFINE_STATIC_PROPERTY_MAP(Colour)
 
 Colour::Colour(void) : Colour(0,0,0,255)
 {
 }
 Colour::Colour(int R, int G, int B, int A) : R(R), G(G), B(B), A(A)
 {
-	setProperty("r", [this](){return r(); });
-	setProperty("g", [this](){return g(); });
-	setProperty("b", [this](){return b(); });
-	setProperty("h", [this](){return h(); });
-	setProperty("s", [this](){return s(); });
-	setProperty("v", [this](){return v(); });
 }
 
 Colour::~Colour(void)

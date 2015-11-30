@@ -1,6 +1,9 @@
 #include "ImageObject.h"
 #include "Exception.h"
 
+RESOURCE_DEFINE_STATIC_PROPERTY_MAP(ImageObject)
+
+
 ImageObject::ImageObject(void)
 {
 	width = height = -1;
@@ -10,8 +13,8 @@ ImageObject::ImageObject(void)
 ImageObject::ImageObject(int width, int height) : width(width), height(height)
 {
 	data = new sf::Uint8[width * height * 4];
-	setProperty("width", [this](){return getWidth(); });
-	setProperty("height", [this](){return getHeight(); });
+	//setProperty("width", [this](){return getWidth(); });
+	//setProperty("height", [this](){return getHeight(); });
 }
 
 ImageObject::~ImageObject(void)

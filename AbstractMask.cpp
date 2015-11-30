@@ -1,5 +1,6 @@
 #include "AbstractMask.h"
 
+RESOURCE_DEFINE_STATIC_PROPERTY_MAP(AbstractMask)
 
 AbstractMask::AbstractMask()
 {

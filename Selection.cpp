@@ -30,8 +30,8 @@ Selection::Selection(Mask& mask, float boundary = 0)
 			else
 				setValue(cx, cy, 0);
 		}
-	setProperty("width", [this](){return width; });
-	setProperty("height", [this](){return height; });
+	//setProperty("width", [this](){return width; });
+	//setProperty("height", [this](){return height; });
 }
 
 Selection::~Selection()

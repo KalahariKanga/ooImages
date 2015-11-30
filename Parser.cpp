@@ -1,8 +1,14 @@
 #include "Parser.h"
-
+#include "Colour.h"
 
 Parser::Parser()
 {
+	Colour::setProperty("r", [](Colour* c){return c->r(); });
+	Colour::setProperty("g", [](Colour* c){return c->g(); });
+	Colour::setProperty("b", [](Colour* c){return c->b(); });
+	Colour::setProperty("h", [](Colour* c){return c->h(); });
+	Colour::setProperty("s", [](Colour* c){return c->s(); });
+	Colour::setProperty("v", [](Colour* c){return c->v(); });
 }
 
 

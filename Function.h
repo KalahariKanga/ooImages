@@ -1,8 +1,8 @@
 #pragma once
-#include "Resource.h"
+#include "ResourcePropertyHelper.h"
 #include "Expression.h"
 class Function :
-	public Resource
+	public ResourcePropertyHelper<Function>
 {
 	
 	
