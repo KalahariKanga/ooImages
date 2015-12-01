@@ -3,6 +3,7 @@
 
 cropExpression::cropExpression()
 {
+	noArguments = 0;
 }
 
 
