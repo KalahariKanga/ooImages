@@ -32,8 +32,10 @@ Variable PropertyAccessorExpression::evaluate()
 	else
 		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 
-	//data.get also in about. could be a sign...?
-	auto resource = (Resource*)(v.data.get());
+	
+	auto resource = v.getResource();
+	if (!resource)
+		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	Variable var(Variable::Type::Real);
 	var.set<float>(new float(resource->getProperty(propName)));
 	return var;

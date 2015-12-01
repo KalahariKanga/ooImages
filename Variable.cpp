@@ -16,6 +16,14 @@ Variable::~Variable()
 {
 }
 
+Resource* Variable::getResource()
+{
+	if (type == Type::Real || type == Type::Void)
+		return nullptr;
+	else
+		return (Resource*)data.get();
+}
+
 Variable Variable::duplicate()
 {
 	switch(type)

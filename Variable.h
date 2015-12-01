@@ -25,6 +25,7 @@ public:
 	template <class T> T* get();
 	template <class T> void set(T*);
 
+	Resource* getResource();
 	Variable duplicate();
 };
 

@@ -26,8 +26,8 @@ Variable aboutExpression::evaluate()
 		return Variable(Variable::Type::Void);
 	}
 
-	//this is so horrible :(
-	auto resource = (Resource*)result.data.get();
+	//so the variable hasa resource type
+	auto resource = result.getResource();
 	resource->about();
 	return Variable(Variable::Type::Void);
 }
