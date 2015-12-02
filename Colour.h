@@ -18,6 +18,8 @@ public:
 	static Colour interpolate(Colour from, Colour to, float amount);
 	static float distance(Colour from, Colour to);
 	virtual void about();
+
+	static void loadProperties();
 };
 
 

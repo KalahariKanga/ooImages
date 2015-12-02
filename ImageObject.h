@@ -23,5 +23,7 @@ public:
 	int getWidth();
 	sf::Uint8* getData();
 	virtual void about();
+
+	static void loadProperties();
 };
 

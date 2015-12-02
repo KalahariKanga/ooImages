@@ -13,5 +13,7 @@ public:
 	void set(int x, int y, float value);
 	int getSize();
 	void about();
+
+	static void loadProperties();
 };
 

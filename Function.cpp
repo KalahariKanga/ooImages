@@ -30,3 +30,8 @@ void Function::about()
 		std::cout << s << " ";
 	std::cout << "\n";
 }
+
+void Function::loadProperties()
+{
+	setProperty("argc", [](Function* f){return f->noArguments; });
+}

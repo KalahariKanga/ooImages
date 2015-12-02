@@ -14,5 +14,7 @@ public:
 	Variable call(std::vector<Variable> arguments);
 	int noArguments;
 	virtual void about();
+
+	static void loadProperties();
 };
 

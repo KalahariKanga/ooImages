@@ -156,3 +156,9 @@ void ImageObject::about()
 	std::cout << "Image\n";
 	std::cout << "Width: " << width << " Height: " << height << "\n";
 }
+
+void ImageObject::loadProperties()
+{
+	setProperty("width", [](ImageObject* i){return i->getWidth(); });
+	setProperty("height", [](ImageObject* i){return i->getHeight(); });
+}

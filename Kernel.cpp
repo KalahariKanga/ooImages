@@ -45,3 +45,8 @@ void Kernel::about()
 	}
 	std::cout << "\n";
 }
+
+void Kernel::loadProperties()
+{
+	setProperty("size", [](Kernel* k){return k->getSize(); });
+}

@@ -14,5 +14,7 @@ public:
 	virtual float getValue(int x, int y) = 0;
 	virtual void about();
 	int width, height;
+
+	static void loadProperties();
 };
 

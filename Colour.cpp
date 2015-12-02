@@ -152,3 +152,13 @@ void Colour::about()
 	std::cout << "R: " << r() << " G: " << g() << " B: " << b() << "\n";
 
 }
+
+void Colour::loadProperties()
+{
+	setProperty("r", [](Colour* c){return c->r(); });
+	setProperty("g", [](Colour* c){return c->g(); });
+	setProperty("b", [](Colour* c){return c->b(); });
+	setProperty("h", [](Colour* c){return c->h(); });
+	setProperty("s", [](Colour* c){return c->s(); });
+	setProperty("v", [](Colour* c){return c->v(); });
+}

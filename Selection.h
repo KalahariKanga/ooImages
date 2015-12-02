@@ -21,6 +21,8 @@ public:
 
 	void dilate(Selection* kernel);
 	void erode(Selection* kernel);
+
+	static void loadProperties();
 };
 
 
