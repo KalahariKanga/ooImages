@@ -18,7 +18,7 @@ Variable selectExpression::evaluate()
 	Variable v = arguments.back()->getResult();
 	if (v.type == Variable::Type::Selection)
 	{
-		is->mask = std::static_pointer_cast<AbstractMask>(v.data);
+		is->mask = arguments[0]->getResult().getShared<AbstractMask>();
 	}
 	else if (v.type == Variable::Type::Mask)
 	{

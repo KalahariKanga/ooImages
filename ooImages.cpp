@@ -34,7 +34,7 @@ int main(int argc, _TCHAR* argv[])
 			vs->setArrayVariable("argv", c - 2, var);
 
 			if (c == 2)
-				store->image = std::static_pointer_cast<ImageObject>(var.data);
+				store->image = var.getShared<ImageObject>();;
 		}
 
 		store->mask = make_shared<Selection>(store->image->getWidth(), store->image->getHeight());

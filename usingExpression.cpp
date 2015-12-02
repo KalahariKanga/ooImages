@@ -14,7 +14,7 @@ usingExpression::~usingExpression()
 Variable usingExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
-	is->image = std::static_pointer_cast<ImageObject>(arguments[0]->getResult().data);
+	is->image = arguments[0]->getResult().getShared<ImageObject>();
 	return Variable(Variable::Type::Void);
 
 }

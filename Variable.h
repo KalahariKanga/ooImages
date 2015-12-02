@@ -9,6 +9,7 @@
 
 class Variable
 {
+	std::shared_ptr<void> data;
 public:
 	enum class Type
 	{
@@ -20,11 +21,11 @@ public:
 	~Variable();
 	
 	Type type;
-	std::shared_ptr<void> data;
+	
 
 	template <class T> T* get();
 	template <class T> void set(T*);
-
+	template <class T> shared_ptr<T> getShared();
 	Resource* getResource();
 	Variable duplicate();
 };
@@ -40,4 +41,10 @@ template <class T>
 void Variable::set(T* t)
 {
 	data = make_shared<T>(*t);
+}
+
+template <class T>
+shared_ptr<T> Variable::getShared()
+{
+	return static_pointer_cast<T>(data);
 }
