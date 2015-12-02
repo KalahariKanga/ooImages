@@ -8,10 +8,6 @@ Expression::Expression()
 
 Expression::~Expression()
 {
-	/*for (auto a : arguments)
-	{
-		delete a;
-	}*/
 }
 
 Variable Expression::getResult()

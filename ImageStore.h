@@ -13,7 +13,6 @@ public:
 	std::shared_ptr<AbstractMask> mask;
 	ImageObject* getImage();
 	void loadImage(std::string fname);
-	void saveImage(std::string fname);
 	void initialize(std::string fname);
 	static ImageStore* get();
 };

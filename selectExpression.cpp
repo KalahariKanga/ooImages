@@ -14,7 +14,7 @@ selectExpression::~selectExpression()
 Variable selectExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
-	//delete is->mask;
+
 	Variable v = arguments.back()->getResult();
 	if (v.type == Variable::Type::Selection)
 	{
