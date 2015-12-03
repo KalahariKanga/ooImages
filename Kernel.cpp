@@ -5,7 +5,6 @@ RESOURCE_DEFINE_STATIC_PROPERTY_MAP(Kernel)
 Kernel::Kernel(int size) : size(size)
 {
 	data = new float[size*size];
-	//setProperty("size", [size](){return size; });
 }
 
 
