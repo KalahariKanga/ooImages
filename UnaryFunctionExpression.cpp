@@ -20,6 +20,21 @@ Variable UnaryFunctionExpression::evaluate()
 	case FunctionType::SIN:
 		y = sin(x);
 		break;
+	case FunctionType::COS:
+		y = cos(x);
+		break;
+	case FunctionType::TAN:
+		y = tan(x);
+		break;
+	case FunctionType::LN:
+		y = log(x);
+		break;
+	case FunctionType::LOG:
+		y = log10(x);
+		break;
+	case FunctionType::EXP:
+		y = exp(x);
+		break;
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}
