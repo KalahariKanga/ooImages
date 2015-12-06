@@ -5,8 +5,12 @@ RESOURCE_DEFINE_STATIC_PROPERTY_MAP(Colour)
 Colour::Colour(void) : Colour(0,0,0,255)
 {
 }
-Colour::Colour(int R, int G, int B, int A) : R(R), G(G), B(B), A(A)
+Colour::Colour(int r, int g, int b, int a)
 {
+	R = clamp<int>(r, 0, 255);
+	G = clamp<int>(g, 0, 255);
+	B = clamp<int>(b, 0, 255);
+	A = clamp<int>(a, 0, 255);
 }
 
 Colour::~Colour(void)
@@ -65,30 +69,33 @@ int Colour::v()
 
 void Colour::r(int r)
 {
-	R = r;
+	R = clamp<int>(r, 0, 255);
 }
 void Colour::g(int g)
 {
-	G = g;
+	G = clamp<int>(g, 0, 255);
 }
 void Colour::b(int b)
 {
-	B = b;
+	B = clamp<int>(b, 0, 255);
 }
 void Colour::a(int a)
 {
-	A = a;
+	A = clamp<int>(a, 0, 255);
 }
 void Colour::h(int h)
 {
+	h = h % 255;
 	hsv(h, s(), v());
 }
 void Colour::s(int s)
 {
+	s = clamp<int>(s, 0, 255);
 	hsv(h(), s, v());
 }
 void Colour::v(int v)
 {
+	v = clamp<int>(v, 0, 255);
 	hsv(h(), s(), v);
 }
 void Colour::hsv(int H, int S, int V)
