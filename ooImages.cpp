@@ -1,6 +1,7 @@
 // ooImages.cpp : Defines the entry point for the console application.
 //
 #include <sstream>
+#include <thread>
 #include "stdafx.h"
 #include "ImageObject.h"
 #include "ImageStore.h"
@@ -61,9 +62,28 @@ int main(int argc, _TCHAR* argv[])
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Image image;
+	sf::Event ev; 
 	window.create(sf::VideoMode(800, 800 * ((float)store->image->getHeight() / store->image->getWidth())), "Image");
 	
-	std::string input;
+	std::thread parserThread([&p]()
+	{
+		std::string input;
+		while (1)
+		{
+			std::cout << ">";
+			std::getline(std::cin, input);
+			try
+			{
+				p.run(input);
+			}
+			catch (Exception* e)
+			{
+				std::cout << e->getErrorString();
+				delete e;
+			}
+		}
+	});
+	
 	while (1)
 	{
 		image.create(store->image->getWidth(), store->image->getHeight(), store->image->getData());		
@@ -74,17 +94,9 @@ int main(int argc, _TCHAR* argv[])
 		window.clear();
 		window.draw(sprite);
 		window.display();
-		std::cout << ">";
-		std::getline(std::cin,input);
-		try
-		{
-			p.run(input);
-		}
-		catch (Exception* e)
-		{
-			std::cout << e->getErrorString();
-			delete e;
-		}
+		
+		while (window.pollEvent(ev)){}
+		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	}
 
 	return 0;
