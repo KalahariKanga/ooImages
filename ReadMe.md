@@ -117,6 +117,6 @@ Return the value of `sin(x)`, where `x` is in radians.
 ### cos  
 `Real cos(Real x)`  
 Return the value of `cos(x)`, where `x` is in radians.  
-### sin  
+### tan  
 `Real tan(Real x)`  
 Return the value of `tan(x)`, where `x` is in radians.  
