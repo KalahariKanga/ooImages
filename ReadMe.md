@@ -112,11 +112,11 @@ Save the active image to the file `filename`. File format is inferred by the ext
 `Void about(Variable var)`  
 Print information about `var` to the console.  
 ### sin  
-`Real sin(Real x)`
+`Real sin(Real x)`  
 Return the value of `sin(x)`, where `x` is in radians.  
 ### cos  
-`Real cos(Real x)`
+`Real cos(Real x)`  
 Return the value of `cos(x)`, where `x` is in radians.  
 ### sin  
-`Real tan(Real x)`
+`Real tan(Real x)`  
 Return the value of `tan(x)`, where `x` is in radians.  
