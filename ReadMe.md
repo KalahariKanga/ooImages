@@ -107,4 +107,16 @@ Construct and return a blank image with size `w` by `h`.
 Construct the function with arguments named `arg1`, `arg2`, ..., and with body `body`.  
 ### saveImage
 `Void saveImage(String filename)`  
-Save the active image to the file `filename`. File format is inferred by the extension.  
+Save the active image to the file `filename`. File format is inferred by the extension. 
+### about  
+`Void about(Variable var)`  
+Print information about `var` to the console.  
+### sin  
+`Real sin(Real x)`
+Return the value of `sin(x)`, where `x` is in radians.  
+### cos  
+`Real cos(Real x)`
+Return the value of `cos(x)`, where `x` is in radians.  
+### sin  
+`Real tan(Real x)`
+Return the value of `tan(x)`, where `x` is in radians.  
