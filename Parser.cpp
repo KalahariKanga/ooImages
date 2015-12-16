@@ -19,10 +19,27 @@ Parser::~Parser()
 
 std::vector<std::string> Parser::tokenizeString(std::string string)
 {
+	std::replace(string.begin(), string.end(), '\n', ' ');
+	std::replace(string.begin(), string.end(), '\t', ' ');
+	std::replace(string.begin(), string.end(), '\r', ' ');
+
+	std::string trimmedString;
+	char lastChar = ' ';
+	for (auto c : string)
+	{
+		if (lastChar == ' ')
+		{
+			if (c == ' ')
+				continue;
+		}
+		trimmedString.push_back(c);
+		lastChar = c;
+	}
+
 	std::stringstream stream;
 	std::string token;
 	std::vector<std::string> list;
-	stream << string;
+	stream << trimmedString;
 	while (std::getline(stream, token, ' '))
 	{
 		//TODO:trim tokens for leading and trailing spaces
