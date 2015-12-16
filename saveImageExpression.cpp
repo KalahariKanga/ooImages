@@ -21,4 +21,5 @@ Variable saveImageExpression::evaluate()
 	else
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 	ImageStore::get()->getImage()->saveImage(fname);
+	return Variable(Variable::Type::Void);
 }
