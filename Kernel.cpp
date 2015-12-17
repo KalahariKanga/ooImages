@@ -15,8 +15,10 @@ Kernel::~Kernel()
 
 float Kernel::get(int x, int y)
 {
-	if (x< size && y < size && x >= 0 && y >= 0)
+	if (x < size && y < size && x >= 0 && y >= 0)
 		return data[size*y + x];
+	else
+		return 0;
 }
 
 void Kernel::set(int x, int y, float value)

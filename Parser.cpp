@@ -42,7 +42,6 @@ std::vector<std::string> Parser::tokenizeString(std::string string)
 	stream << trimmedString;
 	while (std::getline(stream, token, ' '))
 	{
-		//TODO:trim tokens for leading and trailing spaces
 		list.push_back(token);
 	}
 	return list;

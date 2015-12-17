@@ -28,7 +28,7 @@ void ImageStore::initialize(std::string fname)
 	{
 		std::cout << e->getErrorString();
 		delete e;
-		abort();
+		exit(1);
 	}
 }
 
