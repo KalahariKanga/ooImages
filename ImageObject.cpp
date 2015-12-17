@@ -115,7 +115,8 @@ void ImageObject::setPixel(int x, int y, Colour c)
 void ImageObject::loadImage(std::string fname)
 {
 	sf::Image image;
-	image.loadFromFile(fname);
+	if (!image.loadFromFile(fname))
+		throw new Exception(Exception::ErrorType::FILE_LOAD_ERROR);
 	width = image.getSize().x;
 	height = image.getSize().y;
 	delete data;

@@ -19,8 +19,17 @@ void ImageStore::loadImage(std::string fname)
 
 void ImageStore::initialize(std::string fname)
 {
-	loadImage(fname);
-	mask = std::make_shared<Selection>(image->getWidth(), image->getHeight());
+	try
+	{
+		loadImage(fname);
+		mask = std::make_shared<Selection>(image->getWidth(), image->getHeight());
+	}
+	catch (Exception* e)
+	{
+		std::cout << e->getErrorString();
+		delete e;
+		abort();
+	}
 }
 
 ImageStore* ImageStore::get()
