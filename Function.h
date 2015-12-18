@@ -4,17 +4,19 @@
 class Function :
 	public ResourcePropertyHelper<Function>
 {
-	
-	
-public:
 	shared_ptr<Expression> head;
 	std::vector<std::string> argumentNames;
+	
+public:
+	
 	Function(shared_ptr<Expression> head, std::vector<std::string> argumentNames);
+	Function(const Function& obj);
 	~Function();
 	Variable call(std::vector<Variable> arguments);
 	int noArguments;
 	virtual void about();
 
 	static void loadProperties();
+	
 };
 

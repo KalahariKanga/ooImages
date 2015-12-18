@@ -13,6 +13,7 @@ public:
 	void setValue(int x, int y, float v);
 	virtual void invert();
 	Mask(int width, int height);
+	Mask(const Mask& obj);
 	~Mask();
 };
 

@@ -7,6 +7,12 @@ Function::Function(shared_ptr<Expression> head, std::vector<std::string> argumen
 	noArguments = argumentNames.size();
 }
 
+Function::Function(const Function& obj)
+{
+	head = obj.head;
+	argumentNames = obj.argumentNames;
+	noArguments = argumentNames.size();
+}
 
 Function::~Function()
 {

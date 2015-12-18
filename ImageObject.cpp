@@ -6,13 +6,22 @@ RESOURCE_DEFINE_STATIC_PROPERTY_MAP(ImageObject)
 
 ImageObject::ImageObject(void)
 {
-	width = height = -1;
+	width = height = 0;
 	data = nullptr;
 }
 
 ImageObject::ImageObject(int width, int height) : width(width), height(height)
 {
 	data = new sf::Uint8[width * height * 4];
+}
+
+ImageObject::ImageObject(const ImageObject& obj)
+{
+	width = obj.width;
+	height = obj.height;
+	data = new sf::Uint8[width * height * 4];
+	for (int c = 0; c < width * height * 4; c++)
+		data[c] = obj.data[c];
 }
 
 ImageObject::~ImageObject(void)

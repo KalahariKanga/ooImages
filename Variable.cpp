@@ -16,6 +16,11 @@ Variable::~Variable()
 {
 }
 
+void Variable::set(shared_ptr<void> newData)
+{
+	data = newData;
+}
+
 Resource* Variable::getResource()
 {
 	if (type == Type::Real || type == Type::Void)
@@ -51,12 +56,7 @@ Variable Variable::duplicate()
 	case Type::Mask:
 	{
 		Variable v(Type::Mask);
-		Mask* thisMask = get<Mask>();
-		Mask* s = new Mask(thisMask->width, thisMask->height);
-		for (int cx = 0; cx < s->width; cx++)
-			for (int cy = 0; cy < s->height; cy++)
-				s->setValue(cx, cy, thisMask->getValue(cx, cy));
-		v.set<Mask>(s);
+		v.set(static_pointer_cast<void>(make_shared<Mask>(*get<Mask>())));
 		return v;
 	}
 	case Type::Kernel:
@@ -68,18 +68,14 @@ Variable Variable::duplicate()
 	case Type::Image:
 	{
 		Variable v(Type::Image);
-		ImageObject* thisImage = get<ImageObject>();
-		ImageObject* s = new ImageObject(thisImage->getWidth(),thisImage->getHeight());
-		for (int cx = 0; cx < s->getWidth(); cx++)
-			for (int cy = 0; cy < s->getHeight(); cy++)
-				s->setPixel(cx, cy, thisImage->getPixel(cx, cy));
-		v.set<ImageObject>(s);
+		v.set(static_pointer_cast<void>(make_shared<ImageObject>(*get<ImageObject>())));
 		return v;
+
 	}
 	case Type::Function:
 	{
-		Variable v(Variable::Type::Function);
-		v.set(get<Function>()->duplicate());
+		Variable v(Type::Function);
+		v.set(static_pointer_cast<void>(make_shared<Function>(*get<Function>())));
 		return v;
 	}
 	default:

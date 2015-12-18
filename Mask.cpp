@@ -12,6 +12,18 @@ Mask::Mask(int width, int height)
 			setValue(cx, cy, 1);
 }
 
+Mask::Mask(const Mask& obj)
+{
+	width = obj.width;
+	height = obj.height;
+	data = new float*[width];
+	for (int c = 0; c < width; c++)
+		data[c] = new float[height];
+	for (int cx = 0; cx < width; cx++)
+		for (int cy = 0; cy < height; cy++)
+			data[cx][cy] = obj.data[cx][cy];
+}
+
 Mask::~Mask()
 {
 	for (int c = 0; c < width; c++)

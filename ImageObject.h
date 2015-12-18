@@ -15,6 +15,7 @@ public:
 	void setPixel(int x, int y, Colour colour);
 	ImageObject(void);
 	ImageObject(int width, int height);
+	ImageObject(const ImageObject& obj);
 	~ImageObject(void);
 
 	void loadImage(std::string fname);
