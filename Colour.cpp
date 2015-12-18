@@ -13,6 +13,14 @@ Colour::Colour(int r, int g, int b, int a)
 	A = clamp<int>(a, 0, 255);
 }
 
+Colour::Colour(const Colour& obj)
+{
+	R = obj.R;
+	G = obj.G;
+	B = obj.B;
+	A = obj.A;
+}
+
 Colour::~Colour(void)
 {
 }

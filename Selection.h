@@ -13,6 +13,7 @@ class Selection : public AbstractMask
 public:
 	Selection(int width, int height);
 	Selection(Mask& mask, float boundary);
+	Selection(const Selection& obj);
 	~Selection();
 	virtual float getValue(int x, int y);
 	void setValue(int x, int y, bool v);

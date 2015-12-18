@@ -32,6 +32,18 @@ Selection::Selection(Mask& mask, float boundary = 0)
 		}
 }
 
+Selection::Selection(const Selection& obj)
+{
+	width = obj.width;
+	height = obj.height;
+	data = new bool*[width];
+	for (int c = 0; c < width; c++)
+		data[c] = new bool[height];
+	for (int cx = 0; cx < width; cx++)
+		for (int cy = 0; cy < height; cy++)
+			data[cx][cy] = obj.data[cx][cy];
+}
+
 Selection::~Selection()
 {
 	for (int c = 0; c < width; c++)

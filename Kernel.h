@@ -7,6 +7,7 @@ class Kernel : public ResourcePropertyHelper<Kernel>
 	float *data;
 public:
 	Kernel(int size);
+	Kernel(const Kernel& obj);
 	~Kernel();
 
 	float get(int x, int y);

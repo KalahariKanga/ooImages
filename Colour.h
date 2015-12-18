@@ -13,6 +13,7 @@ public:
 	
 	Colour(void);
 	Colour(int r, int g, int b, int a = 255);
+	Colour(const Colour& obj);
 	
 	~Colour(void);
 	static Colour interpolate(Colour from, Colour to, float amount);

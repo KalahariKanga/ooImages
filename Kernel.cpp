@@ -7,6 +7,14 @@ Kernel::Kernel(int size) : size(size)
 	data = new float[size*size];
 }
 
+Kernel::Kernel(const Kernel& obj)
+{
+	size = obj.size;
+	data = new float[size*size];
+	for (int cx = 0; cx < size; cx++)
+		for (int cy = 0; cy < size; cy++)
+			data[size*cy + cx] = obj.data[size*cy + cx];
+}
 
 Kernel::~Kernel()
 {

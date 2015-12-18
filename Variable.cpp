@@ -39,18 +39,13 @@ Variable Variable::duplicate()
 	case Type::Colour:
 	{
 		Variable v(Type::Colour);
-		v.set<Colour>(new Colour(*get<Colour>()));
+		v.set(static_pointer_cast<void>(make_shared<Colour>(*get<Colour>())));
 		return v;
 	}
 	case Type::Selection:
 	{
 		Variable v(Type::Selection);
-		Selection* thisSelection = get<Selection>();
-		Selection* s = new Selection(thisSelection->width, thisSelection->height);
-		for (int cx = 0; cx < s->width; cx++)
-			for (int cy = 0; cy < s->height; cy++)
-				s->setValue(cx, cy, thisSelection->getValue(cx, cy));
-		v.set<Selection>(s);
+		v.set(static_pointer_cast<void>(make_shared<Selection>(*get<Selection>())));
 		return v;
 	}
 	case Type::Mask:
@@ -67,13 +62,8 @@ Variable Variable::duplicate()
 	case Type::Kernel:
 	{
 		Variable v(Type::Kernel);
-		Kernel* thisKernel = get<Kernel>();
-		Kernel* s = new Kernel(thisKernel->getSize());
-		for (int cx = 0; cx < s->getSize(); cx++)
-			for (int cy = 0; cy < s->getSize(); cy++)
-				s->set(cx, cy, thisKernel->get(cx, cy));
-		v.set<Kernel>(s);
-		return v;
+		v.set(static_pointer_cast<void>(make_shared<Kernel>(*get<Kernel>())));
+		return v;	
 	}
 	case Type::Image:
 	{
@@ -88,9 +78,8 @@ Variable Variable::duplicate()
 	}
 	case Type::Function:
 	{
-		Variable v(Type::Function);
-		Function* fn = new Function(get<Function>()->head, get<Function>()->argumentNames);
-		v.set<Function>(fn);
+		Variable v(Variable::Type::Function);
+		v.set(get<Function>()->duplicate());
 		return v;
 	}
 	default:
