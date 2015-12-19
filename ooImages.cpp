@@ -19,6 +19,9 @@ int main(int argc, _TCHAR* argv[])
 	{
 		filename = argv[1];
 		store->initialize(filename);
+		Variable var(Variable::Type::Image);
+		var.set<ImageObject>(store->getImage());
+		vs->setArrayVariable("argv", 0, var);
 	}
 	else if (argc > 2) //2+ arguments - script file and (several) image files
 	{
@@ -56,6 +59,9 @@ int main(int argc, _TCHAR* argv[])
 		std::cout << ">>";
 		std::getline(std::cin, filename);
 		store->initialize(filename);
+		Variable var(Variable::Type::Image);
+		var.set<ImageObject>(store->getImage());
+		vs->setArrayVariable("argv", 0, var);
 	}
 
 	sf::RenderWindow window;
