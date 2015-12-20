@@ -19,8 +19,8 @@ Variable rectangleExpression::evaluate()
 	int y1 = *arguments[1]->getResult().get<float>();
 	int x2 = *arguments[2]->getResult().get<float>();
 	int y2 = *arguments[3]->getResult().get<float>();
-	Variable var(Variable::Type::Selection);
-	Selection* s = new Selection(is->image->getWidth(), is->image->getHeight());
+	Variable var(Variable::Type::Mask);
+	Mask* s = new Mask(is->image->getWidth(), is->image->getHeight());
 	for (int cx = 0; cx < is->image->getWidth(); cx++)
 		for (int cy = 0; cy < is->image->getHeight(); cy++)
 		{
@@ -29,6 +29,6 @@ Variable rectangleExpression::evaluate()
 			else
 				s->setValue(cx, cy, 1);//possibly unnecessary 
 		}
-	var.set<Selection>(s);
+	var.set<Mask>(s);
 	return var;
 }

@@ -47,12 +47,6 @@ Variable Variable::duplicate()
 		v.set(static_pointer_cast<void>(make_shared<Colour>(*get<Colour>())));
 		return v;
 	}
-	case Type::Selection:
-	{
-		Variable v(Type::Selection);
-		v.set(static_pointer_cast<void>(make_shared<Selection>(*get<Selection>())));
-		return v;
-	}
 	case Type::Mask:
 	{
 		Variable v(Type::Mask);

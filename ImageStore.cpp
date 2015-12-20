@@ -1,5 +1,6 @@
 #include "ImageStore.h"
-#include "Selection.h"
+#include "Mask.h"
+
 ImageStore* ImageStore::instance = nullptr;
 
 ImageStore::ImageStore()
@@ -22,7 +23,7 @@ void ImageStore::initialize(std::string fname)
 	try
 	{
 		loadImage(fname);
-		mask = std::make_shared<Selection>(image->getWidth(), image->getHeight());
+		mask = std::make_shared<Mask>(image->getWidth(), image->getHeight());
 	}
 	catch (Exception* e)
 	{

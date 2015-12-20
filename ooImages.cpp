@@ -41,7 +41,7 @@ int main(int argc, _TCHAR* argv[])
 				store->image = var.getShared<ImageObject>();;
 		}
 
-		store->mask = make_shared<Selection>(store->image->getWidth(), store->image->getHeight());
+		store->mask = make_shared<Mask>(store->image->getWidth(), store->image->getHeight());
 
 		try
 		{

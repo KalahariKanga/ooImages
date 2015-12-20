@@ -14,7 +14,7 @@ fuzzyExpression::~fuzzyExpression()
 Variable fuzzyExpression::evaluate()
 {
 	ImageObject* image = ImageStore::get()->getImage();
-	Selection* selection = new Selection(image->getWidth(), image->getHeight());
+	Mask* selection = new Mask(image->getWidth(), image->getHeight());
 	selection->invert();
 	int sx = static_cast<int>(*(arguments[0]->getResult().get<float>()));
 	int sy = static_cast<int>(*(arguments[1]->getResult().get<float>()));
@@ -50,7 +50,7 @@ Variable fuzzyExpression::evaluate()
 		}
 	}
 
-	Variable var(Variable::Type::Selection);
-	var.set<Selection>(selection);
+	Variable var(Variable::Type::Mask);
+	var.set<Mask>(selection);
 	return var;
 }

@@ -2,7 +2,6 @@
 #include "core.h"
 #include "Exception.h"
 #include "Colour.h"
-#include "Selection.h"
 #include "Mask.h"
 #include "Kernel.h"
 
@@ -13,7 +12,7 @@ class Variable
 public:
 	enum class Type
 	{
-		Void, Real, Colour, Selection, Mask, Kernel, Image, Function
+		Void, Real, Colour, Mask, Kernel, Image, Function
 	};
 	
 	Variable(Type t = Type::Void);
