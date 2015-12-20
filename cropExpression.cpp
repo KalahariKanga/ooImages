@@ -14,7 +14,7 @@ cropExpression::~cropExpression()
 Variable cropExpression::evaluate()
 {
 	ImageObject* image = ImageStore::get()->image.get();
-	AbstractMask* mask = ImageStore::get()->mask.get();
+	Mask* mask = ImageStore::get()->mask.get();
 
 	int minX = image->getWidth();
 	int minY = image->getHeight();

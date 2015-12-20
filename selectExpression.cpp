@@ -18,7 +18,7 @@ Variable selectExpression::evaluate()
 	Variable v = arguments.back()->getResult();
 	if (v.type == Variable::Type::Mask)
 	{
-		is->mask = arguments[0]->getResult().getShared<AbstractMask>();
+		is->mask = arguments[0]->getResult().getShared<Mask>();
 	}
 	else
 		throw new Exception(Exception::ErrorType::TYPE_MISMATCH);

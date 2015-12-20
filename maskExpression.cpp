@@ -14,6 +14,6 @@ maskExpression::~maskExpression()
 Variable maskExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
-	is->mask = arguments[0]->getResult().getShared<AbstractMask>();
+	is->mask = arguments[0]->getResult().getShared<Mask>();
 	return Variable(Variable::Type::Void);
 }

@@ -4,6 +4,7 @@
 #include "Colour.h"
 #include "Mask.h"
 #include "Kernel.h"
+#include "ImageObject.h"
 
 
 class Variable
