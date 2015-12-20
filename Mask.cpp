@@ -106,3 +106,9 @@ void Mask::about()
 	std::cout << "\n";
 
 }
+
+void Mask::loadProperties()
+{
+	setProperty("width", [](Mask* m){return m->width; });
+	setProperty("height", [](Mask* m){return m->height; });
+}

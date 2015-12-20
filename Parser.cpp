@@ -10,6 +10,7 @@ Parser::Parser()
 	ImageObject::loadProperties();
 	Kernel::loadProperties();
 	Function::loadProperties();
+	Mask::loadProperties();
 }
 
 
