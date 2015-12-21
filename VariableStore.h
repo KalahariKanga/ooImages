@@ -12,7 +12,12 @@ public:
 
 	void setVariable(std::string name, Variable data);
 	void setArrayVariable(std::string name, int index, Variable data);
+	//duplicate and return the variable
 	Variable getVariable(std::string name);
+
+	//return variable with same shared ptr
+	Variable getRawVariable(std::string name);
+
 	bool legalVariableName(std::string name);
 	bool variableExists(std::string name)
 	{

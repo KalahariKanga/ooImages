@@ -32,6 +32,15 @@ Variable VariableStore::getVariable(std::string name)
 		return v->second.duplicate();
 }
 
+Variable VariableStore::getRawVariable(std::string name)
+{
+	auto v = variableMap.find(name);
+	if (v == variableMap.end())
+		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
+	else
+		return v->second;
+}
+
 bool VariableStore::legalVariableName(std::string name)
 {
 	if (!isalpha(name[0]))
