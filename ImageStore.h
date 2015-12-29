@@ -5,7 +5,6 @@
 class ImageStore
 {
 	static ImageStore* instance;
-	std::vector<ImageObject> history;
 public:
 	ImageStore();
 	~ImageStore();
