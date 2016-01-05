@@ -126,6 +126,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new saveImageExpression();
 	if (token == "about")
 		return new aboutExpression();
+	if (token == "for")
+		return new forExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
