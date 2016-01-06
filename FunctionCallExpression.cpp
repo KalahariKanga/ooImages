@@ -15,19 +15,30 @@ FunctionCallExpression::~FunctionCallExpression()
 {
 }
 
+void FunctionCallExpression::setLocalVariable(std::string name, Variable var)
+{
+	localVariables[name] = var;
+	arguments[0]->setLocalVariable(name, var);
+}
+void FunctionCallExpression::setLocalVariable(std::string name, float* ptr)
+{
+	localRealPointers[name] = ptr;
+	arguments[0]->setLocalVariable(name, ptr);
+}
+
 Variable FunctionCallExpression::evaluate()
 {
 	std::vector<Variable> fnArguments;
 	Variable v;
 	if (vs->variableExists(name))
-		 v = vs->getVariable(name);
+		v = vs->getVariable(name);
 
 	if (localVariables.find(name) != localVariables.end())
 	{
 		v = localVariables[name];
 	}
 
-	Function *fn = v.get<Function>();
+	Function* fn = v.get<Function>();
 
 	//check arg[0] is [
 	if (!dynamic_pointer_cast<SequenceExpression>(arguments[0]))

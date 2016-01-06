@@ -1,5 +1,7 @@
 #pragma once
 #include "TerminalExpression.h"
+
+
 class FunctionCallExpression :
 	public TerminalExpression
 {
@@ -8,5 +10,9 @@ public:
 	FunctionCallExpression(std::string name);
 	~FunctionCallExpression();
 	virtual Variable evaluate();
+
+	//reimplement to pass to arg list too
+	virtual void setLocalVariable(std::string name, Variable var);
+	virtual void setLocalVariable(std::string name, float* ptr);
 };
 
