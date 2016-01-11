@@ -175,7 +175,14 @@ Variable Parser::run(std::string input)
 	{
 		Expression* head = expressions.front()->acquire(&expressionStack);
 		head->calculateConstancy();
-		return head->getResult();
+		try
+		{
+			return head->getResult();
+		}
+		catch (Variable v)
+		{
+			return v;
+		}
 	}
 	return Variable(Variable::Type::Void);
 }
