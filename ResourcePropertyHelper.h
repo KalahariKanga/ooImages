@@ -13,6 +13,7 @@ protected:
 public:
 	ResourcePropertyHelper() = default;
 	~ResourcePropertyHelper() = default;
+
 	virtual float getProperty(std::string name)
 	{
 		if (properties.find(name) != properties.end())
@@ -23,6 +24,11 @@ public:
 	static void setProperty(std::string name, std::function<float(Derived*)> fn)
 	{
 		properties[name] = fn;
+	}
+
+	Resource* clone()
+	{
+		return new Derived(static_cast<Derived const&>(*this));
 	}
 };
 

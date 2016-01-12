@@ -11,5 +11,6 @@ public:
 	virtual ~Resource();
 	virtual void about() = 0;
 	virtual float getProperty(std::string name) = 0;
+	virtual Resource* clone() = 0;
 };
 
