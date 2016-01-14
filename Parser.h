@@ -15,7 +15,6 @@
 #include "maxExpression.h"
 #include "kernelExpression.h"
 #include "convolveExpression.h"
-#include "maskExpression.h"
 #include "allExpression.h"
 #include "getPixelExpression.h"
 #include "pointDistanceExpression.h"

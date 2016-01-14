@@ -72,8 +72,6 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new kernelExpression();
 	if (token == "convolve")
 		return new convolveExpression();
-	if (token == "mask")
-		return new maskExpression();
 	if (token == "all")
 		return new allExpression();
 	if (token == "getPixel")
