@@ -96,13 +96,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aboutExpression.h" />
-    <ClInclude Include="AbstractMask.h" />
     <ClInclude Include="allExpression.h" />
     <ClInclude Include="ArrayVariableExpression.h" />
     <ClInclude Include="BinaryOperatorExpression.h" />
     <ClInclude Include="blendExpression.h" />
     <ClInclude Include="Colour.h" />
     <ClInclude Include="combineExpression.h" />
+    <ClInclude Include="ControlException.h" />
     <ClInclude Include="convolveExpression.h" />
     <ClInclude Include="core.h" />
     <ClInclude Include="createImageExpression.h" />
@@ -110,6 +110,7 @@
     <ClInclude Include="EndSequenceExpression.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="Expression.h" />
+    <ClInclude Include="forExpression.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="FunctionCallExpression.h" />
     <ClInclude Include="functionExpression.h" />
@@ -135,6 +136,7 @@
     <ClInclude Include="printExpression.h" />
     <ClInclude Include="PropertyAccessorExpression.h" />
     <ClInclude Include="randomExpression.h" />
+    <ClInclude Include="Real.h" />
     <ClInclude Include="rectangleExpression.h" />
     <ClInclude Include="regionExpression.h" />
     <ClInclude Include="repeatExpression.h" />
@@ -145,7 +147,6 @@
     <ClInclude Include="rgbExpression.h" />
     <ClInclude Include="saveImageExpression.h" />
     <ClInclude Include="selectExpression.h" />
-    <ClInclude Include="Selection.h" />
     <ClInclude Include="SequenceExpression.h" />
     <ClInclude Include="setExpression.h" />
     <ClInclude Include="setPixelsExpression.h" />
@@ -153,21 +154,21 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TerminalExpression.h" />
     <ClInclude Include="transformExpression.h" />
+    <ClInclude Include="UnaryFunctionExpression.h" />
     <ClInclude Include="usingExpression.h" />
     <ClInclude Include="Variable.h" />
-    <ClInclude Include="VariableExpression.h" />
     <ClInclude Include="VariableStore.h" />
     <ClInclude Include="whileExpression.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aboutExpression.cpp" />
-    <ClCompile Include="AbstractMask.cpp" />
     <ClCompile Include="allExpression.cpp" />
     <ClCompile Include="ArrayVariableExpression.cpp" />
     <ClCompile Include="BinaryOperatorExpression.cpp" />
     <ClCompile Include="blendExpression.cpp" />
     <ClCompile Include="Colour.cpp" />
     <ClCompile Include="combineExpression.cpp" />
+    <ClCompile Include="ControlException.cpp" />
     <ClCompile Include="convolveExpression.cpp" />
     <ClCompile Include="core.cpp" />
     <ClCompile Include="createImageExpression.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="EndSequenceExpression.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="Expression.cpp" />
+    <ClCompile Include="forExpression.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="FunctionCallExpression.cpp" />
     <ClCompile Include="functionExpression.cpp" />
@@ -201,6 +203,7 @@
     <ClCompile Include="printExpression.cpp" />
     <ClCompile Include="PropertyAccessorExpression.cpp" />
     <ClCompile Include="randomExpression.cpp" />
+    <ClCompile Include="Real.cpp" />
     <ClCompile Include="rectangleExpression.cpp" />
     <ClCompile Include="regionExpression.cpp" />
     <ClCompile Include="repeatExpression.cpp" />
@@ -210,13 +213,13 @@
     <ClCompile Include="rgbExpression.cpp" />
     <ClCompile Include="saveImageExpression.cpp" />
     <ClCompile Include="selectExpression.cpp" />
-    <ClCompile Include="Selection.cpp" />
     <ClCompile Include="SequenceExpression.cpp" />
     <ClCompile Include="setExpression.cpp" />
     <ClCompile Include="setPixelsExpression.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="TerminalExpression.cpp" />
     <ClCompile Include="transformExpression.cpp" />
+    <ClCompile Include="UnaryFunctionExpression.cpp" />
     <ClCompile Include="usingExpression.cpp" />
     <ClCompile Include="Variable.cpp" />
     <ClCompile Include="VariableStore.cpp" />
