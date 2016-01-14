@@ -120,3 +120,7 @@ Return the value of `cos(x)`, where `x` is in radians.
 ### tan  
 `Real tan(Real x)`  
 Return the value of `tan(x)`, where `x` is in radians.  
+### for
+`Void for(Real from, Real to, Real step, Sequence block)`   
+*Introduces local variable `c`*   
+For each value of `c` from `from` to `to` in steps of size `step`, evaluate `block`.   
