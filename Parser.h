@@ -47,6 +47,7 @@
 #include "PropertyAccessorExpression.h"
 #include "UnaryFunctionExpression.h"
 #include "forExpression.h"
+#include "breakExpression.h"
 
 class Parser
 {

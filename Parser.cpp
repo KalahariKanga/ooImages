@@ -3,6 +3,7 @@
 #include "ImageObject.h"
 #include "Kernel.h"
 #include "Function.h"
+#include "ControlException.h"
 
 Parser::Parser()
 {
@@ -126,6 +127,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new aboutExpression();
 	if (token == "for")
 		return new forExpression();
+	if (token == "break")
+		return new breakExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
@@ -180,6 +183,10 @@ Variable Parser::run(std::string input)
 		catch (Variable v)
 		{
 			return v;
+		}
+		catch (ControlException ce)
+		{
+			throw new Exception(Exception::ErrorType::LOOP_ERROR);
 		}
 	}
 	return Variable(Variable::Type::Void);
