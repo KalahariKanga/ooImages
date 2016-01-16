@@ -24,11 +24,11 @@ Set all pixels in the image to `c`.
 *Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
 Set each pixel to the colour at position (`xPos`, `yPos`).  
 ### select
-`Void select(Selection s)`  
-Set the active selection to `s`.
+`Void select(Mask s)`  
+Set the active mask to `s`.
 ### rectangle
-`Selection rectangle(Real x1, Real y1, Real x2, Real y2)`  
-Construct and return the rectangular selection from the point (`x1`, `y1`) to (`x2`, `y2`).
+`Mask rectangle(Real x1, Real y1, Real x2, Real y2)`  
+Construct and return the rectangular mask from the point (`x1`, `y1`) to (`x2`, `y2`).
 ### region
 `Mask region(Real value)`  
 *Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
@@ -39,10 +39,7 @@ Construct and return the 3x3 convolution kernel with elements `k1` ... `k9`
 ### convolve
 `Void convolve(Kernel k)`  
 *Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
-Convolve the image using the convolution kernel `k`.
-### mask
-`Void mask(Mask m)`  
-Set the active mask the `m`.
+Convolve the image using the convolution kernel `k`.   
 ### all
 `Mask all(Void)`  
 Construct and return a mask with value 1 everywhere.
@@ -50,8 +47,8 @@ Construct and return a mask with value 1 everywhere.
 `Colour getPixel(Real xPos, Real yPos)`  
 Returns the colour at position (`xPos`,`yPos`).  
 ### fuzzy
-`Selection fuzzy(Real xPos, Real yPos, Real threshold)`  
-Construct and return the selection consisting of the contiguous region based at (`xPos`,`yPos`), with maximum colour difference `threshold` (using Euclidean distance).
+`Mask fuzzy(Real xPos, Real yPos, Real threshold)`  
+Construct and return the mask consisting of the contiguous region based at (`xPos`,`yPos`), with maximum colour difference `threshold` (using Euclidean distance).
 ### set
 `Variable set(String name, Variable data)`  
 Create the variable `name` with value `data`, or update it if it already exists, and return it's value.  
