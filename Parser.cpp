@@ -129,6 +129,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new forExpression();
 	if (token == "break")
 		return new breakExpression();
+	if (token == "continue")
+		return new continueExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
