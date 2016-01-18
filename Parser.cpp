@@ -151,6 +151,16 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::GREATER);
 	if (token == "sin")
 		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::SIN);
+	if (token == "cos")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::COS);
+	if (token == "tan")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::TAN);
+	if (token == "exp")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::EXP);
+	if (token == "log")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::LOG);
+	if (token == "ln")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::LN);
 	if (token.back() == '_')
 		return new ArrayVariableExpression(token);
 	if (token.back() == ':')
