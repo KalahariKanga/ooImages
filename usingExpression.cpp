@@ -17,10 +17,10 @@ Variable usingExpression::evaluate()
 	ImageStore* is = ImageStore::get();
 	auto term = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	//be careful if its a local variable
-	//or an array variable
+	//or function call
 	if (term)
 	{
-		Variable image = VariableStore::get()->getRawVariable(term->getString());
+		Variable image = VariableStore::get()->getRawVariable(term->getName());
 		is->image = image.getShared<ImageObject>();
 	}
 	else
