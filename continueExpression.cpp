@@ -4,6 +4,7 @@
 continueExpression::continueExpression()
 {
 	noArguments = 0;
+	optimisable = 0;
 }
 
 

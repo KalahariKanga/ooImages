@@ -4,6 +4,7 @@
 breakExpression::breakExpression()
 {
 	noArguments = 0;
+	optimisable = 0;
 }
 
 
