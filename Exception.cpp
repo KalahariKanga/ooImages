@@ -34,6 +34,8 @@ std::string Exception::getErrorString()
 		return std::string("File Save error\n");
 	case ErrorType::FILE_LOAD_ERROR:
 		return std::string("File Load error\n");
+	case ErrorType::LOOP_ERROR:
+		return std::string("Loop error\n");
 	default:
 		return std::string("Parser error: unknown\n");
 	}
