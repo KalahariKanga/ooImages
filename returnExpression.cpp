@@ -4,6 +4,7 @@
 returnExpression::returnExpression()
 {
 	noArguments = 1;
+	optimisable = 0;
 }
 
 
