@@ -12,6 +12,9 @@ Expression::~Expression()
 
 Variable Expression::getResult()
 {
+	if (!constancyOptimisation)
+		return evaluate();
+
 	if (isConstant && optimisable)
 	{
 		if (!hasConstantValue)

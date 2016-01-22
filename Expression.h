@@ -14,6 +14,8 @@ public:
 	Expression();
 	~Expression();
 
+	static const bool constancyOptimisation = 1;
+
 	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
 	Variable getResult();
 	virtual Variable evaluate() = 0;
