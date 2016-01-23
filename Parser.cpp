@@ -163,7 +163,7 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::LN);
 	if (token.back() == '_')
 		return new ArrayVariableExpression(token);
-	if (token.back() == ':')
+	if (token.back() == '[')
 		return new FunctionCallExpression(token);
 	if (token.back() == '.')
 		return new PropertyAccessorExpression(token);
