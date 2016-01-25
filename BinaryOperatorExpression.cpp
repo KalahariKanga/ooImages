@@ -46,6 +46,15 @@ Variable BinaryOperatorExpression::evaluate()
 	case Operator::GREATER:
 		v = (a > b);
 		break;
+	case Operator::MOD:
+		v = ((int)a % (int)b);
+		break;
+	case Operator::AND: //these could be problematic cos floats :/
+		v = (a && b);
+		break;
+	case Operator::OR:
+		v = (a || b);
+		break;
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}

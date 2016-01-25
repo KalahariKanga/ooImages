@@ -149,6 +149,12 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::LESS);
 	if (token == ">")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::GREATER);
+	if (token == "%")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::MOD);
+	if (token == "&&")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::AND);
+	if (token == "||")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::OR);
 	if (token == "sin")
 		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::SIN);
 	if (token == "cos")
