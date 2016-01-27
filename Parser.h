@@ -49,6 +49,7 @@
 #include "forExpression.h"
 #include "breakExpression.h"
 #include "continueExpression.h"
+#include "elseExpression.h"
 
 class Parser
 {

@@ -3,9 +3,13 @@
 class ifExpression :
 	public Expression
 {
+	bool hasElse = 0;
 public:
 	ifExpression();
 	~ifExpression();
 	virtual Variable evaluate();
+
+	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
+
 };
 
