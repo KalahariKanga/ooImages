@@ -4,6 +4,7 @@
 ifExpression::ifExpression()
 {
 	noArguments = 2;
+	optimisable = 0;
 }
 
 

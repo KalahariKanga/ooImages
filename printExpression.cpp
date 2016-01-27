@@ -4,6 +4,7 @@
 printExpression::printExpression()
 {
 	noArguments = 1;
+	optimisable = 0;
 }
 
 
