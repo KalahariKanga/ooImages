@@ -133,6 +133,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new continueExpression();
 	if (token == "else")
 		return new elseExpression();
+	if (token == "line")
+		return new lineExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")

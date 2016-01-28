@@ -50,6 +50,7 @@
 #include "breakExpression.h"
 #include "continueExpression.h"
 #include "elseExpression.h"
+#include "lineExpression.h"
 
 class Parser
 {
