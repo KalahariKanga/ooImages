@@ -4,7 +4,7 @@
 class randomExpression :
 	public Expression
 {
-	std::default_random_engine engine;
+	static std::default_random_engine engine;
 	
 public:
 	randomExpression();
