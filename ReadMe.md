@@ -120,4 +120,13 @@ Return the value of `tan(x)`, where `x` is in radians.
 ### for
 `Void for(Real from, Real to, Real step, Sequence block)`   
 *Introduces local variable `c`*   
-For each value of `c` from `from` to `to` in steps of size `step`, evaluate `block`.   
+For each value of `c` from `from` to `to` in steps of size `step`, evaluate `block`.  
+### break
+`Void break(Void)`  
+Break out of the current loop.  
+### continue
+`Void continue(Void)`  
+Jump to the next loop iteration.  
+### line  
+`Mask line(Real x1, Real y1, Real x2, Real y2)`  
+Construct and return the mask with points on the line between (`x1`,`y1`) and (`x2`,`y2`).  
