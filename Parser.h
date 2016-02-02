@@ -51,6 +51,7 @@
 #include "continueExpression.h"
 #include "elseExpression.h"
 #include "lineExpression.h"
+#include "importExpression.h"
 
 class Parser
 {
