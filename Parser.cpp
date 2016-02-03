@@ -4,6 +4,7 @@
 #include "Kernel.h"
 #include "Function.h"
 #include "ControlException.h"
+#include <regex>
 
 Parser::Parser()
 {
@@ -19,15 +20,16 @@ Parser::~Parser()
 {
 }
 
-std::vector<std::string> Parser::tokenizeString(std::string string)
+std::vector<std::string> Parser::tokenizeString(std::string str)
 {
-	std::replace(string.begin(), string.end(), '\n', ' ');
-	std::replace(string.begin(), string.end(), '\t', ' ');
-	std::replace(string.begin(), string.end(), '\r', ' ');
+	std::vector<std::string> list;
+	std::replace(str.begin(), str.end(), '\n', ' ');
+	std::replace(str.begin(), str.end(), '\t', ' ');
+	std::replace(str.begin(), str.end(), '\r', ' ');
 
 	std::string trimmedString;
 	char lastChar = ' ';
-	for (auto c : string)
+	for (auto c : str)
 	{
 		if (lastChar == ' ')
 		{
@@ -37,14 +39,13 @@ std::vector<std::string> Parser::tokenizeString(std::string string)
 		trimmedString.push_back(c);
 		lastChar = c;
 	}
-
-	std::stringstream stream;
-	std::string token;
-	std::vector<std::string> list;
-	stream << trimmedString;
-	while (std::getline(stream, token, ' '))
+	
+	std::regex re("\\s+");
+	std::sregex_token_iterator it(str.begin(), str.end(), re, -1);
+	std::sregex_token_iterator end;
+	for (; it != end; ++it)
 	{
-		list.push_back(token);
+		list.push_back(it->str());
 	}
 	return list;
 }
