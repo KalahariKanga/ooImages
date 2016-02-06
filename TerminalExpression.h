@@ -16,7 +16,6 @@ public:
 	~TerminalExpression();
 	
 	virtual void setLocalVariable(std::string name, Variable ptr);
-	//virtual void setLocalVariable(std::string name, Resource* val);
 
 	virtual bool calculateConstancy();
 	Variable evaluate();

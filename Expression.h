@@ -20,7 +20,6 @@ public:
 	Variable getResult();
 	virtual Variable evaluate() = 0;
 	virtual void setLocalVariable(std::string name, Variable var);
-	//virtual void setLocalVariable(std::string name, Resource* val);
 	std::vector<shared_ptr<Expression>> arguments;
 	virtual bool calculateConstancy();
 	int noArguments;
