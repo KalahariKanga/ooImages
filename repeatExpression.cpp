@@ -13,7 +13,7 @@ repeatExpression::~repeatExpression()
 
 Variable repeatExpression::evaluate()
 {
-	int n = (int)(*arguments[0]->getResult().get<float>());
+	int n = (int)(*arguments[0]->getResult().get<Real>());
 	for (int c = 0; c < n; c++)
 	{
 		try

@@ -16,14 +16,14 @@ Variable regionExpression::evaluate()
 	ImageObject* image = store->getImage();
 	Mask* mask = new Mask(image->getWidth(), image->getHeight());
 	
-	setLocalVariable("r", &r);
-	setLocalVariable("g", &g);
-	setLocalVariable("b", &b);
-	setLocalVariable("h", &h);
-	setLocalVariable("s", &s);
-	setLocalVariable("v", &v);
-	setLocalVariable("x", &x);
-	setLocalVariable("y", &y);
+	setLocalVariable("r", Variable(r));
+	setLocalVariable("g", Variable(g));
+	setLocalVariable("b", Variable(b));
+	setLocalVariable("h", Variable(h));
+	setLocalVariable("s", Variable(s));
+	setLocalVariable("v", Variable(v));
+	setLocalVariable("x", Variable(x));
+	setLocalVariable("y", Variable(y));
 
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
@@ -38,7 +38,7 @@ Variable regionExpression::evaluate()
 				s = p.s();
 				v = p.v();
 
-				float val = *arguments.back()->getResult().get<float>();
+				float val = *arguments.back()->getResult().get<Real>();
 				mask->setValue(cx, cy, val);
 				
 		}

@@ -14,14 +14,14 @@ transformExpression::~transformExpression()
 
 Variable transformExpression::evaluate()
 {
-	setLocalVariable("r", &r);
-	setLocalVariable("g", &g);
-	setLocalVariable("b", &b);
-	setLocalVariable("h", &h);
-	setLocalVariable("s", &s);
-	setLocalVariable("v", &v);
-	setLocalVariable("x", &x);
-	setLocalVariable("y", &y);
+	setLocalVariable("r", Variable(r));
+	setLocalVariable("g", Variable(g));
+	setLocalVariable("b", Variable(b));
+	setLocalVariable("h", Variable(h));
+	setLocalVariable("s", Variable(s));
+	setLocalVariable("v", Variable(v));
+	setLocalVariable("x", Variable(x));
+	setLocalVariable("y", Variable(y));
 
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
@@ -35,8 +35,8 @@ Variable transformExpression::evaluate()
 			h = p.h();
 			s = p.s();
 			v = p.v();
-			float nx = *arguments[0]->getResult().get<float>();
-			float ny = *arguments[1]->getResult().get<float>();
+			float nx = *arguments[0]->getResult().get<Real>();
+			float ny = *arguments[1]->getResult().get<Real>();
 			buffer->setPixel(cx, cy, image->getPixel(nx, ny));
 		}
 	commitBuffer();

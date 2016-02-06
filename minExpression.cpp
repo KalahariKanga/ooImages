@@ -16,14 +16,14 @@ Variable minExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();	
 
-	setLocalVariable("r", &r);
-	setLocalVariable("g", &g);
-	setLocalVariable("b", &b);
-	setLocalVariable("h", &h);
-	setLocalVariable("s", &s);
-	setLocalVariable("v", &v);
-	setLocalVariable("x", &x);
-	setLocalVariable("y", &y);
+	setLocalVariable("r", Variable(r));
+	setLocalVariable("g", Variable(g));
+	setLocalVariable("b", Variable(b));
+	setLocalVariable("h", Variable(h));
+	setLocalVariable("s", Variable(s));
+	setLocalVariable("v", Variable(v));
+	setLocalVariable("x", Variable(x));
+	setLocalVariable("y", Variable(y));
 
 	float min = std::numeric_limits<float>::max();
 
@@ -42,8 +42,8 @@ Variable minExpression::evaluate()
 				s = p.s();
 				v = p.v();
 				Variable var = arguments.back()->getResult();
-				if (*var.get<float>() < min)
-					min = *var.get<float>();
+				if (*var.get<Real>() < min)
+					min = *var.get<Real>();
 			}
 		}
 	Variable var(Variable::Type::Real);

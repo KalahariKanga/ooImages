@@ -20,17 +20,18 @@ Variable forExpression::evaluate()
 	{
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 	}
-	float from = *arguments[1]->getResult().get<float>();
-	float to = *arguments[2]->getResult().get<float>();
-	float step = *arguments[3]->getResult().get<float>();
+	float from = *arguments[1]->getResult().get<Real>();
+	float to = *arguments[2]->getResult().get<Real>();
+	float step = *arguments[3]->getResult().get<Real>();
 
-	float c;
-	arguments[4]->setLocalVariable(term->getString(), &c);
+	Real counter;
+	arguments[4]->setLocalVariable(term->getString(), Variable(counter));
 
 	//this could definitely be neater
 	if (from <= to && step > 0)
-		for (c = from; c < to; c += step)
+		for (float c = from; c < to; c += step)
 		{
+			counter = c;
 			try
 			{
 				arguments[4]->getResult();
@@ -44,8 +45,9 @@ Variable forExpression::evaluate()
 			}
 		}
 	else if (from >= to && step < 0)
-		for (c = from; c > to; c += step)
+		for (float c = from; c > to; c += step)
 		{
+			counter = c;
 			try
 			{
 				arguments[1]->getResult();

@@ -22,12 +22,12 @@ void FunctionCallExpression::setLocalVariable(std::string name, Variable var)
 	for (int c = 0; c < noArguments; c++)
 		arguments[c]->setLocalVariable(name, var);
 }
-void FunctionCallExpression::setLocalVariable(std::string name, float* ptr)
-{
-	localRealPointers[name] = ptr;
-	for (int c = 0; c < noArguments; c++)
-		arguments[c]->setLocalVariable(name, ptr);
-}
+//void FunctionCallExpression::setLocalVariable(std::string name, Resource* ptr)
+//{
+//	localPointers[name] = ptr;
+//	for (int c = 0; c < noArguments; c++)
+//		arguments[c]->setLocalVariable(name, ptr);
+//}
 
 Expression* FunctionCallExpression::acquire(std::vector<shared_ptr<Expression>>* tokens)
 {

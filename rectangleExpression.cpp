@@ -15,10 +15,10 @@ rectangleExpression::~rectangleExpression()
 Variable rectangleExpression::evaluate()
 {
 	ImageStore* is = ImageStore::get();
-	int x1 = *arguments[0]->getResult().get<float>();
-	int y1 = *arguments[1]->getResult().get<float>();
-	int x2 = *arguments[2]->getResult().get<float>();
-	int y2 = *arguments[3]->getResult().get<float>();
+	int x1 = *arguments[0]->getResult().get<Real>();
+	int y1 = *arguments[1]->getResult().get<Real>();
+	int x2 = *arguments[2]->getResult().get<Real>();
+	int y2 = *arguments[3]->getResult().get<Real>();
 	Variable var(Variable::Type::Mask);
 	Mask* s = new Mask(is->image->getWidth(), is->image->getHeight());
 	for (int cx = 0; cx < is->image->getWidth(); cx++)

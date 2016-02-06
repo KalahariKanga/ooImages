@@ -15,14 +15,14 @@ Variable maxExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 	
-	setLocalVariable("r", &r);
-	setLocalVariable("g", &g);
-	setLocalVariable("b", &b);
-	setLocalVariable("h", &h);
-	setLocalVariable("s", &s);
-	setLocalVariable("v", &v);
-	setLocalVariable("x", &x);
-	setLocalVariable("y", &y);
+	setLocalVariable("r",Variable(r));
+	setLocalVariable("g",Variable(g));
+	setLocalVariable("b",Variable(b));
+	setLocalVariable("h",Variable(h));
+	setLocalVariable("s",Variable(s));
+	setLocalVariable("v",Variable(v));
+	setLocalVariable("x",Variable(x));
+	setLocalVariable("y",Variable(y));
 
 	float max = std::numeric_limits<float>::min();
 
@@ -41,8 +41,8 @@ Variable maxExpression::evaluate()
 				s = p.s();
 				v = p.v();
 				Variable var = arguments.back()->getResult();
-				if (*var.get<float>() > max)
-					max = *var.get<float>();
+				if (*var.get<Real>() > max)
+					max = *var.get<Real>();
 			}
 		}
 	Variable var(Variable::Type::Real);

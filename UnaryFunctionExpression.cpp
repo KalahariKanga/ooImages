@@ -13,7 +13,7 @@ UnaryFunctionExpression::~UnaryFunctionExpression()
 
 Variable UnaryFunctionExpression::evaluate()
 {
-	float x = *arguments[0]->getResult().get<float>();
+	float x = *arguments[0]->getResult().get<Real>();
 	float y = 0;
 	switch (function)
 	{
