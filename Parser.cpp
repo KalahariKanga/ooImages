@@ -23,30 +23,28 @@ Parser::~Parser()
 std::vector<std::string> Parser::tokenizeString(std::string str)
 {
 	std::vector<std::string> list;
-	std::replace(str.begin(), str.end(), '\n', ' ');
-	std::replace(str.begin(), str.end(), '\t', ' ');
-	std::replace(str.begin(), str.end(), '\r', ' ');
+	std::string currentToken = "";
+	bool inQuotes = 0;
 
-	std::string trimmedString;
-	char lastChar = ' ';
 	for (auto c : str)
 	{
-		if (lastChar == ' ')
+		if (isspace(c) && !inQuotes)
 		{
-			if (c == ' ')
-				continue;
+			if (currentToken != "")
+			{
+				list.push_back(currentToken);
+				currentToken = "";
+			}
+			continue;
 		}
-		trimmedString.push_back(c);
-		lastChar = c;
+
+		if (c == '"')
+			inQuotes = !inQuotes;
+		else
+			currentToken.push_back(c);
 	}
-	
-	std::regex re("\\s+");
-	std::sregex_token_iterator it(str.begin(), str.end(), re, -1);
-	std::sregex_token_iterator end;
-	for (; it != end; ++it)
-	{
-		list.push_back(it->str());
-	}
+	list.push_back(currentToken);
+
 	return list;
 }
 
