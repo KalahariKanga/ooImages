@@ -24,14 +24,14 @@ Variable forExpression::evaluate()
 	float to = *arguments[2]->getResult().get<Real>();
 	float step = *arguments[3]->getResult().get<Real>();
 
-	Real counter;
-	arguments[4]->setLocalVariable(term->getString(), Variable(counter));
+	float c;
+	
 
 	//this could definitely be neater
 	if (from <= to && step > 0)
-		for (float c = from; c < to; c += step)
+		for (c = from; c < to; c += step)
 		{
-			counter = c;
+			arguments[4]->setLocalVariable(term->getString(), Variable(c));
 			try
 			{
 				arguments[4]->getResult();
@@ -45,9 +45,9 @@ Variable forExpression::evaluate()
 			}
 		}
 	else if (from >= to && step < 0)
-		for (float c = from; c > to; c += step)
+		for (c = from; c > to; c += step)
 		{
-			counter = c;
+			arguments[4]->setLocalVariable(term->getString(), Variable(c));
 			try
 			{
 				arguments[1]->getResult();
