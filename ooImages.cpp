@@ -13,6 +13,13 @@ int main(int argc, _TCHAR* argv[])
 	ImageStore* store = ImageStore::get();
 	VariableStore* vs = VariableStore::get();
 	std::string filename;
+
+	Colour::loadProperties();
+	ImageObject::loadProperties();
+	Kernel::loadProperties();
+	Function::loadProperties();
+	Mask::loadProperties();
+
 	Parser p;
 
 	if (argc == 2) //1 argument - image file

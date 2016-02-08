@@ -1,6 +1,6 @@
 #pragma once
 #include "TerminalExpression.h"
-
+#include "Function.h"
 
 class FunctionCallExpression :
 	public TerminalExpression

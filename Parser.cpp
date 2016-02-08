@@ -1,18 +1,10 @@
 #include "Parser.h"
-#include "Colour.h"
-#include "ImageObject.h"
-#include "Kernel.h"
-#include "Function.h"
 #include "ControlException.h"
 #include <regex>
 
 Parser::Parser()
 {
-	Colour::loadProperties();
-	ImageObject::loadProperties();
-	Kernel::loadProperties();
-	Function::loadProperties();
-	Mask::loadProperties();
+	
 }
 
 
