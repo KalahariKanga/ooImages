@@ -1,6 +1,5 @@
 #include "Parser.h"
 #include "ControlException.h"
-#include <regex>
 
 Parser::Parser()
 {
@@ -128,6 +127,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new lineExpression();
 	if (token == "import")
 		return new importExpression();
+	if (token == "erode")
+		return new erodeExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
