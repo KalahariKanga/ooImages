@@ -17,6 +17,9 @@ std::vector<std::string> Parser::tokenizeString(std::string str)
 	std::vector<std::string> list;
 	std::string currentToken = "";
 	bool inQuotes = 0;
+	
+	if (str.empty())
+		return list;
 
 	for (auto c : str)
 	{
