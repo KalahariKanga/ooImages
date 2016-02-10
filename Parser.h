@@ -53,6 +53,7 @@
 #include "lineExpression.h"
 #include "importExpression.h"
 #include "erodeExpression.h"
+#include "dilateExpression.h"
 
 class Parser
 {

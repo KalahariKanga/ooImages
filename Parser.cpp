@@ -129,6 +129,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new importExpression();
 	if (token == "erode")
 		return new erodeExpression();
+	if (token == "dilate")
+		return new dilateExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
