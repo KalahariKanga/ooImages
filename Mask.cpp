@@ -70,14 +70,8 @@ float Mask::getValue(int x, int y)
 void Mask::setValue(int x, int y, float v)
 {
 	v = clamp<float>(v, 0, 1);
-	while (x < 0)
-		x += width;
-	while (x >= width)
-		x -= width;
-	while (y < 0)
-		y += width;
-	while (y >= width)
-		y -= width;
+	if (x < 0 || x > width || y < 0 || y > height)
+		return;
 	data[x][y] = v;
 }
 
@@ -86,7 +80,7 @@ void Mask::invert()
 	for (int x = 0; x < width; x++)
 		for (int y = 0; y < height; y++)
 		{
-			float v = clamp<float>(getValue(x, y),0,1);
+			float v = getValue(x, y);
 			setValue(x, y, 1 - v);
 		}
 }
