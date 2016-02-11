@@ -176,4 +176,5 @@ void Colour::loadProperties()
 	setProperty("h", [](Colour* c){return c->h(); });
 	setProperty("s", [](Colour* c){return c->s(); });
 	setProperty("v", [](Colour* c){return c->v(); });
+	setProperty("a", [](Colour* c){return c->a(); });
 }
