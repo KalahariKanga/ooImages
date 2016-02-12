@@ -1,9 +1,9 @@
 #include "kernelExpression.h"
-
+#include "SequenceExpression.h"
 
 kernelExpression::kernelExpression()
 {
-	noArguments = 9;
+	noArguments = 1;
 }
 
 
@@ -14,11 +14,26 @@ kernelExpression::~kernelExpression()
 Variable kernelExpression::evaluate()
 {
 	Variable var(Variable::Type::Kernel);
-	Kernel* k = new Kernel(3);
-	for (int c = 0; c < 9; c++)
+	
+	auto sequence = dynamic_pointer_cast<SequenceExpression>(arguments[0]);
+
+	if (!sequence)
+		throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);//kinda
+
+	int elements = sequence->noArguments;
+	int size = (int)ceil(sqrt((float)elements));
+	Kernel* k = new Kernel(size);
+
+	for (int c = 0; c < size*size; c++)
 	{
-		k->set(c / 3, c % 3, *arguments[c]->getResult().get<float>());
+		if (c < elements)
+		{
+			k->set(c%size, c / size, *sequence->arguments[c]->getResult().get<float>());
+		}
+		else
+			k->set(c%size, c / size, 0);
 	}
+	
 	var.set<Kernel>(k);
 	return var;
 }
