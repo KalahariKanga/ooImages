@@ -3,7 +3,7 @@
 class convolveExpression :
 	public ImageModifierExpression
 {
-	Real x, y, r, g, b, h, s, v;
+	float x, y, r, g, b, h, s, v;
 public:
 	convolveExpression();
 	~convolveExpression();

@@ -3,7 +3,7 @@
 class combineExpression :
 	public Expression
 {
-	Real v1, v2;
+	float v1, v2;
 public:
 	combineExpression();
 	~combineExpression();

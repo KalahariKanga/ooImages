@@ -19,12 +19,12 @@ void ArrayVariableExpression::setLocalVariable(std::string name, Variable var)
 	for (int c = 0; c < noArguments; c++)
 		arguments[c]->setLocalVariable(name, var);
 }
-//void ArrayVariableExpression::setLocalVariable(std::string name, Resource* ptr)
-//{
-//	localPointers[name] = ptr;
-//	for (int c = 0; c < noArguments; c++)
-//		arguments[c]->setLocalVariable(name, ptr);
-//}
+void ArrayVariableExpression::setLocalVariable(std::string name, float* ptr)
+{
+	localPointers[name] = ptr;
+	for (int c = 0; c < noArguments; c++)
+		arguments[c]->setLocalVariable(name, ptr);
+}
 
 Variable ArrayVariableExpression::evaluate()
 {

@@ -16,14 +16,14 @@ Variable setPixelsExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 
-	setLocalVariable("r", Variable(r));
-	setLocalVariable("g", Variable(g));
-	setLocalVariable("b", Variable(b));
-	setLocalVariable("h", Variable(h));
-	setLocalVariable("s", Variable(s));
-	setLocalVariable("v", Variable(v));
-	setLocalVariable("x", Variable(x));
-	setLocalVariable("y", Variable(y));
+	setLocalVariable("r", &r);
+	setLocalVariable("g", &g);
+	setLocalVariable("b", &b);
+	setLocalVariable("h", &h);
+	setLocalVariable("s", &s);
+	setLocalVariable("v", &v);
+	setLocalVariable("x", &x);
+	setLocalVariable("y", &y);
 
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)

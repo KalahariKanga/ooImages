@@ -20,8 +20,8 @@ Variable combineExpression::evaluate()
 	Mask* m2 = mv2.get<Mask>();
 	Mask* mask = new Mask(std::min(m1->width, m2->width), std::min(m1->height, m2->height));
 
-	setLocalVariable("v1", Variable(v1));
-	setLocalVariable("v2", Variable(v2));
+	setLocalVariable("v1", &v1);
+	setLocalVariable("v2", &v2);
 
 	for (int cx = 0; cx < mask->width; cx++)
 		for (int cy = 0; cy < mask->height; cy++)

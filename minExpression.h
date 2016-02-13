@@ -5,7 +5,7 @@
 class minExpression :
 	public Expression
 {
-	Real x, y, r, g, b, h, s, v;
+	float x, y, r, g, b, h, s, v;
 public:
 	minExpression();
 	~minExpression();
