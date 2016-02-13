@@ -13,5 +13,6 @@ public:
 	virtual std::string getString();
 
 	virtual void setLocalVariable(std::string name, Variable var);
+	//virtual void setLocalVariable(std::string name, Resource* ptr);
 };
 

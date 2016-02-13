@@ -33,6 +33,12 @@ void TerminalExpression::setLocalVariable(std::string name, Variable var)
 	localVariables[name] = var;
 }
 
+/*void TerminalExpression::setLocalVariable(std::string name, Resource* val)
+{
+	//check for conflicts
+	localPointers[name] = val;
+}*/
+
 Variable TerminalExpression::evaluate()
 {
 	//resource variable
@@ -43,6 +49,14 @@ Variable TerminalExpression::evaluate()
 	if (localVariables.find(string) != localVariables.end())
 	{
 			return localVariables[string];
+	}
+
+	//local ptr
+	if (localPointers.find(string) != localPointers.end())
+	{
+		Variable var;
+		//var.set(make_shared<void>(localPointers[string]));
+		return var;
 	}
 	
 	//constant
