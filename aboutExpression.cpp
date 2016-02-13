@@ -17,7 +17,7 @@ Variable aboutExpression::evaluate()
 	if (result.type == Variable::Type::Real)
 	{
 		std::cout << "About\nReal\n";
-		std::cout << *result.get<float>();
+		std::cout << *result.get<Real>();
 		return Variable(Variable::Type::Void);
 	}
 	if (result.type == Variable::Type::Void)

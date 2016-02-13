@@ -16,10 +16,10 @@ Variable lineExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 
-	float x1 = *arguments[0]->getResult().get<float>();
-	float y1 = *arguments[1]->getResult().get<float>();
-	float x2 = *arguments[2]->getResult().get<float>();
-	float y2 = *arguments[3]->getResult().get<float>();
+	float x1 = *arguments[0]->getResult().get<Real>();
+	float y1 = *arguments[1]->getResult().get<Real>();
+	float x2 = *arguments[2]->getResult().get<Real>();
+	float y2 = *arguments[3]->getResult().get<Real>();
 
 	Variable var(Variable::Type::Mask);
 	Mask* s = new Mask(image->getWidth(), image->getHeight());

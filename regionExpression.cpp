@@ -38,7 +38,7 @@ Variable regionExpression::evaluate()
 				s = p.s();
 				v = p.v();
 
-				float val = *arguments.back()->getResult().get<float>();
+				float val = *arguments.back()->getResult().get<Real>();
 				mask->setValue(cx, cy, val);
 				
 		}

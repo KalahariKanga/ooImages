@@ -14,7 +14,7 @@ kernelExpression::~kernelExpression()
 Variable kernelExpression::evaluate()
 {
 	Variable var(Variable::Type::Kernel);
-	
+
 	auto sequence = dynamic_pointer_cast<SequenceExpression>(arguments[0]);
 
 	if (!sequence)
@@ -28,12 +28,12 @@ Variable kernelExpression::evaluate()
 	{
 		if (c < elements)
 		{
-			k->set(c%size, c / size, *sequence->arguments[c]->getResult().get<float>());
+			k->set(c%size, c / size, *sequence->arguments[c]->getResult().get<Real>());
 		}
 		else
 			k->set(c%size, c / size, 0);
 	}
-	
+
 	var.set<Kernel>(k);
 	return var;
 }

@@ -14,7 +14,7 @@ printExpression::~printExpression()
 
 Variable printExpression::evaluate()
 {
-	float value = *arguments[0]->getResult().get<float>();
+	float value = *arguments[0]->getResult().get<Real>();
 	std::cout << value << std::endl;
 	return Variable(Variable::Type::Void);
 }

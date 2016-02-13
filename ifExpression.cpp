@@ -38,7 +38,7 @@ Expression* ifExpression::acquire(std::vector<shared_ptr<Expression>>* tokens)
 Variable ifExpression::evaluate()
 {
 	//TODO: reevaluate even if constant?
-	if (*arguments[0]->getResult().get<float>())
+	if (*arguments[0]->getResult().get<Real>())
 	{
 		arguments[1]->getResult();
 	}

@@ -36,7 +36,7 @@ void TerminalExpression::setLocalVariable(std::string name, Variable var)
 void TerminalExpression::setLocalVariable(std::string name, float* val)
 {
 	//check for conflicts
-	localRealPointers[name] = val;
+	localPointers[name] = val;
 }
 
 Variable TerminalExpression::evaluate()
@@ -52,21 +52,17 @@ Variable TerminalExpression::evaluate()
 	}
 
 	//local ptr
-	if (localRealPointers.find(string) != localRealPointers.end())
+	if (localPointers.find(string) != localPointers.end())
 	{
-		//no way is this efficient
-		Variable var(Variable::Type::Real);
-		var.set<float>(localRealPointers[string]);
+		Variable var(*localPointers[string]);
 		return var;
 	}
 	
 	//constant
 	try
 	{
-		Variable var(Variable::Type::Real);
 		float val = stof(string);
-		var.set<float>(&val);
-		return var;
+		return Variable(val);
 	}
 	catch (std::invalid_argument)
 	{

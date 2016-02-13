@@ -23,7 +23,7 @@ void FunctionCallExpression::setLocalVariable(std::string name, Variable var)
 }
 void FunctionCallExpression::setLocalVariable(std::string name, float* ptr)
 {
-	localRealPointers[name] = ptr;
+	localPointers[name] = ptr;
 	for (int c = 0; c < noArguments; c++)
 		arguments[c]->setLocalVariable(name, ptr);
 }

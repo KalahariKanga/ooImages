@@ -29,7 +29,7 @@ Variable combineExpression::evaluate()
 			v1 = m1->getValue(cx, cy);
 			v2 = m2->getValue(cx, cy);
 			
-			mask->setValue(cx, cy, *arguments[2]->getResult().get<float>());
+			mask->setValue(cx, cy, *arguments[2]->getResult().get<Real>());
 		}
 	result.set<Mask>(mask);
 	return result;

@@ -21,7 +21,7 @@ void ArrayVariableExpression::setLocalVariable(std::string name, Variable var)
 }
 void ArrayVariableExpression::setLocalVariable(std::string name, float* ptr)
 {
-	localRealPointers[name] = ptr;
+	localPointers[name] = ptr;
 	for (int c = 0; c < noArguments; c++)
 		arguments[c]->setLocalVariable(name, ptr);
 }
@@ -39,7 +39,7 @@ std::string ArrayVariableExpression::getName()
 {
 	std::string trimmed = string;
 	trimmed.erase(trimmed.end()-1);
-	int i = (int)round(*arguments[0]->getResult().get<float>());
+	int i = (int)round(*arguments[0]->getResult().get<Real>());
 	std::string index = std::to_string(i);
 	return index + trimmed;
 }

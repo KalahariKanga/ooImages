@@ -16,14 +16,14 @@ Variable convolveExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 	
-	setLocalVariable("r", &r);
-	setLocalVariable("g", &g);
-	setLocalVariable("b", &b);
-	setLocalVariable("h", &h);
-	setLocalVariable("s", &s);
-	setLocalVariable("v", &v);
-	setLocalVariable("x", &x);
-	setLocalVariable("y", &y);
+	setLocalVariable("r",&r);
+	setLocalVariable("g",&g);
+	setLocalVariable("b",&b);
+	setLocalVariable("h",&h);
+	setLocalVariable("s",&s);
+	setLocalVariable("v",&v);
+	setLocalVariable("x",&x);
+	setLocalVariable("y",&y);
 
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)

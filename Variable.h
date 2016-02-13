@@ -5,6 +5,7 @@
 #include "Mask.h"
 #include "Kernel.h"
 #include "ImageObject.h"
+#include "Real.h"
 
 
 class Variable
@@ -17,6 +18,11 @@ public:
 	};
 	
 	Variable(Type t = Type::Void);
+	Variable(float v)
+	{
+		type = Type::Real;
+		data = make_shared<Real>(v);
+	}
 	Variable(const Variable& other);
 	~Variable();
 	

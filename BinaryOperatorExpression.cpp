@@ -14,8 +14,8 @@ BinaryOperatorExpression::~BinaryOperatorExpression()
 Variable BinaryOperatorExpression::evaluate()
 {
 	Variable var(Variable::Type::Real);
-	float a = *arguments[0]->getResult().get<float>();
-	float b = *arguments[1]->getResult().get<float>();
+	float a = *arguments[0]->getResult().get<Real>();
+	float b = *arguments[1]->getResult().get<Real>();
 	float v;
 	switch (op)
 	{
