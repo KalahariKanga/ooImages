@@ -16,7 +16,7 @@ Variable::~Variable()
 {
 }
 
-void Variable::set(shared_ptr<void> newData)
+void Variable::set(shared_ptr<Resource> newData)
 {
 	data = newData;
 }
@@ -36,8 +36,7 @@ Variable Variable::duplicate()
 
 	if (type == Type::Real)
 	{
-		Variable v(Type::Real);
-		v.set<float>(new float(*get<float>()));
+		Variable v(*get<Real>());
 		return v;
 	}
 
