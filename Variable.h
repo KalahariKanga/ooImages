@@ -30,7 +30,7 @@ public:
 	
 
 	template <class T> T* get();
-	template <class T> void set(T*);
+	void set(Resource* res);
 	void set(shared_ptr<Resource> newData);
 	template <class T> shared_ptr<T> getShared();
 	Resource* getResource();
@@ -44,11 +44,11 @@ T* Variable::get()
 	return (T*)data.get();
 }
 
-template <class T>
-void Variable::set(T* t)
-{
-	data = make_shared<T>(*t);
-}
+//template <class T>
+//void Variable::set(T* t)
+//{
+//	data = make_shared<T>(*t);
+//}
 
 template <class T>
 shared_ptr<T> Variable::getShared()

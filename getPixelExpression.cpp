@@ -16,6 +16,6 @@ Variable getPixelExpression::evaluate()
 	float x = *arguments[0]->getResult().get<Real>();
 	float y = *arguments[1]->getResult().get<Real>();
 	Variable var(Variable::Type::Colour);
-	var.set<Colour>(new Colour(ImageStore::get()->image->getPixel(x, y)));
+	var.set(new Colour(ImageStore::get()->image->getPixel(x, y)));
 	return var;
 }

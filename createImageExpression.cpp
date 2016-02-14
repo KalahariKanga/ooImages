@@ -16,7 +16,7 @@ Variable createImageExpression::evaluate()
 	int width = *arguments[0]->getResult().get<Real>();
 	int height = *arguments[1]->getResult().get<Real>();
 	Variable image(Variable::Type::Image);
-	image.set<ImageObject>(new ImageObject(width, height));
+	image.set(new ImageObject(width, height));
 	return image;
 }
 

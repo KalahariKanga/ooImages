@@ -47,6 +47,6 @@ Variable cropExpression::evaluate()
 		}
 
 	Variable var(Variable::Type::Image);
-	var.set<ImageObject>(result);
+	var.set(result);
 	return var;
 }

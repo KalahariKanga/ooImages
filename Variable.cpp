@@ -21,6 +21,11 @@ void Variable::set(shared_ptr<Resource> newData)
 	data = newData;
 }
 
+void Variable::set(Resource* res)
+{
+	data.reset(res);
+}
+
 Resource* Variable::getResource()
 {
 	if (type == Type::Real || type == Type::Void)

@@ -46,6 +46,6 @@ Variable functionExpression::evaluate()
 	}
 	Variable var(Variable::Type::Function);
 	Function* f = new Function(arguments[c],argumentNames);
-	var.set<Function>(f);
+	var.set(f);
 	return var;
 }

@@ -114,7 +114,7 @@ Variable lineExpression::evaluate()
 			s->setValue(x, y, 1);
 		}
 	}
-	var.set<Mask>(s);
+	var.set(s);
 	return var;
 
 }

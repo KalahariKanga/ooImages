@@ -34,6 +34,6 @@ Variable kernelExpression::evaluate()
 			k->set(c%size, c / size, 0);
 	}
 
-	var.set<Kernel>(k);
+	var.set(k);
 	return var;
 }

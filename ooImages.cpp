@@ -27,7 +27,7 @@ int main(int argc, _TCHAR* argv[])
 		filename = argv[1];
 		store->initialize(filename);
 		Variable var(Variable::Type::Image);
-		var.set<ImageObject>(store->getImage());
+		var.set(store->getImage());
 		vs->setArrayVariable("argv", 0, var);
 	}
 	else if (argc > 2) //2+ arguments - script file and (several) image files
@@ -41,7 +41,7 @@ int main(int argc, _TCHAR* argv[])
 			ImageObject* image = new ImageObject();
 			image->loadImage(argv[c]);
 			Variable var(Variable::Type::Image);
-			var.set<ImageObject>(image);
+			var.set(image);
 			vs->setArrayVariable("argv", c - 2, var);
 
 			if (c == 2)
@@ -67,7 +67,7 @@ int main(int argc, _TCHAR* argv[])
 		std::getline(std::cin, filename);
 		store->initialize(filename);
 		Variable var(Variable::Type::Image);
-		var.set<ImageObject>(store->getImage());
+		var.set(store->getImage());
 		vs->setArrayVariable("argv", 0, var);
 	}
 

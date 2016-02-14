@@ -43,6 +43,6 @@ Variable regionExpression::evaluate()
 				
 		}
 	Variable var(Variable::Type::Mask);
-	var.set<Mask>(mask);
+	var.set(mask);
 	return var;
 }

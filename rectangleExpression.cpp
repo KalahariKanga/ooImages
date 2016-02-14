@@ -29,6 +29,6 @@ Variable rectangleExpression::evaluate()
 			else
 				s->setValue(cx, cy, 1);//possibly unnecessary 
 		}
-	var.set<Mask>(s);
+	var.set(s);
 	return var;
 }

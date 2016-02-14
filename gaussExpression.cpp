@@ -24,6 +24,6 @@ Variable gaussExpression::evaluate()
 			k->set(cx, cy, v);
 		}
 	Variable var(Variable::Type::Kernel);
-	var.set<Kernel>(k);
+	var.set(k);
 	return var;
 }

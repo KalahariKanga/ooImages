@@ -31,7 +31,7 @@ Variable combineExpression::evaluate()
 			
 			mask->setValue(cx, cy, *arguments[2]->getResult().get<Real>());
 		}
-	result.set<Mask>(mask);
+	result.set(mask);
 	return result;
 }
 
