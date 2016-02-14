@@ -36,8 +36,7 @@ Variable PropertyAccessorExpression::evaluate()
 	auto resource = v.getResource();
 	if (!resource)
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(resource->getProperty(propName)));
-	return var;
+
+	return Variable(resource->getProperty(propName));
 
 }

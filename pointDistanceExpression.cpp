@@ -19,7 +19,5 @@ Variable pointDistanceExpression::evaluate()
 	float y2 = *arguments[3]->getResult().get<Real>();
 
 	float distance = sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(distance));
-	return var;
+	return Variable(distance);
 }

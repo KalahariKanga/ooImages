@@ -46,7 +46,5 @@ Variable minExpression::evaluate()
 					min = *var.get<Real>();
 			}
 		}
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(min));
-	return var;
+	return Variable(min);
 }

@@ -38,7 +38,5 @@ Variable UnaryFunctionExpression::evaluate()
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(y));
-	return var;
+	return Variable(y);
 }

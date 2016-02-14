@@ -13,7 +13,6 @@ BinaryOperatorExpression::~BinaryOperatorExpression()
 
 Variable BinaryOperatorExpression::evaluate()
 {
-	Variable var(Variable::Type::Real);
 	float a = *arguments[0]->getResult().get<Real>();
 	float b = *arguments[1]->getResult().get<Real>();
 	float v;
@@ -58,6 +57,5 @@ Variable BinaryOperatorExpression::evaluate()
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}
-	var.set<float>(&v);
-	return var;
+	return Variable(v);
 }

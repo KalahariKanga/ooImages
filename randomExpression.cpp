@@ -17,7 +17,5 @@ Variable randomExpression::evaluate()
 	float from = *arguments[0]->getResult().get<Real>();
 	float to = *arguments[1]->getResult().get<Real>();
 	std::uniform_real_distribution<float> dist(from, to);
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(dist(engine)));
-	return var;
+	return Variable(dist(engine));
 }

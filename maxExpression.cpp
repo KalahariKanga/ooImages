@@ -45,7 +45,6 @@ Variable maxExpression::evaluate()
 					max = *var.get<Real>();
 			}
 		}
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(max));
-	return var;
+	
+	return Variable(max);
 }

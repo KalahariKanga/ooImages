@@ -19,7 +19,5 @@ Variable pointDirectionExpression::evaluate()
 	float y2 = *arguments[3]->getResult().get<Real>();
 
 	float direction = atan2(y2 - y1, x2 - x1);
-	Variable var(Variable::Type::Real);
-	var.set<float>(new float(180*direction/PI));
-	return var;
+	return Variable(180 * direction / PI);
 }
