@@ -27,7 +27,7 @@ Variable aboutExpression::evaluate()
 	}
 
 	//so the variable hasa resource type
-	auto resource = result.getResource();
+	auto resource = result.get<Resource>();
 	if (!resource)
 		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 	resource->about();

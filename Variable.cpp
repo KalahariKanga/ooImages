@@ -26,14 +26,6 @@ void Variable::set(Resource* res)
 	data.reset(res);
 }
 
-Resource* Variable::getResource()
-{
-	if (type == Type::Real || type == Type::Void)
-		return nullptr;
-	else
-		return (Resource*)data.get();
-}
-
 Variable Variable::duplicate()
 {
 	if (type == Type::Void)
@@ -46,6 +38,6 @@ Variable Variable::duplicate()
 	}
 
 	Variable v(type);
-	v.data.reset(getResource()->clone());
+	v.data.reset(get<Resource>()->clone());
 	return v;
 }

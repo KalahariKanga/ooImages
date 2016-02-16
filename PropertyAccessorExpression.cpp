@@ -33,7 +33,7 @@ Variable PropertyAccessorExpression::evaluate()
 		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 
 	
-	auto resource = v.getResource();
+	auto resource = v.get<Resource>();
 	if (!resource)
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 

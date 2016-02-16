@@ -33,7 +33,6 @@ public:
 	void set(Resource* res);
 	void set(shared_ptr<Resource> newData);
 	template <class T> shared_ptr<T> getShared();
-	Resource* getResource();
 	Variable duplicate();
 };
 
@@ -43,12 +42,6 @@ T* Variable::get()
 	//if(type match)
 	return (T*)data.get();
 }
-
-//template <class T>
-//void Variable::set(T* t)
-//{
-//	data = make_shared<T>(*t);
-//}
 
 template <class T>
 shared_ptr<T> Variable::getShared()
