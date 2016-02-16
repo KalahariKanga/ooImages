@@ -39,8 +39,10 @@ public:
 template <class T>
 T* Variable::get()
 {
-	//if(type match)
-	return (T*)data.get();
+	auto ptr = dynamic_cast<T*>(data.get());
+	if (!ptr)
+		throw new Exception(Exception::ErrorType::TYPE_MISMATCH);
+	return ptr;
 }
 
 template <class T>
