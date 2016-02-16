@@ -28,5 +28,5 @@ Variable whileExpression::evaluate()
 		}
 	}
 		
-	return Variable(Variable::Type::Void);
+	return Variable();
 }

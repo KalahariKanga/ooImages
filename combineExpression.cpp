@@ -13,7 +13,6 @@ combineExpression::~combineExpression()
 
 Variable combineExpression::evaluate()
 {
-	Variable result(Variable::Type::Mask);
 	Variable mv1 = arguments[0]->getResult();
 	Mask* m1 = mv1.get<Mask>();
 	Variable mv2 = arguments[1]->getResult();
@@ -31,7 +30,7 @@ Variable combineExpression::evaluate()
 			
 			mask->setValue(cx, cy, *arguments[2]->getResult().get<Real>());
 		}
-	result.set(mask);
-	return result;
+	Variable var(mask);
+	return var;
 }
 

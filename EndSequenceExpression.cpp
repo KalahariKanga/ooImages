@@ -13,5 +13,5 @@ EndSequenceExpression::~EndSequenceExpression()
 
 Variable EndSequenceExpression::evaluate()
 {
-	return Variable(Variable::Type::Void);
+	return Variable();
 }

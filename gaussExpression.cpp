@@ -23,7 +23,6 @@ Variable gaussExpression::evaluate()
 			float v = exp(- ( (cx - origin)*(cx - origin) / (2 * sigma * sigma) + (cy - origin)*(cy - origin) / (2 * sigma * sigma) ));
 			k->set(cx, cy, v);
 		}
-	Variable var(Variable::Type::Kernel);
-	var.set(k);
+	Variable var(k);
 	return var;
 }

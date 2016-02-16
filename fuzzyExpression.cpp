@@ -50,7 +50,6 @@ Variable fuzzyExpression::evaluate()
 		}
 	}
 
-	Variable var(Variable::Type::Mask);
-	var.set(selection);
+	Variable var(selection);
 	return var;
 }

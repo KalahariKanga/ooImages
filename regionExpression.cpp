@@ -42,7 +42,6 @@ Variable regionExpression::evaluate()
 				mask->setValue(cx, cy, val);
 				
 		}
-	Variable var(Variable::Type::Mask);
-	var.set(mask);
+	Variable var(mask);
 	return var;
 }

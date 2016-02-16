@@ -21,7 +21,6 @@ Variable lineExpression::evaluate()
 	float x2 = *arguments[2]->getResult().get<Real>();
 	float y2 = *arguments[3]->getResult().get<Real>();
 
-	Variable var(Variable::Type::Mask);
 	Mask* s = new Mask(image->getWidth(), image->getHeight());
 	float minX = std::min(x1, x2);
 	float maxX = std::max(x1, x2);
@@ -114,7 +113,7 @@ Variable lineExpression::evaluate()
 			s->setValue(x, y, 1);
 		}
 	}
-	var.set(s);
+	Variable var(s);
 	return var;
 
 }

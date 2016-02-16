@@ -19,7 +19,6 @@ Variable rectangleExpression::evaluate()
 	int y1 = *arguments[1]->getResult().get<Real>();
 	int x2 = *arguments[2]->getResult().get<Real>();
 	int y2 = *arguments[3]->getResult().get<Real>();
-	Variable var(Variable::Type::Mask);
 	Mask* s = new Mask(is->image->getWidth(), is->image->getHeight());
 	for (int cx = 0; cx < is->image->getWidth(); cx++)
 		for (int cy = 0; cy < is->image->getHeight(); cy++)
@@ -29,6 +28,6 @@ Variable rectangleExpression::evaluate()
 			else
 				s->setValue(cx, cy, 1);//possibly unnecessary 
 		}
-	var.set(s);
+	Variable var(s);
 	return var;
 }

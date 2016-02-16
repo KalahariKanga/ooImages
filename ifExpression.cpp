@@ -49,5 +49,5 @@ Variable ifExpression::evaluate()
 			arguments[2]->getResult();
 		}
 	}
-	return Variable(Variable::Type::Void);
+	return Variable();
 }

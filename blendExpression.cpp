@@ -60,6 +60,6 @@ Variable blendExpression::evaluate()
 
 		}
 	commitBuffer();
-	return Variable(Variable::Type::Void);
+	return Variable();
 }
 

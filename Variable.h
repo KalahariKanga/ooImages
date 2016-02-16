@@ -12,27 +12,20 @@ class Variable
 {
 	std::shared_ptr<Resource> data;
 public:
-	enum class Type
-	{
-		Void, Real, Colour, Mask, Kernel, Image, Function
-	};
 	
-	Variable(Type t = Type::Void);
-	Variable(float v)
-	{
-		type = Type::Real;
-		data = make_shared<Real>(v);
-	}
+	Variable();
+	Variable(float v);
+	Variable(Resource* res);
 	Variable(const Variable& other);
 	~Variable();
 	
-	Type type;
-	
-
 	template <class T> T* get();
+	template <class T> shared_ptr<T> getShared();
 	void set(Resource* res);
 	void set(shared_ptr<Resource> newData);
-	template <class T> shared_ptr<T> getShared();
+	
+	bool isNull();
+
 	Variable duplicate();
 };
 

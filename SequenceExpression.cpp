@@ -42,5 +42,5 @@ Variable SequenceExpression::evaluate()
 	{
 		return v;
 	}
-	return Variable(Variable::Type::Void);
+	return Variable();
 }

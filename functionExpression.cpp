@@ -44,8 +44,7 @@ Variable functionExpression::evaluate()
 		argumentNames.push_back(argumentNameExpr->getName());
 		++c;
 	}
-	Variable var(Variable::Type::Function);
-	Function* f = new Function(arguments[c],argumentNames);
-	var.set(f);
+	
+	Variable var(new Function(arguments[c], argumentNames));
 	return var;
 }

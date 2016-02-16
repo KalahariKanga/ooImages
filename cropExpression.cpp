@@ -46,7 +46,6 @@ Variable cropExpression::evaluate()
 				result->setPixel(cx - minX, cy - minY, Colour(0, 0, 0, 0));
 		}
 
-	Variable var(Variable::Type::Image);
-	var.set(result);
+	Variable var(result);
 	return var;
 }

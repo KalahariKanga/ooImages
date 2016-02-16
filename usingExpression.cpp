@@ -25,6 +25,6 @@ Variable usingExpression::evaluate()
 	}
 	else
 		is->image = arguments[0]->getResult().getShared<ImageObject>();
-	return Variable(Variable::Type::Void);
+	return Variable();
 
 }

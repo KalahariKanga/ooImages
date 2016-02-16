@@ -1,14 +1,23 @@
 #include "Variable.h"
 #include "Function.h"
 
-Variable::Variable(Variable::Type t) : type(t)
+Variable::Variable()
 {
 
 }
 
+Variable::Variable(float v)
+{
+	data = make_shared<Real>(v);
+}
+
+Variable::Variable(Resource* res)
+{
+	set(res);
+}
+
 Variable::Variable(const Variable& other)
 {
-	type = other.type;
 	data = other.data;
 }
 
@@ -26,18 +35,17 @@ void Variable::set(Resource* res)
 	data.reset(res);
 }
 
+bool Variable::isNull()
+{
+	return (bool)data;
+}
+
 Variable Variable::duplicate()
 {
-	if (type == Type::Void)
-		return Variable(Type::Void);
+	if (isNull())
+		return Variable();
 
-	if (type == Type::Real)
-	{
-		Variable v(*get<Real>());
-		return v;
-	}
-
-	Variable v(type);
+	Variable v;
 	v.data.reset(get<Resource>()->clone());
 	return v;
 }

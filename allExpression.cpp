@@ -18,8 +18,7 @@ Variable allExpression::evaluate()
 	for (int cx = 0; cx < mask->width; cx++)
 		for (int cy = 0; cy < mask->height; cy++)
 			mask->setValue(cx, cy, 1);
-	Variable var(Variable::Type::Mask);
-	var.set(mask);
+	Variable var(mask);
 	return var;
 }
 

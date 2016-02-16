@@ -62,5 +62,5 @@ Variable forExpression::evaluate()
 		}
 	else
 		throw new Exception(Exception::ErrorType::LOOP_ERROR);
-	return Variable(Variable::Type::Void);
+	return Variable();
 }

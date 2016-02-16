@@ -40,5 +40,5 @@ Variable transformExpression::evaluate()
 			buffer->setPixel(cx, cy, image->getPixel(nx, ny));
 		}
 	commitBuffer();
-	return Variable(Variable::Type::Void);
+	return Variable();
 }
