@@ -37,7 +37,7 @@ void Variable::set(Resource* res)
 
 bool Variable::isNull()
 {
-	return (bool)data;
+	return (bool)!data;
 }
 
 Variable Variable::duplicate()
