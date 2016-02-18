@@ -130,3 +130,12 @@ Jump to the next loop iteration.
 ### line  
 `Mask line(Real x1, Real y1, Real x2, Real y2)`  
 Construct and return the mask with points on the line between (`x1`,`y1`) and (`x2`,`y2`).  
+### import
+`Void import(String filename)`  
+Load and run the script file `filename`.  
+### erode
+`Void erode(Kernel k)`  
+Use greyscale erosion to erode the active mask using the structuring element `k`.  
+### dilate
+`Void dilate(Kernel k)`  
+Use greyscale dilation to dilate the active mask using the structuring element `k`.  
