@@ -70,7 +70,7 @@ Supported file types: `bmp, png, tga, jpg, gif, psd, hdr and pic `
 Set the active image to `i`. All consequent operations will be performed on `i`.
 ### crop
 `Image crop(Void)`  
-Contruct and return the smallest image containing only the pixels in the active mask.
+Construct and return the smallest image containing only the pixels in the active mask.
 ### blend
 `Void blend(Image i, Colour c)`  
 *Introduces local variables `r1`, `g1`, `b1`, `a1`, `h1`, `s1`, `v1`, `r2`, `g2`, `b2`, `a2`, `h2`, `s2`, `v2`, `x`, `y`*  
