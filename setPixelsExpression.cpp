@@ -22,6 +22,7 @@ Variable setPixelsExpression::evaluate()
 	setLocalVariable("h", &h);
 	setLocalVariable("s", &s);
 	setLocalVariable("v", &v);
+	setLocalVariable("a", &a);
 	setLocalVariable("x", &x);
 	setLocalVariable("y", &y);
 
@@ -39,6 +40,7 @@ Variable setPixelsExpression::evaluate()
 				h = p.h();
 				s = p.s();
 				v = p.v();
+				a = p.a();
 				Variable col = arguments.back()->getResult();
 				buffer->setPixel(cx, cy, *col.get<Colour>());
 			}

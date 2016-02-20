@@ -16,14 +16,15 @@ Variable convolveExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 	
-	setLocalVariable("r",&r);
-	setLocalVariable("g",&g);
-	setLocalVariable("b",&b);
-	setLocalVariable("h",&h);
-	setLocalVariable("s",&s);
-	setLocalVariable("v",&v);
-	setLocalVariable("x",&x);
-	setLocalVariable("y",&y);
+	setLocalVariable("r", &r);
+	setLocalVariable("g", &g);
+	setLocalVariable("b", &b);
+	setLocalVariable("h", &h);
+	setLocalVariable("s", &s);
+	setLocalVariable("v", &v);
+	setLocalVariable("a", &a);
+	setLocalVariable("x", &x);
+	setLocalVariable("y", &y);
 
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
@@ -40,6 +41,7 @@ Variable convolveExpression::evaluate()
 				r = p.r();
 				g = p.g();
 				b = p.b();
+				a = p.a();
 				float kr, kg, kb;
 				kr = kg = kb = 0;
 				Variable v = arguments.back()->getResult();

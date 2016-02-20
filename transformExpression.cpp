@@ -20,6 +20,7 @@ Variable transformExpression::evaluate()
 	setLocalVariable("h", &h);
 	setLocalVariable("s", &s);
 	setLocalVariable("v", &v);
+	setLocalVariable("a", &a);
 	setLocalVariable("x", &x);
 	setLocalVariable("y", &y);
 
@@ -35,6 +36,7 @@ Variable transformExpression::evaluate()
 			h = p.h();
 			s = p.s();
 			v = p.v();
+			a = p.a();
 			float nx = *arguments[0]->getResult().get<Real>();
 			float ny = *arguments[1]->getResult().get<Real>();
 			buffer->setPixel(cx, cy, image->getPixel(nx, ny));
