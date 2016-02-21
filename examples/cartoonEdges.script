@@ -1,0 +1,6 @@
+[
+	set i crop
+	convolve kernel [ 0 1 0 1 -4 1 0 1 0 ]
+	setPixels hsv 0 0 v
+	blend i rgb - r2 r1 - g2 g1 - b2 b1
+]
