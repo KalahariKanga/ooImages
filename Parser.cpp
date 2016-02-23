@@ -11,13 +11,13 @@ Parser::~Parser()
 {
 }
 
-std::string Parser::removeComments(std::string str)
+void Parser::removeComments(std::string& str)
 {
 	std::string output;
 	bool inQuotes = 0, inComment = 0;
 
 	if (str.empty())
-		return str;
+		return;
 
 	for (auto c : str)
 	{
@@ -28,7 +28,7 @@ std::string Parser::removeComments(std::string str)
 		else if (!inComment)
 			output.push_back(c);
 	}
-	return output;
+	str = output;
 }
 
 std::vector<std::string> Parser::tokenizeString(std::string str)
@@ -203,7 +203,7 @@ Expression* Parser::tokenToExpression(std::string token)
 Variable Parser::run(std::string input)
 {
 	delete head;
-	input = removeComments(input);
+	removeComments(input);
 	auto tokens = tokenizeString(input);
 	std::vector<std::shared_ptr<Expression>> expressions;
 	std::vector<std::shared_ptr<Expression>> expressionStack;
