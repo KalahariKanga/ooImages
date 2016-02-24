@@ -59,7 +59,6 @@ class Parser
 {
 	void removeComments(std::string& string);
 	std::vector<std::string> tokenizeString(std::string string);
-	Expression* head = nullptr;
 public:
 	Parser();
 	~Parser();

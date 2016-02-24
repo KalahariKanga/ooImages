@@ -202,7 +202,6 @@ Expression* Parser::tokenToExpression(std::string token)
 
 Variable Parser::run(std::string input)
 {
-	delete head;
 	removeComments(input);
 	auto tokens = tokenizeString(input);
 	std::vector<std::shared_ptr<Expression>> expressions;
