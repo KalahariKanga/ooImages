@@ -1,6 +1,11 @@
+#Emphasise edges by drawing them black#
 [
+	#Copy the image into i#
 	set i crop
+	#Apply an edge-detect kernel#
 	convolve kernel [ 0 1 0 1 -4 1 0 1 0 ]
+	#Greyscale the result#
 	setPixels hsv 0 0 v
+	#Difference blend with the original image#
 	blend i rgb - r2 r1 - g2 g1 - b2 b1
 ]
