@@ -94,13 +94,14 @@ int main(int argc, _TCHAR* argv[])
 		}
 	});
 	
+	window.setSize(sf::Vector2u(800, 800 * ((float)store->image->getHeight() / store->image->getWidth())));
+
 	while (1)
 	{
 		image.create(store->image->getWidth(), store->image->getHeight(), store->image->getData());		
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
 		sprite.setScale((float)800 / store->image->getWidth(), (float)800 / store->image->getWidth());
-		window.setSize(sf::Vector2u(800, 800 * ((float)store->image->getHeight() / store->image->getWidth())));
 		window.clear();
 		window.draw(sprite);
 		window.display();
