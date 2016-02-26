@@ -43,30 +43,34 @@ int Colour::a()
 }
 int Colour::h()
 {
-	float min, max, delta, h;
+	int min, max, delta;
+	float h;
 	min = std::min(R, std::min(G, B));
 	max = std::max(R, std::max(G, B));
 	delta = max - min;
 
 	if (R == max)
-		h = (G - B) / delta;
+		h = (G - B) / (float)delta;
 	else if (G == max)
-		h = 2 + (B - R) / delta;
+		h = 2 + (B - R) / (float)delta;
 	else
-		h = 4 + (R - G) / delta;
+		h = 4 + (R - G) / (float)delta;
+
 	h *= ((float)256 / 6);
+
 	if (h < 0)
 		h += 256;
-	return h;
+
+	return (int)h;
 }
 int Colour::s()
 {
-	float min, max, delta;
+	int min, max, delta;
 	min = std::min(R, std::min(G, B));
 	max = std::max(R, std::max(G, B));
 	delta = max - min;
 	if (max != 0)
-		return 255*(delta / max);
+		return (int)(255*(delta / (float)max));
 	else
 		return 0;
 }
@@ -113,7 +117,7 @@ void Colour::hsv(int H, int S, int V)
 	float s = (float)S / 255;
 	float v = (float)V / 255;
 
-	int i = floor((float)h * 6);
+	int i = (int)floor(h * 6);
 	float f = h * 6 - i;
 	float p = v * (1 - s);
 	float q = v * (1 - f * s);
@@ -128,9 +132,9 @@ void Colour::hsv(int H, int S, int V)
 	case 5: r = v, g = p, b = q; break;
 	}
 
-	R = r * 255;
-	G = g * 255;
-	B = b * 255;
+	R = (int)(r * 255);
+	G = (int)(g * 255);
+	B = (int)(b * 255);
 }
 
 Colour Colour::interpolate(Colour from, Colour to, float amount)
@@ -157,7 +161,7 @@ float Colour::distance(Colour from, Colour to)
 	dG *= dG;
 	int dB = (from.b() - to.b());
 	dB *= dB;
-	return sqrt(dR + dG + dB);
+	return (float)sqrt(dR + dG + dB);
 }
 
 void Colour::about()

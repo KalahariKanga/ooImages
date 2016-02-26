@@ -16,16 +16,16 @@ Variable lineExpression::evaluate()
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 
-	float x1 = *arguments[0]->getResult().get<Real>();
-	float y1 = *arguments[1]->getResult().get<Real>();
-	float x2 = *arguments[2]->getResult().get<Real>();
-	float y2 = *arguments[3]->getResult().get<Real>();
+	int x1 = (int)*arguments[0]->getResult().get<Real>();
+	int y1 = (int)*arguments[1]->getResult().get<Real>();
+	int x2 = (int)*arguments[2]->getResult().get<Real>();
+	int y2 = (int)*arguments[3]->getResult().get<Real>();
 
 	Mask* s = new Mask(image->getWidth(), image->getHeight());
-	float minX = std::min(x1, x2);
-	float maxX = std::max(x1, x2);
-	float minY = std::min(y1, y2);
-	float maxY = std::max(y1, y2);
+	int minX = std::min(x1, x2);
+	int maxX = std::max(x1, x2);
+	int minY = std::min(y1, y2);
+	int maxY = std::max(y1, y2);
 
 	int dx = x2 - x1;
 	int dy = y2 - y1;
