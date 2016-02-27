@@ -174,11 +174,11 @@ void Colour::about()
 
 void Colour::loadProperties()
 {
-	setProperty("r", [](Colour* c){return c->r(); });
-	setProperty("g", [](Colour* c){return c->g(); });
-	setProperty("b", [](Colour* c){return c->b(); });
-	setProperty("h", [](Colour* c){return c->h(); });
-	setProperty("s", [](Colour* c){return c->s(); });
-	setProperty("v", [](Colour* c){return c->v(); });
-	setProperty("a", [](Colour* c){return c->a(); });
+	setProperty("r", [](Colour* c){return (float)c->r(); });
+	setProperty("g", [](Colour* c){return (float)c->g(); });
+	setProperty("b", [](Colour* c){return (float)c->b(); });
+	setProperty("h", [](Colour* c){return (float)c->h(); });
+	setProperty("s", [](Colour* c){return (float)c->s(); });
+	setProperty("v", [](Colour* c){return (float)c->v(); });
+	setProperty("a", [](Colour* c){return (float)c->a(); });
 }

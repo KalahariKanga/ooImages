@@ -43,21 +43,21 @@ Variable blendExpression::evaluate()
 			if (store->mask->getValue(cx, cy) > 0)
 			{
 				Colour b = bottom->getPixel(cx, cy);
-				 r1 = b.r();
-				 g1 = b.g();
-				 b1 = b.b();
-				 h1 = b.h();
-				 s1 = b.s();
-				 v1 = b.v();
-				 a1 = b.a();
+				r1 = (float)b.r();
+				g1 = (float)b.g();
+				b1 = (float)b.b();
+				h1 = (float)b.h();
+				s1 = (float)b.s();
+				v1 = (float)b.v();
+				a1 = (float)b.a();
 				Colour t = top->getPixel(cx, cy);
-				 r2 = t.r();
-				 g2 = t.g();
-				 b2 = t.b();
-				 h2 = t.h();
-				 s2 = t.s();
-				 v2 = t.v();
-				 a2 = t.a();
+				r2 = (float)t.r();
+				g2 = (float)t.g();
+				b2 = (float)t.b();
+				h2 = (float)t.h();
+				s2 = (float)t.s();
+				v2 = (float)t.v();
+				a2 = (float)t.a();
 				Variable col = arguments[1]->getResult();
 				buffer->setPixel(cx, cy, *col.get<Colour>());
 			}

@@ -46,7 +46,7 @@ Variable BinaryOperatorExpression::evaluate()
 		v = (a > b);
 		break;
 	case Operator::MOD:
-		v = ((int)a % (int)b);
+		v = (float)((int)a % (int)b);
 		break;
 	case Operator::AND: //these could be problematic cos floats :/
 		v = (a && b);
