@@ -1,6 +1,5 @@
 #include "transformToExpression.h"
 
-
 transformToExpression::transformToExpression()
 {
 	noArguments = 2;
@@ -18,6 +17,11 @@ void transformToExpression::drawQuadrilateral(int x1, int y1, int x2, int y2, in
 	int ymax = std::max({ y1, y2, y3, y4 });
 	int xmin = std::min({ x1, x2, x3, x4 });
 	int xmax = std::max({ x1, x2, x3, x4 });
+
+	if (xmin > buffer->getWidth() || xmax < 0)
+		return;
+	if (ymin > buffer->getHeight() || ymax < 0)
+		return;
 
 	std::vector<int> polyY = { y1, y2, y3, y4 };
 	std::vector<int> polyX = { x1, x2, x3, x4 };
@@ -64,9 +68,14 @@ Variable transformToExpression::evaluate()
 	setLocalVariable("x", &x);
 	setLocalVariable("y", &y);
 
-	for (int cx = 0; cx < image->getWidth(); cx++)
-		for (int cy = 0; cy < image->getHeight(); cy++)
+	typedef std::vector<std::vector<std::pair<int, int>>> vectorField;
+	vectorField pointLocation(image->getWidth() + 1, vector<std::pair<int, int>>(image->getHeight() + 1));
+
+	for (int cx = 0; cx < image->getWidth()+1; cx++)
+		for (int cy = 0; cy < image->getHeight()+1; cy++)
 		{
+			x = cx;
+			y = cy;
 			Colour p = image->getPixel(cx, cy);
 			r = p.r();
 			g = p.g();
@@ -76,24 +85,23 @@ Variable transformToExpression::evaluate()
 			v = p.v();
 			a = p.a();
 
-			x = cx;
-			y = cy;
-			int tlX = (int)*arguments[0]->getResult().get<Real>();
-			int tlY = (int)*arguments[1]->getResult().get<Real>();
-			x = cx+1;
-			y = cy;
-			int trX = (int)*arguments[0]->getResult().get<Real>();
-			int trY = (int)*arguments[1]->getResult().get<Real>();
-			x = cx+1;
-			y = cy+1;
-			int brX = (int)*arguments[0]->getResult().get<Real>();
-			int brY = (int)*arguments[1]->getResult().get<Real>();
-			x = cx;
-			y = cy+1;
-			int blX = (int)*arguments[0]->getResult().get<Real>();
-			int blY = (int)*arguments[1]->getResult().get<Real>();
-
-			drawQuadrilateral(tlX, tlY, trX, trY, brX, brY, blX, blY, p);
+			int xpos = (int)*arguments[0]->getResult().get<Real>();
+			int ypos = (int)*arguments[1]->getResult().get<Real>();
+			pointLocation[cx][cy] = make_pair(xpos, ypos);
+		}
+	
+	for (int cx = 0; cx < image->getWidth(); cx++)
+		for (int cy = 0; cy < image->getHeight(); cy++)
+		{
+			int tlX = std::get<0>(pointLocation[cx][cy]);
+			int tlY = std::get<1>(pointLocation[cx][cy]);
+			int trX = std::get<0>(pointLocation[cx + 1][cy]);
+			int trY = std::get<1>(pointLocation[cx + 1][cy]);
+			int brX = std::get<0>(pointLocation[cx + 1][cy + 1]);
+			int brY = std::get<1>(pointLocation[cx + 1][cy + 1]);
+			int blX = std::get<0>(pointLocation[cx][cy + 1]);
+			int blY = std::get<1>(pointLocation[cx][cy + 1]);
+			drawQuadrilateral(tlX, tlY, trX, trY, brX, brY, blX, blY, image->getPixel(cx,cy));
 		}
 	commitBuffer();
 	return Variable();
