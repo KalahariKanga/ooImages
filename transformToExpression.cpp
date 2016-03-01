@@ -64,7 +64,37 @@ Variable transformToExpression::evaluate()
 	setLocalVariable("x", &x);
 	setLocalVariable("y", &y);
 
+	for (int cx = 0; cx < image->getWidth(); cx++)
+		for (int cy = 0; cy < image->getHeight(); cy++)
+		{
+			Colour p = image->getPixel(cx, cy);
+			r = p.r();
+			g = p.g();
+			b = p.b();
+			h = p.h();
+			s = p.s();
+			v = p.v();
+			a = p.a();
 
+			x = cx;
+			y = cy;
+			int tlX = (int)*arguments[0]->getResult().get<Real>();
+			int tlY = (int)*arguments[1]->getResult().get<Real>();
+			x = cx+1;
+			y = cy;
+			int trX = (int)*arguments[0]->getResult().get<Real>();
+			int trY = (int)*arguments[1]->getResult().get<Real>();
+			x = cx+1;
+			y = cy+1;
+			int brX = (int)*arguments[0]->getResult().get<Real>();
+			int brY = (int)*arguments[1]->getResult().get<Real>();
+			x = cx;
+			y = cy+1;
+			int blX = (int)*arguments[0]->getResult().get<Real>();
+			int blY = (int)*arguments[1]->getResult().get<Real>();
+
+			drawQuadrilateral(tlX, tlY, trX, trY, brX, brY, blX, blY, p);
+		}
 	commitBuffer();
 	return Variable();
 }
