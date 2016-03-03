@@ -139,3 +139,7 @@ Use greyscale erosion to erode the active mask using the structuring element `k`
 ### dilate
 `Void dilate(Kernel k)`  
 Use greyscale dilation to dilate the active mask using the structuring element `k`.  
+### transformTo  
+`Void transformTo(Real x, Real y)`  
+*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+Send each pixel to the position (`x`,`y`).  
