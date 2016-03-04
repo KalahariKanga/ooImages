@@ -26,13 +26,13 @@ void transformToExpression::drawQuadrilateral(int x1, int y1, int x2, int y2, in
 	std::vector<int> polyY = { y1, y2, y3, y4 };
 	std::vector<int> polyX = { x1, x2, x3, x4 };
 
-	for (int y = ymin; y <= ymax; ++y)
+	for (int y = ymin; y < ymax; ++y)
 	{
 		int j = 3;
 		std::vector<int> nodeX;
 		for (int i = 0; i < 4; i++)
 		{
-			if (polyY[i] < y && polyY[j] >= y || polyY[j] < y && polyY[i] >= y)
+			if (polyY[i] <= y && polyY[j] > y || polyY[j] <= y && polyY[i] > y)
 			{
 				nodeX.push_back((int)(polyX[i] + (float)(y - polyY[i]) / (polyY[j] - polyY[i]) * (polyX[j] - polyX[i])));
 			}
