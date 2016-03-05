@@ -94,14 +94,27 @@ int main(int argc, _TCHAR* argv[])
 		}
 	});
 	
-	window.setSize(sf::Vector2u(800, 800 * ((float)store->image->getHeight() / store->image->getWidth())));
-
+	window.setSize(sf::Vector2u(800, 600));
+	sf::View view;
 	while (1)
 	{
 		image.create(store->image->getWidth(), store->image->getHeight(), store->image->getData());		
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
-		sprite.setScale((float)800 / store->image->getWidth(), (float)800 / store->image->getWidth());
+		int imageWidth = image.getSize().x;
+		int imageHeight = image.getSize().y;
+		int windowWidth = window.getSize().x;
+		int windowHeight = window.getSize().y;
+		view.setCenter(imageWidth / 2, imageHeight / 2);
+		if (imageWidth > imageHeight * ((float)windowWidth / windowHeight))
+		{
+			view.setSize(imageWidth, imageWidth * ((float)windowHeight / windowWidth));
+		}
+		else
+		{
+			view.setSize(imageHeight * ((float)windowWidth / windowHeight), imageHeight);
+		}
+		window.setView(view);
 		window.clear();
 		window.draw(sprite);
 		window.display();
