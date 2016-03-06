@@ -20,47 +20,33 @@ Variable forExpression::evaluate()
 	{
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 	}
+
 	float from = *arguments[1]->getResult().get<Real>();
-	float to = *arguments[2]->getResult().get<Real>();
-	float step = *arguments[3]->getResult().get<Real>();
+	float c = from;
+	float previous = from;
 
-	float c;
-	
+	while (1)
+	{
+		arguments[4]->setLocalVariable(term->getString(), Variable(c));
+		try
+		{
+			arguments[4]->getResult();
+		}
+		catch (ControlException e)
+		{
+			if (e.type == ControlException::Type::BREAK)
+				break;
+			if (e.type == ControlException::Type::CONTINUE)
+				continue;
+		}
 
-	//this could definitely be neater
-	if (from <= to && step > 0)
-		for (c = from; c < to; c += step)
-		{
-			arguments[4]->setLocalVariable(term->getString(), Variable(c));
-			try
-			{
-				arguments[4]->getResult();
-			}
-			catch (ControlException e)
-			{
-				if (e.type == ControlException::Type::BREAK)
-					break;
-				if (e.type == ControlException::Type::CONTINUE)
-					continue;
-			}
-		}
-	else if (from >= to && step < 0)
-		for (c = from; c > to; c += step)
-		{
-			arguments[4]->setLocalVariable(term->getString(), Variable(c));
-			try
-			{
-				arguments[1]->getResult();
-			}
-			catch (ControlException e)
-			{
-				if (e.type == ControlException::Type::BREAK)
-					break;
-				if (e.type == ControlException::Type::CONTINUE)
-					continue;
-			}
-		}
-	else
-		throw new Exception(Exception::ErrorType::LOOP_ERROR);
+		float to = *arguments[2]->getResult().get<Real>();
+		float step = *arguments[3]->getResult().get<Real>();
+		c += step;
+		if ((previous < to && c >= to) || (previous > to && c <= to))
+			break;
+		
+		previous = c;
+	}
 	return Variable();
 }
