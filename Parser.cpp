@@ -223,6 +223,11 @@ Variable Parser::run(std::string input)
 		{
 			return head->getResult();
 		}
+		catch (Exception* e)
+		{
+			std::cout << e->getErrorString();
+			delete e;
+		}
 		catch (Variable v)
 		{
 			return v;

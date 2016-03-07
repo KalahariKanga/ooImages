@@ -9,10 +9,8 @@
 
 int main(int argc, _TCHAR* argv[])
 {
-	
 	ImageStore* store = ImageStore::get();
 	VariableStore* vs = VariableStore::get();
-	std::string filename;
 
 	Colour::loadProperties();
 	ImageObject::loadProperties();
@@ -24,10 +22,8 @@ int main(int argc, _TCHAR* argv[])
 
 	if (argc == 2) //1 argument - image file
 	{
-		filename = argv[1];
-		store->initialize(filename);
-		Variable var(store->getImage());
-		vs->setArrayVariable("argv", 0, var);
+		store->initialize(argv[1]);
+		vs->setArrayVariable("argv", 0, Variable(store->getImage()));
 	}
 	else if (argc > 2) //2+ arguments - script file and (several) image files
 	{
@@ -35,37 +31,25 @@ int main(int argc, _TCHAR* argv[])
 		std::stringstream buffer;
 		buffer << file.rdbuf();
 
-		for (int c = 2; c < argc; c++)
+		store->initialize(argv[2]);
+		vs->setArrayVariable("argv", 0, Variable(store->getImage()));
+
+		for (int c = 3; c < argc; c++)
 		{
 			ImageObject* image = new ImageObject();
 			image->loadImage(argv[c]);
 			Variable var(image);
 			vs->setArrayVariable("argv", c - 2, var);
-
-			if (c == 2)
-				store->image = var.getShared<ImageObject>();;
 		}
-
-		store->mask = make_shared<Mask>(store->image->getWidth(), store->image->getHeight());
-
-		try
-		{
-			p.run(buffer.str());
-		}
-		catch (Exception* e)
-		{
-			std::cout << e->getErrorString();
-			delete e;
-		}
-
+		p.run(buffer.str());
 	}
 	else //otherwise load from inputted filename
 	{
+		std::string filename;
 		std::cout << ">>";
 		std::getline(std::cin, filename);
 		store->initialize(filename);
-		Variable var(store->getImage());
-		vs->setArrayVariable("argv", 0, var);
+		vs->setArrayVariable("argv", 0, Variable(store->getImage()));
 	}
 
 	sf::RenderWindow window;
@@ -82,15 +66,7 @@ int main(int argc, _TCHAR* argv[])
 		{
 			std::cout << ">";
 			std::getline(std::cin, input);
-			try
-			{
-				p.run(input);
-			}
-			catch (Exception* e)
-			{
-				std::cout << e->getErrorString();
-				delete e;
-			}
+			p.run(input);
 		}
 	});
 	
