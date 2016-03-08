@@ -27,6 +27,8 @@ Variable forExpression::evaluate()
 
 	while (1)
 	{
+		arguments[2]->setLocalVariable(term->getString(), Variable(c));
+		arguments[3]->setLocalVariable(term->getString(), Variable(c));
 		arguments[4]->setLocalVariable(term->getString(), Variable(c));
 		try
 		{
