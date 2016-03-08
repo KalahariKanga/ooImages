@@ -17,11 +17,11 @@ Construct and return the colour with hue `h`, saturation `s`, and value `v`.
 Construct and return the colour with hue `h`, saturation `s`, value `v`, and alpha (transparency) `a`.
 ### setPixels
 `Void setPixels(Colour c)`  
-*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+*Introduces local variables `r`, `g`, `b`, `a`, `h`, `s`, `v`, `x`, `y`*  
 Set all pixels in the image to `c`.
 ### transform
 `Void transform(Real xPos, Real yPos)`  
-*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+*Introduces local variables `r`, `g`, `b`, `a`, `h`, `s`, `v`, `x`, `y`*  
 Set each pixel to the colour at position (`xPos`, `yPos`).  
 ### select
 `Void select(Mask s)`  
@@ -31,14 +31,14 @@ Set the active mask to `s`.
 Construct and return the rectangular mask from the point (`x1`, `y1`) to (`x2`, `y2`).
 ### region
 `Mask region(Real value)`  
-*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+*Introduces local variables `r`, `g`, `b`, `a`, `h`, `s`, `v`, `x`, `y`*  
 Construct and return the mask with strength `value` at each point.
 ### kernel
 `Kernel kernel(Real k1, Real k2, Real k3, Real k4, Real k5, Real k6, Real k7, Real k8, Real k9)`  
 Construct and return the 3x3 convolution kernel with elements `k1` ... `k9`
 ### convolve
 `Void convolve(Kernel k)`  
-*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+*Introduces local variables `r`, `g`, `b`, `a`, `h`, `s`, `v`, `x`, `y`*  
 Convolve the image using the convolution kernel `k`.   
 ### all
 `Mask all(Void)`  
@@ -84,11 +84,11 @@ Construct and return the mask with value at each pixel `newValue`.
 Construct and return the Gaussian kernel with size `size` and sigma `sigma`.
 ### min
 `Real min(Real expr)`  
-*Introduces local variables `x`, `y`, `r`, `g`, `b`, `h`, `s`, `v`*  
+*Introduces local variables `x`, `y`, `r`, `g`, `b`, `a`, `h`, `s`, `v`*  
 Find and return the minimum value of `expr` in the image.
 ### max
 `Real max(Real expr)`  
-*Introduces local variables `x`, `y`, `r`, `g`, `b`, `h`, `s`, `v`*  
+*Introduces local variables `x`, `y`, `r`, `g`, `b`, `a`, `h`, `s`, `v`*  
 Find and return the maximum value of `expr` in the image.
 ### print
 `Void print(Real value)`  
@@ -141,5 +141,5 @@ Use greyscale erosion to erode the active mask using the structuring element `k`
 Use greyscale dilation to dilate the active mask using the structuring element `k`.  
 ### transformTo  
 `Void transformTo(Real x, Real y)`  
-*Introduces local variables `r`, `g`, `b`, `h`, `s`, `v`, `x`, `y`*  
+*Introduces local variables `r`, `g`, `b`, `a`, `h`, `s`, `v`, `x`, `y`*  
 Send each pixel to the position (`x`,`y`).  
