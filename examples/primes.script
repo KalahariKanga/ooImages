@@ -1,0 +1,26 @@
+# print all primes less than n #
+set f function n
+[
+	set primes 1
+	set p_ 0 2
+	if > n 2
+		print 2
+	for i 3 n 1
+	[
+		set prime 1
+		for t 0 primes 1
+		[
+			if == % i p_ t 0
+			[
+				set prime 0
+				break
+			]
+		]
+		if prime
+		[
+			set p_ primes i
+			set primes + primes 1
+			print i
+		]
+	]
+]
