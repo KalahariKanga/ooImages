@@ -17,7 +17,8 @@ Variable combineExpression::evaluate()
 	Mask* m1 = mv1.get<Mask>();
 	Variable mv2 = arguments[1]->getResult();
 	Mask* m2 = mv2.get<Mask>();
-	Mask* mask = new Mask(std::min(m1->width, m2->width), std::min(m1->height, m2->height));
+	Variable var(new Mask(std::min(m1->width, m2->width), std::min(m1->height, m2->height)));
+	auto mask = var.get<Mask>();
 
 	setLocalVariable("v1", &v1);
 	setLocalVariable("v2", &v2);
@@ -30,7 +31,6 @@ Variable combineExpression::evaluate()
 			
 			mask->setValue(cx, cy, *arguments[2]->getResult().get<Real>());
 		}
-	Variable var(mask);
 	return var;
 }
 

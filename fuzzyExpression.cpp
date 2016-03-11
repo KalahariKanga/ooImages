@@ -14,7 +14,8 @@ fuzzyExpression::~fuzzyExpression()
 Variable fuzzyExpression::evaluate()
 {
 	ImageObject* image = ImageStore::get()->getImage();
-	Mask* selection = new Mask(image->getWidth(), image->getHeight());
+	Variable var(new Mask(image->getWidth(), image->getHeight()));
+	auto selection = var.get<Mask>();
 	selection->invert();
 	int sx = static_cast<int>(*arguments[0]->getResult().get<Real>());
 	int sy = static_cast<int>(*arguments[1]->getResult().get<Real>());
@@ -49,7 +50,5 @@ Variable fuzzyExpression::evaluate()
 				Q.push(std::make_pair(x, y + 1));
 		}
 	}
-
-	Variable var(selection);
 	return var;
 }
