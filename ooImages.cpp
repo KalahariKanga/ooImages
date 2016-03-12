@@ -36,9 +36,8 @@ int main(int argc, _TCHAR* argv[])
 
 		for (int c = 3; c < argc; c++)
 		{
-			ImageObject* image = new ImageObject();
-			image->loadImage(argv[c]);
-			Variable var(image);
+			Variable var(new ImageObject());
+			var.get<ImageObject>()->loadImage(argv[c]);
 			vs->setArrayVariable("argv", c - 2, var);
 		}
 		p.run(buffer.str());

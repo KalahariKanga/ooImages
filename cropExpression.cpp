@@ -32,20 +32,18 @@ Variable cropExpression::evaluate()
 			}
 		}
 
-	ImageObject* result = new ImageObject(maxX - minX, maxY - minY);
-
+	Variable var(new ImageObject(maxX - minX, maxY - minY));
+	auto i = var.get<ImageObject>();
 	for (int cx = minX; cx <= maxX; cx++)
 		for (int cy = minY; cy <= maxY; cy++)
 		{
 			if (mask->getValue(cx, cy))
 			{
 				Colour c = image->getPixel(cx, cy);
-				result->setPixel(cx - minX, cy - minY, c);
+				i->setPixel(cx - minX, cy - minY, c);
 			}
 			else
-				result->setPixel(cx - minX, cy - minY, Colour(0, 0, 0, 0));
+				i->setPixel(cx - minX, cy - minY, Colour(0, 0, 0, 0));
 		}
-
-	Variable var(result);
 	return var;
 }

@@ -14,8 +14,9 @@ Variable regionExpression::evaluate()
 {
 	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
-	Mask* mask = new Mask(image->getWidth(), image->getHeight());
-	
+	Variable var(new Mask(image->getWidth(), image->getHeight()));
+	auto mask = var.get<Mask>();
+
 	setLocalVariable("r", &r);
 	setLocalVariable("g", &g);
 	setLocalVariable("b", &b);
@@ -40,8 +41,6 @@ Variable regionExpression::evaluate()
 
 				float val = *arguments.back()->getResult().get<Real>();
 				mask->setValue(cx, cy, val);
-				
 		}
-	Variable var(mask);
 	return var;
 }

@@ -20,7 +20,8 @@ Variable kernelExpression::evaluate()
 
 	int elements = sequence->noArguments;
 	int size = (int)ceil(sqrt((float)elements));
-	Kernel* k = new Kernel(size);
+	Variable var(new Kernel(size));
+	auto k = var.get<Kernel>();
 
 	for (int c = 0; c < size*size; c++)
 	{
@@ -31,7 +32,5 @@ Variable kernelExpression::evaluate()
 		else
 			k->set(c%size, c / size, 0);
 	}
-
-	Variable var(k);
 	return var;
 }
