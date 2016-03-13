@@ -13,7 +13,7 @@ erodeExpression::~erodeExpression()
 
 Variable erodeExpression::evaluate()
 {
-	Mask* mask = ImageStore::get()->mask.get();
+	Mask* mask = store->mask.get();
 	Mask* newMask = new Mask(mask->width, mask->height);
 	Kernel* k = arguments[0]->getResult().get<Kernel>();
 	int ks = k->getSize();
@@ -33,6 +33,6 @@ Variable erodeExpression::evaluate()
 		}
 
 	//potential memory leak
-	ImageStore::get()->mask.reset(newMask);
+	store->mask.reset(newMask);
 	return Variable();
 }

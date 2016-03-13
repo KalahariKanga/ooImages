@@ -13,7 +13,6 @@ blendExpression::~blendExpression()
 
 Variable blendExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	ImageObject* bottom = store->getImage();
 	Variable topVar = arguments[0]->getResult();
 	ImageObject* top = topVar.get<ImageObject>();

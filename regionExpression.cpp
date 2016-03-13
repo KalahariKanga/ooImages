@@ -12,7 +12,6 @@ regionExpression::~regionExpression()
 
 Variable regionExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 	Variable var(new Mask(image->getWidth(), image->getHeight()));
 	auto mask = var.get<Mask>();

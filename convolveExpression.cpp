@@ -13,7 +13,6 @@ convolveExpression::~convolveExpression()
 
 Variable convolveExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 	
 	setLocalVariable("r", &r);

@@ -13,7 +13,6 @@ minExpression::~minExpression()
 
 Variable minExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();	
 
 	setLocalVariable("r", &r);

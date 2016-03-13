@@ -1,6 +1,7 @@
 #pragma once
 #include "core.h"
 #include "Variable.h"
+#include "ImageStore.h"
 
 class Expression
 {
@@ -10,6 +11,7 @@ class Expression
 protected:
 	bool isConstant = 0;
 	bool optimisable = 1;
+	static ImageStore* const store;
 public:
 	Expression();
 	~Expression();

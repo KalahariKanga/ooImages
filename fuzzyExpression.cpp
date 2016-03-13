@@ -13,7 +13,7 @@ fuzzyExpression::~fuzzyExpression()
 
 Variable fuzzyExpression::evaluate()
 {
-	ImageObject* image = ImageStore::get()->getImage();
+	ImageObject* image = store->getImage();
 	Variable var(new Mask(image->getWidth(), image->getHeight()));
 	auto selection = var.get<Mask>();
 	selection->invert();

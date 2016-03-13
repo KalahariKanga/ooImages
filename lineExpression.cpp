@@ -13,7 +13,6 @@ lineExpression::~lineExpression()
 
 Variable lineExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 
 	int x1 = (int)*arguments[0]->getResult().get<Real>();

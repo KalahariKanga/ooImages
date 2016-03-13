@@ -14,7 +14,6 @@ transformExpression::~transformExpression()
 
 Variable transformExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	setLocalVariable("r", &r);
 	setLocalVariable("g", &g);
 	setLocalVariable("b", &b);

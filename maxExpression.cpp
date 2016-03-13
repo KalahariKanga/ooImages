@@ -12,7 +12,6 @@ maxExpression::~maxExpression()
 
 Variable maxExpression::evaluate()
 {
-	ImageStore* store = ImageStore::get();
 	ImageObject* image = store->getImage();
 	
 	setLocalVariable("r",Variable(r));
