@@ -14,6 +14,7 @@ transformExpression::~transformExpression()
 
 Variable transformExpression::evaluate()
 {
+	ImageStore* store = ImageStore::get();
 	setLocalVariable("r", &r);
 	setLocalVariable("g", &g);
 	setLocalVariable("b", &b);
@@ -27,19 +28,22 @@ Variable transformExpression::evaluate()
 	for (int cx = 0; cx < image->getWidth(); cx++)
 		for (int cy = 0; cy < image->getHeight(); cy++)
 		{
-			Colour p = image->getPixel(cx, cy);
-			x = cx;
-			y = cy;
-			r = p.r();
-			g = p.g();
-			b = p.b();
-			h = p.h();
-			s = p.s();
-			v = p.v();
-			a = p.a();
-			float nx = *arguments[0]->getResult().get<Real>();
-			float ny = *arguments[1]->getResult().get<Real>();
-			buffer->setPixel(cx, cy, image->getPixel(nx, ny));
+			if (store->mask->getValue(cx, cy) > 0)
+			{
+				Colour p = image->getPixel(cx, cy);
+				x = cx;
+				y = cy;
+				r = p.r();
+				g = p.g();
+				b = p.b();
+				h = p.h();
+				s = p.s();
+				v = p.v();
+				a = p.a();
+				float nx = *arguments[0]->getResult().get<Real>();
+				float ny = *arguments[1]->getResult().get<Real>();
+				buffer->setPixel(cx, cy, image->getPixel(nx, ny));
+			}
 		}
 	commitBuffer();
 	return Variable();
