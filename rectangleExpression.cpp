@@ -22,7 +22,7 @@ Variable rectangleExpression::evaluate()
 	for (int cx = 0; cx < store->image->getWidth(); cx++)
 		for (int cy = 0; cy < store->image->getHeight(); cy++)
 		{
-			if (cx < x1 || cx > x2 || cy < y1 || y2 > y2)
+			if (cx < x1 || cx > x2 || cy < y1 || cy > y2)
 				s->setValue(cx, cy, 0);
 			else
 				s->setValue(cx, cy, 1);//possibly unnecessary 
