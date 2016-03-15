@@ -156,6 +156,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new dilateExpression();
 	if (token == "transformTo")
 		return new transformToExpression();
+	if (token == "variableExists")
+		return new variableExistsExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")

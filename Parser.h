@@ -55,6 +55,7 @@
 #include "erodeExpression.h"
 #include "dilateExpression.h"
 #include "transformToExpression.h"
+#include "variableExistsExpression.h"
 
 class Parser
 {
