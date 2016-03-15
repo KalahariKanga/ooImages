@@ -39,6 +39,15 @@ void TerminalExpression::setLocalVariable(std::string name, float* val)
 	localPointers[name] = val;
 }
 
+bool TerminalExpression::localVariableExists(std::string name)
+{
+	if (localVariables.find(string) != localVariables.end())
+		return 1;
+	if (localPointers.find(string) != localPointers.end())
+		return 1;
+	return 0;
+}
+
 Variable TerminalExpression::evaluate()
 {
 	//resource variable
@@ -48,7 +57,7 @@ Variable TerminalExpression::evaluate()
 	//local variable
 	if (localVariables.find(string) != localVariables.end())
 	{
-			return localVariables[string];
+		return localVariables[string];
 	}
 
 	//local ptr

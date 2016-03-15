@@ -17,6 +17,7 @@ public:
 	
 	virtual void setLocalVariable(std::string name, Variable ptr);
 	virtual void setLocalVariable(std::string name, float* val);
+	bool localVariableExists(std::string name);
 
 	virtual bool calculateConstancy();
 	Variable evaluate();
