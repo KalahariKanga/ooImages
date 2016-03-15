@@ -14,7 +14,7 @@ dilateExpression::~dilateExpression()
 Variable dilateExpression::evaluate()
 {
 	Mask* mask = store->mask.get();
-	Mask* newMask = new Mask(mask->width, mask->height);
+	auto newMask = make_shared<Mask>(mask->width, mask->height);
 	Kernel* k = arguments[0]->getResult().get<Kernel>();
 	int ks = k->getSize();
 
@@ -32,7 +32,6 @@ Variable dilateExpression::evaluate()
 			newMask->setValue(cx, cy, max);
 		}
 
-	//potential memory leak again
-	store->mask.reset(newMask);
+	store->mask = newMask;
 	return Variable();
 }
