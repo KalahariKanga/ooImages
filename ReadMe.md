@@ -143,3 +143,6 @@ Use greyscale dilation to dilate the active mask using the structuring element `
 `Void transformTo(Real x, Real y)`  
 *Introduces local variables `r`, `g`, `b`, `a`, `h`, `s`, `v`, `x`, `y`*  
 Send each pixel to the position (`x`,`y`).  
+### variableExists  
+`Real variableExists(String name)`  
+Checks if a variable called `name` exists, and if it does, returns 1, otherwise returns 0.  
