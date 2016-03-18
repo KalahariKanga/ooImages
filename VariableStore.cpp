@@ -29,7 +29,8 @@ Variable VariableStore::getVariable(std::string name)
 	if (v == variableMap.end())
 		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 	else
-		return v->second.duplicate();
+		return v->second;
+		//return v->second.duplicate();
 }
 
 Variable VariableStore::getRawVariable(std::string name)
