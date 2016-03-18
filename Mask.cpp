@@ -80,8 +80,7 @@ void Mask::invert()
 	for (int x = 0; x < width; x++)
 		for (int y = 0; y < height; y++)
 		{
-			float v = getValue(x, y);
-			setValue(x, y, 1 - v);
+			data[x][y] = 1 - data[x][y];
 		}
 }
 

@@ -56,6 +56,7 @@
 #include "dilateExpression.h"
 #include "transformToExpression.h"
 #include "variableExistsExpression.h"
+#include "invertExpression.h"
 
 class Parser
 {
