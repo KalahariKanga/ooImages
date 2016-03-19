@@ -57,6 +57,7 @@
 #include "transformToExpression.h"
 #include "variableExistsExpression.h"
 #include "invertExpression.h"
+#include "maskExpression.h"
 
 class Parser
 {

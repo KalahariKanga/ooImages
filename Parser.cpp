@@ -160,6 +160,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new variableExistsExpression();
 	if (token == "invert")
 		return new invertExpression();
+	if (token == "mask")
+		return new maskExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
