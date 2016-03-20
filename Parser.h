@@ -58,6 +58,7 @@
 #include "variableExistsExpression.h"
 #include "invertExpression.h"
 #include "maskExpression.h"
+#include "imageExpression.h"
 
 class Parser
 {

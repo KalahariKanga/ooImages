@@ -162,6 +162,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new invertExpression();
 	if (token == "mask")
 		return new maskExpression();
+	if (token == "image")
+		return new imageExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")
