@@ -75,6 +75,30 @@ void Mask::setValue(int x, int y, float v)
 	data[x][y] = v;
 }
 
+void Mask::resize(int w, int h)
+{
+	float** newData = new float*[w];
+	for (int c = 0; c < w; c++)
+		data[c] = new float[h];
+	for (int cx = 0; cx < w; cx++)
+		for (int cy = 0; cy < h; cy++)
+		{
+			if (cx < width && cy < height)
+				newData[cx][cy] = data[cx][cy];
+			else
+				newData[cx][cy] = 1;
+		}
+
+	for (int c = 0; c < width; c++)
+		delete[] data[c];
+	delete[] data;
+
+	data = newData;
+
+	width = w;
+	height = h;
+}
+
 void Mask::invert()
 {
 	for (int x = 0; x < width; x++)
