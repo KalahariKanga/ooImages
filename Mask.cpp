@@ -79,7 +79,7 @@ void Mask::resize(int w, int h)
 {
 	float** newData = new float*[w];
 	for (int c = 0; c < w; c++)
-		data[c] = new float[h];
+		newData[c] = new float[h];
 	for (int cx = 0; cx < w; cx++)
 		for (int cy = 0; cy < h; cy++)
 		{
