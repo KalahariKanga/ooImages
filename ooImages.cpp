@@ -75,7 +75,7 @@ int main(int argc, _TCHAR* argv[])
 	{
 		image.create(store->image->getWidth(), store->image->getHeight(), store->image->getData());		
 		texture.loadFromImage(image);
-		sprite.setTexture(texture);
+		sprite.setTexture(texture, true);
 		int imageWidth = image.getSize().x;
 		int imageHeight = image.getSize().y;
 		int windowWidth = window.getSize().x;
