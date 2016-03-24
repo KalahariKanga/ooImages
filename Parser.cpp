@@ -218,7 +218,7 @@ Variable Parser::run(std::string input)
 	std::vector<std::shared_ptr<Expression>> expressionStack;
 	for (auto t : tokens)
 	{
-		shared_ptr<Expression> exp;
+		std::shared_ptr<Expression> exp;
 		exp.reset(tokenToExpression(t));
 		expressions.push_back(exp);
 	}

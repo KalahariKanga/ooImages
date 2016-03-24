@@ -15,6 +15,6 @@ public:
 	virtual void setLocalVariable(std::string name, Variable var);
 	virtual void setLocalVariable(std::string name, float* ptr);
 
-	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
+	virtual Expression* acquire(std::vector<std::shared_ptr<Expression>>* tokens);
 };
 

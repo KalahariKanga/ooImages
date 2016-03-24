@@ -16,7 +16,7 @@ importExpression::~importExpression()
 Variable importExpression::evaluate()
 {
 	Parser p;
-	std::shared_ptr<TerminalExpression> t = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto t = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (t)
 	{
 		std::ifstream file(t->getString());

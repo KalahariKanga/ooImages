@@ -7,6 +7,6 @@ public:
 	functionExpression();
 	~functionExpression();
 	virtual Variable evaluate();
-	virtual Expression* acquire(vector<shared_ptr<Expression>>* tokens);
+	virtual Expression* acquire(std::vector<std::shared_ptr<Expression>>* tokens);
 };
 

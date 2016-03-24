@@ -87,7 +87,7 @@ Variable transformToExpression::evaluate()
 
 			int xpos = (int)*arguments[0]->getResult().get<Real>();
 			int ypos = (int)*arguments[1]->getResult().get<Real>();
-			pointLocation[cx][cy] = make_pair(xpos, ypos);
+			pointLocation[cx][cy] = std::make_pair(xpos, ypos);
 		}
 	
 	for (int cx = 0; cx < image->getWidth(); cx++)

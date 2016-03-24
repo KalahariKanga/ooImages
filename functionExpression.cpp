@@ -13,11 +13,11 @@ functionExpression::~functionExpression()
 {
 }
 
-Expression* functionExpression::acquire(vector<shared_ptr<Expression>>* tokens)
+Expression* functionExpression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());
-	while (!dynamic_pointer_cast<SequenceExpression>(tokens->front()))
+	while (!std::dynamic_pointer_cast<SequenceExpression>(tokens->front()))
 	{
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
@@ -38,7 +38,7 @@ Variable functionExpression::evaluate()
 	std::vector<std::string> argumentNames;
 	while (1)
 	{
-		shared_ptr<TerminalExpression> argumentNameExpr = dynamic_pointer_cast<TerminalExpression>(arguments[c]);
+		auto argumentNameExpr = std::dynamic_pointer_cast<TerminalExpression>(arguments[c]);
 		if (!argumentNameExpr)
 			break;
 		argumentNames.push_back(argumentNameExpr->getName());

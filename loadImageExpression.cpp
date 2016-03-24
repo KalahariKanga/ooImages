@@ -14,7 +14,7 @@ loadImageExpression::~loadImageExpression()
 Variable loadImageExpression::evaluate()
 {
 	Variable var(new ImageObject());
-	std::shared_ptr<TerminalExpression> t = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	std::shared_ptr<TerminalExpression> t = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (t)
 	{
 		ImageObject* im = var.get<ImageObject>();

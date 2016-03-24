@@ -28,12 +28,12 @@ void FunctionCallExpression::setLocalVariable(std::string name, float* ptr)
 		arguments[c]->setLocalVariable(name, ptr);
 }
 
-Expression* FunctionCallExpression::acquire(std::vector<shared_ptr<Expression>>* tokens)
+Expression* FunctionCallExpression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());
 
-	while (!dynamic_pointer_cast<EndSequenceExpression>(tokens->front()))
+	while (!std::dynamic_pointer_cast<EndSequenceExpression>(tokens->front()))
 	{
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);

@@ -20,9 +20,9 @@ public:
 	~Variable();
 	
 	template <class T> T* get();
-	template <class T> shared_ptr<T> getShared();
+	template <class T> std::shared_ptr<T> getShared();
 	void set(Resource* res);
-	void set(shared_ptr<Resource> newData);
+	void set(std::shared_ptr<Resource> newData);
 	
 	bool isNull();
 
@@ -39,7 +39,7 @@ T* Variable::get()
 }
 
 template <class T>
-shared_ptr<T> Variable::getShared()
+std::shared_ptr<T> Variable::getShared()
 {
-	return static_pointer_cast<T>(data);
+	return std::static_pointer_cast<T>(data);
 }

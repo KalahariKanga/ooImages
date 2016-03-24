@@ -54,7 +54,7 @@ void Expression::setLocalVariable(std::string name, float* val)
 		a->setLocalVariable(name, val);
 }
 
-Expression* Expression::acquire(std::vector<shared_ptr<Expression>>* tokens)
+Expression* Expression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());

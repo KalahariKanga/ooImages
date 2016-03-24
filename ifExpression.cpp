@@ -12,7 +12,7 @@ ifExpression::~ifExpression()
 {
 }
 
-Expression* ifExpression::acquire(std::vector<shared_ptr<Expression>>* tokens)
+Expression* ifExpression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());
