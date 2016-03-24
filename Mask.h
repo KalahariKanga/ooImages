@@ -2,12 +2,6 @@
 #include "stdafx.h"
 #include "ResourcePropertyHelper.h"
 
-using std::shared_ptr;
-using std::dynamic_pointer_cast;
-using std::make_shared;
-using std::numeric_limits;
-using std::vector;
-
 class Mask : public ResourcePropertyHelper<Mask>
 {
 	float** data;

@@ -26,7 +26,7 @@ Variable fuzzyExpression::evaluate()
 	//queue of pixels to check next
 	std::queue<std::pair<int,int>> Q;
 	//array of pixels already checked
-	std::vector<std::vector<int>> processed(image->getWidth(), vector<int>(image->getHeight(), 0));
+	std::vector<std::vector<int>> processed(image->getWidth(), std::vector<int>(image->getHeight(), 0));
 	Q.push(std::make_pair(sx,sy));
 	while (!Q.empty())
 	{

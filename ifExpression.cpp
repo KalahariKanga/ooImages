@@ -24,7 +24,7 @@ Expression* ifExpression::acquire(std::vector<std::shared_ptr<Expression>>* toke
 		arguments.push_back(tokens->front());
 		arguments.back()->acquire(tokens);
 	}
-	if (dynamic_pointer_cast<elseExpression>(tokens->front()))
+	if (std::dynamic_pointer_cast<elseExpression>(tokens->front()))
 	{
 		hasElse = true;
 		++noArguments;

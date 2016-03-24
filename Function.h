@@ -4,12 +4,12 @@
 class Function :
 	public ResourcePropertyHelper<Function>
 {
-	shared_ptr<Expression> head;
+	std::shared_ptr<Expression> head;
 	std::vector<std::string> argumentNames;
 	
 public:
 	
-	Function(shared_ptr<Expression> head, std::vector<std::string> argumentNames);
+	Function(std::shared_ptr<Expression> head, std::vector<std::string> argumentNames);
 	Function(const Function& obj);
 	~Function();
 	Variable call(std::vector<Variable> arguments);

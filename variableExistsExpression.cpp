@@ -14,7 +14,7 @@ variableExistsExpression::~variableExistsExpression()
 Variable variableExistsExpression::evaluate()
 {
 	std::string rawname;
-	auto term = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (term)
 	{
 		rawname = term->getName();

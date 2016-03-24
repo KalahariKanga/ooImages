@@ -15,7 +15,7 @@ saveImageExpression::~saveImageExpression()
 Variable saveImageExpression::evaluate()
 {
 	std::string fname;
-	shared_ptr<TerminalExpression> term = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (term)
 		fname = term->getName();
 	else

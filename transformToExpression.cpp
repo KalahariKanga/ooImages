@@ -69,7 +69,7 @@ Variable transformToExpression::evaluate()
 	setLocalVariable("y", &y);
 
 	typedef std::vector<std::vector<std::pair<int, int>>> vectorField;
-	vectorField pointLocation(image->getWidth() + 1, vector<std::pair<int, int>>(image->getHeight() + 1));
+	vectorField pointLocation(image->getWidth() + 1, std::vector<std::pair<int, int>>(image->getHeight() + 1));
 
 	for (int cx = 0; cx < image->getWidth()+1; cx++)
 		for (int cy = 0; cy < image->getHeight()+1; cy++)

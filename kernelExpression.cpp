@@ -13,7 +13,7 @@ kernelExpression::~kernelExpression()
 
 Variable kernelExpression::evaluate()
 {
-	auto sequence = dynamic_pointer_cast<SequenceExpression>(arguments[0]);
+	auto sequence = std::dynamic_pointer_cast<SequenceExpression>(arguments[0]);
 
 	if (!sequence)
 		throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);//kinda

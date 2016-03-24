@@ -15,7 +15,7 @@ forExpression::~forExpression()
 
 Variable forExpression::evaluate()
 {
-	auto term = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (!term)
 	{
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);

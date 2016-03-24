@@ -7,6 +7,6 @@ public:
 	SequenceExpression();
 	~SequenceExpression();
 	virtual Variable evaluate();
-	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
+	virtual Expression* acquire(std::vector<std::shared_ptr<Expression>>* tokens);
 };
 

@@ -20,7 +20,7 @@ Variable setExpression::evaluate()
 	
 	//check if new variable name
 	//TODO: check for illegal characters
-	auto term = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (term)
 	{
 		rawname = term->getName();

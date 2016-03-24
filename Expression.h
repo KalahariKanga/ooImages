@@ -18,12 +18,12 @@ public:
 
 	static const bool constancyOptimisation = 1;
 
-	virtual Expression* acquire(std::vector<shared_ptr<Expression>>* tokens);
+	virtual Expression* acquire(std::vector<std::shared_ptr<Expression>>* tokens);
 	Variable getResult();
 	virtual Variable evaluate() = 0;
 	virtual void setLocalVariable(std::string name, Variable var);
 	virtual void setLocalVariable(std::string name, float* ptr);
-	std::vector<shared_ptr<Expression>> arguments;
+	std::vector<std::shared_ptr<Expression>> arguments;
 	virtual bool calculateConstancy();
 	int noArguments;
 };

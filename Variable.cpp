@@ -8,7 +8,7 @@ Variable::Variable()
 
 Variable::Variable(float v)
 {
-	data = make_shared<Real>(v);
+	data = std::make_shared<Real>(v);
 }
 
 Variable::Variable(Resource* res)
@@ -25,7 +25,7 @@ Variable::~Variable()
 {
 }
 
-void Variable::set(shared_ptr<Resource> newData)
+void Variable::set(std::shared_ptr<Resource> newData)
 {
 	data = newData;
 }

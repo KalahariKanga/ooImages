@@ -14,7 +14,7 @@ PropertyAccessorExpression::~PropertyAccessorExpression()
 
 Variable PropertyAccessorExpression::evaluate()
 {
-	shared_ptr<TerminalExpression> prop = dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto prop = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (!prop)
 	{
 		throw new Exception(Exception::ErrorType::UNKNOWN_PROPERTY);
