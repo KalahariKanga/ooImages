@@ -60,7 +60,7 @@ Variable Expression::getLocalVariable(std::string name)
 		return Variable(*localPointers[name]);
 	if (parent)
 		return parent->getLocalVariable(name);
-	return Variable();
+	throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 }
 
 bool Expression::localVariableExists(std::string name)

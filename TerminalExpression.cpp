@@ -27,20 +27,11 @@ bool TerminalExpression::calculateConstancy()
 	return 1;
 }
 
-//bool TerminalExpression::localVariableExists(std::string name)
-//{
-//	if (localVariables.find(string) != localVariables.end())
-//		return 1;
-//	if (localPointers.find(string) != localPointers.end())
-//		return 1;
-//	return 0;
-//}
-
 Variable TerminalExpression::evaluate()
 {
 	//resource variable
 	if (vs->variableExists(string))
-		return VariableStore::get()->getVariable(string);
+		return vs->getVariable(string);
 
 	//local variable
 	if (localVariableExists(string))
