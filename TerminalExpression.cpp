@@ -27,26 +27,14 @@ bool TerminalExpression::calculateConstancy()
 	return 1;
 }
 
-void TerminalExpression::setLocalVariable(std::string name, Variable var)
-{
-	//check for conflicts
-	localVariables[name] = var;
-}
-
-void TerminalExpression::setLocalVariable(std::string name, float* val)
-{
-	//check for conflicts
-	localPointers[name] = val;
-}
-
-bool TerminalExpression::localVariableExists(std::string name)
-{
-	if (localVariables.find(string) != localVariables.end())
-		return 1;
-	if (localPointers.find(string) != localPointers.end())
-		return 1;
-	return 0;
-}
+//bool TerminalExpression::localVariableExists(std::string name)
+//{
+//	if (localVariables.find(string) != localVariables.end())
+//		return 1;
+//	if (localPointers.find(string) != localPointers.end())
+//		return 1;
+//	return 0;
+//}
 
 Variable TerminalExpression::evaluate()
 {
@@ -55,17 +43,8 @@ Variable TerminalExpression::evaluate()
 		return VariableStore::get()->getVariable(string);
 
 	//local variable
-	if (localVariables.find(string) != localVariables.end())
-	{
-		return localVariables[string];
-	}
-
-	//local ptr
-	if (localPointers.find(string) != localPointers.end())
-	{
-		Variable var(*localPointers[string]);
-		return var;
-	}
+	if (localVariableExists(string))
+		return getLocalVariable(string);
 	
 	//constant
 	try

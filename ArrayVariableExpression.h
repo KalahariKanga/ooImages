@@ -11,8 +11,5 @@ public:
 	virtual Variable evaluate();
 	virtual std::string getName();
 	virtual std::string getString();
-
-	virtual void setLocalVariable(std::string name, Variable var);
-	virtual void setLocalVariable(std::string name, float* ptr);
 };
 

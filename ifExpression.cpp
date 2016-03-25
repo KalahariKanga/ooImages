@@ -22,6 +22,7 @@ Expression* ifExpression::acquire(std::vector<std::shared_ptr<Expression>>* toke
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
 		arguments.push_back(tokens->front());
+		tokens->front()->parent = this;
 		arguments.back()->acquire(tokens);
 	}
 	if (std::dynamic_pointer_cast<elseExpression>(tokens->front()))
@@ -29,6 +30,7 @@ Expression* ifExpression::acquire(std::vector<std::shared_ptr<Expression>>* toke
 		hasElse = true;
 		++noArguments;
 		arguments.push_back(tokens->front());
+		tokens->front()->parent = this;
 		arguments.back()->acquire(tokens);
 	}
 	return this;

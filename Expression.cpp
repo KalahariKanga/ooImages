@@ -44,14 +44,34 @@ bool Expression::calculateConstancy()
 
 void Expression::setLocalVariable(std::string name, Variable var)
 {
-	for (auto a : arguments)
-		a->setLocalVariable(name, var);
+	localVariables[name] = var;
 }
 
 void Expression::setLocalVariable(std::string name, float* val)
 {
-	for (auto a : arguments)
-		a->setLocalVariable(name, val);
+	localPointers[name] = val;
+}
+
+Variable Expression::getLocalVariable(std::string name)
+{
+	if (localVariables.find(name) != localVariables.end())
+		return localVariables[name];
+	if (localPointers.find(name) != localPointers.end())
+		return Variable(*localPointers[name]);
+	if (parent)
+		return parent->getLocalVariable(name);
+	return Variable();
+}
+
+bool Expression::localVariableExists(std::string name)
+{
+	if (localVariables.find(name) != localVariables.end())
+		return true;
+	if (localPointers.find(name) != localPointers.end())
+		return true;
+	if (parent)
+		return parent->localVariableExists(name);
+	return false;
 }
 
 Expression* Expression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)
@@ -64,6 +84,7 @@ Expression* Expression::acquire(std::vector<std::shared_ptr<Expression>>* tokens
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
 		arguments.push_back(tokens->front());
+		tokens->front()->parent = this;
 		arguments.back()->acquire(tokens);
 	}
 	return this;

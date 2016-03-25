@@ -8,16 +8,10 @@ class TerminalExpression :
 protected:
 	std::string string;
 	VariableStore* vs = VariableStore::get();
-	std::map<std::string, Variable> localVariables;
-	std::map<std::string, float*> localPointers;
 public:
 	TerminalExpression() = default;
 	TerminalExpression(std::string string);
 	~TerminalExpression();
-	
-	virtual void setLocalVariable(std::string name, Variable ptr);
-	virtual void setLocalVariable(std::string name, float* val);
-	bool localVariableExists(std::string name);
 
 	virtual bool calculateConstancy();
 	Variable evaluate();

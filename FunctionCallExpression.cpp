@@ -15,19 +15,6 @@ FunctionCallExpression::~FunctionCallExpression()
 {
 }
 
-void FunctionCallExpression::setLocalVariable(std::string name, Variable var)
-{
-	localVariables[name] = var;
-	for (int c = 0; c < noArguments; c++)
-		arguments[c]->setLocalVariable(name, var);
-}
-void FunctionCallExpression::setLocalVariable(std::string name, float* ptr)
-{
-	localPointers[name] = ptr;
-	for (int c = 0; c < noArguments; c++)
-		arguments[c]->setLocalVariable(name, ptr);
-}
-
 Expression* FunctionCallExpression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)
 {
 	if (!tokens->empty())
@@ -38,10 +25,12 @@ Expression* FunctionCallExpression::acquire(std::vector<std::shared_ptr<Expressi
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);
 		arguments.push_back(tokens->front());
+		tokens->front()->parent = this;
 		++noArguments;
 		arguments.back()->acquire(tokens);
 	}
 	arguments.push_back(tokens->front());
+	tokens->front()->parent = this;
 	arguments.back()->acquire(tokens);
 	return this;
 }
