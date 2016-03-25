@@ -1,4 +1,5 @@
 #include "Expression.h"
+#include <algorithm>
 
 ImageStore* const Expression::store = ImageStore::get();
 
@@ -9,6 +10,14 @@ Expression::Expression()
 
 Expression::~Expression()
 {
+}
+
+std::string Expression::getBasename(std::string string)
+{
+	std::string base = string;
+	//assuming variables start with an alpha
+	base.erase(base.begin(), std::find_if(base.begin(), base.end(), isalpha));
+	return base;
 }
 
 Variable Expression::getResult()
@@ -44,12 +53,18 @@ bool Expression::calculateConstancy()
 
 void Expression::setLocalVariable(std::string name, Variable var)
 {
-	localVariables[name] = var;
+	if (parent && parent->localVariableExists(name))
+		parent->setLocalVariable(name, var);
+	else
+		localVariables[name] = var;
 }
 
 void Expression::setLocalVariable(std::string name, float* val)
 {
-	localPointers[name] = val;
+	if (parent && parent->localVariableExists(name))
+		parent->setLocalVariable(name, val);
+	else
+		localPointers[name] = val;
 }
 
 Variable Expression::getLocalVariable(std::string name)
@@ -65,8 +80,11 @@ Variable Expression::getLocalVariable(std::string name)
 
 bool Expression::localVariableExists(std::string name)
 {
-	if (localVariables.find(name) != localVariables.end())
-		return true;
+	for (auto a : localVariables)
+	{
+		if (getBasename(a.first) == getBasename(name))
+			return true;
+	}
 	if (localPointers.find(name) != localPointers.end())
 		return true;
 	if (parent)

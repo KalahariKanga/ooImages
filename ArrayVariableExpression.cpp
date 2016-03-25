@@ -15,10 +15,11 @@ ArrayVariableExpression::~ArrayVariableExpression()
 
 Variable ArrayVariableExpression::evaluate()
 {
-	//think about when this needs to get called
 	std::string name = getName();
 	if (vs->variableExists(name))
 		return VariableStore::get()->getVariable(name);
+	if (localVariableExists(name))
+		return getLocalVariable(name);
 	throw new Exception(Exception::ErrorType::ARRAY_ERROR);
 }
 

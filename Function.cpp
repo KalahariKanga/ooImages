@@ -5,6 +5,7 @@ RESOURCE_DEFINE_STATIC_PROPERTY_MAP(Function)
 Function::Function(std::shared_ptr<Expression> head, std::vector<std::string> argumentNames) : head(head), argumentNames(argumentNames)
 {
 	noArguments = argumentNames.size();
+	head->parent = nullptr;
 }
 
 Function::Function(const Function& obj)

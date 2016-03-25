@@ -17,8 +17,7 @@ Variable setExpression::evaluate()
 	std::string rawname, basename;
 	//for normal variables, rawname == basename
 	//for arrays, rawname = index##basename
-	
-	//check if new variable name
+
 	//TODO: check for illegal characters
 	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (term)
@@ -32,7 +31,10 @@ Variable setExpression::evaluate()
 	if (VariableStore::get()->legalVariableName(basename))
 	{
 		var = arguments[1]->getResult().duplicate();
-		VariableStore::get()->setVariable(rawname, var);
+		if (parent)
+			parent->setLocalVariable(rawname, var);
+		else
+			VariableStore::get()->setVariable(rawname, var);
 	}
 	else
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);

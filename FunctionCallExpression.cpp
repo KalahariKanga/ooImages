@@ -41,7 +41,8 @@ Variable FunctionCallExpression::evaluate()
 	Variable v;
 	if (vs->variableExists(name))
 		v = vs->getVariable(name);
-
+	
+	//this is weird
 	if (localVariables.find(name) != localVariables.end())
 	{
 		v = localVariables[name];

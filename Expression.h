@@ -7,14 +7,14 @@ class Expression
 {
 	Variable constantValue;
 	bool hasConstantValue = 0;
-	
+	std::string getBasename(std::string string);
 protected:
 	bool isConstant = 0;
 	bool optimisable = 1;
 	static ImageStore* const store;
 	std::map<std::string, Variable> localVariables;
 	std::map<std::string, float*> localPointers;
-	
+	std::vector<std::string> localBasenames;
 public:
 	Expression();
 	~Expression();
