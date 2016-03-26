@@ -12,14 +12,6 @@ Expression::~Expression()
 {
 }
 
-std::string Expression::getBasename(std::string string)
-{
-	std::string base = string;
-	//assuming variables start with an alpha
-	base.erase(base.begin(), std::find_if(base.begin(), base.end(), isalpha));
-	return base;
-}
-
 Variable Expression::getResult()
 {
 	if (!constancyOptimisation)
@@ -80,11 +72,8 @@ Variable Expression::getLocalVariable(std::string name)
 
 bool Expression::localVariableExists(std::string name)
 {
-	for (auto a : localVariables)
-	{
-		if (getBasename(a.first) == getBasename(name))
-			return true;
-	}
+	if (localVariables.find(name) != localVariables.end())
+		return true;
 	if (localPointers.find(name) != localPointers.end())
 		return true;
 	if (parent)

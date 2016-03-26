@@ -7,7 +7,7 @@ class Expression
 {
 	Variable constantValue;
 	bool hasConstantValue = 0;
-	std::string getBasename(std::string string);
+
 protected:
 	bool isConstant = 0;
 	bool optimisable = 1;
