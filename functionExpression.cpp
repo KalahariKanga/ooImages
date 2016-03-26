@@ -22,10 +22,12 @@ Expression* functionExpression::acquire(std::vector<std::shared_ptr<Expression>>
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
 		arguments.push_back(tokens->front());
+		tokens->front()->parent = this;
 		arguments.back()->acquire(tokens);
 		++noArguments;
 	}
 	arguments.push_back(tokens->front());
+	tokens->front()->parent = this;
 	arguments.back()->acquire(tokens);
 
 	return this;

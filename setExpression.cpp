@@ -1,4 +1,5 @@
 #include "setExpression.h"
+#include "ArrayVariableExpression.h"
 
 setExpression::setExpression()
 {
@@ -17,10 +18,9 @@ Variable setExpression::evaluate()
 	std::string rawname, basename;
 	//for normal variables, rawname == basename
 	//for arrays, rawname = index##basename
-	
-	//check if new variable name
-	//TODO: check for illegal characters
+
 	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
+	auto arr = std::dynamic_pointer_cast<ArrayVariableExpression>(arguments[0]);
 	if (term)
 	{
 		rawname = term->getName();
@@ -28,11 +28,14 @@ Variable setExpression::evaluate()
 	}
 	else
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
-
+	
 	if (VariableStore::get()->legalVariableName(basename))
 	{
 		var = arguments[1]->getResult().duplicate();
-		VariableStore::get()->setVariable(rawname, var);
+		if (parent && !arr)
+			parent->setLocalVariable(rawname, var);
+		else
+			VariableStore::get()->setVariable(rawname, var);
 	}
 	else
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);

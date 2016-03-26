@@ -22,11 +22,13 @@ Expression* SequenceExpression::acquire(std::vector<std::shared_ptr<Expression>>
 		if (tokens->empty())
 			throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);
 		arguments.push_back(tokens->front());
+		tokens->front()->parent = this;
 		++noArguments;
 		arguments.back()->acquire(tokens);
 	}
 	//the ] is sort of an argument - clear it from the token list anyway
 	arguments.push_back(tokens->front());
+	tokens->front()->parent = this;
 	arguments.back()->acquire(tokens);
 	return this;
 }
