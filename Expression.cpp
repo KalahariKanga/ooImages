@@ -45,16 +45,18 @@ bool Expression::calculateConstancy()
 
 void Expression::setLocalVariable(std::string name, Variable var)
 {
-	if (parent && parent->localVariableExists(name))
-		parent->setLocalVariable(name, var);
+	auto exp = localVariableExists(name);
+	if (exp)
+		exp->localVariables[name] = var;
 	else
 		localVariables[name] = var;
 }
 
 void Expression::setLocalVariable(std::string name, float* val)
 {
-	if (parent && parent->localVariableExists(name))
-		parent->setLocalVariable(name, val);
+	auto exp = localVariableExists(name);
+	if (exp)
+		exp->localPointers[name] = val;
 	else
 		localPointers[name] = val;
 }
@@ -70,15 +72,15 @@ Variable Expression::getLocalVariable(std::string name)
 	throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 }
 
-bool Expression::localVariableExists(std::string name)
+Expression* Expression::localVariableExists(std::string name)
 {
 	if (localVariables.find(name) != localVariables.end())
-		return true;
+		return this;
 	if (localPointers.find(name) != localPointers.end())
-		return true;
+		return this;
 	if (parent)
 		return parent->localVariableExists(name);
-	return false;
+	return nullptr;
 }
 
 Expression* Expression::acquire(std::vector<std::shared_ptr<Expression>>* tokens)

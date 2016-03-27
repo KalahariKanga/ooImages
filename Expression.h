@@ -27,7 +27,7 @@ public:
 	virtual void setLocalVariable(std::string name, Variable var);
 	virtual void setLocalVariable(std::string name, float* ptr);
 	virtual Variable getLocalVariable(std::string name);
-	bool localVariableExists(std::string name);
+	Expression* localVariableExists(std::string name);
 
 	std::vector<std::shared_ptr<Expression>> arguments;
 	virtual bool calculateConstancy();
