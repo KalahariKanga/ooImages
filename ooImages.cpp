@@ -47,7 +47,10 @@ int main(int argc, _TCHAR* argv[])
 		std::string filename;
 		std::cout << ">>";
 		std::getline(std::cin, filename);
-		store->initialize(filename);
+		if (filename == "")
+			store->initialize(640, 480);
+		else
+			store->initialize(filename);
 		vs->setArrayVariable("argv", 0, Variable(store->getImage()));
 	}
 

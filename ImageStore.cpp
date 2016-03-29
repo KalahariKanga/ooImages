@@ -33,6 +33,12 @@ void ImageStore::initialize(std::string fname)
 	}
 }
 
+void ImageStore::initialize(int width, int height)
+{
+	image = std::make_shared<ImageObject>(width, height);
+	mask = std::make_shared<Mask>(width, height);
+}
+
 ImageStore* ImageStore::get()
 {
 	if (!instance)

@@ -13,6 +13,7 @@ public:
 	ImageObject* getImage();
 	void loadImage(std::string fname);
 	void initialize(std::string fname);
+	void initialize(int width, int height);
 	static ImageStore* get();
 };
 
