@@ -200,6 +200,12 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::LOG);
 	if (token == "ln")
 		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::LN);
+	if (token == "abs")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::ABS);
+	if (token == "floor")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::FLOOR);
+	if (token == "sqrt")
+		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::SQRT);
 	if (token.back() == '_')
 		return new ArrayVariableExpression(token);
 	if (token.back() == '[')

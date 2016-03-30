@@ -6,7 +6,7 @@ class UnaryFunctionExpression :
 public:
 	enum class FunctionType
 	{
-		SIN, COS, TAN, LOG, LN, EXP
+		SIN, COS, TAN, LOG, LN, EXP, ABS, FLOOR, SQRT
 	} function;
 	UnaryFunctionExpression(FunctionType fn);
 	~UnaryFunctionExpression();

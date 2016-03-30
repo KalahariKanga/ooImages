@@ -35,6 +35,15 @@ Variable UnaryFunctionExpression::evaluate()
 	case FunctionType::EXP:
 		y = exp(x);
 		break;
+	case FunctionType::ABS:
+		y = abs(x);
+		break;
+	case FunctionType::FLOOR:
+		y = floor(x);
+		break;
+	case FunctionType::SQRT:
+		y = sqrt(x);
+		break;
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}
