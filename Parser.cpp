@@ -188,6 +188,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::AND);
 	if (token == "||")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::OR);
+	if (token == "^")
+		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::POW);
 	if (token == "sin")
 		return new UnaryFunctionExpression(UnaryFunctionExpression::FunctionType::SIN);
 	if (token == "cos")

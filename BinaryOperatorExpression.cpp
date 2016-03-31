@@ -54,6 +54,9 @@ Variable BinaryOperatorExpression::evaluate()
 	case Operator::OR:
 		v = (a || b);
 		break;
+	case Operator::POW:
+		v = pow(a, b);
+		break;
 	default:
 		throw new Exception(Exception::ErrorType::ILLEGAL_OPERATOR);
 	}
