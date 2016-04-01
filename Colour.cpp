@@ -113,6 +113,9 @@ void Colour::v(int v)
 void Colour::hsv(int H, int S, int V)
 {
 	float r = 0, g = 0, b = 0;
+	H = H % 255;
+	S = clamp<int>(S, 0, 255);
+	V = clamp<int>(V, 0, 255);
 	float h = (float)H / 255;
 	float s = (float)S / 255;
 	float v = (float)V / 255;
