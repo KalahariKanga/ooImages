@@ -1,7 +1,7 @@
 #pragma once
 #include "Resource.h"
 
-#define RESOURCE_DEFINE_STATIC_PROPERTY_MAP(NAME) template <> std::map<std::string, std::function<float(NAME*)>> ResourcePropertyHelper<NAME>::properties;	
+#define RESOURCE_DEFINE_STATIC_PROPERTY_MAP(NAME) template <> std::unordered_map<std::string, std::function<float(NAME*)>> ResourcePropertyHelper<NAME>::properties;	
 
 
 template <class Derived>
@@ -9,7 +9,7 @@ class ResourcePropertyHelper :
 	public Resource
 {
 protected:
-	static std::map<std::string, std::function<float(Derived*)>> properties;
+	static std::unordered_map<std::string, std::function<float(Derived*)>> properties;
 public:
 	ResourcePropertyHelper() = default;
 	~ResourcePropertyHelper() = default;

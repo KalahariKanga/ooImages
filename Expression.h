@@ -12,8 +12,8 @@ protected:
 	bool isConstant = 0;
 	bool optimisable = 1;
 	static ImageStore* const store;
-	std::map<std::string, Variable> localVariables;
-	std::map<std::string, float*> localPointers;
+	std::unordered_map<std::string, Variable> localVariables;
+	std::unordered_map<std::string, float*> localPointers;
 	std::vector<std::string> localBasenames;
 public:
 	Expression();

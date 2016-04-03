@@ -1,7 +1,7 @@
 #pragma once
 #include "core.h"
 #include "Exception.h"
-#include <map>
+#include <unordered_map>
 #include <functional>
 
 class Resource

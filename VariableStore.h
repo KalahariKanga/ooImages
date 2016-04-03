@@ -1,10 +1,9 @@
 #pragma once
-#include <map>
 #include "Variable.h"
 
 class VariableStore
 {
-	std::map<std::string, Variable> variableMap;
+	std::unordered_map<std::string, Variable> variableMap;
 	static VariableStore* instance;
 public:
 	VariableStore();
