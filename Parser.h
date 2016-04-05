@@ -59,6 +59,7 @@
 #include "invertExpression.h"
 #include "maskExpression.h"
 #include "imageExpression.h"
+#include "arrayExpression.h"
 
 class Parser
 {
