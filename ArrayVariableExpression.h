@@ -1,5 +1,7 @@
 #pragma once
 #include "TerminalExpression.h"
+#include "Array.h"
+
 class ArrayVariableExpression :
 	public TerminalExpression
 {
@@ -11,5 +13,6 @@ public:
 	virtual Variable evaluate();
 	virtual std::string getName();
 	virtual std::string getString();
+	int getIndex();
 };
 

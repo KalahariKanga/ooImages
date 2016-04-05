@@ -11,6 +11,20 @@ Array::~Array()
 {
 }
 
+Variable Array::get(int i)
+{
+	//try catch
+	return vector.at(i);
+}
+
+void Array::set(int i, Variable var)
+{
+	//also catch
+	if (i >= vector.size())
+		vector.resize(i+1);
+	vector[i] = var;
+}
+
 void Array::about()
 {
 	std::cout << "About\n";

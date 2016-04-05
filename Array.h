@@ -8,7 +8,8 @@ class Array :
 public:
 	Array();
 	~Array();
-
+	Variable get(int i);
+	void set(int i, Variable var);
 	virtual void about();
 };
 
