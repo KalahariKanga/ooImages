@@ -43,7 +43,7 @@ Variable functionExpression::evaluate()
 		auto argumentNameExpr = std::dynamic_pointer_cast<TerminalExpression>(arguments[c]);
 		if (!argumentNameExpr)
 			break;
-		argumentNames.push_back(argumentNameExpr->getName());
+		argumentNames.push_back(argumentNameExpr->getString());
 		++c;
 	}
 	

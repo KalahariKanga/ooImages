@@ -19,7 +19,7 @@ Variable setExpression::evaluate()
 	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	auto arr = std::dynamic_pointer_cast<ArrayVariableExpression>(arguments[0]);
 
-	std::string name = term->getName();
+	std::string name = term->getString();
 	if (!term)
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);
 

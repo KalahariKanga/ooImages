@@ -11,7 +11,6 @@ public:
 	ArrayVariableExpression(std::string string);
 	~ArrayVariableExpression();
 	virtual Variable evaluate();
-	virtual std::string getName();
 	virtual std::string getString();
 	int getIndex();
 };

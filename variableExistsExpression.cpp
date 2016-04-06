@@ -17,7 +17,7 @@ Variable variableExistsExpression::evaluate()
 	auto term = std::dynamic_pointer_cast<TerminalExpression>(arguments[0]);
 	if (term)
 	{
-		rawname = term->getName();
+		rawname = term->getString();
 	}
 	else
 		throw new Exception(Exception::ErrorType::ILLEGAL_NAME);

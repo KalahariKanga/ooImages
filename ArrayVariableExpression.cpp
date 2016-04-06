@@ -1,11 +1,11 @@
 #include "ArrayVariableExpression.h"
 
 
-ArrayVariableExpression::ArrayVariableExpression(std::string string) : TerminalExpression(), string(string)
+ArrayVariableExpression::ArrayVariableExpression(std::string str) : TerminalExpression(), string(str)
 {
 	noArguments = 1;
 	vs = VariableStore::get();
-	this->string.erase(this->string.end() - 1);
+	string.erase(string.end() - 1);
 }
 
 
@@ -23,11 +23,6 @@ Variable ArrayVariableExpression::evaluate()
 
 	auto arr = var.get<Array>();
 	return arr->get(getIndex());
-}
-
-std::string ArrayVariableExpression::getName()
-{
-	return string;
 }
 
 std::string ArrayVariableExpression::getString()

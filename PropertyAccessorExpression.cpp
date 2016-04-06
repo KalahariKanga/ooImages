@@ -19,7 +19,7 @@ Variable PropertyAccessorExpression::evaluate()
 	{
 		throw new Exception(Exception::ErrorType::UNKNOWN_PROPERTY);
 	}
-	std::string propName = prop->getName();
+	std::string propName = prop->getString();
 
 	//this could be function'd and put into termexpr
 	Variable v;

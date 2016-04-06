@@ -16,6 +16,5 @@ public:
 	virtual bool calculateConstancy();
 	Variable evaluate();
 	virtual std::string getString();
-	virtual std::string getName();
 };
 
