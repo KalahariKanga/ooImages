@@ -13,15 +13,30 @@ Array::~Array()
 
 Variable Array::get(int i)
 {
-	//try catch
-	return vector.at(i);
+	try
+	{
+		return vector.at(i);
+	}
+	catch (std::out_of_range)
+	{
+		throw new Exception(Exception::ErrorType::ARRAY_ERROR);
+	}
 }
 
 void Array::set(int i, Variable var)
 {
-	//also catch
+	
 	if (i >= vector.size())
-		vector.resize(i+1);
+	{
+		try
+		{
+			vector.resize(i + 1);
+		}
+		catch (std::bad_alloc)
+		{
+			throw new Exception(Exception::ErrorType::ARRAY_ERROR);
+		}
+	}
 	vector[i] = var;
 }
 

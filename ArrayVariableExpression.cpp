@@ -19,12 +19,10 @@ Variable ArrayVariableExpression::evaluate()
 	if (vs->variableExists(string))
 		var = VariableStore::get()->getVariable(string);
 	if (localVariableExists(string))
-		var =  getLocalVariable(string);
+		var = getLocalVariable(string);
 
 	auto arr = var.get<Array>();
-	return arr->get((int)round(*arguments[0]->getResult().get<Real>()));
-
-	//throw new Exception(Exception::ErrorType::ARRAY_ERROR);
+	return arr->get(getIndex());
 }
 
 std::string ArrayVariableExpression::getName()
