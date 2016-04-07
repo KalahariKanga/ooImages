@@ -29,13 +29,14 @@ bool TerminalExpression::calculateConstancy()
 
 Variable TerminalExpression::evaluate()
 {
-	//resource variable
+	//local variable
+	auto exp = localVariableExists(string);
+	if (exp)
+		return exp->getLocalVariable(string);
+	
+	//global variable
 	if (vs->variableExists(string))
 		return vs->getVariable(string);
-
-	//local variable
-	if (localVariableExists(string))
-		return getLocalVariable(string);
 	
 	//constant
 	try
@@ -52,10 +53,4 @@ Variable TerminalExpression::evaluate()
 std::string TerminalExpression::getString()
 {
 	return string;
-}
-
-std::string TerminalExpression::getName()
-{
-	return string;
-	//TODO: check that it is a named variable
 }

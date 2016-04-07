@@ -18,8 +18,10 @@ Variable ArrayVariableExpression::evaluate()
 	Variable var;
 	if (vs->variableExists(string))
 		var = VariableStore::get()->getVariable(string);
-	if (localVariableExists(string))
-		var = getLocalVariable(string);
+
+	auto exp = localVariableExists(string);
+	if (exp)
+		var = exp->getLocalVariable(string);
 
 	auto arr = var.get<Array>();
 	return arr->get(getIndex());
