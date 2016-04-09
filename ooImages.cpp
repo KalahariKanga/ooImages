@@ -97,7 +97,11 @@ int main(int argc, _TCHAR* argv[])
 		window.draw(sprite);
 		window.display();
 		
-		while (window.pollEvent(ev)){}
+		while (window.pollEvent(ev))
+		{
+			if (ev.type == sf::Event::Closed)
+				return 0; //i -think- this is acceptable
+		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	}
 
