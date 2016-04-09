@@ -2,13 +2,13 @@
 set f function n
 [
 	set primes 1
-	set p_ 0 2
+	set p array [ 2 ]
 	if > n 2
 		print 2
 	for i 3 n 1
 	[
 		set prime 1
-		for t 0 primes 1
+		for t 0 sqrt primes 1
 		[
 			if == % i p_ t 0
 			[
