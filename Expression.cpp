@@ -1,5 +1,4 @@
 #include "Expression.h"
-#include <algorithm>
 
 ImageStore* const Expression::store = ImageStore::get();
 

@@ -1,5 +1,4 @@
 #pragma once
-#include "stdafx.h"
 #include "ResourcePropertyHelper.h"
 
 class Mask : public ResourcePropertyHelper<Mask>

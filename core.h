@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 #define PI 3.14159265
 template <typename T> T clamp(const T& value, const T& low, const T& high)

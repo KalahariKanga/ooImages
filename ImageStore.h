@@ -1,5 +1,4 @@
 #pragma once
-#include "stdafx.h"
 #include "ImageObject.h"
 #include "Mask.h"
 class ImageStore

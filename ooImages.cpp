@@ -2,12 +2,12 @@
 //
 #include <sstream>
 #include <thread>
-#include "stdafx.h"
+
 #include "ImageObject.h"
 #include "ImageStore.h"
 #include "Parser.h"
 
-int main(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	ImageStore* store = ImageStore::get();
 	VariableStore* vs = VariableStore::get();
