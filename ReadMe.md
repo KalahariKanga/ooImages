@@ -146,3 +146,15 @@ Send each pixel to the position (`x`,`y`).
 ### variableExists  
 `Real variableExists(String name)`  
 Checks if a variable called `name` exists, and if it does, returns 1, otherwise returns 0.  
+### invert  
+`Void invert(Mask m)`  
+Invert the mask `m`  
+### mask  
+`Mask mask(Void)`  
+Return the active mask  
+### image
+`Image image(Void)`  
+Return the active image  
+### array
+`Array array(Variable e1, ..., Variable en)`  
+Construct and return an array with elements `e1` up to `en`  
