@@ -17,6 +17,9 @@ Expression* SequenceExpression::acquire(std::vector<std::shared_ptr<Expression>>
 	if (!tokens->empty())
 		tokens->erase(tokens->begin());
 
+	if (tokens->empty())
+		throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
+
 	while (!std::dynamic_pointer_cast<EndSequenceExpression>(tokens->front()))
 	{
 		if (tokens->empty())
@@ -26,7 +29,10 @@ Expression* SequenceExpression::acquire(std::vector<std::shared_ptr<Expression>>
 		++noArguments;
 		arguments.back()->acquire(tokens);
 	}
+
 	//the ] is sort of an argument - clear it from the token list anyway
+	if (tokens->empty())
+		throw new Exception(Exception::ErrorType::INSUFFICIENT_ARGUMENTS);
 	arguments.push_back(tokens->front());
 	tokens->front()->parent = this;
 	arguments.back()->acquire(tokens);
