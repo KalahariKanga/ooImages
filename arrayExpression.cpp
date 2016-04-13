@@ -13,18 +13,25 @@ arrayExpression::~arrayExpression()
 
 Variable arrayExpression::evaluate()
 {
-	auto sequence = std::dynamic_pointer_cast<SequenceExpression>(arguments[0]);
-
-	if (!sequence)
-		throw new Exception(Exception::ErrorType::MISMATCHED_BRACKETS);
-
-	int elements = sequence->noArguments;
 	Variable var(new Array());
 	auto a = var.get<Array>();
 
-	for (int c = 0; c < elements; c++)
+	auto sequence = std::dynamic_pointer_cast<SequenceExpression>(arguments[0]);
+	if (sequence)
 	{
-		a->set(c, sequence->arguments[c]->getResult());
+		int elements = sequence->noArguments;
+		for (int c = 0; c < elements; c++)
+		{
+			a->set(c, sequence->arguments[c]->getResult());
+		}
+	}
+	else
+	{
+		int elements = (int)*arguments[0]->evaluate().get<Real>();
+		for (int c = 0; c < elements; c++)
+		{
+			a->set(c, Variable());
+		}
 	}
 	return var;
 }
