@@ -235,10 +235,10 @@ Variable Parser::run(std::string input)
 	expressionStack = expressions;
 	if (!expressions.empty())
 	{
-		Expression* head = expressions.front()->acquire(&expressionStack);
-		head->calculateConstancy();
 		try
 		{
+			Expression* head = expressions.front()->acquire(&expressionStack);
+			head->calculateConstancy();
 			return head->getResult();
 		}
 		catch (Exception* e)
