@@ -166,6 +166,8 @@ Expression* Parser::tokenToExpression(std::string token)
 		return new imageExpression();
 	if (token == "array")
 		return new arrayExpression();
+	if (token == "flatten")
+		return new flattenExpression();
 	if (token == "+")
 		return new BinaryOperatorExpression(BinaryOperatorExpression::Operator::ADD);
 	if (token == "-")

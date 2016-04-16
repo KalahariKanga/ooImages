@@ -60,6 +60,7 @@
 #include "maskExpression.h"
 #include "imageExpression.h"
 #include "arrayExpression.h"
+#include "flattenExpression.h"
 
 class Parser
 {
