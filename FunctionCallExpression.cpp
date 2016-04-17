@@ -48,6 +48,8 @@ Variable FunctionCallExpression::evaluate()
 		{
 			v = exp->getLocalVariable(name);
 		}
+		else
+			throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 	}
 
 	Function* fn = v.get<Function>();
