@@ -4,7 +4,7 @@
 class PropertyAccessorExpression :
 	public TerminalExpression
 {
-	std::string varName;
+	std::string name;
 public:
 	PropertyAccessorExpression(std::string varName);
 	~PropertyAccessorExpression();

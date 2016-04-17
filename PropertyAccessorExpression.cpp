@@ -1,10 +1,10 @@
 #include "PropertyAccessorExpression.h"
 
 
-PropertyAccessorExpression::PropertyAccessorExpression(std::string string) : varName(string)
+PropertyAccessorExpression::PropertyAccessorExpression(std::string string) : name(string)
 {
 	noArguments = 1;
-	varName.erase(varName.end() - 1);
+	name.erase(name.end() - 1);
 }
 
 
@@ -23,14 +23,18 @@ Variable PropertyAccessorExpression::evaluate()
 
 	//this could be function'd and put into termexpr
 	Variable v;
-	if (vs->variableExists(varName))
-		v = vs->getVariable(varName);
-	else if (localVariables.find(varName) != localVariables.end())
-	{
-		v = localVariables[varName];
-	}
+	if (vs->variableExists(name))
+		v = vs->getVariable(name);
 	else
-		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
+	{
+		auto exp = localVariableExists(name);
+		if (exp)
+		{
+			v = exp->getLocalVariable(name);
+		}
+		else
+			throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
+	}
 
 	
 	auto resource = v.get<Resource>();
