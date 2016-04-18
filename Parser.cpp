@@ -57,7 +57,9 @@ std::vector<std::string> Parser::tokenizeString(std::string str)
 		else
 			currentToken.push_back(c);
 	}
-	list.push_back(currentToken);
+
+	if (currentToken != "")
+		list.push_back(currentToken);
 
 	return list;
 }
