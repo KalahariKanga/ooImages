@@ -1,0 +1,7 @@
+set binarize function threshold
+[
+	select region > v threshold
+	setPixels rgb 255 255 255
+	invert mask
+	setPixels rgb 0 0 0
+]
