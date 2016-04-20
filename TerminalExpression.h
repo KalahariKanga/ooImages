@@ -8,6 +8,7 @@ class TerminalExpression :
 protected:
 	std::string string;
 	VariableStore* vs = VariableStore::get();
+	Expression* lastExpression = nullptr;
 public:
 	TerminalExpression() = default;
 	TerminalExpression(std::string string);

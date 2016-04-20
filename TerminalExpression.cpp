@@ -30,9 +30,14 @@ bool TerminalExpression::calculateConstancy()
 Variable TerminalExpression::evaluate()
 {
 	//local variable
-	auto exp = localVariableExists(string);
-	if (exp)
-		return exp->getLocalVariable(string);
+	if (lastExpression)
+		return lastExpression->getLocalVariable(string);
+	else
+	{
+		lastExpression = localVariableExists(string);
+		if (lastExpression)
+			return lastExpression->getLocalVariable(string);
+	}
 	
 	//global variable
 	if (vs->variableExists(string))
