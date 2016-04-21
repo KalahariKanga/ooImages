@@ -16,12 +16,17 @@ ArrayVariableExpression::~ArrayVariableExpression()
 Variable ArrayVariableExpression::evaluate()
 {
 	Variable var;
+	if (lastExpression)
+		var = lastExpression->getLocalVariable(string);
+	else
+	{
+		lastExpression = localVariableExists(string);
+		if (lastExpression)
+			var = lastExpression->getLocalVariable(string);
+	}
+	
 	if (vs->variableExists(string))
 		var = VariableStore::get()->getVariable(string);
-
-	auto exp = localVariableExists(string);
-	if (exp)
-		var = exp->getLocalVariable(string);
 
 	auto arr = var.get<Array>();
 	return arr->get(getIndex());
