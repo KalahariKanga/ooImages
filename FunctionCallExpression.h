@@ -5,7 +5,7 @@
 class FunctionCallExpression :
 	public TerminalExpression
 {
-	std::string name;
+	std::string string; //careful
 public:
 	FunctionCallExpression(std::string name);
 	~FunctionCallExpression();

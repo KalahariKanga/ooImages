@@ -3,10 +3,10 @@
 #include "SequenceExpression.h"
 #include "EndSequenceExpression.h"
 
-FunctionCallExpression::FunctionCallExpression(std::string string) : name(string)
+FunctionCallExpression::FunctionCallExpression(std::string str) : string(str)
 {
 	noArguments = 0;
-	name.erase(name.end() - 1);
+	string.erase(string.end() - 1);
 	vs = VariableStore::get();
 }
 
@@ -39,18 +39,18 @@ Variable FunctionCallExpression::evaluate()
 {
 	std::vector<Variable> fnArguments;
 	Variable v;
-	if (vs->variableExists(name))
-		v = vs->getVariable(name);
+	
+	if (lastExpression)
+		v = lastExpression->getLocalVariable(string);
 	else
 	{
-		auto exp = localVariableExists(name);
-		if (exp)
-		{
-			v = exp->getLocalVariable(name);
-		}
-		else
-			throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
+		lastExpression = localVariableExists(string);
+		if (lastExpression)
+			v = lastExpression->getLocalVariable(string);
 	}
+	
+	if (vs->variableExists(string))
+		v = vs->getVariable(string);
 
 	Function* fn = v.get<Function>();
 
