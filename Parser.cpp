@@ -232,8 +232,7 @@ Variable Parser::run(std::string input)
 	std::vector<std::shared_ptr<Expression>> expressionStack;
 	for (auto t : tokens)
 	{
-		std::shared_ptr<Expression> exp;
-		exp.reset(tokenToExpression(t));
+		std::shared_ptr<Expression> exp(tokenToExpression(t));
 		expressions.push_back(exp);
 	}
 	expressionStack = expressions;
@@ -241,9 +240,12 @@ Variable Parser::run(std::string input)
 	{
 		try
 		{
-			Expression* head = expressions.front()->acquire(&expressionStack);
-			head->calculateConstancy();
-			return head->getResult();
+			while (!expressionStack.empty())
+			{
+				Expression* head = expressionStack.front()->acquire(&expressionStack);
+				head->calculateConstancy();
+				/*return*/ head->getResult();
+			}
 		}
 		catch (Exception* e)
 		{
