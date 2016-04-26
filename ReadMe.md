@@ -158,3 +158,6 @@ Return the active image
 ### array
 `Array array(Variable e1, ..., Variable en)`  
 Construct and return an array with elements `e1` up to `en`  
+### flatten  
+`Void flatten(Void)`  
+Flatten an image with transparency to a opaque image
