@@ -21,21 +21,17 @@ Variable PropertyAccessorExpression::evaluate()
 	}
 	std::string propName = prop->getString();
 
-	//this could be function'd and put into termexpr
 	Variable v;
-	if (vs->variableExists(name))
+
+	auto exp = localVariableExists(name);
+	if (exp)
+	{
+		v = exp->getLocalVariable(name);
+	}
+	else if (vs->variableExists(name))
 		v = vs->getVariable(name);
 	else
-	{
-		auto exp = localVariableExists(name);
-		if (exp)
-		{
-			v = exp->getLocalVariable(name);
-		}
-		else
-			throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
-	}
-
+		throw new Exception(Exception::ErrorType::UNKNOWN_VARIABLE);
 	
 	auto resource = v.get<Resource>();
 	if (!resource)
