@@ -40,6 +40,11 @@ void Array::set(int i, Variable var)
 	vector[i] = var;
 }
 
+int Array::size()
+{
+	return vector.size();
+}
+
 void Array::about()
 {
 	std::cout << "About\n";

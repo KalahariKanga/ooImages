@@ -10,6 +10,7 @@ public:
 	~Array();
 	Variable get(int i);
 	void set(int i, Variable var);
+	int size();
 	virtual void about();
 };
 
