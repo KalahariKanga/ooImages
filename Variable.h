@@ -8,6 +8,7 @@
 #include "Real.h"
 
 
+
 class Variable
 {
 	std::shared_ptr<Resource> data;
@@ -25,6 +26,7 @@ public:
 	void set(std::shared_ptr<Resource> newData);
 	
 	bool isNull();
+	template <class T> bool isType();
 
 	Variable duplicate();
 };
@@ -42,4 +44,12 @@ template <class T>
 std::shared_ptr<T> Variable::getShared()
 {
 	return std::static_pointer_cast<T>(data);
+}
+
+template <class T>
+bool Variable::isType()
+{
+	if (dynamic_cast<T*>(data.get()))
+		return 1;
+	return 0;
 }
